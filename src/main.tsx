@@ -10,7 +10,8 @@ import Root from "./routes/root.tsx";
 const router = createBrowserRouter(
   createRoutesFromElements(<Route path="/" element={<Root />} />)
 );
-
+const bl = "as";
+//gh
 createRoot(document.getElementById("root") as HTMLElement).render(
   <RouterProvider router={router} />
 );
