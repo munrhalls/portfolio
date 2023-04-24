@@ -1,4 +1,4 @@
-function projects() {
+function WebApps() {
   return (
     <div className="container">
       <div className="row">
@@ -28,4 +28,4 @@ function projects() {
   );
 }
 
-export default projects;
+export default WebApps;
