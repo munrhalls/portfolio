@@ -1,23 +1,32 @@
-import { Navbar, Container, Nav, NavDropdown, Collapse } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 // import styled, { keyframes } from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Outlet, Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 
 function Root() {
   return (
     <>
       <Navbar bg="light" expand="md">
-        <Navbar.Brand>Munrhalls</Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav>
-            <Link to="/">Home</Link>
-
-            <Link to="/web-applications">Web applications</Link>
-            <Link to="/articles">Articles</Link>
-          </Nav>
-        </Navbar.Collapse>
+        <Container>
+          <Navbar.Brand>Munrhalls</Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav>
+              <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/web-applications">
+                <Nav.Link>Web applications</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/articles">
+                <Nav.Link>Articles</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
       </Navbar>
+
       <Outlet />
     </>
   );
