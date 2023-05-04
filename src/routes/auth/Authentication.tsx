@@ -4,15 +4,15 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { auth } from "../../backend/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
-import { logIn } from "./authSlice";
+import { setLoggedIn, setLoggedOut } from "./authSlice";
 
 function Authentication() {
   const authStatus = useSelector((state) => state.auth.value);
   const dispatch = useDispatch();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const target = e.target as typeof e.target & {
@@ -25,13 +25,18 @@ function Authentication() {
     console.log("Email:", email);
     console.log("Password:", password);
 
+    onAuthStateChanged(auth, (user) => {
+      console.log("onAuthStateChanged runs, before condish");
+      if (user) {
+        dispatch(setLoggedIn());
+      } else {
+        dispatch(setLoggedOut());
+      }
+    });
+
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user, "???");
-        dispatch(logIn());
-        // ...
+      .then(() => {
+        dispatch(setLoggedIn());
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -47,7 +52,7 @@ function Authentication() {
           {authStatus ? (
             <h1>Logged in.</h1>
           ) : (
-            <Form onSubmit={handleSubmit} className="text-center mb-3">
+            <Form onSubmit={handleLogin} className="text-center mb-3">
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control

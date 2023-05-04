@@ -1,0 +1,9 @@
+Ai suggested to put auth state to component's local state because it's small.
+
+Well, I don't think it simplifies things. 
+
+Then, for every component from that point on, one needs to think if state is in that component or if it's in redux. To me, it's far simpler if these two threads remain fully distinct. 
+
+All state is in redux, period. I never have to think about where state is. It's in redux. That's the entire point. 
+
+That's even more the case, give the state slices syntax of redux, the more recent createSlice way of doing redux state. You have the state next to component anyway - but *not* in the component, which is awesome.
