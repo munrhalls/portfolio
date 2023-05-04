@@ -45,12 +45,26 @@ function Authentication() {
       });
   }
 
+  function handleLogout(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    console.log("LOG OUT");
+  }
+
   return (
     <Container>
       <Row className="mt-3">
         <Col>
           {authStatus ? (
-            <h1>Logged in.</h1>
+            <>
+              <Form onSubmit={handleLogout} className="text-center mb-3">
+                <Form.Group className="mb-3">
+                  <Form.Label>Logged in.</Form.Label>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                  Log out
+                </Button>
+              </Form>
+            </>
           ) : (
             <Form onSubmit={handleLogin} className="text-center mb-3">
               <Form.Group className="mb-3" controlId="formBasicEmail">
