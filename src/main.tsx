@@ -5,8 +5,10 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
+import store from "./state/Store.ts";
+import { Provider } from "react-redux";
 import Root from "./routes/root/Root.tsx";
-import Login from "./routes/auth/Login.tsx";
+import Authentication from "./routes/auth/Authentication.tsx";
 
 import Home from "./routes/Home.tsx";
 import WebApps from "./routes/WebApps.tsx";
@@ -24,11 +26,13 @@ const router = createBrowserRouter(
       <Route path="mixed-media" element={<MixedMedia />}></Route>
       <Route path="about" element={<About />}></Route>
       <Route path="contact" element={<Contact />}></Route>
-      <Route path="login" element={<Login />}></Route>
+      <Route path="login" element={<Authentication />}></Route>
     </Route>
   )
 );
 
 createRoot(document.getElementById("root") as HTMLElement).render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );

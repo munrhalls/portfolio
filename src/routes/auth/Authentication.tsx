@@ -3,10 +3,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { auth } from "./../../backend/firebase";
+import { auth } from "../../backend/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useSelector, useDispatch } from "react-redux";
+import { logIn } from "./authSlice";
 
-function Login() {
+function Authentication() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -65,4 +67,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Authentication;
