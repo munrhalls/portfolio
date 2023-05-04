@@ -9,6 +9,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { logIn } from "./authSlice";
 
 function Authentication() {
+  const authStatus = useSelector((state) => state.auth.value);
+  const dispatch = useDispatch();
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -27,6 +30,7 @@ function Authentication() {
         // Signed in
         const user = userCredential.user;
         console.log(user, "???");
+        dispatch(logIn());
         // ...
       })
       .catch((error) => {
@@ -40,27 +44,31 @@ function Authentication() {
     <Container>
       <Row className="mt-3">
         <Col>
-          <Form onSubmit={handleSubmit} className="text-center mb-3">
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                placeholder="Enter email"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
+          {authStatus ? (
+            <h1>Logged in.</h1>
+          ) : (
+            <Form onSubmit={handleSubmit} className="text-center mb-3">
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="Enter email"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          )}
         </Col>
       </Row>
     </Container>
