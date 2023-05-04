@@ -3,45 +3,58 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { auth } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
-  //   const actionCodeSettings = {
-  //     // URL you want to redirect back to. The domain (www.example.com) for this
-  //     url: "https://www.munrhalls-portfolio.com/finishLogin",
-  //     // This must be true.
-  //     handleCodeInApp: true,
-  //   };
-
   //   const auth = getAuth();
-  //   sendSignInLinkToEmail(auth, "antarcticdepths71@gmail.com", actionCodeSettings)
-  //     .then(() => {
-  //       // The link was successfully sent. Inform the user.
-  //       // Save the email locally so you don't need to ask the user for it again
-  //       // if they open the link on the same device.
-  //       window.localStorage.setItem(
-  //         "emailForSignIn",
-  //         "antarcticdepths71@gmail.com"
-  //       );
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       const user = userCredential.user;
   //       // ...
   //     })
   //     .catch((error) => {
   //       const errorCode = error.code;
   //       const errorMessage = error.message;
-  //       // ...
   //     });
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("suybmit");
+    const target = e.target as typeof e.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+    const email = target.email.value;
+    const password = target.password.value;
+
+    console.log("Email:", email);
+    console.log("Password:", password);
   }
 
   return (
     <Container>
-      <Row className="mt-5">
+      <Row className="mt-3">
         <Col>
-          <Form onSubmit={handleSubmit} className="text-center">
-            <Button type="submit">LOGIN VIA E-MAIL LINK</Button>
+          <Form onSubmit={handleSubmit} className="text-center mb-3">
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                name="email"
+                type="email"
+                placeholder="Enter email"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
           </Form>
         </Col>
       </Row>
