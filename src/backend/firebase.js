@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "firebase/app";
-
 import { getAnalytics } from "firebase/analytics";
+import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -30,6 +30,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 
-export const firebase = initializeApp(firebaseConfig);
-
+const firebase = initializeApp(firebaseConfig);
+export const auth = getAuth(firebase);
 export const analytics = getAnalytics(firebase);
