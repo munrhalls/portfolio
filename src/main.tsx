@@ -6,6 +6,8 @@ import {
   Route,
 } from "react-router-dom";
 import Root from "./routes/root/Root.tsx";
+import Login from "./routes/auth/Login.tsx";
+
 import Home from "./routes/Home.tsx";
 import WebApps from "./routes/WebApps.tsx";
 import Articles from "./routes/Articles.tsx";
@@ -22,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="mixed-media" element={<MixedMedia />}></Route>
       <Route path="about" element={<About />}></Route>
       <Route path="contact" element={<Contact />}></Route>
+      <Route path="login" element={<Login />}></Route>
     </Route>
   )
 );

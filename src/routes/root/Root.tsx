@@ -5,6 +5,10 @@ import { Outlet, Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
 function Root() {
+  function onShowLogin() {
+    console.log("show login");
+  }
+
   return (
     <>
       <Navbar bg="light" expand="md">
