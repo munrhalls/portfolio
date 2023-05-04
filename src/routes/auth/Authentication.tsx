@@ -12,6 +12,15 @@ function Authentication() {
   const authStatus = useSelector((state) => state.auth.value);
   const dispatch = useDispatch();
 
+  onAuthStateChanged(auth, (user) => {
+    console.log("onAuthStateChanged runs, before condish");
+    if (user) {
+      dispatch(setLoggedIn());
+    } else {
+      dispatch(setLoggedOut());
+    }
+  });
+
   function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -24,15 +33,6 @@ function Authentication() {
 
     console.log("Email:", email);
     console.log("Password:", password);
-
-    onAuthStateChanged(auth, (user) => {
-      console.log("onAuthStateChanged runs, before condish");
-      if (user) {
-        dispatch(setLoggedIn());
-      } else {
-        dispatch(setLoggedOut());
-      }
-    });
 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
