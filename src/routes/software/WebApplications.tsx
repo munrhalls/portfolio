@@ -1,4 +1,4 @@
-function WebApps() {
+function WebApplications() {
   return (
     <div className="container">
       <div className="row">
@@ -28,4 +28,4 @@ function WebApps() {
   );
 }
 
-export default WebApps;
+export default WebApplications;

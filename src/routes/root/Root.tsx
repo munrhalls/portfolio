@@ -17,8 +17,11 @@ function Root() {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/software">
+                <Nav.Link>Software</Nav.Link>
+              </LinkContainer>
 
-              <NavDropdown title="Software">
+              {/* <NavDropdown title="Software">
                 <LinkContainer to="/web-applications">
                   <NavDropdown.Item>Web applications</NavDropdown.Item>
                 </LinkContainer>
@@ -29,7 +32,7 @@ function Root() {
                 <LinkContainer to="/learning-projects">
                   <NavDropdown.Item>Learning projects</NavDropdown.Item>
                 </LinkContainer>
-              </NavDropdown>
+              </NavDropdown> */}
 
               <LinkContainer to="/articles">
                 <Nav.Link>Articles</Nav.Link>
