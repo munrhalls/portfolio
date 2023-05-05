@@ -1,7 +1,8 @@
 import WebApplications from "./WebApplications";
 import Websites from "./Websites";
 import LearningProjects from "./LearningProjects";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import { ButtonGroup, Button, Navbar, Image } from "react-bootstrap";
 import f0 from "./../../assets/.f0.png";
 import f1 from "./../../assets/f1.png";
@@ -46,74 +47,90 @@ function Software() {
   };
 
   return (
-    <div>
-      <Navbar>
-        <ButtonGroup>
-          <Button
-            className="d-flex flex-column align-items-center"
-            variant="dark"
-            onClick={() => handleButtonClick("section1")}
-          >
-            <Image
-              style={
-                selectedButton === "section1"
-                  ? { boxShadow: "0 8px 14px 7px orange" }
-                  : {}
-              }
-              roundedCircle
-              src={f0}
-              alt="Circle"
-              width={32}
-              height={32}
-            />
-            <span>Websites</span>
-          </Button>
+    <Container>
+      <Row>
+        <Col>
+          <Navbar>
+            <ButtonGroup>
+              <Button
+                className="d-flex flex-column align-items-center"
+                variant="dark"
+                onClick={() => handleButtonClick("section1")}
+              >
+                <Image
+                  style={
+                    selectedButton === "section1"
+                      ? { boxShadow: "0 3px 3px 3px orange" }
+                      : {}
+                  }
+                  roundedCircle
+                  src={f0}
+                  alt="Circle"
+                  width={32}
+                  height={32}
+                />
+                <span className="d-none d-md-block">Websites</span>
+              </Button>
 
-          <Button
-            className="d-flex flex-column align-items-center"
-            variant="dark"
-            onClick={() => handleButtonClick("section2")}
-          >
-            <Image
-              style={
-                selectedButton === "section2"
-                  ? { boxShadow: "0 8px 14px 7px blue" }
-                  : {}
-              }
-              roundedCircle
-              src={f1}
-              alt="Circle"
-              width={32}
-              height={32}
-            />
-            <span>Web applications</span>
-          </Button>
-          <Button
-            className="d-flex flex-column align-items-center"
-            variant="dark"
-            onClick={() => handleButtonClick("section3")}
-          >
-            <Image
-              style={
-                selectedButton === "section3"
-                  ? { boxShadow: "0 8px 14px 7px magenta" }
-                  : {}
-              }
-              roundedCircle
-              src={f2}
-              alt="Circle"
-              width={32}
-              height={32}
-            />
-            <span>Learning projects</span>
-          </Button>
-        </ButtonGroup>
-      </Navbar>
-
-      <WebApplications />
-      <Websites />
-      <LearningProjects />
-    </div>
+              <Button
+                className="d-flex flex-column align-items-center"
+                variant="dark"
+                onClick={() => handleButtonClick("section2")}
+              >
+                <Image
+                  style={
+                    selectedButton === "section2"
+                      ? { boxShadow: "0 3px 3px 3px blue" }
+                      : {}
+                  }
+                  roundedCircle
+                  src={f1}
+                  alt="Circle"
+                  width={32}
+                  height={32}
+                />
+                <span className="d-none d-md-block">Web applications</span>
+              </Button>
+              <Button
+                className="d-flex flex-column align-items-center"
+                variant="dark"
+                onClick={() => handleButtonClick("section3")}
+              >
+                <Image
+                  style={
+                    selectedButton === "section3"
+                      ? { boxShadow: "0 3px 3px 3px magenta" }
+                      : {}
+                  }
+                  roundedCircle
+                  src={f2}
+                  alt="Circle"
+                  width={32}
+                  height={32}
+                />
+                <span className="d-none d-md-block">Learning projects</span>
+              </Button>
+            </ButtonGroup>
+          </Navbar>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {" "}
+          <WebApplications />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Websites />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <LearningProjects />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
