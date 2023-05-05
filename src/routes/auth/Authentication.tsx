@@ -9,12 +9,12 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "./../../hooks/hooks";
 import { setLoggedIn, setLoggedOut } from "./authSlice";
 
 function Authentication() {
-  const authStatus = useSelector((state) => state.auth.value);
-  const dispatch = useDispatch();
+  const authStatus = useAppSelector((state) => state.auth.value);
+  const dispatch = useAppDispatch();
 
   onAuthStateChanged(auth, (user) => {
     console.log("onAuthStateChanged runs, before condish");
