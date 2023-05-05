@@ -50,9 +50,12 @@ function Software() {
     <Container>
       <Row>
         <Col>
-          <Navbar className="justify-content-center">
-            <ButtonGroup>
+          <Navbar className="justify-content-center mt-3">
+            <ButtonGroup
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
               <Button
+                style={{ width: "33.33%", outline: "none" }}
                 className="d-flex flex-column align-items-center"
                 variant="dark"
                 onClick={() => handleButtonClick("section1")}
@@ -74,6 +77,7 @@ function Software() {
               </Button>
 
               <Button
+                style={{ width: "33.33%", outline: "none" }}
                 className="d-flex flex-column align-items-center"
                 variant="dark"
                 onClick={() => handleButtonClick("section2")}
@@ -91,9 +95,10 @@ function Software() {
                   width={32}
                   height={32}
                 />
-                <span className="d-none d-sm-block mt-2">Web applications</span>
+                <span className="d-none d-sm-block mt-2">Applications</span>
               </Button>
               <Button
+                style={{ width: "33.33%", outline: "none" }}
                 className="d-flex flex-column align-items-center"
                 variant="dark"
                 onClick={() => handleButtonClick("section3")}
@@ -111,9 +116,7 @@ function Software() {
                   width={32}
                   height={32}
                 />
-                <span className="d-none d-sm-block mt-2">
-                  Learning projects
-                </span>
+                <span className="d-none d-sm-block mt-2">Learning</span>
               </Button>
             </ButtonGroup>
           </Navbar>
