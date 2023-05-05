@@ -75,8 +75,8 @@ function Authentication() {
 
   return (
     <Container>
-      <Row className="mt-3">
-        <Col className="text-center">
+      <Row className="justify-content-center align-items-center mt-5">
+        <Col xs={10} sm={8} md={6} lg={3} className="text-center">
           {isLoading ? (
             <Spinner animation="border" className="mt-3" />
           ) : authStatus ? (
