@@ -50,7 +50,7 @@ function Software() {
     <Container>
       <Row>
         <Col>
-          <Navbar>
+          <Navbar className="justify-content-center">
             <ButtonGroup>
               <Button
                 className="d-flex flex-column align-items-center"
@@ -58,6 +58,7 @@ function Software() {
                 onClick={() => handleButtonClick("section1")}
               >
                 <Image
+                  className="mt-1 mb-2"
                   style={
                     selectedButton === "section1"
                       ? { boxShadow: "0 3px 3px 3px orange" }
@@ -69,7 +70,7 @@ function Software() {
                   width={32}
                   height={32}
                 />
-                <span className="d-none d-md-block">Websites</span>
+                <span className="d-none d-sm-block mt-2">Websites</span>
               </Button>
 
               <Button
@@ -78,6 +79,7 @@ function Software() {
                 onClick={() => handleButtonClick("section2")}
               >
                 <Image
+                  className="mt-1 mb-2"
                   style={
                     selectedButton === "section2"
                       ? { boxShadow: "0 3px 3px 3px blue" }
@@ -89,7 +91,7 @@ function Software() {
                   width={32}
                   height={32}
                 />
-                <span className="d-none d-md-block">Web applications</span>
+                <span className="d-none d-sm-block mt-2">Web applications</span>
               </Button>
               <Button
                 className="d-flex flex-column align-items-center"
@@ -97,6 +99,7 @@ function Software() {
                 onClick={() => handleButtonClick("section3")}
               >
                 <Image
+                  className="mt-1 mb-2"
                   style={
                     selectedButton === "section3"
                       ? { boxShadow: "0 3px 3px 3px magenta" }
@@ -108,7 +111,9 @@ function Software() {
                   width={32}
                   height={32}
                 />
-                <span className="d-none d-md-block">Learning projects</span>
+                <span className="d-none d-sm-block mt-2">
+                  Learning projects
+                </span>
               </Button>
             </ButtonGroup>
           </Navbar>
