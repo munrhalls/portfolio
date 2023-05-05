@@ -1,14 +1,10 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
 // import styled, { keyframes } from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
 function Root() {
-  function onShowLogin() {
-    console.log("show login");
-  }
-
   return (
     <>
       <Navbar bg="light" expand="md">

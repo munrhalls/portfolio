@@ -10,9 +10,12 @@ import {
   signOut,
 } from "firebase/auth";
 import { useAppDispatch, useAppSelector } from "./../../hooks/hooks";
+import { useState } from "react";
 import { setLoggedIn, setLoggedOut } from "./authSlice";
 
 function Authentication() {
+  const [error, setError] = useState("");
+
   const authStatus = useAppSelector((state) => state.auth.value);
   const dispatch = useAppDispatch();
 
@@ -27,6 +30,7 @@ function Authentication() {
 
   function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError("");
 
     const target = e.target as typeof e.target & {
       email: { value: string };
@@ -46,17 +50,20 @@ function Authentication() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        setError(errorMessage);
       });
   }
 
   function handleLogout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError("");
+
     signOut(auth)
       .then(() => {
         dispatch(setLoggedOut());
       })
       .catch((error) => {
-        console.log("Error");
+        setError(error);
       });
   }
 
@@ -96,6 +103,9 @@ function Authentication() {
               <Button variant="primary" type="submit">
                 Submit
               </Button>
+              <Form.Group className="mt-3 mb-3">
+                {error && <Form.Text muted>{error}</Form.Text>}
+              </Form.Group>
             </Form>
           )}
         </Col>
