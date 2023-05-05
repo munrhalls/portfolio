@@ -1,26 +1,16 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { useAppSelector } from "./../hooks/hooks";
 
 function Home() {
+  const author = useAppSelector((state) => state.auth.value);
+
   return (
     <Container>
       <Row>
-        <Col style={{ background: "blue" }} xs>
-          .
-        </Col>
-        <Col style={{ background: "yellow" }} xs={8}>
-          .
-        </Col>
-        <Col style={{ background: "blue" }} xs>
-          .
-        </Col>
-        <Col style={{ background: "blue" }} xs>
-          .
-        </Col>
-        <Col style={{ background: "blue" }} xs>
-          .
-        </Col>
+        <Col>{author && <Button color="primary">AUTHOR IS HERE</Button>}</Col>
       </Row>
     </Container>
   );

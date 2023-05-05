@@ -3,6 +3,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Outlet } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { NavDropdown } from "react-bootstrap";
 
 function Root() {
   return (
@@ -16,9 +17,20 @@ function Root() {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/web-applications">
-                <Nav.Link>Web applications</Nav.Link>
-              </LinkContainer>
+
+              <NavDropdown title="Software">
+                <LinkContainer to="/web-applications">
+                  <NavDropdown.Item>Web applications</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/websites">
+                  <NavDropdown.Item>Websites</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Divider />
+                <LinkContainer to="/learning-projects">
+                  <NavDropdown.Item>Learning projects</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+
               <LinkContainer to="/articles">
                 <Nav.Link>Articles</Nav.Link>
               </LinkContainer>
