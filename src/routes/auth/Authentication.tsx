@@ -3,6 +3,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Spinner from "react-bootstrap/Spinner";
+
 import { auth } from "../../backend/firebase";
 import {
   signInWithEmailAndPassword,
@@ -14,6 +16,7 @@ import { useState } from "react";
 import { setLoggedIn, setLoggedOut } from "./authSlice";
 
 function Authentication() {
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const authStatus = useAppSelector((state) => state.auth.value);
@@ -31,6 +34,7 @@ function Authentication() {
   function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
+    setIsLoading(true);
 
     const target = e.target as typeof e.target & {
       email: { value: string };
@@ -39,39 +43,43 @@ function Authentication() {
     const email = target.email.value;
     const password = target.password.value;
 
-    console.log("Email:", email);
-    console.log("Password:", password);
-
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         dispatch(setLoggedIn());
+        setIsLoading(false);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
         setError(errorMessage);
+        setIsLoading(false);
       });
   }
 
   function handleLogout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
+    setIsLoading(true);
 
     signOut(auth)
       .then(() => {
         dispatch(setLoggedOut());
+        setIsLoading(false);
       })
       .catch((error) => {
         setError(error);
+        setIsLoading(false);
       });
   }
 
   return (
     <Container>
       <Row className="mt-3">
-        <Col>
-          {authStatus ? (
+        <Col className="text-center">
+          {isLoading ? (
+            <Spinner animation="border" className="mt-3" />
+          ) : authStatus ? (
             <>
               <Form onSubmit={handleLogout} className="text-center mb-3">
                 <Form.Group className="mb-3">
@@ -104,7 +112,9 @@ function Authentication() {
                 Submit
               </Button>
               <Form.Group className="mt-3 mb-3">
-                {error && <Form.Text muted>{error}</Form.Text>}
+                {error && (
+                  <Form.Text className="text-danger">{error}</Form.Text>
+                )}
               </Form.Group>
             </Form>
           )}
