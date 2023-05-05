@@ -4,7 +4,11 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { auth } from "../../backend/firebase";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { setLoggedIn, setLoggedOut } from "./authSlice";
 
@@ -47,7 +51,13 @@ function Authentication() {
 
   function handleLogout(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("LOG OUT");
+    signOut(auth)
+      .then(() => {
+        dispatch(setLoggedOut());
+      })
+      .catch((error) => {
+        console.log("Error");
+      });
   }
 
   return (
