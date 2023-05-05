@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
+import Alert from "react-bootstrap/Alert";
 
 import { auth } from "../../backend/firebase";
 import {
@@ -18,12 +19,13 @@ import { setLoggedIn, setLoggedOut } from "./authSlice";
 function Authentication() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [loginDisabled, setLoginDisabled] = useState(false);
+  const [loginAttempts, setLoginAttempts] = useState(0);
 
   const authStatus = useAppSelector((state) => state.auth.value);
   const dispatch = useAppDispatch();
 
   onAuthStateChanged(auth, (user) => {
-    console.log("onAuthStateChanged runs, before condish");
     if (user) {
       dispatch(setLoggedIn());
     } else {
@@ -46,6 +48,11 @@ function Authentication() {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         dispatch(setLoggedIn());
+
+        setLoginDisabled(true);
+        setTimeout(() => {
+          setLoginDisabled(false);
+        }, 10000);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -53,6 +60,16 @@ function Authentication() {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
         setError(errorMessage);
+
+        setLoginAttempts(loginAttempts + 1);
+        if (loginAttempts >= 4) {
+          setLoginDisabled(true);
+          setTimeout(() => {
+            setLoginDisabled(false);
+            setLoginAttempts(0);
+          }, 30000);
+        }
+
         setIsLoading(false);
       });
   }
@@ -77,7 +94,12 @@ function Authentication() {
     <Container>
       <Row className="justify-content-center align-items-center mt-5">
         <Col xs={10} sm={8} md={6} lg={3} className="text-center">
-          {isLoading ? (
+          {loginDisabled && !authStatus && (
+            <Alert variant="warning">
+              Login possibility is paused for 10 seconds.
+            </Alert>
+          )}
+          {!loginDisabled && isLoading ? (
             <Spinner animation="border" className="mt-3" />
           ) : authStatus ? (
             <>
@@ -108,7 +130,7 @@ function Authentication() {
                   placeholder="Password"
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" disabled={loginDisabled}>
                 Submit
               </Button>
               <Form.Group className="mt-3 mb-3">
