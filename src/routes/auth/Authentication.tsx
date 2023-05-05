@@ -96,7 +96,7 @@ function Authentication() {
         <Col xs={10} sm={8} md={6} lg={3} className="text-center">
           {loginDisabled && !authStatus && (
             <Alert variant="warning">
-              Login possibility is paused for 10 seconds.
+              Login possibility is briefly paused.
             </Alert>
           )}
           {!loginDisabled && isLoading ? (
