@@ -5,7 +5,7 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import store from "./state/Store.ts";
+import { store } from "./state/Store.ts";
 import { Provider } from "react-redux";
 import Root from "./routes/root/Root.tsx";
 import Authentication from "./routes/auth/Authentication.tsx";
