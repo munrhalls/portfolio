@@ -10,7 +10,6 @@ import f2 from "./../../assets/f2.png";
 
 function Software() {
   const [selectedButton, setSelectedButton] = useState<string>("section1");
-  const selectedButtonStyle = {};
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,98 +46,118 @@ function Software() {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Navbar className="justify-content-center mt-3">
-            <ButtonGroup
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <Button
-                style={{ width: "33.33%", outline: "none" }}
-                className="d-flex flex-column align-items-center"
-                variant="dark"
-                onClick={() => handleButtonClick("section1")}
-              >
-                <Image
-                  className="mt-1 mb-2"
-                  style={
-                    selectedButton === "section1"
-                      ? { boxShadow: "0 3px 3px 3px orange" }
-                      : {}
-                  }
-                  roundedCircle
-                  src={f0}
-                  alt="Circle"
-                  width={32}
-                  height={32}
-                />
-                <span className="d-none d-sm-block mt-2">Websites</span>
-              </Button>
+    <>
+      <Navbar
+        style={{
+          borderRadius: 0,
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Button
+          style={{
+            width: "33.33%",
+            background: "black",
+            outline: "none",
+            borderRadius: 0,
+          }}
+          className="d-flex flex-column align-items-center"
+          variant="dark"
+          onClick={() => handleButtonClick("section1")}
+        >
+          <Image
+            className="mt-1 mb-2"
+            style={
+              selectedButton === "section1"
+                ? { boxShadow: "0 3px 3px 3px orange" }
+                : {}
+            }
+            roundedCircle
+            src={f0}
+            alt="Circle"
+            width={32}
+            height={32}
+          />
+          <span className="d-none d-sm-block mt-2">Websites</span>
+        </Button>
 
-              <Button
-                style={{ width: "33.33%", outline: "none" }}
-                className="d-flex flex-column align-items-center"
-                variant="dark"
-                onClick={() => handleButtonClick("section2")}
-              >
-                <Image
-                  className="mt-1 mb-2"
-                  style={
-                    selectedButton === "section2"
-                      ? { boxShadow: "0 3px 3px 3px blue" }
-                      : {}
-                  }
-                  roundedCircle
-                  src={f1}
-                  alt="Circle"
-                  width={32}
-                  height={32}
-                />
-                <span className="d-none d-sm-block mt-2">Applications</span>
-              </Button>
-              <Button
-                style={{ width: "33.33%", outline: "none" }}
-                className="d-flex flex-column align-items-center"
-                variant="dark"
-                onClick={() => handleButtonClick("section3")}
-              >
-                <Image
-                  className="mt-1 mb-2"
-                  style={
-                    selectedButton === "section3"
-                      ? { boxShadow: "0 3px 3px 3px magenta" }
-                      : {}
-                  }
-                  roundedCircle
-                  src={f2}
-                  alt="Circle"
-                  width={32}
-                  height={32}
-                />
-                <span className="d-none d-sm-block mt-2">Learning</span>
-              </Button>
-            </ButtonGroup>
-          </Navbar>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          {" "}
-          <WebApplications />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Websites />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <LearningProjects />
-        </Col>
-      </Row>
-    </Container>
+        <Button
+          style={{
+            width: "33.33%",
+            background: "black",
+            outline: "none",
+            borderRadius: 0,
+          }}
+          className="d-flex flex-column align-items-center"
+          variant="dark"
+          onClick={() => handleButtonClick("section2")}
+        >
+          <Image
+            className="mt-1 mb-2"
+            style={
+              selectedButton === "section2"
+                ? { boxShadow: "0 3px 3px 3px blue" }
+                : {}
+            }
+            roundedCircle
+            src={f1}
+            alt="Circle"
+            width={32}
+            height={32}
+          />
+          <span className="d-none d-sm-block mt-2">Applications</span>
+        </Button>
+        <Button
+          style={{
+            width: "33.33%",
+            background: "black",
+            outline: "none",
+            borderRadius: 0,
+          }}
+          className="d-flex flex-column align-items-center"
+          variant="dark"
+          onClick={() => handleButtonClick("section3")}
+        >
+          <Image
+            className="mt-1 mb-2"
+            style={
+              selectedButton === "section3"
+                ? { boxShadow: "0 3px 3px 3px magenta" }
+                : {}
+            }
+            roundedCircle
+            src={f2}
+            alt="Circle"
+            width={32}
+            height={32}
+          />
+          <span className="d-none d-sm-block mt-2">Learning</span>
+        </Button>
+      </Navbar>
+
+      <Container>
+        <Row>
+          <Col></Col>
+        </Row>
+        <Row>
+          <Col>
+            {" "}
+            <WebApplications />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Websites />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <LearningProjects />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 

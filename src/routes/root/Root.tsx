@@ -8,10 +8,10 @@ import { NavDropdown } from "react-bootstrap";
 function Root() {
   return (
     <>
-      <Navbar bg="light" expand="md">
+      <Navbar fixed="top" bg="light" expand="md">
         <Container>
           <Navbar.Brand>Munrhalls</Navbar.Brand>
-          <Navbar.Toggle />
+          <Navbar.Toggle style={{ outline: "none" }} />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               <LinkContainer to="/">
