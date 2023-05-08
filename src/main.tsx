@@ -11,6 +11,7 @@ import Root from "./routes/root/Root.tsx";
 import Authentication from "./routes/auth/Authentication.tsx";
 
 import Home from "./routes/Home.tsx";
+import Websites from "./routes/Websites.tsx";
 import Articles from "./routes/Articles.tsx";
 import MixedMedia from "./routes/MixedMedia.tsx";
 import About from "./routes/About.tsx";
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<Home />} />
+      <Route path="Websites" element={<Websites />}></Route>
       <Route path="articles" element={<Articles />}></Route>
       <Route path="mixed-media" element={<MixedMedia />}></Route>
       <Route path="about" element={<About />}></Route>
