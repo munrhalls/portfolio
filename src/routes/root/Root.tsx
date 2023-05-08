@@ -8,7 +8,7 @@ import { NavDropdown } from "react-bootstrap";
 function Root() {
   return (
     <>
-      <Navbar fixed="top" bg="light" expand="md">
+      <Navbar bg="light" expand="md">
         <Container>
           <Navbar.Brand>Munrhalls</Navbar.Brand>
           <Navbar.Toggle style={{ outline: "none" }} />
