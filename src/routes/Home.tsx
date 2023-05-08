@@ -19,9 +19,18 @@ function Home() {
           </Col>
         </Row>
       )}
-      <Row>
-        <Col>
+      <Row style={{ background: "#000" }}>
+        <Col xs={4}>
           <Image src={homeImg} alt="Home image" fluid />
+        </Col>
+        <Col xs={8} style={{ background: "#fff", border: "1rem solid #000" }}>
+          <h1 className="mt-3">Munrhalls</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+            provident autem quidem similique nam necessitatibus libero in
+            eveniet porro aliquid modi reprehenderit laborum itaque quaerat
+            incidunt unde, totam reiciendis deleniti.
+          </p>
         </Col>
       </Row>
     </Container>
