@@ -41,7 +41,7 @@ function Root() {
               style={{
                 letterSpacing: "2px",
                 marginLeft: "0.75rem",
-                fontSize: ".75rem",
+                fontSize: ".85rem",
               }}
             >
               Munrhalls

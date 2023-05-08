@@ -1,8 +1,10 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import { useAppSelector } from "./../hooks/hooks";
+import homeImg from "./../assets/homeImg.png";
 
 function Home() {
   const author = useAppSelector((state) => state.auth.value);
@@ -10,9 +12,16 @@ function Home() {
 
   return (
     <Container>
+      {author && (
+        <Row>
+          <Col>
+            <Button color="primary">AUTHOR IS HERE</Button>
+          </Col>
+        </Row>
+      )}
       <Row>
         <Col>
-          {author ? <Button color="primary">AUTHOR IS HERE</Button> : ""}
+          <Image src={homeImg} alt="Home image" fluid />
         </Col>
       </Row>
     </Container>
