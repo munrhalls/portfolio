@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import { useAppSelector } from "./../hooks/hooks";
 import homeImg from "./../assets/homeImg.png";
 import dojoImg from "./../assets/dojoImg.png";
+import { CustomParagraphsGroup } from "../MainReusables";
 
 function Home() {
   const author = useAppSelector((state) => state.auth.value);
@@ -21,41 +22,50 @@ function Home() {
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="0">
             <CustomAccordionHeader text="Synopsis of what I can currently do" />
-            <Accordion.Body>
-              <p>
-                - develop a modern, fast, responsive website using React /
-                React-bootstrap, reasonably fast
-              </p>
-              <p>
-                - develop a small but modern, fast, responsive web application,
-                using React / React-router / Typescript / Redux OR Angular,
-                reasonably fast
-              </p>
-              <p>
-                - develop a highly custom website or web app, using Javascript,
-                HTML, CSS and other technologies (e.g. SVG, Canvas), in a
-                reasonable time-frame
-              </p>
-              <p>
-                - work with API and promises at basic level, connecting frontend
-                features with backend services using REST endpoints
-              </p>
-              <p>
-                - debug a range of varied issues due to a combination off
-                experience, having done it a thousand times, understanding
-                general concepts and ability to trace code execution
-              </p>
-              <p>- solid skill in navigating DOM tree with Javascript</p>
-              <p>
-                - more than basic skill and understanding in Javascript, being
-                quite comfortable with concepts of recursion, currying, OOP,
-                working with multidimensional constructs such as matrices,
-                arrays within arrays etc.
-              </p>
-              <p>
-                - basic comprehension & skill with data structures: Array,
-                Linked list, Stack, Set, Binary Search Tree
-              </p>
+            <Accordion.Body style={{ background: "#000" }}>
+              <CustomParagraphsGroup>
+                <p>
+                  - develop a modern, fast, responsive website using React /
+                  React-bootstrap, reasonably fast
+                </p>
+                <p>
+                  - develop a small but modern, fast, responsive web
+                  application, using React / React-router / Typescript / Redux
+                  OR Angular, reasonably fast
+                </p>
+                <p>
+                  - develop a highly custom website or web app, using
+                  Javascript, HTML, CSS and other technologies (e.g. SVG,
+                  Canvas), in a reasonable time-frame
+                </p>
+                <p>
+                  - work with API and promises at basic level, connecting
+                  frontend features with backend services using REST endpoints
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <p>
+                  - debug a range of varied issues due to a combination off
+                  experience, having done it a thousand times, understanding
+                  general concepts and ability to trace code execution
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <p>- solid skill in navigating DOM tree with Javascript</p>
+                <p>
+                  - more than basic skill and understanding in Javascript, being
+                  quite comfortable with concepts of recursion, currying, OOP,
+                  working with multidimensional constructs such as matrices,
+                  arrays within arrays etc.
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                {" "}
+                <p>
+                  - basic comprehension & skill with data structures: Array,
+                  Linked list, Stack, Set, Binary Search Tree
+                </p>
+              </CustomParagraphsGroup>
             </Accordion.Body>
           </Accordion.Item>
 
