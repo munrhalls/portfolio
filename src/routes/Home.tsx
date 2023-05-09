@@ -1,5 +1,6 @@
 import Accordion from "react-bootstrap/Accordion";
 
+import { Form } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,7 +13,7 @@ import dojoImg from "./../assets/dojoImg.png";
 interface HomepageItem {
   index: string;
   text: string;
-  element: React.ReactNode;
+  element: React.ReactElement;
 }
 
 function Home() {
@@ -21,9 +22,28 @@ function Home() {
   const homepage: HomepageItem[] = [
     { index: "", text: "Cool stuff, man", element: <p>Cool stuff, man</p> },
   ];
+
+  function handleEdit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const inputValue = formData.get("element") as string;
+    console.log(inputValue);
+    homepage[0].text = inputValue;
+  }
+
   return (
     <>
       {homepage[0].element}
+      <Form onSubmit={handleEdit} className="text-center mb-3">
+        <Form.Group className="mb-3">
+          <Form.Label>Element text</Form.Label>
+          <Form.Control name="element" type="text" placeholder="Element text" />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+
       <Container>
         <h1 className="mt-3 mb-3">Junior Web Developer</h1>
         <Accordion defaultActiveKey="0">
@@ -80,7 +100,14 @@ function Home() {
                 - noticing connections and parallels between seemingly
                 impossibly unrelated items
               </p>
-              <p>- extreme levels of passion, fascinationm curiosity</p>
+              <p>
+                - high levels of curiosity, fascination about worlds of code and
+                ideas of developing it
+              </p>
+              <p>
+                - finding useful, practical insights, noticing practical
+                relationships between things
+              </p>
               <p>
                 - using analogies, metaphors, summaries quite well, being a
                 decently articulate communicator
