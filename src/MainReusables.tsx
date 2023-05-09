@@ -13,11 +13,15 @@ interface Props {
   children: ReactNode;
 }
 
+interface TextProps {
+  text: string;
+}
+
 export function H1Image({ src, alt }: H1ImageProps) {
   return <Image src={src} style={{ height: "2.5rem", width: "2.5rem" }} />;
 }
 
-export function CustomAccordionHeader({ text }) {
+export function CustomAccordionHeader({ text }: TextProps) {
   return (
     <Accordion.Header>
       <H1Image src={dojoImg} alt="dojo image" />
