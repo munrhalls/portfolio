@@ -1,19 +1,19 @@
 import Accordion from "react-bootstrap/Accordion";
 import { CustomAccordionHeader } from "../MainReusables";
 
-import { Form } from "react-bootstrap";
+// import { Form } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { H1Image } from "../MainReusables";
-import Button from "react-bootstrap/Button";
-import { useAppSelector } from "./../hooks/hooks";
-import homeImg from "./../assets/homeImg.png";
-import dojoImg from "./../assets/dojoImg.png";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+// import { H1Image } from "../MainReusables";
+// import Button from "react-bootstrap/Button";
+// import { useAppSelector } from "./../hooks/hooks";
+// import homeImg from "./../assets/homeImg.png";
+// import dojoImg from "./../assets/dojoImg.png";
 import { CustomParagraphsGroup } from "../MainReusables";
 
 function Home() {
-  const author = useAppSelector((state) => state.auth.value);
+  // const author = useAppSelector((state) => state.auth.value);
 
   return (
     <>
