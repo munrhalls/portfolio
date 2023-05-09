@@ -201,7 +201,7 @@ function Home() {
           </Accordion.Item>
           <Accordion.Item eventKey="3">
             <CustomAccordionHeader text="Current level of hard skills and understanding" />
-
+            // for commit
             <Accordion.Body style={{ background: "#000" }}>
               <CustomParagraphsGroup>
                 <p>
