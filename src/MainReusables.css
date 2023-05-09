@@ -10,4 +10,5 @@
 
 .accordion-button:not(.collapsed) {
   color: #fff;
+  background-color: #333;
 }

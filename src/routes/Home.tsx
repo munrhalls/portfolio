@@ -20,10 +20,7 @@ function Home() {
         <h1 className="mt-3 mb-3">Junior Web Developer</h1>
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="0">
-            <CustomAccordionHeader>
-              Synopsis of what I can currently do:
-              <H1Image src={dojoImg} alt="dojo image" />
-            </CustomAccordionHeader>
+            <CustomAccordionHeader text="Synopsis of what I can currently do" />
             <Accordion.Body>
               <p>
                 - develop a modern, fast, responsive website using React /
