@@ -9,50 +9,171 @@ import { useAppSelector } from "./../hooks/hooks";
 import homeImg from "./../assets/homeImg.png";
 import dojoImg from "./../assets/dojoImg.png";
 
+interface HomepageItem {
+  index: string;
+  text: string;
+  element: React.ReactNode;
+}
+
 function Home() {
   const author = useAppSelector((state) => state.auth.value);
 
+  const homepage: HomepageItem[] = [
+    { index: "", text: "Cool stuff, man", element: <p>Cool stuff, man</p> },
+  ];
   return (
     <>
-      <Accordion defaultActiveKey="0">
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>
-            Synopsis of what I can currently do:
-            <H1Image src={dojoImg} alt="dojo image" />
-          </Accordion.Header>
-          <Accordion.Body>
-            <p>
-              - develop a modern, fast, responsive website using React /
-              React-bootstrap, reasonably fast
-            </p>
-            <p>
-              - develop a small but modern, fast, responsive web application,
-              using React / React-router / Typescript / Redux OR Angular,
-              reasonably fast
-            </p>
-            <p>
-              - develop a highly custom website or web app, using Javascript,
-              HTML, CSS and other technologies (e.g. SVG, Canvas), in a
-              reasonable time-frame
-            </p>
-            <p>
-              - work with API and promises at basic level, connecting frontend
-              features with backend services using REST endpoints
-            </p>
-            <p>- solid skill in navigating DOM tree with Javascript</p>
-            <p>
-              - more than basic skill and understanding in Javascript, being
-              quite comfortable with concepts of recursion, currying, OOP,
-              working with multidimensional constructs such as matrices, arrays
-              within arrays etc.
-            </p>
-            <p>
-              - basic comprehension & skill with data structures: Array, Linked
-              list, Stack, Set, Binary Search Tree
-            </p>
-          </Accordion.Body>
-        </Accordion.Item>
-        <Accordion.Item eventKey="1">
+      {homepage[0].element}
+      <Container>
+        <h1 className="mt-3 mb-3">Junior Web Developer</h1>
+        <Accordion defaultActiveKey="0">
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>
+              Synopsis of what I can currently do:
+              <H1Image src={dojoImg} alt="dojo image" />
+            </Accordion.Header>
+            <Accordion.Body>
+              <p>
+                - develop a modern, fast, responsive website using React /
+                React-bootstrap, reasonably fast
+              </p>
+              <p>
+                - develop a small but modern, fast, responsive web application,
+                using React / React-router / Typescript / Redux OR Angular,
+                reasonably fast
+              </p>
+              <p>
+                - develop a highly custom website or web app, using Javascript,
+                HTML, CSS and other technologies (e.g. SVG, Canvas), in a
+                reasonable time-frame
+              </p>
+              <p>
+                - work with API and promises at basic level, connecting frontend
+                features with backend services using REST endpoints
+              </p>
+              <p>- solid skill in navigating DOM tree with Javascript</p>
+              <p>
+                - more than basic skill and understanding in Javascript, being
+                quite comfortable with concepts of recursion, currying, OOP,
+                working with multidimensional constructs such as matrices,
+                arrays within arrays etc.
+              </p>
+              <p>
+                - basic comprehension & skill with data structures: Array,
+                Linked list, Stack, Set, Binary Search Tree
+              </p>
+            </Accordion.Body>
+          </Accordion.Item>
+
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>Strengths & Weaknesses:</Accordion.Header>
+            <Accordion.Body>
+              <h3>Areas of strength:</h3>
+              <p>
+                - multidimensional, abstract, spatial reasoning and constructs
+              </p>
+              <p>
+                - finding completely novel, utterly unlikely angles of
+                approaching a subject
+              </p>
+              <p>
+                - noticing connections and parallels between seemingly
+                impossibly unrelated items
+              </p>
+              <p>- extreme levels of passion, fascinationm curiosity</p>
+              <p>
+                - using analogies, metaphors, summaries quite well, being a
+                decently articulate communicator
+              </p>
+              <p>
+                - general, practical self-education that spans titles such as
+                "The Art of Learning" by J. Waitzkin, "The inner game of tennis"
+                by T. Gallwey, "Learn like a pro" by B. Oakley, "Extreme
+                Ownership" by J. Willin, L. Babin, "Principles" by R. Dalio,
+                "The One Thing" by G. Keller, and goes way beyond just reading
+                it; it involved and still does, flashcards, experimentation,
+                ways of internalizing, self-training, contemplation, regular
+                journaling, symbolic drawings and diagrams, and more - whatever
+                it takes to get the most out of it
+              </p>
+              <h3>Areas of weakness:</h3>
+              <p>
+                - extremely vulnerable to becoming highly unrealistic,
+                overly-aspirational and not realizing it until really late
+              </p>
+              <p>
+                - easily stuck, takes me quite a lot of self-awareness, method
+                and alertness to avoid getting stuck or lost in a very
+                inefficient way of doing a thing
+              </p>
+              <p>
+                - tendency to get bogged down and lost in the weeds, working on
+                perfecting some minor detail that doesn't really matter that
+                much
+              </p>
+              <p>
+                - for some reason, I tend to be bad with efficiency, despite my
+                best efforts to work with a systematic process to avert it - I'm
+                too worried about some aspect of symmetry or look or whatever
+                else of whatever it is that I'm working on, it's an absurdly
+                notorious hassle for me
+              </p>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Header>
+              What I'm doing to improve strengths & weaknesses
+            </Accordion.Header>
+            <Accordion.Body>
+              <p>- Using pomodoro technique</p>
+              <p>
+                - Integrating time assessment with what-to-do into a coherent
+                next step as realistically as I can
+              </p>
+              <p>
+                - working in manner of self-challenges, along the lines of
+                "timing pushes", that is:
+              </p>
+              <ol>
+                <li>
+                  Set "GET X DONE" in Y POMODOROS
+                  <div>E.g. complete homepage in 3 pomodoros.</div>
+                </li>
+                <li>
+                  Map it out rapidly, in a simple, no nonsense way. Time
+                  threats. Opportunities. Preventive measures, onset adaptions,
+                  important points.
+                </li>
+                <li>Wing it, just go.</li>
+                <li>
+                  Careful but quick and rapid, no-nonsense review after,
+                  feedback, extract as much lesson value and realistic
+                  adaptation for my next steps, as I can from it.
+                </li>
+                <li>
+                  Importantly: not having lots of little changes from feedback
+                  session to feedback session, it's very few items drilled
+                  deeply to an improvement that lasts...errors that matter are
+                  usually thematic, repeating over and over so I aim at fixing
+                  that, in a lasting way
+                </li>
+              </ol>
+              <p>
+                - Practicing a very dynamic, agressive mindset about driving
+                real, required tasks to conclusion fast
+              </p>
+              <p>
+                - The one thing I keep doing no matter what, regardless of how
+                any project goes or doesn't go, irrespective of any set of
+                failures or successes, is developing software and enjoying the
+                process of learning in doing so
+              </p>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </Container>
+
+      {/* <Accordion.Item eventKey="1">
           <Accordion.Header>Accordion Item #2</Accordion.Header>
           <Accordion.Body>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -64,102 +185,21 @@ function Home() {
             culpa qui officia deserunt mollit anim id est laborum.
           </Accordion.Body>
         </Accordion.Item>
-      </Accordion>
+      </Accordion> */}
+      {/* <Accordion.Item eventKey="1">
+          <Accordion.Header>Accordion Item #2</Accordion.Header>
+          <Accordion.Body>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion> */}
 
-      <h1 className="mt-3 mb-3">Junior Web Developer</h1>
-
-      <h2>Synopsis of what I currently can do:</h2>
-
-      <hr />
-
-      <h2>Strengths & Weaknesses:</h2>
-      <h3>Areas of strength:</h3>
-      <p>- multidimensional, abstract, spatial reasoning and constructs</p>
-      <p>
-        - finding completely novel, utterly unlikely angles of approaching a
-        subject
-      </p>
-      <p>
-        - noticing connections and parallels between seemingly impossibly
-        unrelated items
-      </p>
-      <p>- extreme levels of passion, fascinationm curiosity</p>
-      <p>
-        - using analogies, metaphors, summaries quite well, being a decently
-        articulate communicator
-      </p>
-      <p>
-        - general, practical self-education that spans titles such as "The Art
-        of Learning" by J. Waitzkin, "The inner game of tennis" by T. Gallwey,
-        "Learn like a pro" by B. Oakley, "Extreme Ownership" by J. Willin, L.
-        Babin, "Principles" by R. Dalio, "The One Thing" by G. Keller, and goes
-        way beyond just reading it; it involved and still does, flashcards,
-        experimentation, ways of internalizing, self-training, contemplation,
-        regular journaling, symbolic drawings and diagrams, and more - whatever
-        it takes to get the most out of it
-      </p>
-      <h3>Areas of weakness:</h3>
-      <p>
-        - extremely vulnerable to becoming highly unrealistic,
-        overly-aspirational and not realizing it until really late
-      </p>
-      <p>
-        - easily stuck, takes me quite a lot of self-awareness, method and
-        alertness to avoid getting stuck or lost in a very inefficient way of
-        doing a thing
-      </p>
-      <p>
-        - tendency to get bogged down and lost in the weeds, working on
-        perfecting some minor detail that doesn't really matter that much
-      </p>
-      <p>
-        - for some reason, I tend to be bad with efficiency, despite my best
-        efforts to work with a systematic process to avert it - I'm too worried
-        about some aspect of symmetry or look or whatever else of whatever it is
-        that I'm working on, it's an absurdly notorious hassle for me
-      </p>
-      <h2>What I'm doing to improve strengths & weaknesses</h2>
-      <p>- Using pomodoro technique</p>
-      <p>
-        - Integrating time assessment with what-to-do into a coherent next step
-        as realistically as I can
-      </p>
-      <p>
-        - working in manner of self-challenges, along the lines of "timing
-        pushes", that is:
-      </p>
-      <ol>
-        <li>
-          Set "GET X DONE" in Y POMODOROS
-          <div>E.g. complete homepage in 3 pomodoros.</div>
-        </li>
-        <li>
-          Map it out rapidly, in a simple, no nonsense way. Time threats.
-          Opportunities. Preventive measures, onset adaptions, important points.
-        </li>
-        <li>Wing it, just go.</li>
-        <li>
-          Careful but quick and rapid, no-nonsense review after, feedback,
-          extract as much lesson value and realistic adaptation for my next
-          steps, as I can from it.
-        </li>
-        <li>
-          Importantly: not having lots of little changes from feedback session
-          to feedback session, it's very few items drilled deeply to an
-          improvement that lasts...errors that matter are usually thematic,
-          repeating over and over so I aim at fixing that, in a lasting way
-        </li>
-      </ol>
-      <p>
-        - Practicing a very dynamic, agressive mindset about driving real,
-        required tasks to conclusion fast
-      </p>
-      <p>
-        - The one thing I keep doing no matter what, regardless of how any
-        project goes or doesn't go, irrespective of any set of failures or
-        successes, is developing software and enjoying the process of learning
-        in doing so
-      </p>
       <hr />
       <h2>My current level</h2>
       <p>
