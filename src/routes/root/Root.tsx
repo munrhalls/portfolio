@@ -53,19 +53,16 @@ function Root() {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/websites">
-                <Nav.Link>Websites</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/web-applications">
-                <Nav.Link>Web apps</Nav.Link>
+              <LinkContainer to="/portfolio">
+                <Nav.Link>Portfolio</Nav.Link>
               </LinkContainer>
 
               <LinkContainer to="/articles">
                 <Nav.Link>Articles</Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to="/about">
-                <Nav.Link>About</Nav.Link>
+              <LinkContainer to="/contact">
+                <Nav.Link>Contact</Nav.Link>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
