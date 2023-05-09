@@ -45,7 +45,7 @@ export function CustomParagraphsGroup({ children }: Props) {
         borderRadius: "3rem",
         background: "#fff",
         marginBottom: "1rem",
-        padding: "1rem",
+        padding: "1.25rem 1rem",
       }}
     >
       {children}

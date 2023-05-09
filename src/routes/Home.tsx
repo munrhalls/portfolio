@@ -149,7 +149,10 @@ function Home() {
 
             <Accordion.Body style={{ background: "#000" }}>
               <CustomParagraphsGroup>
-                <p>- Using pomodoro technique</p>
+                <p>
+                  - Using pomodoro technique for quality of focus but just as
+                  importantly, for keep it real in terms of alotted time
+                </p>
                 <p>
                   - Integrating time assessment with what-to-do into a coherent
                   next step as realistically as I can
@@ -214,84 +217,142 @@ function Home() {
                   item. It's not an "I got this" list.
                 </p>
               </CustomParagraphsGroup>
-              <h3>Hard understanding & skills</h3>
-              <h4>Data structures</h4>
-              <p>
-                - Array / Object / Linked list / Stack / Set / Binary Search
-                Tree
-              </p>
-              <p>
-                - I can explain them, draw them or write them and use them in
-                Javascript
-              </p>
-              <p>
-                - Almost always, I use objects/arrays but I am aware of the
-                depth and breadth of how deep the topic of data structures goes
-              </p>
-              <p>
-                - Most of my recent use-cases were to think about how to
-                structure the data organization for redux state
-              </p>
-              <h4>Algorithms</h4>
-              <p>
-                Work to be done for me. I don't yet know many algorithms. I can
-                code some basic algorithms, e.g. search by halves, I can also
-                estimate the Big-O trend but that's about it for now.
-              </p>
-              <h4>Javascript</h4>
-              <p>
-                I would say my understanding and skill is a very solid degree
-                above just sound basics. I can work recursion, currying,
-                multidimensional arrays, objects. I can do OOP. Please challenge
-                me and prove where it's not so.
-              </p>
-              <p>
-                Where I'm weaker at, currently, is promises and async. I can and
-                have done it many times in old node callbacks style and with
-                more modern syntax style but I don't feel strong in it. Work to
-                be done, need some more deliberate practice.
-              </p>
-              <h4>Typescript</h4>
-              <p>
-                I know why to use it (want to prevent writing bug instead of
-                debugging a bug) and its basics. I know enough to read it and
-                write it at a basic level and use it with React.
-              </p>
-              <h4>React / React-router </h4>
-              <p>
-                I can do and use: Composition / Hooks / Class-based components /
-                minimizing re-renders / avoid prop-drilling / utilize context.
-              </p>
-              <p>
-                I mention React-router because I don't really know many cases
-                where one would not want some url handling.
-              </p>
+              <CustomParagraphsGroup>
+                <h3>Hard understanding & skills</h3>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <h4>Data structures</h4>
+                <p>
+                  - Array / Object / Linked list / Stack / Set / Binary Search
+                  Tree
+                </p>
+                <p>
+                  - I can explain them, draw them or write them and use them in
+                  Javascript
+                </p>
+                <p>
+                  - Almost always, I use objects/arrays but I am aware of the
+                  depth and breadth of how deep the topic of data structures
+                  goes
+                </p>
+                <p>
+                  - Most of my recent use-cases were to think about how to
+                  structure the data organization for redux state
+                </p>
+              </CustomParagraphsGroup>
 
-              <h4>Angular</h4>
-              <p>
-                I've just begun learning it, having bought Maximilian
-                Schwarzmuller's course on Udemy. I can write a basic website in
-                it and I can do some basic data operations.
-              </p>
+              <CustomParagraphsGroup>
+                <h4>Algorithms</h4>
+                <p>
+                  - Work to be done for me. I don't yet know many algorithms. I
+                  can code some basic algorithms, e.g. search by halves, I can
+                  also estimate the Big-O trend but that's about it for now.
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <h4>Design patterns</h4>
+                <p>
+                  - I can consider and find the pattern I need, when I need it
+                  but I am not very experienced with them, yet
+                </p>
+                <p>
+                  - I can usually craft some kind of a custom-fit pattern to
+                  minimize one-off's along the way but that is for smaller
+                  projects (e.g. this portfolio or a simplified, trello-like
+                  board app), it's work to be done for me to delve deeper into
+                  design patterns
+                </p>
+                <p>
+                  - In general, I'd humbly mention that to me, it appears as one
+                  of the most impactful and success-determining factors for any
+                  larger project, I think it's a hugely important domain
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <h4>Javascript</h4>
+                <p>
+                  - I would say my understanding and skill is a very solid
+                  degree above just sound basics. I can work recursion,
+                  currying, multidimensional arrays, objects. I can do OOP.
+                  Please challenge me and prove where it's not so.
+                </p>
+                <p>
+                  - Where I'm weaker at, currently, is promises and async. I can
+                  and have done it many times in old node callbacks style and
+                  with more modern syntax style but I don't feel strong in it.
+                  Work to be done, need some more deliberate practice.
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <h4>Typescript</h4>
+                <p>
+                  I know why to use it (want to prevent writing bug instead of
+                  debugging a bug) and its basics. I know enough to read it and
+                  write it at a basic level and use it with React.
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <h4>React / Redux / React-router </h4>
+                <p>
+                  React: I can employ sensible components composition / hooks /
+                  class-based components / minimizing re-renders / avoiding
+                  prop-drilling / minimizing state.
+                </p>
+                <p>
+                  Redux: I can use what I know from data structures & what
+                  experience I've got, to carefully think through how to
+                  structure app's state and explain why that's better than
+                  alternatives; I can use the latest syntax and write state
+                  slices for better clarity and ease of use.
+                </p>
+                <p>
+                  I mention React-router because I don't really know many cases
+                  where one would not want some url handling. I can and do use
+                  the latest react-router, though I can use older versions, too.
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <h4>Angular</h4>
+                <p>
+                  I've just begun learning it, having bought Maximilian
+                  Schwarzmuller's course on Udemy. I can write a basic website
+                  and a basic to-do app in it, and I can do some basic data
+                  operations.
+                </p>
+                <p>
+                  Work to be done, in terms of building larger projects and more
+                  involved features but I greatly enjoy the modern Angular and
+                  its coherent organization.
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <h4>HTML & CSS</h4>
+                <p>
+                  HTML - I usually want to first have all the content and a
+                  well-structured HTML document before I do anything else, as it
+                  makes all the rest easier. I can write semantic HTML.
+                </p>
+                <p>
+                  CSS - I have an intermediate/advanced skill with crafting
+                  layouts using flexbox and/or grid. I can achieve all kinds of
+                  highly custom effects using various bizarre combinations of
+                  properties, in a fairly reasonable time. I have a decent skill
+                  with achieving mobile-friendly effects.
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <h4>Bootstrap / React-bootstrap</h4>
+                <p>
+                  Not much experience but enough to use it and craft a decently
+                  looking, responsive website appearance.
+                </p>
+                <p>
+                  I mostly do a quick grab & fit of a few lego-blocks, quickly
+                  understand them just barely enough and then I try to run them
+                  through a customization pattern.
+                </p>
+              </CustomParagraphsGroup>
 
-              <h4>HTML & CSS</h4>
-              <p>
-                HTML - I usually want to first have all the content and a
-                well-structured HTML document before I do anything else, as it
-                makes all the rest easier. I can write semantic HTML.
-              </p>
-              <p>
-                CSS - I have an intermediate/advanced skill with crafting
-                layouts using flexbox and/or grid. I can achieve all kinds of
-                highly custom effects using various bizarre combinations of
-                properties, in a fairly reasonable time. I have a decent skill
-                with achieving mobile-friendly effects.
-              </p>
-              <h4>Bootstrap</h4>
-              <p>
-                Not much experience but enough to use it and craft a decently
-                looking, responsive website appearance.
-              </p>
               <hr />
             </Accordion.Body>
           </Accordion.Item>
