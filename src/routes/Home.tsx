@@ -14,7 +14,7 @@ import { CustomParagraphsGroup } from "../MainReusables";
 
 function Home() {
   // const author = useAppSelector((state) => state.auth.value);
-
+  // for commit
   return (
     <>
       <Container>
