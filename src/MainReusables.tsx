@@ -38,7 +38,15 @@ export function CustomAccordionHeader({ text }: TextProps) {
 
 export function CustomParagraphsGroup({ children }: Props) {
   return (
-    <div style={{ borderRadius: ".25rem;", background: "#fff" }}>
+    <div
+      style={{
+        border: "1px solid #fff",
+        borderRadius: "3rem",
+        background: "#fff",
+        marginBottom: "1rem",
+        padding: "1rem",
+      }}
+    >
       {children}
     </div>
   );

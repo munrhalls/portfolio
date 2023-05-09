@@ -28,16 +28,22 @@ function Home() {
                   - develop a modern, fast, responsive website using React /
                   React-bootstrap, reasonably fast
                 </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
                 <p>
                   - develop a small but modern, fast, responsive web
                   application, using React / React-router / Typescript / Redux
                   OR Angular, reasonably fast
                 </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
                 <p>
                   - develop a highly custom website or web app, using
                   Javascript, HTML, CSS and other technologies (e.g. SVG,
                   Canvas), in a reasonable time-frame
                 </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
                 <p>
                   - work with API and promises at basic level, connecting
                   frontend features with backend services using REST endpoints
@@ -52,6 +58,8 @@ function Home() {
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
                 <p>- solid skill in navigating DOM tree with Javascript</p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
                 <p>
                   - more than basic skill and understanding in Javascript, being
                   quite comfortable with concepts of recursion, currying, OOP,
