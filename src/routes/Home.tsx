@@ -393,6 +393,21 @@ function Home() {
               chain-links intact, all stays as one whole
             </li>
           </ul>
+          <p>Example: </p>
+          <ul>
+            <li>
+              Let's say you want to create a mini CMS in Redux/React/Typescript,
+              for CREATE/READ/UPDATE/DELETE of html tags + texts.
+            </li>
+            <li>
+              Developing solution doesn't mean breaking it into parts, it means
+              starting from prototype and baby-stepping through tests &
+              confirmations to advance that idea in very small iterations. This
+              way, steps themselves tend to pre-solve a lot of problems and
+              everything stays connected, it's all one thing, one idea, all
+              along.
+            </li>
+          </ul>
         </li>
         <li>
           I also look at problem solving similar to how a coach looks at a
