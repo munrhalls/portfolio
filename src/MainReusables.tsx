@@ -1,9 +1,7 @@
 import "./MainReusables.css";
-
 import { ReactNode } from "react";
 import { Image } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
-import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
 interface H1ImageProps {
   src: string;
