@@ -1,17 +1,8 @@
-import {
-  Container,
-  Row,
-  Col,
-  Navbar,
-  Nav,
-  Footer,
-  Image,
-} from "react-bootstrap";
+import { Container, Navbar, Nav, Image } from "react-bootstrap";
 // import styled, { keyframes } from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Outlet } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { NavDropdown } from "react-bootstrap";
 import Logo from "./../../assets/LOGO.png";
 
 function Root() {

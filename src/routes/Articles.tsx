@@ -1,5 +1,3 @@
-import { Container, Row, Col } from "react-bootstrap";
-
 function Articles() {
   return (
     <>
