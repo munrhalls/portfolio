@@ -79,128 +79,141 @@ function Home() {
 
           <Accordion.Item eventKey="1">
             <CustomAccordionHeader text="Strengths & Weaknesses:" />
-            <Accordion.Body>
-              <h3>Areas of strength:</h3>
-              <p>
-                - multidimensional, abstract, spatial reasoning and constructs
-              </p>
-              <p>
-                - finding completely novel, utterly unlikely angles of
-                approaching a subject
-              </p>
-              <p>
-                - noticing connections and parallels between seemingly
-                impossibly unrelated items
-              </p>
-              <p>
-                - high levels of curiosity, fascination about worlds of code and
-                ideas of developing it
-              </p>
-              <p>
-                - finding useful, practical insights, noticing practical
-                relationships between things
-              </p>
-              <p>
-                - using analogies, metaphors, summaries quite well, being a
-                decently articulate communicator
-              </p>
-              <p>
-                - general, practical self-education that spans titles such as
-                "The Art of Learning" by J. Waitzkin, "The inner game of tennis"
-                by T. Gallwey, "Learn like a pro" by B. Oakley, "Extreme
-                Ownership" by J. Willin, L. Babin, "Principles" by R. Dalio,
-                "The One Thing" by G. Keller, and goes way beyond just reading
-                it; it involved and still does, flashcards, experimentation,
-                ways of internalizing, self-training, contemplation, regular
-                journaling, symbolic drawings and diagrams, and more - whatever
-                it takes to get the most out of it
-              </p>
-              <h3>Areas of weakness:</h3>
-              <p>
-                - extremely vulnerable to becoming highly unrealistic,
-                overly-aspirational and not realizing it until really late
-              </p>
-              <p>
-                - easily stuck, takes me quite a lot of self-awareness, method
-                and alertness to avoid getting stuck or lost in a very
-                inefficient way of doing a thing
-              </p>
-              <p>
-                - tendency to get bogged down and lost in the weeds, working on
-                perfecting some minor detail that doesn't really matter that
-                much
-              </p>
-              <p>
-                - for some reason, I tend to be bad with efficiency, despite my
-                best efforts to work with a systematic process to avert it - I'm
-                too worried about some aspect of symmetry or look or whatever
-                else of whatever it is that I'm working on, it's an absurdly
-                notorious hassle for me
-              </p>
+            <Accordion.Body style={{ background: "#000" }}>
+              <CustomParagraphsGroup>
+                <h3>Areas of strength:</h3>
+                <p>
+                  - multidimensional, abstract, spatial reasoning and constructs
+                </p>
+                <p>
+                  - finding completely novel, utterly unlikely angles of
+                  approaching a subject
+                </p>
+                <p>
+                  - noticing connections and parallels between seemingly
+                  impossibly unrelated items
+                </p>
+                <p>
+                  - high levels of curiosity, fascination about worlds of code
+                  and ideas of developing it
+                </p>
+                <p>
+                  - finding useful, practical insights, noticing practical
+                  relationships between things
+                </p>
+                <p>
+                  - using analogies, metaphors, summaries quite well, being a
+                  decently articulate communicator
+                </p>
+                <p>
+                  - general, practical self-education that spans titles such as
+                  "The Art of Learning" by J. Waitzkin, "The inner game of
+                  tennis" by T. Gallwey, "Learn like a pro" by B. Oakley,
+                  "Extreme Ownership" by J. Willin, L. Babin, "Principles" by R.
+                  Dalio, "The One Thing" by G. Keller, and goes way beyond just
+                  reading it; it involved and still does, flashcards,
+                  experimentation, ways of internalizing, self-training,
+                  contemplation, regular journaling, symbolic drawings and
+                  diagrams, and more - whatever it takes to get the most out of
+                  it
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <h3>Areas of weakness:</h3>
+                <p>
+                  - extremely vulnerable to becoming highly unrealistic,
+                  overly-aspirational and not realizing it until really late
+                </p>
+                <p>
+                  - easily stuck, takes me quite a lot of self-awareness, method
+                  and alertness to avoid getting stuck or lost in a very
+                  inefficient way of doing a thing
+                </p>
+                <p>
+                  - tendency to get bogged down and lost in the weeds, working
+                  on perfecting some minor detail that doesn't really matter
+                  that much
+                </p>
+                <p>
+                  - for some reason, I tend to be bad with efficiency, despite
+                  my best efforts to work with a systematic process to avert it
+                  - I'm too worried about some aspect of symmetry or look or
+                  whatever else of whatever it is that I'm working on, it's an
+                  absurdly notorious hassle for me
+                </p>
+              </CustomParagraphsGroup>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
             <CustomAccordionHeader text="What I'm doing to improve strengths & weaknesses" />
 
-            <Accordion.Body>
-              <p>- Using pomodoro technique</p>
-              <p>
-                - Integrating time assessment with what-to-do into a coherent
-                next step as realistically as I can
-              </p>
-              <p>
-                - working in manner of self-challenges, along the lines of
-                "timing pushes", that is:
-              </p>
-              <ol>
-                <li>
-                  Set "GET X DONE" in Y POMODOROS
-                  <div>E.g. complete homepage in 3 pomodoros.</div>
-                </li>
-                <li>
-                  Map it out rapidly, in a simple, no nonsense way. Time
-                  threats. Opportunities. Preventive measures, onset adaptions,
-                  important points.
-                </li>
-                <li>Wing it, just go.</li>
-                <li>
-                  Careful but quick and rapid, no-nonsense review after,
-                  feedback, extract as much lesson value and realistic
-                  adaptation for my next steps, as I can from it.
-                </li>
-                <li>
-                  Importantly: not having lots of little changes from feedback
-                  session to feedback session, it's very few items drilled
-                  deeply to an improvement that lasts...errors that matter are
-                  usually thematic, repeating over and over so I aim at fixing
-                  that, in a lasting way
-                </li>
-              </ol>
-              <p>
-                - Practicing a very dynamic, agressive mindset about driving
-                real, required tasks to conclusion fast
-              </p>
-              <p>
-                - The one thing I keep doing no matter what, regardless of how
-                any project goes or doesn't go, irrespective of any set of
-                failures or successes, is developing software and enjoying the
-                process of learning in doing so
-              </p>
+            <Accordion.Body style={{ background: "#000" }}>
+              <CustomParagraphsGroup>
+                <p>- Using pomodoro technique</p>
+                <p>
+                  - Integrating time assessment with what-to-do into a coherent
+                  next step as realistically as I can
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <p>
+                  - working in manner of self-challenges, along the lines of
+                  "timing pushes", that is:
+                </p>
+                <ol>
+                  <li>
+                    Set "GET X DONE" in Y POMODOROS
+                    <div>E.g. complete homepage in 3 pomodoros.</div>
+                  </li>
+                  <li>
+                    Map it out rapidly, in a simple, no nonsense way. Time
+                    threats. Opportunities. Preventive measures, onset
+                    adaptions, important points.
+                  </li>
+                  <li>Wing it, just go.</li>
+                  <li>
+                    Careful but quick and rapid, no-nonsense review after,
+                    feedback, extract as much lesson value and realistic
+                    adaptation for my next steps, as I can from it.
+                  </li>
+                  <li>
+                    Importantly: not having lots of little changes from feedback
+                    session to feedback session, it's very few items drilled
+                    deeply to an improvement that lasts...errors that matter are
+                    usually thematic, repeating over and over so I aim at fixing
+                    that, in a lasting way
+                  </li>
+                </ol>
+                <p>
+                  - Practicing a very dynamic, agressive mindset about driving
+                  real, required tasks to conclusion fast
+                </p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
+                <p>
+                  - The one thing I keep doing no matter what, regardless of how
+                  any project goes or doesn't go, irrespective of any set of
+                  failures or successes, is developing software and enjoying the
+                  process of learning in doing so
+                </p>
+              </CustomParagraphsGroup>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">
             <CustomAccordionHeader text="Current level of hard skills and understanding" />
 
-            <Accordion.Body>
-              <p>
-                Point: briefly mention items most relevant to the level of my
-                ability of developing relevant, quality software solutions fast
-                and reliably.
-              </p>
-              <p>
-                Important: I explain my current level, as it pertains to each
-                item. It's not an "I got this" list.
-              </p>
+            <Accordion.Body style={{ background: "#000" }}>
+              <CustomParagraphsGroup>
+                <p>
+                  Point: briefly mention items most relevant to the level of my
+                  ability of developing relevant, quality software solutions
+                  fast and reliably.
+                </p>
+                <p>
+                  Important: I explain my current level, as it pertains to each
+                  item. It's not an "I got this" list.
+                </p>
+              </CustomParagraphsGroup>
               <h3>Hard understanding & skills</h3>
               <h4>Data structures</h4>
               <p>
@@ -284,7 +297,7 @@ function Home() {
           </Accordion.Item>
           <Accordion.Item eventKey="4">
             <CustomAccordionHeader text=" Current level of soft skills and understanding" />
-            <Accordion.Body>
+            <Accordion.Body style={{ background: "#000" }}>
               <h4>Understanding framework vs work</h4>
               <p>
                 I don't mean just a framework like for example, Angular or Vue,
@@ -888,7 +901,7 @@ function Home() {
           </Accordion.Item>
           <Accordion.Item eventKey="5">
             <CustomAccordionHeader text="Where I aim to go" />
-            <Accordion.Body>
+            <Accordion.Body style={{ background: "#000" }}>
               <h3>
                 Taking my problem-solving abilities to entirely new heights
               </h3>
@@ -908,7 +921,7 @@ function Home() {
 
       {/* <Accordion.Item eventKey="1">
           <CustomAccordionHeader text=>Accordion Item #2</CustomAccordionHeader>
-          <Accordion.Body>
+          <Accordion.Body style={{background: '#000'}}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
