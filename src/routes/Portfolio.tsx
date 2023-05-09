@@ -9,25 +9,33 @@ function Portfolio() {
     <>
       <h1>Web applications</h1>
       <h2>Taizyu</h2>
+      <h3>Brief description</h3>
+      <h3>Brief description</h3>
       <h3>Time</h3>
       <h3>Project's scope</h3>
       <h3>Core solution idea</h3>
       <h3>Way of solving</h3>
       <hr />
+
       <h2>Inaflash</h2>
+      <h3>Brief description</h3>
       <h3>Time</h3>
       <h3>Project's scope</h3>
       <h3>Core solution idea</h3>
       <h3>Way of solving</h3>
       <hr />
+
       <h1>Websites</h1>
       <h2>My portfolio site</h2>
+      <h3>Brief description</h3>
       <h3>Time</h3>
       <h3>Project's scope</h3>
       <h3>Core solution idea</h3>
       <h3>Way of solving</h3>
       <hr />
+
       <h2>Architect's portfolio</h2>
+      <h3>Brief description</h3>
       <h3>Time</h3>
       <h3>Project's scope</h3>
       <h3>Core solution idea</h3>
