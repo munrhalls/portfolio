@@ -60,7 +60,7 @@ function Home() {
           </Accordion.Item>
 
           <Accordion.Item eventKey="1">
-            <Accordion.Header>Strengths & Weaknesses:</Accordion.Header>
+            <CustomAccordionHeader text="Strengths & Weaknesses:" />
             <Accordion.Body>
               <h3>Areas of strength:</h3>
               <p>
@@ -122,9 +122,8 @@ function Home() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
-            <Accordion.Header>
-              What I'm doing to improve strengths & weaknesses
-            </Accordion.Header>
+            <CustomAccordionHeader text="What I'm doing to improve strengths & weaknesses" />
+
             <Accordion.Body>
               <p>- Using pomodoro technique</p>
               <p>
@@ -172,9 +171,8 @@ function Home() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">
-            <Accordion.Header>
-              Current level of hard skills and understanding
-            </Accordion.Header>
+            <CustomAccordionHeader text="Current level of hard skills and understanding" />
+
             <Accordion.Body>
               <p>
                 Point: briefly mention items most relevant to the level of my
@@ -267,9 +265,7 @@ function Home() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="4">
-            <Accordion.Header>
-              Current level of soft skills and understanding
-            </Accordion.Header>
+            <CustomAccordionHeader text=" Current level of soft skills and understanding" />
             <Accordion.Body>
               <h4>Understanding framework vs work</h4>
               <p>
@@ -873,7 +869,7 @@ function Home() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="5">
-            <Accordion.Header>Where I aim to go</Accordion.Header>
+            <CustomAccordionHeader text="Where I aim to go" />
             <Accordion.Body>
               <h3>
                 Taking my problem-solving abilities to entirely new heights
@@ -893,7 +889,7 @@ function Home() {
       </Container>
 
       {/* <Accordion.Item eventKey="1">
-          <Accordion.Header>Accordion Item #2</Accordion.Header>
+          <CustomAccordionHeader text=>Accordion Item #2</CustomAccordionHeader>
           <Accordion.Body>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
