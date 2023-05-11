@@ -507,9 +507,7 @@ function Home() {
                       </li>
                     </ul>
                     <hr />
-                    <li>
-                      <p>Example: </p>
-                    </li>
+                    <p>Example: </p>
                     <ul>
                       <li>
                         Let's say you want to create a mini CMS in
