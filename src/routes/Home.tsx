@@ -184,6 +184,17 @@ function Home() {
                   perfecting some small tiny icky bit for an absurd amount of
                   time)
                 </p>
+                <p>
+                  - sequence *practically*: I don't think "feature X is
+                  awesome!" and then try do that because that will take a year;
+                  I first look at what's available in my tools/framework and
+                  then "what ok enough solution can be assembled from that
+                  realistically"
+                </p>
+                <p>
+                  - operational definition "ok enough" outperforms "excellent"
+                  almost always because it leads me to respectimg time
+                </p>
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
                 <p>
