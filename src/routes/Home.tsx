@@ -25,16 +25,20 @@ function Home() {
             <Accordion.Body style={{ background: "#000" }}>
               <CustomParagraphsGroup>
                 <p>
-                  - develop a modern, fast, responsive website using React /
-                  React-bootstrap, reasonably fast
+                  - develop a small but modern, fast, responsive web
+                  application, using React / React-router / Typescript / Redux /
+                  Firebase
                 </p>
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
                 <p>
-                  - develop a small but modern, fast, responsive web
-                  application, using React / React-router / Typescript / Redux
-                  OR Angular, reasonably fast
+                  - develop a modern, fast, responsive website using React /
+                  React-bootstrap, reasonably fast
                 </p>
+              </CustomParagraphsGroup>
+
+              <CustomParagraphsGroup>
+                <p>- develop a small app in Angular</p>
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
                 <p>
@@ -44,16 +48,21 @@ function Home() {
                 </p>
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
+                <p>- work with API and promises at basic level</p>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
                 <p>
-                  - work with API and promises at basic level, connecting
-                  frontend features with backend services using REST endpoints
+                  - set up basic backend storage (i.e. firebase) and connect
+                  frontend features with backend services, using REST endpoints;
+                  set up authentication and authorization
                 </p>
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
                 <p>
-                  - debug a range of varied issues due to a combination off
+                  - debug a range of varied issues due to a combination of
                   experience, having done it a thousand times, understanding
-                  general concepts and ability to trace code execution
+                  general concepts and ability to trace and understand code
+                  execution
                 </p>
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
@@ -68,7 +77,6 @@ function Home() {
                 </p>
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
-                {" "}
                 <p>
                   - basic comprehension & skill with data structures: Array,
                   Linked list, Stack, Set, Binary Search Tree
@@ -85,13 +93,10 @@ function Home() {
                 <p>
                   - multidimensional, abstract, spatial reasoning and constructs
                 </p>
+                <p>- finding novel, unlikely angles of approaching a subject</p>
                 <p>
-                  - finding completely novel, utterly unlikely angles of
-                  approaching a subject
-                </p>
-                <p>
-                  - noticing connections and parallels between seemingly
-                  impossibly unrelated items
+                  - noticing connections and parallels between seemingly utterly
+                  unrelated items
                 </p>
                 <p>
                   - high levels of curiosity, fascination about worlds of code
@@ -102,8 +107,8 @@ function Home() {
                   relationships between things
                 </p>
                 <p>
-                  - using analogies, metaphors, summaries quite well, being a
-                  decently articulate communicator
+                  - using analogies, metaphors, simplifications, summaries quite
+                  well, being a decently articulate communicator
                 </p>
                 <p>
                   - general, practical self-education that spans titles such as
@@ -121,8 +126,13 @@ function Home() {
               <CustomParagraphsGroup>
                 <h3>Areas of weakness:</h3>
                 <p>
-                  - extremely vulnerable to becoming highly unrealistic,
+                  - vulnerable to becoming highly unrealistic,
                   overly-aspirational and not realizing it until really late
+                </p>
+                <p>
+                  - vulnerable to becoming naive about time - getting lost in
+                  just doing the motions and naively believing I'll make in time
+                  somehow
                 </p>
                 <p>
                   - easily stuck, takes me quite a lot of self-awareness, method
@@ -141,6 +151,11 @@ function Home() {
                   whatever else of whatever it is that I'm working on, it's an
                   absurdly notorious hassle for me
                 </p>
+                <p>
+                  - time estimates, even if I use task-complexity scale (e.g.
+                  Fibonacci) to denote how hard it is for me, it's still prone
+                  to wild inaccuracies
+                </p>
               </CustomParagraphsGroup>
             </Accordion.Body>
           </Accordion.Item>
@@ -150,12 +165,24 @@ function Home() {
             <Accordion.Body style={{ background: "#000" }}>
               <CustomParagraphsGroup>
                 <p>
-                  - Using pomodoro technique for quality of focus but just as
-                  importantly, for keep it real in terms of alotted time
+                  - using pomodoro technique, for quality of focus but just as
+                  importantly, for keeping it real in terms of alotted time
                 </p>
                 <p>
-                  - Integrating time assessment with what-to-do into a coherent
-                  next step as realistically as I can
+                  - always starting my choice-making from the "how much time do
+                  I have?" question and integrating time-estimate with
+                  what-to-do choices
+                </p>
+                <p>
+                  - using task definitions that help me work around my
+                  weaknesses, e.g. if I do feature X, I'll define it as "feature
+                  X is ok enough" and ASAP that, first;
+                  <br />
+                  only if I have time and it's worth it afterwards, will I
+                  proceed to improve it any further (from self-knowledge, I know
+                  if I define it as "feature X's excellent", I'll just be
+                  perfecting some small tiny icky bit for an absurd amount of
+                  time)
                 </p>
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
@@ -170,8 +197,8 @@ function Home() {
                   </li>
                   <li>
                     Map it out rapidly, in a simple, no nonsense way. Time
-                    threats. Opportunities. Preventive measures, onset
-                    adaptions, important points.
+                    threats. Opportunities. Preventive measures, contingencies,
+                    if-adaptions, important points.
                   </li>
                   <li>Wing it, just go.</li>
                   <li>
@@ -187,14 +214,16 @@ function Home() {
                     that, in a lasting way
                   </li>
                 </ol>
+              </CustomParagraphsGroup>
+              <CustomParagraphsGroup>
                 <p>
-                  - Practicing a very dynamic, agressive mindset about driving
-                  real, required tasks to conclusion fast
+                  - practicing dynamic, agressive mindset about driving real,
+                  required tasks to conclusion fast
                 </p>
               </CustomParagraphsGroup>
               <CustomParagraphsGroup>
                 <p>
-                  - The one thing I keep doing no matter what, regardless of how
+                  - the one thing I keep doing no matter what, regardless of how
                   any project goes or doesn't go, irrespective of any set of
                   failures or successes, is developing software and enjoying the
                   process of learning in doing so
