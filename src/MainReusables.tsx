@@ -1,6 +1,6 @@
 import "./MainReusables.css";
 import { ReactNode } from "react";
-import { Image } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import dojoImg from "./assets/dojoImg1.png";
 
@@ -15,6 +15,11 @@ interface Props {
 
 interface TextProps {
   text: string;
+}
+
+interface ImageProps {
+  src: string;
+  alt: string;
 }
 
 export function H1Image({ src, alt }: H1ImageProps) {
@@ -51,4 +56,8 @@ export function CustomParagraphsGroup({ children }: Props) {
       {children}
     </div>
   );
+}
+
+export function CustomCardImage({ src, alt }: ImageProps) {
+  return <Card.Img src={src} alt={alt} />;
 }
