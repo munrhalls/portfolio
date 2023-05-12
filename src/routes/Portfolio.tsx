@@ -60,7 +60,15 @@ const ToggleBtnText = styled.span`
 
 function TimeFilter({ timeTypes, setTimeTypes }) {
   const [value, setTimeValue] = useState([1, 3]);
-  const handleChange = (val) => setTimeValue(val);
+  const handleChange = (val) => {
+    setTimeValue(val);
+    const selectedTimeTypes = val.map((v) => {
+      if (v === 1) return "finished";
+      if (v === 2) return "in-development";
+      if (v === 3) return "future";
+    });
+    setTimeTypes(selectedTimeTypes);
+  };
   console.log(timeTypes);
   return (
     <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
