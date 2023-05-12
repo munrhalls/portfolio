@@ -1,10 +1,19 @@
 import Card from "react-bootstrap/Card";
 import { Container, Row, Col, Button, Accordion } from "react-bootstrap";
+import styled from "styled-components";
 import { CustomCardImage } from "../MainReusables";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Sonnet from "../../components/Sonnet";
 import dojoImg from "./../assets/f7.png";
+
+const MetricText = styled.span`
+  color: "blue";
+`;
+
+const MetricScore = styled.span`
+  color: "orange";
+`;
 
 function Portfolio() {
   // explicitly show and hande dependency: proj title is used for unique keys = must be unique
@@ -27,27 +36,27 @@ function Portfolio() {
       items: [
         {
           title: "Predicting & minimizing biggest time-losses",
-          score: "...",
+          score: 5 / 5,
         },
         {
           title: "Keeping it all as simple as possible",
-          score: "...",
+          score: 5 / 5,
         },
         {
           title: "Acting only in order of what matters most",
-          score: "...",
+          score: 5 / 5,
         },
         {
           title: "Flexibly adapting and having ABCD if-not-x-then-y options",
-          score: "...",
+          score: 5 / 5,
         },
         {
           title: "Sense of smoothness, not getting stuttery or stuck",
-          score: "...",
+          score: 5 / 5,
         },
         {
           title: "Sense of development ease",
-          score: "...",
+          score: 5 / 5,
         },
       ],
     },
@@ -111,36 +120,15 @@ function Portfolio() {
                         <Accordion.Header>Metrics-estimates</Accordion.Header>
                         <Accordion.Body>
                           <ul>
-                            {project.metricsEstimates.items.map((item) => (
-                              <li key={project.mainHeader.title + item.title}>
-                                {item.title} <span>{item.score}</span>
-                              </li>
-                            ))}
-                            <li>
-                              Predicting & minimizing biggest time-losses:
-                              <span>...</span>
-                            </li>
-                            <li>
-                              Keeping it all as simple as possible:{" "}
-                              <span>...</span>
-                            </li>
-                            <li>
-                              Acting only in order of what matters most:
-                              <span>...</span>
-                            </li>
-                            <li>
-                              Flexibly adapting and having ABCD if-not-x-then-y
-                              options: <span>...</span>
-                            </li>
-                            <hr />
-                            <li>
-                              Sense of smoothness, not getting stuttery or
-                              stuck:
-                              <span>...</span>
-                            </li>
-                            <li>
-                              Sense of development ease: <span>...</span>
-                            </li>
+                            {project.metricsEstimates.items.map(
+                              (item, index) => (
+                                <li key={project.mainHeader.title + item.title}>
+                                  <MetricText>{item.title}:</MetricText>
+                                  <MetricScore>{item.score}</MetricScore>
+                                  {index === 3 && <hr />}
+                                </li>
+                              )
+                            )}
                           </ul>
                         </Accordion.Body>
                       </Accordion.Item>
