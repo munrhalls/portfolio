@@ -7,6 +7,11 @@ import Sonnet from "../../components/Sonnet";
 import dojoImg from "./../assets/f7.png";
 
 function Portfolio() {
+  // turn it [{..project}, ...] format
+  // func filter return filtered to var
+  // func sorted return sorted to var
+  // var filtered = ...
+  // var sorted = ...
   return (
     <>
       <h2>NAVIGATION BAR</h2>
