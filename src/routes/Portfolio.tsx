@@ -1,15 +1,9 @@
 import { useState, Fragment } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
-import { ButtonGroup } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Container, Row, Col, Button, Accordion, Image } from "react-bootstrap";
 import styled from "styled-components";
-import { Dropdown, DropdownButton } from "react-bootstrap";
-import { CustomCardImage } from "../MainReusables";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import Sonnet from "../../components/Sonnet";
 import dojoImg from "./../assets/f7.png";
 
 const MetricLiItem = styled.li`
