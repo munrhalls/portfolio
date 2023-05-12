@@ -58,72 +58,27 @@ const ToggleBtnText = styled.span`
   }
 `;
 
-function TimeFilter({ timeTypes, setTimeTypes }) {
-  const [value, setTimeValue] = useState([1, 3]);
-  const handleChange = (val) => {
-    setTimeValue(val);
-    const selectedTimeTypes = val.map((v) => {
-      if (v === 1) return "finished";
-      if (v === 2) return "in-development";
-      if (v === 3) return "future";
-    });
-    setTimeTypes(selectedTimeTypes);
-  };
-  console.log(timeTypes);
-  return (
-    <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
-      <ToggleButton variant="dark" id="timeFilter-btn-1" value={1}>
-        <ToggleBtnText>Finished</ToggleBtnText>
-      </ToggleButton>
-      <ToggleButton variant="dark" id="timeFilter-btn-2" value={2}>
-        <ToggleBtnText> In development</ToggleBtnText>
-      </ToggleButton>
-      <ToggleButton variant="dark" id="timeFilter-btn-3" value={3}>
-        <ToggleBtnText> Future</ToggleBtnText>
-      </ToggleButton>
-    </ToggleButtonGroup>
-  );
-}
-
-function SpaceFilter() {
-  const [value, setValue] = useState([1, 5]);
-  const handleChange = (val) => setValue(val);
-  console.log(value);
-
-  return (
-    <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
-      <ToggleButton variant="dark" id="spaceFilter-btn-1" value={1}>
-        <ToggleBtnText>Websites</ToggleBtnText>
-      </ToggleButton>
-      <ToggleButton variant="dark" id="spaceFilter-btn-2" value={2}>
-        <ToggleBtnText>Apps</ToggleBtnText>
-      </ToggleButton>
-      <ToggleButton variant="dark" id="spaceFilter-btn-3" value={3}>
-        <ToggleBtnText>Frameworks</ToggleBtnText>
-      </ToggleButton>
-      <ToggleButton variant="dark" id="spaceFilter-btn-4" value={4}>
-        <ToggleBtnText>Games</ToggleBtnText>
-      </ToggleButton>
-      <ToggleButton variant="dark" id="spaceFilter-btn-5" value={5}>
-        <ToggleBtnText>Self-learning</ToggleBtnText>
-      </ToggleButton>
-    </ToggleButtonGroup>
-  );
-}
-
 function Portfolio() {
-  const [timeTypes, setTimeTypes] = ["finished", "in-development", "future"];
-  const [spaceTypes, setSpaceTypes] = [
-    "websites",
-    "web-applications",
-    "frameworks",
-    "games",
-    "self-learning",
-  ];
+  const [shownProjects, setShownProjects] = useState([
+    "Finished",
+    "Development",
+    "Future",
+    "Websites",
+    "Apps",
+    "Frameworks",
+    "Games",
+    "Self-learning",
+  ]);
+
+  console.log(shownProjects);
+
+  const handleChange = (shownProjects: string[]) => {
+    setShownProjects(shownProjects);
+  };
 
   const project = {
-    timeType: timeTypes[0],
-    spaceType: spaceTypes[1],
+    timeType: "Finished",
+    spaceType: "Apps",
     mainHeader: {
       symbolImg: dojoImg,
       title: "Taizyu",
@@ -178,17 +133,55 @@ function Portfolio() {
 
   const afterFilter = list.filter(
     (item) =>
-      timeTypes.includes(item.timeType) && timeTypes.includes(item.timeType)
+      shownProjects.includes(item.timeType) &&
+      shownProjects.includes(item.spaceType)
   );
   return (
     <>
-      <TimeFilter
-        timeTypes={timeTypes}
-        setTimeTypes={(timeTypes) => setTimeTypes(timeTypes)}
-      />
-      <SpaceFilter />
-      {/* <SortByMetric /> */}
-      {/* <SortDropdownMenu /> */}
+      <ToggleButtonGroup
+        type="checkbox"
+        value={shownProjects}
+        onChange={handleChange}
+      >
+        <ToggleButton variant="dark" id="shownFilter-btn-1" value={"Finished"}>
+          <ToggleBtnText>Finished</ToggleBtnText>
+        </ToggleButton>
+        <ToggleButton
+          variant="dark"
+          id="shownFilter-btn-2"
+          value={"Development"}
+        >
+          <ToggleBtnText> Development</ToggleBtnText>
+        </ToggleButton>
+        <ToggleButton variant="dark" id="shownFilter-btn-3" value={"Future"}>
+          <ToggleBtnText> Future</ToggleBtnText>
+        </ToggleButton>
+        <hr />
+        <ToggleButton variant="dark" id="shownFilter-btn-4" value={"Websites"}>
+          <ToggleBtnText>Websites</ToggleBtnText>
+        </ToggleButton>
+        <ToggleButton variant="dark" id="shownFilter-btn-5" value={"Apps"}>
+          <ToggleBtnText>Apps</ToggleBtnText>
+        </ToggleButton>
+        <ToggleButton
+          variant="dark"
+          id="shownFilter-btn-6"
+          value={"Frameworks"}
+        >
+          <ToggleBtnText>Frameworks</ToggleBtnText>
+        </ToggleButton>
+        <ToggleButton variant="dark" id="shownFilter-btn-7" value={"Games"}>
+          <ToggleBtnText>Games</ToggleBtnText>
+        </ToggleButton>
+        <ToggleButton
+          variant="dark"
+          id="shownFilter-btn-8"
+          value={"Self-learning"}
+        >
+          <ToggleBtnText>Self-learning</ToggleBtnText>
+        </ToggleButton>
+      </ToggleButtonGroup>
+      {/* <SpaceFilter /> */}
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
           {afterFilter.map((project) => {
