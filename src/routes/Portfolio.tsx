@@ -10,22 +10,9 @@ function Portfolio() {
   return (
     <>
       <h2>NAVIGATION BAR</h2>
-      <h2>proj title</h2>
-      <img src="" alt="symbol img" />
-      <h3>The app is x and it does y</h3>
-      <p>short desc, what is it and what for</p>
-      <h3>development accordion item</h3>
-      <p>developing it, short desc</p>
-      <h3>metrics accordion item</h3>
-      <p></p>
-      <ul>
-        <li>achieving app's purpose</li>
-        <li>minimizing required steps</li>
-        <li>code readability</li>
-        <li>code maintainability</li>
-        <li>code extensibility</li>
-      </ul>
-      <h3>lessons accordion item</h3>
+      <button>navigate by highest metric score</button>
+      <button>navigate by </button>
+
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
           <Col xs={10} sm={6} md={6} lg={4}>
@@ -37,7 +24,14 @@ function Portfolio() {
               <Card.Body>
                 <Card.Title>Visual aid for navigating time-blocks</Card.Title>
                 <Card.Text>
-                  Provides cubes:
+                  Provides cubes (short desc):
+                  <ul>
+                    <li>9 sides, 3 themes</li>
+                    <li>important question & answer per side.</li>
+                  </ul>
+                </Card.Text>
+                <Card.Text>
+                  Value to user:
                   <ul>
                     <li>9 sides, 3 themes</li>
                     <li>important question & answer per side.</li>
@@ -55,6 +49,36 @@ function Portfolio() {
                     </Accordion.Body>
                   </Accordion.Item>
                   <Accordion.Item eventKey="1">
+                    <Accordion.Header>Metrics-estimates</Accordion.Header>
+                    <Accordion.Body>
+                      <ul>
+                        <li>
+                          Predicting & minimizing biggest time-losses:
+                          <span>...</span>
+                        </li>
+                        <li>
+                          Keeping it all as simple as possible: <span>...</span>
+                        </li>
+                        <li>
+                          Acting only in order of what matters most:
+                          <span>...</span>
+                        </li>
+                        <li>
+                          Flexibly adapting and having ABCD if-not-x-then-y
+                          options: <span>...</span>
+                        </li>
+                        <hr />
+                        <li>
+                          Sense of smoothness, not getting stuttery or stuck:
+                          <span>...</span>
+                        </li>
+                        <li>
+                          Sense of development ease: <span>...</span>
+                        </li>
+                      </ul>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="2">
                     <Accordion.Header>Lessons summary</Accordion.Header>
                     <Accordion.Body>
                       <p>What went well:</p>
@@ -74,6 +98,16 @@ function Portfolio() {
                         <li>...</li>
                       </ul>
                       <p>"Never again"'s & next time:</p>
+                      <ul>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                      </ul>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="3">
+                    <Accordion.Header>Important points</Accordion.Header>
+                    <Accordion.Body>
                       <ul>
                         <li>...</li>
                         <li>...</li>
