@@ -1,5 +1,5 @@
 import Card from "react-bootstrap/Card";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Accordion } from "react-bootstrap";
 import { CustomCardImage } from "../MainReusables";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -9,12 +9,24 @@ import dojoImg from "./../assets/f7.png";
 function Portfolio() {
   return (
     <>
+      <h2>NAVIGATION BAR</h2>
+      <h2>proj title</h2>
+      <img src="" alt="symbol img" />
+      <h3>The app is x and it does y</h3>
+      <p>short desc, what is it and what for</p>
+      <h3>development accordion item</h3>
+      <p>developing it, short desc</p>
+      <h3>metrics accordion item</h3>
+      <p></p>
+      <ul>
+        <li>achieving app's purpose</li>
+        <li>minimizing required steps</li>
+        <li>code readability</li>
+        <li>code maintainability</li>
+        <li>code extensibility</li>
+      </ul>
+      <h3>lessons accordion item</h3>
       <Container className="mt-3 mb-3">
-        <Row>
-          <Col>
-            <h2>NAVIGATION BAR</h2>
-          </Col>
-        </Row>
         <Row className="justify-content-center">
           <Col xs={10} sm={6} md={6} lg={4}>
             <Card>
@@ -31,26 +43,45 @@ function Portfolio() {
                     <li>important question & answer per side.</li>
                   </ul>
                 </Card.Text>
-                <Card.Text>
-                  <div> Code readability: satisfactory</div>
-                  <div>Code maintainability: satisfactory</div>
-                </Card.Text>
-                <Card.Text>
-                  Lessons:
-                  <ul>
-                    <li>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </li>
-                    <li>
-                      Deleniti obcaecati facere voluptas ea nobis vitae officia,
-                      consectetur commodi.
-                    </li>
-                    <li>
-                      Eligendi alias laborum placeat fugit numquam neque.
-                      Expedita iure iste voluptate illum.
-                    </li>
-                  </ul>
-                </Card.Text>
+                <Accordion defaultActiveKey="0">
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>Development summary</Accordion.Header>
+                    <Accordion.Body>
+                      <ul>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                      </ul>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="1">
+                    <Accordion.Header>Lessons summary</Accordion.Header>
+                    <Accordion.Body>
+                      <p>What went well:</p>
+                      <ul>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                      </ul>
+                      <p>What went poorly:</p>
+                      <ul>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                      </ul>
+                      <p>Root causes:</p>
+                      <ul>
+                        <li>...</li>
+                      </ul>
+                      <p>"Never again"'s & next time:</p>
+                      <ul>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                      </ul>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
                 <Button variant="primary">View live version</Button>
               </Card.Body>
             </Card>
