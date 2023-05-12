@@ -8,19 +8,28 @@ import Sonnet from "../../components/Sonnet";
 import dojoImg from "./../assets/f7.png";
 
 const MetricText = styled.span`
-  color: blue;
+  color: #000;
+  white-space: pre-line;
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
 
   @media (max-width: 576px) {
-    font-size: 1rem;
+    font-size: 0.61rem;
   }
 `;
 
 const MetricScore = styled.span`
-  color: orange;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.61rem;
+  }
+
+  color: #fff;
   border: 1px solid black;
   border-radius: 50%;
   display: inline-block;
@@ -52,27 +61,27 @@ function Portfolio() {
     metricsEstimates: {
       items: [
         {
-          title: "Predicting & minimizing biggest time-losses",
+          title: "Predicting & minimizing \n biggest time-losses",
           score: 5 / 5,
         },
         {
-          title: "Keeping it all as simple as possible",
+          title: "Keeping it all \n as simple as possible",
           score: 5 / 5,
         },
         {
-          title: "Acting only in order of what matters most",
+          title: "Acting only in order \n of what matters most",
           score: 5 / 5,
         },
         {
-          title: "Flexibly adapting and having ABCD if-not-x-then-y options",
+          title: "Flexibly adapting,  \n ABCD if-not-x-then-y options",
           score: 5 / 5,
         },
         {
-          title: "Sense of smoothness, not getting stuttery or stuck",
+          title: "Sense of smoothness, \n not stuttery or stuck",
           score: 5 / 5,
         },
         {
-          title: "Sense of development ease",
+          title: "Sense of \n development ease",
           score: 5 / 5,
         },
       ],
@@ -149,7 +158,7 @@ function Portfolio() {
                                   >
                                     {item.score}
                                   </MetricScore>
-                                  {index === 3 && <hr />}
+                                  <hr />
                                 </li>
                               )
                             )}
