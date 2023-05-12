@@ -8,7 +8,59 @@ import dojoImg from "./../assets/f7.png";
 
 function Portfolio() {
   // a turn it [{..project}, ...] format
-  // [] ds
+  // turn it to {}
+  const project = {
+    mainHeader: {
+      symbolImg: "smbl|",
+      title: "Taizyu",
+    },
+    mainImg: dojoImg,
+    shortDescription: "Provides cubes (short desc):",
+    valueToUser: "Enables the user doing ...",
+    subtitle: "Visual aid for navigating time-blocks",
+    developmentSummary: {
+      items: ["...", "...", "..."],
+    },
+    metricsEstimates: {
+      items: [
+        {
+          title: "Predicting & minimizing biggest time-losses",
+          description: "...",
+        },
+        {
+          title: "Keeping it all as simple as possible",
+          description: "...",
+        },
+        {
+          title: "Acting only in order of what matters most",
+          description: "...",
+        },
+        {
+          title: "Flexibly adapting and having ABCD if-not-x-then-y options",
+          description: "...",
+        },
+        {
+          title: "Sense of smoothness, not getting stuttery or stuck",
+          description: "...",
+        },
+        {
+          title: "Sense of development ease",
+          description: "...",
+        },
+      ],
+    },
+    lessonsSummary: {
+      whatWentWell: ["...", "...", "..."],
+      whatWentPoorly: ["...", "...", "..."],
+      rootCauses: ["..."],
+      neverAgain: ["...", "...", "..."],
+    },
+    importantPoints: {
+      items: ["...", "...", "..."],
+    },
+  };
+  console.log(project.mainImg);
+  // turn it to [{}, ...]
   // b func filter return filtered to var
   // c  func sorted return sorted to var
   // d var filtered = ...
@@ -26,25 +78,17 @@ function Portfolio() {
           <Col xs={10} sm={6} md={6} lg={4}>
             <Card>
               <Card.Header>
-                <h2>Taizyu</h2>
+                <h2>
+                  <img src={project.mainHeader.symbolImg} alt="smbl|" />{" "}
+                  <span>{project.mainHeader.title}</span>
+                </h2>
               </Card.Header>
-              <Card.Img variant="top" src={dojoImg} />
+              <Card.Img variant="top" src={project.mainImg} />
               <Card.Body>
-                <Card.Title>Visual aid for navigating time-blocks</Card.Title>
-                <Card.Text>
-                  Provides cubes (short desc):
-                  <ul>
-                    <li>9 sides, 3 themes</li>
-                    <li>important question & answer per side.</li>
-                  </ul>
-                </Card.Text>
-                <Card.Text>
-                  Value to user:
-                  <ul>
-                    <li>9 sides, 3 themes</li>
-                    <li>important question & answer per side.</li>
-                  </ul>
-                </Card.Text>
+                <Card.Title>{project.subtitle}</Card.Title>
+                <Card.Text>{project.shortDescription}</Card.Text>
+
+                <Card.Text>{project.valueToUser}</Card.Text>
                 <Accordion defaultActiveKey="0">
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>Development summary</Accordion.Header>
