@@ -1,6 +1,8 @@
+import { useState, Fragment } from "react";
 import Card from "react-bootstrap/Card";
 import { Container, Row, Col, Button, Accordion, Image } from "react-bootstrap";
 import styled from "styled-components";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 import { CustomCardImage } from "../MainReusables";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
@@ -43,6 +45,58 @@ const MetricScore = styled.span`
 
 const MetricScoreColors = ["red", "darkorange", "grey", "darkmagenta", "blue"];
 
+function SortDropdownMenu() {
+  const [selectedType, setSelectedType] = useState("");
+  const [selectedScore, setSelectedScore] = useState("");
+
+  const handleTypeSelect = (eventKey) => {
+    setSelectedType(eventKey);
+  };
+
+  const handleScoreSelect = (eventKey) => {
+    setSelectedScore(eventKey);
+  };
+
+  const handleSortSubmit = () => {
+    console.log("Sorting by", selectedType, "with score", selectedScore);
+  };
+
+  return (
+    <DropdownButton id="sort-dropdown-button" title="Sort">
+      <Dropdown.Header>Choose Metric Type</Dropdown.Header>
+      <Dropdown.Item eventKey="Type 1" onSelect={handleTypeSelect}>
+        Type 1
+      </Dropdown.Item>
+      <Dropdown.Item eventKey="Type 2" onSelect={handleTypeSelect}>
+        Type 2
+      </Dropdown.Item>
+      <Dropdown.Item eventKey="Type 3" onSelect={handleTypeSelect}>
+        Type 3
+      </Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Header>Choose Metric Score</Dropdown.Header>
+      <Dropdown.Item eventKey="1" onSelect={handleScoreSelect}>
+        1
+      </Dropdown.Item>
+      <Dropdown.Item eventKey="2" onSelect={handleScoreSelect}>
+        2
+      </Dropdown.Item>
+      <Dropdown.Item eventKey="3" onSelect={handleScoreSelect}>
+        3
+      </Dropdown.Item>
+      <Dropdown.Item eventKey="4" onSelect={handleScoreSelect}>
+        4
+      </Dropdown.Item>
+      <Dropdown.Item eventKey="5" onSelect={handleScoreSelect}>
+        5
+      </Dropdown.Item>
+      <Dropdown.Divider />
+      <Button variant="dark" onClick={handleSortSubmit}>
+        Submit
+      </Button>
+    </DropdownButton>
+  );
+}
 function Portfolio() {
   // explicitly show and hande dependency: proj title is used for unique keys = must be unique
   // a turn it [{..project}, ...] format
@@ -89,13 +143,13 @@ function Portfolio() {
       ],
     },
     lessonsSummary: {
-      whatWentWell: [".a..", "..b.", ".c.."],
-      whatWentPoorly: ["..a.", "..b.", "...c"],
-      rootCauses: ["..a."],
-      neverAgain: ["..a.", ".b..", ".c.."],
+      whatWentWell: [".a..2", "..b3.", ".c.4."],
+      whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+      rootCauses: ["..1a."],
+      neverAgain: ["..a.1", ".b.12.", ".3c.."],
     },
     importantPoints: {
-      items: ["..a.", ".b..", ".c.."],
+      items: ["..a.123", ".b.4567.", ".c34543."],
     },
     link: "https://awesome.com",
   };
@@ -108,11 +162,8 @@ function Portfolio() {
   return (
     <>
       <h2>NAVIGATION BAR</h2>
-      <button>filter by highest metric score</button>
-      <button>sort by highest metric score</button>
-      <button>filter by type</button>
-      <button>sort by type</button>
-
+      {/* <SortByMetric /> */}
+      <SortDropdownMenu />
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
           {list.map((project) => {
@@ -155,10 +206,10 @@ function Portfolio() {
                           <ul>
                             {project.metricsEstimates.items.map(
                               (item, index) => (
-                                <>
-                                  <MetricLiItem
-                                    key={project.mainHeader.title + item.title}
-                                  >
+                                <Fragment
+                                  key={project.mainHeader.title + item.title}
+                                >
+                                  <MetricLiItem>
                                     <MetricText>{item.title}:</MetricText>
                                     <MetricScore
                                       style={{
@@ -174,7 +225,7 @@ function Portfolio() {
                                   {index !==
                                     project.metricsEstimates.items.length -
                                       1 && <hr />}
-                                </>
+                                </Fragment>
                               )
                             )}
                           </ul>
