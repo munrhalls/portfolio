@@ -19,7 +19,7 @@ function Portfolio() {
     valueToUser: "Enables the user doing ...",
     subtitle: "Visual aid for navigating time-blocks",
     developmentSummary: {
-      items: ["...", "...", "..."],
+      items: ["a...", "b...", "c..."],
     },
     metricsEstimates: {
       items: [
@@ -94,9 +94,9 @@ function Portfolio() {
                     <Accordion.Header>Development summary</Accordion.Header>
                     <Accordion.Body>
                       <ul>
-                        <li>...</li>
-                        <li>...</li>
-                        <li>...</li>
+                        {project.developmentSummary.items.map((item) => (
+                          <li key={project.mainHeader.title + item}>{item}</li>
+                        ))}
                       </ul>
                     </Accordion.Body>
                   </Accordion.Item>
