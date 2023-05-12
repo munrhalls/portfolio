@@ -10,8 +10,10 @@ function Portfolio() {
   return (
     <>
       <h2>NAVIGATION BAR</h2>
-      <button>navigate by highest metric score</button>
-      <button>navigate by </button>
+      <button>filter by highest metric score</button>
+      <button>sort by highest metric score</button>
+      <button>filter by type</button>
+      <button>sort by type</button>
 
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
