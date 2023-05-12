@@ -1,4 +1,7 @@
 import { useState, Fragment } from "react";
+import ToggleButton from "react-bootstrap/ToggleButton";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import { ButtonGroup } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Container, Row, Col, Button, Accordion, Image } from "react-bootstrap";
 import styled from "styled-components";
@@ -44,59 +47,106 @@ const MetricScore = styled.span`
 `;
 
 const MetricScoreColors = ["red", "darkorange", "grey", "darkmagenta", "blue"];
+// b
 
-function SortDropdownMenu() {
-  const [selectedType, setSelectedType] = useState("");
-  const [selectedScore, setSelectedScore] = useState("");
+// function SortDropdownMenu() {
+//   const [selectedType, setSelectedType] = useState("");
+//   const [selectedScore, setSelectedScore] = useState("");
 
-  const handleTypeSelect = (eventKey) => {
-    setSelectedType(eventKey);
-  };
+//   const handleTypeSelect = (eventKey) => {
+//     setSelectedType(eventKey);
+//   };
 
-  const handleScoreSelect = (eventKey) => {
-    setSelectedScore(eventKey);
-  };
+//   const handleScoreSelect = (eventKey) => {
+//     setSelectedScore(eventKey);
+//   };
 
-  const handleSortSubmit = () => {
-    console.log("Sorting by", selectedType, "with score", selectedScore);
-  };
+//   const handleSortSubmit = () => {
+//     console.log("Sorting by", selectedType, "with score", selectedScore);
+//   };
+
+//   return (
+//     <DropdownButton id="sort-dropdown-button" title="Sort">
+//       <Dropdown.Header>Choose Metric Type</Dropdown.Header>
+//       <Dropdown.Item eventKey="Type 1" onSelect={handleTypeSelect}>
+//         Type 1
+//       </Dropdown.Item>
+//       <Dropdown.Item eventKey="Type 2" onSelect={handleTypeSelect}>
+//         Type 2
+//       </Dropdown.Item>
+//       <Dropdown.Item eventKey="Type 3" onSelect={handleTypeSelect}>
+//         Type 3
+//       </Dropdown.Item>
+//       <Dropdown.Divider />
+//       <Dropdown.Header>Choose Metric Score</Dropdown.Header>
+//       <Dropdown.Item eventKey="1" onSelect={handleScoreSelect}>
+//         1
+//       </Dropdown.Item>
+//       <Dropdown.Item eventKey="2" onSelect={handleScoreSelect}>
+//         2
+//       </Dropdown.Item>
+//       <Dropdown.Item eventKey="3" onSelect={handleScoreSelect}>
+//         3
+//       </Dropdown.Item>
+//       <Dropdown.Item eventKey="4" onSelect={handleScoreSelect}>
+//         4
+//       </Dropdown.Item>
+//       <Dropdown.Item eventKey="5" onSelect={handleScoreSelect}>
+//         5
+//       </Dropdown.Item>
+//       <Dropdown.Divider />
+//       <Button variant="dark" onClick={handleSortSubmit}>
+//         Submit
+//       </Button>
+//     </DropdownButton>
+//   );
+// }
+
+function TimeFilter() {
+  const [value, setValue] = useState([1, 3]);
+
+  const handleChange = (val) => setValue(val);
 
   return (
-    <DropdownButton id="sort-dropdown-button" title="Sort">
-      <Dropdown.Header>Choose Metric Type</Dropdown.Header>
-      <Dropdown.Item eventKey="Type 1" onSelect={handleTypeSelect}>
-        Type 1
-      </Dropdown.Item>
-      <Dropdown.Item eventKey="Type 2" onSelect={handleTypeSelect}>
-        Type 2
-      </Dropdown.Item>
-      <Dropdown.Item eventKey="Type 3" onSelect={handleTypeSelect}>
-        Type 3
-      </Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Header>Choose Metric Score</Dropdown.Header>
-      <Dropdown.Item eventKey="1" onSelect={handleScoreSelect}>
-        1
-      </Dropdown.Item>
-      <Dropdown.Item eventKey="2" onSelect={handleScoreSelect}>
-        2
-      </Dropdown.Item>
-      <Dropdown.Item eventKey="3" onSelect={handleScoreSelect}>
-        3
-      </Dropdown.Item>
-      <Dropdown.Item eventKey="4" onSelect={handleScoreSelect}>
-        4
-      </Dropdown.Item>
-      <Dropdown.Item eventKey="5" onSelect={handleScoreSelect}>
-        5
-      </Dropdown.Item>
-      <Dropdown.Divider />
-      <Button variant="dark" onClick={handleSortSubmit}>
-        Submit
-      </Button>
-    </DropdownButton>
+    <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
+      <ToggleButton id="tbg-btn-1" value={1}>
+        Finished
+      </ToggleButton>
+      <ToggleButton id="tbg-btn-2" value={2}>
+        In development
+      </ToggleButton>
+      <ToggleButton id="tbg-btn-3" value={3}>
+        Future
+      </ToggleButton>
+    </ToggleButtonGroup>
   );
 }
+
+function SpaceFilter() {
+  const [value, setValue] = useState([1, 5]);
+  const handleChange = (val) => setValue(val);
+
+  return (
+    <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
+      <ToggleButton id="tbg-btn-1" value={1}>
+        Websites
+      </ToggleButton>
+      <ToggleButton id="tbg-btn-2" value={2}>
+        Web applications
+      </ToggleButton>
+      <ToggleButton id="tbg-btn-3" value={3}>
+        Frameworks
+      </ToggleButton>
+      <ToggleButton id="tbg-btn-4" value={4}>
+        Games
+      </ToggleButton>
+      <ToggleButton id="tbg-btn-5" value={5}>
+        Learning projects
+      </ToggleButton>
+    </ToggleButtonGroup>
+  );
+}
+
 function Portfolio() {
   // explicitly show and hande dependency: proj title is used for unique keys = must be unique
   // a turn it [{..project}, ...] format
@@ -162,8 +212,11 @@ function Portfolio() {
   return (
     <>
       <h2>NAVIGATION BAR</h2>
+      <TimeFilter />
+
+      <SpaceFilter />
       {/* <SortByMetric /> */}
-      <SortDropdownMenu />
+      {/* <SortDropdownMenu /> */}
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
           {list.map((project) => {
