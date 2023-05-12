@@ -166,7 +166,9 @@ function Portfolio() {
                                       {item.score}
                                     </MetricScore>
                                   </MetricLiItem>
-                                  <hr />
+                                  {index !==
+                                    project.metricsEstimates.items.length -
+                                      1 && <hr />}
                                 </>
                               )
                             )}
