@@ -7,6 +7,7 @@ import Sonnet from "../../components/Sonnet";
 import dojoImg from "./../assets/f7.png";
 
 function Portfolio() {
+  // explicitly show and hande dependency: proj title is used for unique keys = must be unique
   // a turn it [{..project}, ...] format
   // turn it to {}
   const project = {
@@ -25,38 +26,38 @@ function Portfolio() {
       items: [
         {
           title: "Predicting & minimizing biggest time-losses",
-          description: "...",
+          score: "...",
         },
         {
           title: "Keeping it all as simple as possible",
-          description: "...",
+          score: "...",
         },
         {
           title: "Acting only in order of what matters most",
-          description: "...",
+          score: "...",
         },
         {
           title: "Flexibly adapting and having ABCD if-not-x-then-y options",
-          description: "...",
+          score: "...",
         },
         {
           title: "Sense of smoothness, not getting stuttery or stuck",
-          description: "...",
+          score: "...",
         },
         {
           title: "Sense of development ease",
-          description: "...",
+          score: "...",
         },
       ],
     },
     lessonsSummary: {
-      whatWentWell: ["...", "...", "..."],
-      whatWentPoorly: ["...", "...", "..."],
-      rootCauses: ["..."],
-      neverAgain: ["...", "...", "..."],
+      whatWentWell: [".a..", "..b.", ".c.."],
+      whatWentPoorly: ["..a.", "..b.", "...c"],
+      rootCauses: ["..a."],
+      neverAgain: ["..a.", ".b..", ".c.."],
     },
     importantPoints: {
-      items: ["...", "...", "..."],
+      items: ["..a.", ".b..", ".c.."],
     },
   };
   console.log(project.mainImg);
@@ -104,6 +105,11 @@ function Portfolio() {
                     <Accordion.Header>Metrics-estimates</Accordion.Header>
                     <Accordion.Body>
                       <ul>
+                        {project.metricsEstimates.items.map((item) => (
+                          <li key={project.mainHeader.title + item.title}>
+                            {item.title} <span>{item.score}</span>
+                          </li>
+                        ))}
                         <li>
                           Predicting & minimizing biggest time-losses:
                           <span>...</span>
@@ -135,25 +141,27 @@ function Portfolio() {
                     <Accordion.Body>
                       <p>What went well:</p>
                       <ul>
-                        <li>...</li>
-                        <li>...</li>
-                        <li>...</li>
+                        {project.lessonsSummary.whatWentWell.map((item) => (
+                          <li key={project.mainHeader.title + item}>{item}</li>
+                        ))}
                       </ul>
                       <p>What went poorly:</p>
                       <ul>
-                        <li>...</li>
-                        <li>...</li>
-                        <li>...</li>
+                        {project.lessonsSummary.whatWentPoorly.map((item) => (
+                          <li key={project.mainHeader.title + item}>{item}</li>
+                        ))}
                       </ul>
                       <p>Root causes:</p>
                       <ul>
-                        <li>...</li>
+                        {project.lessonsSummary.rootCauses.map((item) => (
+                          <li key={project.mainHeader.title + item}>{item}</li>
+                        ))}
                       </ul>
                       <p>"Never again"'s & next time:</p>
                       <ul>
-                        <li>...</li>
-                        <li>...</li>
-                        <li>...</li>
+                        {project.lessonsSummary.neverAgain.map((item) => (
+                          <li key={project.mainHeader.title + item}>{item}</li>
+                        ))}
                       </ul>
                     </Accordion.Body>
                   </Accordion.Item>
@@ -161,9 +169,9 @@ function Portfolio() {
                     <Accordion.Header>Important points</Accordion.Header>
                     <Accordion.Body>
                       <ul>
-                        <li>...</li>
-                        <li>...</li>
-                        <li>...</li>
+                        {project.importantPoints.items.map((item) => (
+                          <li key={project.mainHeader.title + item}>{item}</li>
+                        ))}
                       </ul>
                     </Accordion.Body>
                   </Accordion.Item>
