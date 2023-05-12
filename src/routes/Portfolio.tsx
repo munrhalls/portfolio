@@ -8,11 +8,26 @@ import Sonnet from "../../components/Sonnet";
 import dojoImg from "./../assets/f7.png";
 
 const MetricText = styled.span`
-  color: "blue";
+  color: blue;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 `;
 
 const MetricScore = styled.span`
-  color: "orange";
+  color: orange;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  width: 1.5rem;
+  padding-bottom: 0.1rem;
+  margin-left: 0.25rem;
 `;
 
 function Portfolio() {
