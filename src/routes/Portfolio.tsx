@@ -103,19 +103,18 @@ const MetricScoreColors = ["red", "darkorange", "grey", "darkmagenta", "blue"];
 // }
 
 function TimeFilter() {
-  const [value, setValue] = useState([1, 3]);
-
-  const handleChange = (val) => setValue(val);
+  const [value, setTimeValue] = useState([1, 3]);
+  const handleChange = (val) => setTimeValue(val);
 
   return (
     <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
-      <ToggleButton id="tbg-btn-1" value={1}>
+      <ToggleButton id="timeFilter-btn-1" value={1}>
         Finished
       </ToggleButton>
-      <ToggleButton id="tbg-btn-2" value={2}>
+      <ToggleButton id="timeFilter-btn-2" value={2}>
         In development
       </ToggleButton>
-      <ToggleButton id="tbg-btn-3" value={3}>
+      <ToggleButton id="timeFilter-btn-3" value={3}>
         Future
       </ToggleButton>
     </ToggleButtonGroup>
@@ -125,23 +124,24 @@ function TimeFilter() {
 function SpaceFilter() {
   const [value, setValue] = useState([1, 5]);
   const handleChange = (val) => setValue(val);
+  console.log(value);
 
   return (
     <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
-      <ToggleButton id="tbg-btn-1" value={1}>
+      <ToggleButton id="spaceFilter-btn-1" value={1}>
         Websites
       </ToggleButton>
-      <ToggleButton id="tbg-btn-2" value={2}>
+      <ToggleButton id="spaceFilter-btn-2" value={2}>
         Web applications
       </ToggleButton>
-      <ToggleButton id="tbg-btn-3" value={3}>
+      <ToggleButton id="spaceFilter-btn-3" value={3}>
         Frameworks
       </ToggleButton>
-      <ToggleButton id="tbg-btn-4" value={4}>
+      <ToggleButton id="spaceFilter-btn-4" value={4}>
         Games
       </ToggleButton>
-      <ToggleButton id="tbg-btn-5" value={5}>
-        Learning projects
+      <ToggleButton id="spaceFilter-btn-5" value={5}>
+        Self-learning
       </ToggleButton>
     </ToggleButtonGroup>
   );
