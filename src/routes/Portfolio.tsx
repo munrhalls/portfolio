@@ -30,6 +30,8 @@ const MetricScore = styled.span`
   margin-left: 0.25rem;
 `;
 
+const MetricScoreColors = ["red", "darkorange", "grey", "darkmagenta", "blue"];
+
 function Portfolio() {
   // explicitly show and hande dependency: proj title is used for unique keys = must be unique
   // a turn it [{..project}, ...] format
@@ -139,7 +141,14 @@ function Portfolio() {
                               (item, index) => (
                                 <li key={project.mainHeader.title + item.title}>
                                   <MetricText>{item.title}:</MetricText>
-                                  <MetricScore>{item.score}</MetricScore>
+                                  <MetricScore
+                                    style={{
+                                      background: `${MetricScoreColors[0]}`,
+                                      color: "#fff",
+                                    }}
+                                  >
+                                    {item.score}
+                                  </MetricScore>
                                   {index === 3 && <hr />}
                                 </li>
                               )
