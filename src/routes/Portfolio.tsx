@@ -1,5 +1,5 @@
 import Card from "react-bootstrap/Card";
-import { Container, Row, Col, Button, Accordion } from "react-bootstrap";
+import { Container, Row, Col, Button, Accordion, Image } from "react-bootstrap";
 import styled from "styled-components";
 import { CustomCardImage } from "../MainReusables";
 import Tab from "react-bootstrap/Tab";
@@ -50,7 +50,7 @@ function Portfolio() {
 
   const project = {
     mainHeader: {
-      symbolImg: "smbl|",
+      symbolImg: dojoImg,
       title: "Taizyu",
     },
     mainImg: dojoImg,
@@ -121,7 +121,12 @@ function Portfolio() {
                 <Card>
                   <Card.Header>
                     <h2>
-                      <img src={project.mainHeader.symbolImg} alt="smbl|" />{" "}
+                      <Image
+                        rounded
+                        style={{ width: "2.35rem", marginRight: "1rem" }}
+                        src={project.mainHeader.symbolImg}
+                        alt="smbl|"
+                      />
                       <span>{project.mainHeader.title}</span>
                     </h2>
                   </Card.Header>
@@ -227,7 +232,8 @@ function Portfolio() {
                         </Accordion.Body>
                       </Accordion.Item>
                     </Accordion>
-                    <Button variant="primary" href="{project.link}">
+                    <hr />
+                    <Button variant="info" href="{project.link}">
                       View live
                     </Button>
                   </Card.Body>
