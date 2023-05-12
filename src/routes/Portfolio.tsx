@@ -47,75 +47,31 @@ const MetricScore = styled.span`
 `;
 
 const MetricScoreColors = ["red", "darkorange", "grey", "darkmagenta", "blue"];
-// b
 
-// function SortDropdownMenu() {
-//   const [selectedType, setSelectedType] = useState("");
-//   const [selectedScore, setSelectedScore] = useState("");
+const ToggleBtnText = styled.span`
+  @media (max-width: 768px) {
+    width: 0.75rem;
+  }
 
-//   const handleTypeSelect = (eventKey) => {
-//     setSelectedType(eventKey);
-//   };
+  @media (max-width: 576px) {
+    font-size: 0.5rem;
+  }
+`;
 
-//   const handleScoreSelect = (eventKey) => {
-//     setSelectedScore(eventKey);
-//   };
-
-//   const handleSortSubmit = () => {
-//     console.log("Sorting by", selectedType, "with score", selectedScore);
-//   };
-
-//   return (
-//     <DropdownButton id="sort-dropdown-button" title="Sort">
-//       <Dropdown.Header>Choose Metric Type</Dropdown.Header>
-//       <Dropdown.Item eventKey="Type 1" onSelect={handleTypeSelect}>
-//         Type 1
-//       </Dropdown.Item>
-//       <Dropdown.Item eventKey="Type 2" onSelect={handleTypeSelect}>
-//         Type 2
-//       </Dropdown.Item>
-//       <Dropdown.Item eventKey="Type 3" onSelect={handleTypeSelect}>
-//         Type 3
-//       </Dropdown.Item>
-//       <Dropdown.Divider />
-//       <Dropdown.Header>Choose Metric Score</Dropdown.Header>
-//       <Dropdown.Item eventKey="1" onSelect={handleScoreSelect}>
-//         1
-//       </Dropdown.Item>
-//       <Dropdown.Item eventKey="2" onSelect={handleScoreSelect}>
-//         2
-//       </Dropdown.Item>
-//       <Dropdown.Item eventKey="3" onSelect={handleScoreSelect}>
-//         3
-//       </Dropdown.Item>
-//       <Dropdown.Item eventKey="4" onSelect={handleScoreSelect}>
-//         4
-//       </Dropdown.Item>
-//       <Dropdown.Item eventKey="5" onSelect={handleScoreSelect}>
-//         5
-//       </Dropdown.Item>
-//       <Dropdown.Divider />
-//       <Button variant="dark" onClick={handleSortSubmit}>
-//         Submit
-//       </Button>
-//     </DropdownButton>
-//   );
-// }
-
-function TimeFilter() {
+function TimeFilter({ timeTypes, setTimeTypes }) {
   const [value, setTimeValue] = useState([1, 3]);
   const handleChange = (val) => setTimeValue(val);
-
+  console.log(timeTypes);
   return (
     <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
-      <ToggleButton id="timeFilter-btn-1" value={1}>
-        Finished
+      <ToggleButton variant="dark" id="timeFilter-btn-1" value={1}>
+        <ToggleBtnText>Finished</ToggleBtnText>
       </ToggleButton>
-      <ToggleButton id="timeFilter-btn-2" value={2}>
-        In development
+      <ToggleButton variant="dark" id="timeFilter-btn-2" value={2}>
+        <ToggleBtnText> In development</ToggleBtnText>
       </ToggleButton>
-      <ToggleButton id="timeFilter-btn-3" value={3}>
-        Future
+      <ToggleButton variant="dark" id="timeFilter-btn-3" value={3}>
+        <ToggleBtnText> Future</ToggleBtnText>
       </ToggleButton>
     </ToggleButtonGroup>
   );
@@ -128,31 +84,38 @@ function SpaceFilter() {
 
   return (
     <ToggleButtonGroup type="checkbox" value={value} onChange={handleChange}>
-      <ToggleButton id="spaceFilter-btn-1" value={1}>
-        Websites
+      <ToggleButton variant="dark" id="spaceFilter-btn-1" value={1}>
+        <ToggleBtnText>Websites</ToggleBtnText>
       </ToggleButton>
-      <ToggleButton id="spaceFilter-btn-2" value={2}>
-        Web applications
+      <ToggleButton variant="dark" id="spaceFilter-btn-2" value={2}>
+        <ToggleBtnText>Apps</ToggleBtnText>
       </ToggleButton>
-      <ToggleButton id="spaceFilter-btn-3" value={3}>
-        Frameworks
+      <ToggleButton variant="dark" id="spaceFilter-btn-3" value={3}>
+        <ToggleBtnText>Frameworks</ToggleBtnText>
       </ToggleButton>
-      <ToggleButton id="spaceFilter-btn-4" value={4}>
-        Games
+      <ToggleButton variant="dark" id="spaceFilter-btn-4" value={4}>
+        <ToggleBtnText>Games</ToggleBtnText>
       </ToggleButton>
-      <ToggleButton id="spaceFilter-btn-5" value={5}>
-        Self-learning
+      <ToggleButton variant="dark" id="spaceFilter-btn-5" value={5}>
+        <ToggleBtnText>Self-learning</ToggleBtnText>
       </ToggleButton>
     </ToggleButtonGroup>
   );
 }
 
 function Portfolio() {
-  // explicitly show and hande dependency: proj title is used for unique keys = must be unique
-  // a turn it [{..project}, ...] format
-  // turn it to {} // a.1 DONE
+  const [timeTypes, setTimeTypes] = ["finished", "in-development", "future"];
+  const [spaceTypes, setSpaceTypes] = [
+    "websites",
+    "web-applications",
+    "frameworks",
+    "games",
+    "self-learning",
+  ];
 
   const project = {
+    timeType: timeTypes[0],
+    spaceType: spaceTypes[1],
     mainHeader: {
       symbolImg: dojoImg,
       title: "Taizyu",
@@ -204,22 +167,23 @@ function Portfolio() {
     link: "https://awesome.com",
   };
   const list = [project];
-  // turn it to [{}, ...] a.2
-  // b func filter return filtered to var
-  // c  func sorted return sorted to var
-  // d var filtered = ...
-  // e var sorted = ...
+
+  const afterFilter = list.filter(
+    (item) =>
+      timeTypes.includes(item.timeType) && timeTypes.includes(item.timeType)
+  );
   return (
     <>
-      <h2>NAVIGATION BAR</h2>
-      <TimeFilter />
-
+      <TimeFilter
+        timeTypes={timeTypes}
+        setTimeTypes={(timeTypes) => setTimeTypes(timeTypes)}
+      />
       <SpaceFilter />
       {/* <SortByMetric /> */}
       {/* <SortDropdownMenu /> */}
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
-          {list.map((project) => {
+          {afterFilter.map((project) => {
             return (
               <Col key={project.mainHeader.title} xs={10} sm={6} md={6} lg={4}>
                 <Card>
