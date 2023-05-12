@@ -61,12 +61,9 @@ const ToggleBtnText = styled.span`
 function Portfolio() {
   const [shownProjects, setShownProjects] = useState([
     "Finished",
-    "Development",
-    "Future",
+
     "Websites",
     "Apps",
-    "Frameworks",
-    "Games",
     "Self-learning",
   ]);
 
@@ -131,7 +128,7 @@ function Portfolio() {
   };
   const list = [project];
 
-  const afterFilter = list.filter(
+  const showList = list.filter(
     (item) =>
       shownProjects.includes(item.timeType) &&
       shownProjects.includes(item.spaceType)
@@ -184,7 +181,7 @@ function Portfolio() {
       {/* <SpaceFilter /> */}
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
-          {afterFilter.map((project) => {
+          {showList.map((project) => {
             return (
               <Col key={project.mainHeader.title} xs={10} sm={6} md={6} lg={4}>
                 <Card>
