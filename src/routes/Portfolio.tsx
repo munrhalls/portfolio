@@ -7,36 +7,38 @@ import Tabs from "react-bootstrap/Tabs";
 import Sonnet from "../../components/Sonnet";
 import dojoImg from "./../assets/f7.png";
 
+const MetricLiItem = styled.li`
+  display: flex;
+  align-items: center;
+`;
+
 const MetricText = styled.span`
   color: #000;
   white-space: pre-line;
-
   @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-
-  @media (max-width: 576px) {
     font-size: 0.61rem;
   }
 `;
 
 const MetricScore = styled.span`
+  width: 1.8rem;
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    width: 1.5rem;
   }
-
   @media (max-width: 576px) {
-    font-size: 0.61rem;
+    font-size: 0.75rem;
+    width: 1.25rem;
   }
 
   color: #fff;
   border: 1px solid black;
   border-radius: 50%;
+
   display: inline-block;
   text-align: center;
-  width: 1.5rem;
-  padding-bottom: 0.1rem;
-  margin-left: 0.25rem;
+  padding-bottom: 0.05rem;
+  margin-left: auto;
+  margin-right: 0.15rem;
 `;
 
 const MetricScoreColors = ["red", "darkorange", "grey", "darkmagenta", "blue"];
@@ -73,7 +75,7 @@ function Portfolio() {
           score: 5 / 5,
         },
         {
-          title: "Flexibly adapting,  \n ABCD if-not-x-then-y options",
+          title: "Flexibly adapting,  \n  ABCD if-not-a-then-b",
           score: 5 / 5,
         },
         {
@@ -148,18 +150,24 @@ function Portfolio() {
                           <ul>
                             {project.metricsEstimates.items.map(
                               (item, index) => (
-                                <li key={project.mainHeader.title + item.title}>
-                                  <MetricText>{item.title}:</MetricText>
-                                  <MetricScore
-                                    style={{
-                                      background: `${MetricScoreColors[0]}`,
-                                      color: "#fff",
-                                    }}
+                                <>
+                                  <MetricLiItem
+                                    key={project.mainHeader.title + item.title}
                                   >
-                                    {item.score}
-                                  </MetricScore>
+                                    <MetricText>{item.title}:</MetricText>
+                                    <MetricScore
+                                      style={{
+                                        background: `${
+                                          MetricScoreColors[item.score - 1]
+                                        }`,
+                                        color: "#fff",
+                                      }}
+                                    >
+                                      {item.score}
+                                    </MetricScore>
+                                  </MetricLiItem>
                                   <hr />
-                                </li>
+                                </>
                               )
                             )}
                           </ul>
