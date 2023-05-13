@@ -84,7 +84,7 @@ function Portfolio() {
     metricsEstimates: {
       items: [
         {
-          title: "Prevent as much \n time losses as possible",
+          title: "Minimize time losses",
           score: 5 / 5,
         },
         {
@@ -96,7 +96,7 @@ function Portfolio() {
           score: 5 / 5,
         },
         {
-          title: "ABCD contingencies vs roadblocks",
+          title: "ABCD contingencies vs slowdowns/roadblocks",
           score: 5 / 5,
         },
         {
@@ -148,7 +148,7 @@ function Portfolio() {
           <ToggleBtnText>Self-learning</ToggleBtnText>
         </ToggleButton>
       </ToggleButtonGroup>
-      {/* <SpaceFilter /> */}
+
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
           {showList.map((project) => {
