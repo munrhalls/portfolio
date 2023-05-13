@@ -2,7 +2,15 @@ import { useState, Fragment } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Card from "react-bootstrap/Card";
-import { Container, Row, Col, Button, Accordion, Image } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Accordion,
+  Image,
+  ButtonGroup,
+} from "react-bootstrap";
 import styled from "styled-components";
 import dojoImg from "./../assets/f7.png";
 
@@ -54,11 +62,9 @@ const ToggleBtnText = styled.span`
 
 function Portfolio() {
   const [shownProjects, setShownProjects] = useState([
-    "Finished",
-
-    "Websites",
-    "Apps",
-    "Self-learning",
+    "Website",
+    "App",
+    "Learning project",
   ]);
 
   console.log(shownProjects);
@@ -68,8 +74,7 @@ function Portfolio() {
   };
 
   const project = {
-    timeType: "Finished",
-    spaceType: "Apps",
+    type: "App",
     mainHeader: {
       symbolImg: dojoImg,
       title: "Taizyu",
@@ -122,11 +127,8 @@ function Portfolio() {
   };
   const list = [project];
 
-  const showList = list.filter(
-    (item) =>
-      shownProjects.includes(item.timeType) &&
-      shownProjects.includes(item.spaceType)
-  );
+  const showList = list.filter((item) => shownProjects.includes(item.type));
+
   return (
     <>
       <ToggleButtonGroup
@@ -134,16 +136,16 @@ function Portfolio() {
         value={shownProjects}
         onChange={handleChange}
       >
-        <ToggleButton variant="dark" id="shownFilter-btn-4" value={"Websites"}>
+        <ToggleButton variant="dark" id="shownFilter-btn-1" value={"Website"}>
           <ToggleBtnText>Websites</ToggleBtnText>
         </ToggleButton>
-        <ToggleButton variant="dark" id="shownFilter-btn-5" value={"Apps"}>
+        <ToggleButton variant="dark" id="shownFilter-btn-2" value={"App"}>
           <ToggleBtnText>Apps</ToggleBtnText>
         </ToggleButton>
         <ToggleButton
           variant="dark"
-          id="shownFilter-btn-8"
-          value={"Self-learning"}
+          id="shownFilter-btn-3"
+          value={"Learning project"}
         >
           <ToggleBtnText>Self-learning</ToggleBtnText>
         </ToggleButton>
