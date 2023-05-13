@@ -13,7 +13,7 @@ const Taizyu = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metricsEstimates: {
+  metrics: {
     items: [
       {
         title: "Minimize time losses",
@@ -66,7 +66,7 @@ const Portfolio = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metricsEstimates: {
+  metrics: {
     items: [
       {
         title: "Minimize time losses",
@@ -119,7 +119,7 @@ const Inaflash = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metricsEstimates: {
+  metrics: {
     items: [
       {
         title: "Minimize time losses",
@@ -172,7 +172,7 @@ const Anglr = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metricsEstimates: {
+  metrics: {
     items: [
       {
         title: "Minimize time losses",
@@ -225,7 +225,7 @@ const CarbyneExplorations = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metricsEstimates: {
+  metrics: {
     items: [
       {
         title: "Minimize time losses",

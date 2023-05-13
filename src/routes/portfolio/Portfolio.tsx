@@ -89,30 +89,28 @@ function Portfolio() {
                         <Accordion.Header>Metrics</Accordion.Header>
                         <Accordion.Body>
                           <ul>
-                            {project.metricsEstimates.items.map(
-                              (item, index) => (
-                                <Fragment
-                                  key={project.mainHeader.title + item.title}
-                                >
-                                  <MetricLiItem>
-                                    <MetricText>{item.title}:</MetricText>
-                                    <MetricScore
-                                      style={{
-                                        background: `${
-                                          MetricScoreColors[item.score - 1]
-                                        }`,
-                                        color: "#fff",
-                                      }}
-                                    >
-                                      {item.score}
-                                    </MetricScore>
-                                  </MetricLiItem>
-                                  {index !==
-                                    project.metricsEstimates.items.length -
-                                      1 && <hr />}
-                                </Fragment>
-                              )
-                            )}
+                            {project.metrics.items.map((item, index) => (
+                              <Fragment
+                                key={project.mainHeader.title + item.title}
+                              >
+                                <MetricLiItem>
+                                  <MetricText>{item.title}:</MetricText>
+                                  <MetricScore
+                                    style={{
+                                      background: `${
+                                        MetricScoreColors[item.score - 1]
+                                      }`,
+                                      color: "#fff",
+                                    }}
+                                  >
+                                    {item.score}
+                                  </MetricScore>
+                                </MetricLiItem>
+                                {index !== project.metrics.items.length - 1 && (
+                                  <hr />
+                                )}
+                              </Fragment>
+                            ))}
                           </ul>
                         </Accordion.Body>
                       </Accordion.Item>
