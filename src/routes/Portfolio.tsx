@@ -84,7 +84,7 @@ function Portfolio() {
     metricsEstimates: {
       items: [
         {
-          title: "Prevent biggest time losses",
+          title: "Prevent as much \n time losses as possible",
           score: 5 / 5,
         },
         {
