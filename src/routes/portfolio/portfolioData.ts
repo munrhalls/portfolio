@@ -1,4 +1,4 @@
-import dojoImg from "./../assets/f7.png";
+import dojoImg from "./../../assets/f7.png";
 
 const Taizyu = {
   type: "App",

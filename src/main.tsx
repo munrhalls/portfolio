@@ -11,7 +11,7 @@ import Root from "./routes/root/Root.tsx";
 import Authentication from "./routes/auth/Authentication.tsx";
 
 import Home from "./routes/Home.tsx";
-import Portfolio from "./routes/Portfolio.tsx";
+import Portfolio from "./routes/portfolio/Portfolio.tsx";
 import Articles from "./routes/Articles.tsx";
 import MixedMedia from "./routes/MixedMedia.tsx";
 import Contact from "./routes/Contact.tsx";

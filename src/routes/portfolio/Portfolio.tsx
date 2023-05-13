@@ -4,14 +4,13 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Card from "react-bootstrap/Card";
 import { Container, Row, Col, Button, Accordion, Image } from "react-bootstrap";
-import styled from "styled-components";
 import {
   MetricLiItem,
   MetricText,
   MetricScore,
   MetricScoreColors,
   ToggleBtnText,
-} from "./../MainReusables";
+} from "./../../MainReusables";
 
 function Portfolio() {
   const [shownProjects, setShownProjects] = useState([
