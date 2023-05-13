@@ -212,6 +212,59 @@ const Anglr = {
   link: "https://awesome1.com",
 };
 
-const portfolioData = [Taizyu, Portfolio, Inaflash, Anglr];
+const CarbyneExplorations = {
+  type: "Website",
+  mainHeader: {
+    symbolImg: dojoImg,
+    title: "CarbyneExplorations",
+  },
+  mainImg: dojoImg,
+  shortDescription: "CarbyneExplorations",
+  valueToUser: "CarbyneExplorations proj",
+  subtitle: "Simple, no nonsense CarbyneExplorations proj",
+  developmentSummary: {
+    items: ["a...", "b...", "c..."],
+  },
+  metricsEstimates: {
+    items: [
+      {
+        title: "Minimize time losses",
+        score: 3,
+      },
+      {
+        title: "As simple as possible",
+        score: 3,
+      },
+      {
+        title: "Prioritize",
+        score: 3,
+      },
+      {
+        title: "ABCD contingencies vs slowdowns/roadblocks",
+        score: 1,
+      },
+      {
+        title: "Sense of development ease",
+        score: 1,
+      },
+      {
+        title: "Experience as a whole",
+        score: 4,
+      },
+    ],
+  },
+  lessonsSummary: {
+    whatWentWell: [".a..2", "..b3.", ".c.4."],
+    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+    rootCauses: ["..1a."],
+    neverAgain: ["..a.1", ".b.12.", ".3c.."],
+  },
+  importantPoints: {
+    items: ["..a.123", ".b.4567.", ".c34543."],
+  },
+  link: "https://awesome1.com",
+};
+
+const portfolioData = [Taizyu, Portfolio, Inaflash, Anglr, CarbyneExplorations];
 
 export default portfolioData;
