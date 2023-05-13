@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import "./MainReusables.css";
 import { ReactNode } from "react";
 import { Card, Image } from "react-bootstrap";
@@ -57,6 +58,58 @@ export function CustomParagraphsGroup({ children }: Props) {
     </div>
   );
 }
+
+export const MetricLiItem = styled.li`
+  display: flex;
+  align-items: center;
+`;
+
+export const MetricText = styled.span`
+  color: #000;
+  white-space: pre-line;
+  @media (max-width: 768px) {
+    font-size: 0.61rem;
+  }
+`;
+
+export const MetricScore = styled.span`
+  width: 1.8rem;
+  @media (max-width: 768px) {
+    width: 1.5rem;
+  }
+  @media (max-width: 576px) {
+    font-size: 0.75rem;
+    width: 1.25rem;
+  }
+
+  color: #fff;
+  border: 1px solid black;
+  border-radius: 50%;
+
+  display: inline-block;
+  text-align: center;
+  padding-bottom: 0.05rem;
+  margin-left: auto;
+  margin-right: 0.15rem;
+`;
+
+export const MetricScoreColors = [
+  "red",
+  "darkorange",
+  "grey",
+  "darkmagenta",
+  "blue",
+];
+
+export const ToggleBtnText = styled.span`
+  @media (max-width: 768px) {
+    width: 0.75rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.5rem;
+  }
+`;
 
 export function CustomCardImage({ src, alt }: ImageProps) {
   return <Card.Img src={src} alt={alt} />;

@@ -5,53 +5,13 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Card from "react-bootstrap/Card";
 import { Container, Row, Col, Button, Accordion, Image } from "react-bootstrap";
 import styled from "styled-components";
-import dojoImg from "./../assets/f7.png";
-
-const MetricLiItem = styled.li`
-  display: flex;
-  align-items: center;
-`;
-
-const MetricText = styled.span`
-  color: #000;
-  white-space: pre-line;
-  @media (max-width: 768px) {
-    font-size: 0.61rem;
-  }
-`;
-
-const MetricScore = styled.span`
-  width: 1.8rem;
-  @media (max-width: 768px) {
-    width: 1.5rem;
-  }
-  @media (max-width: 576px) {
-    font-size: 0.75rem;
-    width: 1.25rem;
-  }
-
-  color: #fff;
-  border: 1px solid black;
-  border-radius: 50%;
-
-  display: inline-block;
-  text-align: center;
-  padding-bottom: 0.05rem;
-  margin-left: auto;
-  margin-right: 0.15rem;
-`;
-
-const MetricScoreColors = ["red", "darkorange", "grey", "darkmagenta", "blue"];
-
-const ToggleBtnText = styled.span`
-  @media (max-width: 768px) {
-    width: 0.75rem;
-  }
-
-  @media (max-width: 576px) {
-    font-size: 0.5rem;
-  }
-`;
+import {
+  MetricLiItem,
+  MetricText,
+  MetricScore,
+  MetricScoreColors,
+  ToggleBtnText,
+} from "./../MainReusables";
 
 function Portfolio() {
   const [shownProjects, setShownProjects] = useState([
