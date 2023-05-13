@@ -84,27 +84,27 @@ function Portfolio() {
     metricsEstimates: {
       items: [
         {
-          title: "Predicting & minimizing \n biggest time-losses",
+          title: "Prevent biggest time losses",
           score: 5 / 5,
         },
         {
-          title: "Keeping it all \n as simple as possible",
+          title: "As simple as possible",
           score: 5 / 5,
         },
         {
-          title: "Acting only in order \n of what matters most",
+          title: "Prioritize",
           score: 5 / 5,
         },
         {
-          title: "Flexibly adapting,  \n  ABCD if-not-a-then-b",
+          title: "ABCD contingencies vs roadblocks",
           score: 5 / 5,
         },
         {
-          title: "Sense of smoothness, \n not stuttery or stuck",
+          title: "Sense of development ease",
           score: 5 / 5,
         },
         {
-          title: "Sense of \n development ease",
+          title: "Experience as a whole",
           score: 5 / 5,
         },
       ],
@@ -186,7 +186,7 @@ function Portfolio() {
                         </Accordion.Body>
                       </Accordion.Item>
                       <Accordion.Item eventKey="1">
-                        <Accordion.Header>Metrics-estimates</Accordion.Header>
+                        <Accordion.Header>Metrics</Accordion.Header>
                         <Accordion.Body>
                           <ul>
                             {project.metricsEstimates.items.map(
