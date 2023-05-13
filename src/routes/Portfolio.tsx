@@ -134,35 +134,11 @@ function Portfolio() {
         value={shownProjects}
         onChange={handleChange}
       >
-        <ToggleButton variant="dark" id="shownFilter-btn-1" value={"Finished"}>
-          <ToggleBtnText>Finished</ToggleBtnText>
-        </ToggleButton>
-        <ToggleButton
-          variant="dark"
-          id="shownFilter-btn-2"
-          value={"Development"}
-        >
-          <ToggleBtnText> Development</ToggleBtnText>
-        </ToggleButton>
-        <ToggleButton variant="dark" id="shownFilter-btn-3" value={"Future"}>
-          <ToggleBtnText> Future</ToggleBtnText>
-        </ToggleButton>
-        <hr />
         <ToggleButton variant="dark" id="shownFilter-btn-4" value={"Websites"}>
           <ToggleBtnText>Websites</ToggleBtnText>
         </ToggleButton>
         <ToggleButton variant="dark" id="shownFilter-btn-5" value={"Apps"}>
           <ToggleBtnText>Apps</ToggleBtnText>
-        </ToggleButton>
-        <ToggleButton
-          variant="dark"
-          id="shownFilter-btn-6"
-          value={"Frameworks"}
-        >
-          <ToggleBtnText>Frameworks</ToggleBtnText>
-        </ToggleButton>
-        <ToggleButton variant="dark" id="shownFilter-btn-7" value={"Games"}>
-          <ToggleBtnText>Games</ToggleBtnText>
         </ToggleButton>
         <ToggleButton
           variant="dark"
