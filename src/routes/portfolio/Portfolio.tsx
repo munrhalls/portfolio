@@ -1,9 +1,20 @@
 import portfolioData from "./portfolioData";
+
 import { useState, Fragment } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Card from "react-bootstrap/Card";
-import { Container, Row, Col, Button, Accordion, Image } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Dropdown,
+  Button,
+  ButtonGroup,
+  Accordion,
+  Image,
+} from "react-bootstrap";
+
 import {
   MetricLiItem,
   MetricText,
@@ -18,11 +29,15 @@ function Portfolio() {
     "App",
     "Learning project",
   ]);
+  const [sortBy, setSortBy] = useState("none");
 
   const handleChange = (shownProjects: string[]) => {
     setShownProjects(shownProjects);
   };
 
+  const handleSort = (e) => {
+    setSortBy(e.target.value);
+  };
   const showList = portfolioData.filter((item) =>
     shownProjects.includes(item.type)
   );
@@ -48,6 +63,21 @@ function Portfolio() {
           <ToggleBtnText>Self-learning</ToggleBtnText>
         </ToggleButton>
       </ToggleButtonGroup>
+      <Dropdown as={ButtonGroup}>
+        <Button variant="dark">Sort by: {sortBy}</Button>
+        <Dropdown.Toggle split variant="dark" id="dropdown-split-basic" />
+        <Dropdown.Menu>
+          <Dropdown.Item as={Button} value="123" onClick={handleSort}>
+            type 1
+          </Dropdown.Item>
+          {/* <Dropdown.Item as={Button} onClick={handleSort}>
+            type 2
+          </Dropdown.Item>
+          <Dropdown.Item as={Button} onClick={handleSort}>
+            type 3
+          </Dropdown.Item> */}
+        </Dropdown.Menu>
+      </Dropdown>
 
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
@@ -89,7 +119,7 @@ function Portfolio() {
                         <Accordion.Header>Metrics</Accordion.Header>
                         <Accordion.Body>
                           <ul>
-                            {project.metrics.items.map((item, index) => (
+                            {project.metrics.map((item, index) => (
                               <Fragment
                                 key={project.mainHeader.title + item.title}
                               >
@@ -106,9 +136,7 @@ function Portfolio() {
                                     {item.score}
                                   </MetricScore>
                                 </MetricLiItem>
-                                {index !== project.metrics.items.length - 1 && (
-                                  <hr />
-                                )}
+                                {index !== project.metrics.length - 1 && <hr />}
                               </Fragment>
                             ))}
                           </ul>

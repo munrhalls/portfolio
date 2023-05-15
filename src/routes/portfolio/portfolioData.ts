@@ -1,5 +1,7 @@
 import dojoImg from "./../../assets/f7.png";
 
+const projectMetrics = [];
+
 const Taizyu = {
   type: "App",
   mainHeader: {
@@ -13,34 +15,32 @@ const Taizyu = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metrics: {
-    items: [
-      {
-        title: "Minimize time losses",
-        score: 5 / 5,
-      },
-      {
-        title: "As simple as possible",
-        score: 5 / 5,
-      },
-      {
-        title: "Prioritize",
-        score: 5 / 5,
-      },
-      {
-        title: "ABCD contingencies vs slowdowns/roadblocks",
-        score: 5 / 5,
-      },
-      {
-        title: "Sense of development ease",
-        score: 5 / 5,
-      },
-      {
-        title: "Experience as a whole",
-        score: 5 / 5,
-      },
-    ],
-  },
+  metrics: [
+    {
+      title: "Minimize time losses",
+      score: 5 / 5,
+    },
+    {
+      title: "As simple as possible",
+      score: 5 / 5,
+    },
+    {
+      title: "Prioritize",
+      score: 5 / 5,
+    },
+    {
+      title: "ABCD contingencies vs slowdowns/roadblocks",
+      score: 5 / 5,
+    },
+    {
+      title: "Sense of development ease",
+      score: 5 / 5,
+    },
+    {
+      title: "Experience as a whole",
+      score: 5 / 5,
+    },
+  ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
@@ -66,34 +66,32 @@ const Portfolio = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metrics: {
-    items: [
-      {
-        title: "Minimize time losses",
-        score: 5,
-      },
-      {
-        title: "As simple as possible",
-        score: 5,
-      },
-      {
-        title: "Prioritize",
-        score: 5,
-      },
-      {
-        title: "ABCD contingencies vs slowdowns/roadblocks",
-        score: 5,
-      },
-      {
-        title: "Sense of development ease",
-        score: 5,
-      },
-      {
-        title: "Experience as a whole",
-        score: 5,
-      },
-    ],
-  },
+  metrics: [
+    {
+      title: "Minimize time losses",
+      score: 5,
+    },
+    {
+      title: "As simple as possible",
+      score: 5,
+    },
+    {
+      title: "Prioritize",
+      score: 5,
+    },
+    {
+      title: "ABCD contingencies vs slowdowns/roadblocks",
+      score: 5,
+    },
+    {
+      title: "Sense of development ease",
+      score: 5,
+    },
+    {
+      title: "Experience as a whole",
+      score: 5,
+    },
+  ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
@@ -119,34 +117,32 @@ const Inaflash = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metrics: {
-    items: [
-      {
-        title: "Minimize time losses",
-        score: 2,
-      },
-      {
-        title: "As simple as possible",
-        score: 2,
-      },
-      {
-        title: "Prioritize",
-        score: 2,
-      },
-      {
-        title: "ABCD contingencies vs slowdowns/roadblocks",
-        score: 4,
-      },
-      {
-        title: "Sense of development ease",
-        score: 1,
-      },
-      {
-        title: "Experience as a whole",
-        score: 1,
-      },
-    ],
-  },
+  metrics: [
+    {
+      title: "Minimize time losses",
+      score: 2,
+    },
+    {
+      title: "As simple as possible",
+      score: 2,
+    },
+    {
+      title: "Prioritize",
+      score: 2,
+    },
+    {
+      title: "ABCD contingencies vs slowdowns/roadblocks",
+      score: 4,
+    },
+    {
+      title: "Sense of development ease",
+      score: 1,
+    },
+    {
+      title: "Experience as a whole",
+      score: 1,
+    },
+  ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
@@ -172,34 +168,32 @@ const Anglr = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metrics: {
-    items: [
-      {
-        title: "Minimize time losses",
-        score: 4,
-      },
-      {
-        title: "As simple as possible",
-        score: 4,
-      },
-      {
-        title: "Prioritize",
-        score: 4,
-      },
-      {
-        title: "ABCD contingencies vs slowdowns/roadblocks",
-        score: 2,
-      },
-      {
-        title: "Sense of development ease",
-        score: 5,
-      },
-      {
-        title: "Experience as a whole",
-        score: 5,
-      },
-    ],
-  },
+  metrics: [
+    {
+      title: "Minimize time losses",
+      score: 4,
+    },
+    {
+      title: "As simple as possible",
+      score: 4,
+    },
+    {
+      title: "Prioritize",
+      score: 4,
+    },
+    {
+      title: "ABCD contingencies vs slowdowns/roadblocks",
+      score: 2,
+    },
+    {
+      title: "Sense of development ease",
+      score: 5,
+    },
+    {
+      title: "Experience as a whole",
+      score: 5,
+    },
+  ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
@@ -225,34 +219,32 @@ const CarbyneExplorations = {
   developmentSummary: {
     items: ["a...", "b...", "c..."],
   },
-  metrics: {
-    items: [
-      {
-        title: "Minimize time losses",
-        score: 3,
-      },
-      {
-        title: "As simple as possible",
-        score: 3,
-      },
-      {
-        title: "Prioritize",
-        score: 3,
-      },
-      {
-        title: "ABCD contingencies vs slowdowns/roadblocks",
-        score: 1,
-      },
-      {
-        title: "Sense of development ease",
-        score: 1,
-      },
-      {
-        title: "Experience as a whole",
-        score: 4,
-      },
-    ],
-  },
+  metrics: [
+    {
+      title: "Minimize time losses",
+      score: 3,
+    },
+    {
+      title: "As simple as possible",
+      score: 3,
+    },
+    {
+      title: "Prioritize",
+      score: 3,
+    },
+    {
+      title: "ABCD contingencies vs slowdowns/roadblocks",
+      score: 1,
+    },
+    {
+      title: "Sense of development ease",
+      score: 1,
+    },
+    {
+      title: "Experience as a whole",
+      score: 4,
+    },
+  ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
