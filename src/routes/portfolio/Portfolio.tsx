@@ -52,9 +52,9 @@ function Portfolio() {
 
   return (
     <>
-      <Container>
+      <Container className="mt-3 mb-3">
         <Row>
-          <Col xs={10} sm="auto">
+          <Col xs={12} sm="auto">
             <FaFolderOpen size={32} style={{ margin: "0 1rem" }} />
             <ToggleButtonGroup
               type="checkbox"
@@ -80,7 +80,7 @@ function Portfolio() {
               </ToggleButton>
             </ToggleButtonGroup>
           </Col>
-          <Col xs={10} sm="auto" className="d-flex">
+          <Col xs={12} sm="auto" className="d-flex">
             <FaSort size={32} style={{ margin: "0 1rem" }} />
             <DropdownButton
               variant="dark"
@@ -114,10 +114,8 @@ function Portfolio() {
             )}
           </Col>
         </Row>
-      </Container>
-      <Container className="mt-3 mb-3">
         {sortBy !== "None" && (
-          <Row>
+          <Row className="mt-3">
             <Col>
               <Alert variant="dark">
                 <span style={{ fontWeight: "bold" }}>Sorting by metric:</span>{" "}
@@ -132,7 +130,7 @@ function Portfolio() {
             </Col>
           </Row>
         )}
-        <Row className="justify-content-center">
+        <Row className="mt-3 justify-content-center">
           {showList.map((project) => {
             return (
               <Col key={project.mainHeader.title} xs={10} sm={6} md={6} lg={4}>
