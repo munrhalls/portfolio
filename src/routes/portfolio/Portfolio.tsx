@@ -79,9 +79,7 @@ function Portfolio() {
           <DropdownButton
             variant="dark"
             id="dropdown-basic-button"
-            title={
-              <span style={{ fontSize: ".75rem" }}>Sort by: {sortBy}</span>
-            }
+            title={`Sort by: ${sortBy}`}
           >
             {projectMetrics.map((metric) => (
               <Dropdown.Item
