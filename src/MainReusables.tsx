@@ -101,16 +101,6 @@ export const MetricScoreColors = [
   "blue",
 ];
 
-export const ToggleBtnText = styled.span`
-  @media (max-width: 768px) {
-    width: 0.75rem;
-  }
-
-  @media (max-width: 576px) {
-    font-size: 0.5rem;
-  }
-`;
-
 export function CustomCardImage({ src, alt }: ImageProps) {
   return <Card.Img src={src} alt={alt} />;
 }

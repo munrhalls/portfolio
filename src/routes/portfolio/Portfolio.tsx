@@ -8,6 +8,7 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Card from "react-bootstrap/Card";
 import { BsSortDown, BsSortUp } from "react-icons/bs";
+import { FaFolderOpen, FaSort } from "react-icons/fa";
 import {
   Container,
   Row,
@@ -25,7 +26,7 @@ import {
   MetricText,
   MetricScore,
   MetricScoreColors,
-  ToggleBtnText,
+  span,
 } from "./../../MainReusables";
 
 function Portfolio() {
@@ -51,67 +52,69 @@ function Portfolio() {
 
   return (
     <>
-      <Row>
-        <Col xs={10} sm="auto">
-          <ToggleButtonGroup
-            type="checkbox"
-            value={shownProjects}
-            onChange={handleChange}
-          >
-            <ToggleButton
-              variant="dark"
-              id="shownFilter-btn-1"
-              value={"Website"}
+      <Container>
+        <Row>
+          <Col xs={10} sm="auto">
+            <FaFolderOpen size={32} style={{ margin: "0 1rem" }} />
+            <ToggleButtonGroup
+              type="checkbox"
+              value={shownProjects}
+              onChange={handleChange}
             >
-              <ToggleBtnText>Websites</ToggleBtnText>
-            </ToggleButton>
-            <ToggleButton variant="dark" id="shownFilter-btn-2" value={"App"}>
-              <ToggleBtnText>Apps</ToggleBtnText>
-            </ToggleButton>
-            <ToggleButton
-              variant="dark"
-              id="shownFilter-btn-3"
-              value={"Learning project"}
-            >
-              <ToggleBtnText>Self-learning</ToggleBtnText>
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </Col>
-        <Col xs={10} sm="auto" className="d-flex">
-          <DropdownButton
-            variant="dark"
-            style={{ minWidth: "8rem" }}
-            id="dropdown-basic-button"
-            title={`Sort by: ${sortBy}`}
-          >
-            {projectMetrics.map((metric) => (
-              <Dropdown.Item
-                key={metric}
-                as={Button}
-                onClick={() => setSortBy(metric)}
+              <ToggleButton
+                variant="dark"
+                id="shownFilter-btn-1"
+                value={"Website"}
               >
-                {metric}
+                <span>Websites</span>
+              </ToggleButton>
+              <ToggleButton variant="dark" id="shownFilter-btn-2" value={"App"}>
+                <span>Apps</span>
+              </ToggleButton>
+              <ToggleButton
+                variant="dark"
+                id="shownFilter-btn-3"
+                value={"Learning project"}
+              >
+                <span>Practice</span>
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Col>
+          <Col xs={10} sm="auto" className="d-flex">
+            <FaSort size={32} style={{ margin: "0 1rem" }} />
+            <DropdownButton
+              variant="dark"
+              id="dropdown-basic-button"
+              title={`Sort`}
+            >
+              {projectMetrics.map((metric) => (
+                <Dropdown.Item
+                  key={metric}
+                  as={Button}
+                  onClick={() => setSortBy(metric)}
+                >
+                  {metric}
+                </Dropdown.Item>
+              ))}
+              <hr />
+              <Dropdown.Item as={Button} onClick={() => setSortBy("None")}>
+                None
               </Dropdown.Item>
-            ))}
-            <hr />
-            <Dropdown.Item as={Button} onClick={() => setSortBy("None")}>
-              None
-            </Dropdown.Item>
-          </DropdownButton>
+            </DropdownButton>
 
-          {sortOrder === "asc" && (
-            <Button variant="dark" onClick={() => setSortOrder("desc")}>
-              <BsSortUp />
-            </Button>
-          )}
-          {sortOrder === "desc" && (
-            <Button variant="dark" onClick={() => setSortOrder("asc")}>
-              <BsSortDown />
-            </Button>
-          )}
-        </Col>
-      </Row>
-
+            {sortOrder === "asc" && (
+              <Button variant="dark" onClick={() => setSortOrder("desc")}>
+                <BsSortUp />
+              </Button>
+            )}
+            {sortOrder === "desc" && (
+              <Button variant="dark" onClick={() => setSortOrder("asc")}>
+                <BsSortDown />
+              </Button>
+            )}
+          </Col>
+        </Row>
+      </Container>
       <Container className="mt-3 mb-3">
         {sortBy !== "None" && (
           <Row>
