@@ -1,6 +1,13 @@
 import dojoImg from "./../../assets/f7.png";
 
-const projectMetrics = [];
+const projectMetrics = [
+  "Minimize time losses",
+  "As simple as possible",
+  "Prioritize",
+  "Flexibly adaptating",
+  "Sense of development ease",
+  "Experience as a whole",
+];
 
 const Taizyu = {
   type: "App",
@@ -17,27 +24,27 @@ const Taizyu = {
   },
   metrics: [
     {
-      title: "Minimize time losses",
+      title: projectMetrics[0],
       score: 5 / 5,
     },
     {
-      title: "As simple as possible",
+      title: projectMetrics[1],
       score: 5 / 5,
     },
     {
-      title: "Prioritize",
+      title: projectMetrics[2],
       score: 5 / 5,
     },
     {
-      title: "ABCD contingencies vs slowdowns/roadblocks",
+      title: projectMetrics[3],
       score: 5 / 5,
     },
     {
-      title: "Sense of development ease",
+      title: projectMetrics[4],
       score: 5 / 5,
     },
     {
-      title: "Experience as a whole",
+      title: projectMetrics[5],
       score: 5 / 5,
     },
   ],

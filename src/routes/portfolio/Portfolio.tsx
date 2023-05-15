@@ -9,6 +9,7 @@ import {
   Row,
   Col,
   Dropdown,
+  DropdownButton,
   Button,
   ButtonGroup,
   Accordion,
@@ -63,21 +64,11 @@ function Portfolio() {
           <ToggleBtnText>Self-learning</ToggleBtnText>
         </ToggleButton>
       </ToggleButtonGroup>
-      <Dropdown as={ButtonGroup}>
-        <Button variant="dark">Sort by: {sortBy}</Button>
-        <Dropdown.Toggle split variant="dark" id="dropdown-split-basic" />
-        <Dropdown.Menu>
-          <Dropdown.Item as={Button} value="123" onClick={handleSort}>
-            type 1
-          </Dropdown.Item>
-          {/* <Dropdown.Item as={Button} onClick={handleSort}>
-            type 2
-          </Dropdown.Item>
-          <Dropdown.Item as={Button} onClick={handleSort}>
-            type 3
-          </Dropdown.Item> */}
-        </Dropdown.Menu>
-      </Dropdown>
+      <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+        <Dropdown.Item as={Button}>Action</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+      </DropdownButton>
 
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
