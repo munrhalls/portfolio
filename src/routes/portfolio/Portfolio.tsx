@@ -33,6 +33,7 @@ function Portfolio() {
     "Learning project",
   ]);
   const [sortBy, setSortBy] = useState("none");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   const handleChange = (shownProjects: string[]) => {
     setShownProjects(shownProjects);
@@ -82,10 +83,17 @@ function Portfolio() {
               </Dropdown.Item>
             ))}
           </DropdownButton>
-          <Button>
-            <BsSortUp />
-            <BsSortDown />
-          </Button>
+
+          {sortOrder === "asc" && (
+            <Button variant="dark" onClick={() => setSortOrder("desc")}>
+              <BsSortUp />
+            </Button>
+          )}
+          {sortOrder === "desc" && (
+            <Button variant="dark" onClick={() => setSortOrder("asc")}>
+              <BsSortDown />
+            </Button>
+          )}
         </Col>
       </Row>
 
