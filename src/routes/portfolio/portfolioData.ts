@@ -1,12 +1,10 @@
 import dojoImg from "./../../assets/f7.png";
 
 const projectMetrics = [
-  "Minimize time losses",
+  "Prevent roadblocks/slowdowns",
   "As simple as possible",
   "Prioritize",
-  "Flexibly adaptating",
-  "Sense of development ease",
-  "Experience as a whole",
+  "Track progress & adapt",
 ];
 
 const Taizyu = {
@@ -75,28 +73,28 @@ const Portfolio = {
   },
   metrics: [
     {
-      title: "Minimize time losses",
-      score: 5,
+      title: projectMetrics[0],
+      score: 5 / 5,
     },
     {
-      title: "As simple as possible",
-      score: 5,
+      title: projectMetrics[1],
+      score: 5 / 5,
     },
     {
-      title: "Prioritize",
-      score: 5,
+      title: projectMetrics[2],
+      score: 5 / 5,
     },
     {
-      title: "ABCD contingencies vs slowdowns/roadblocks",
-      score: 5,
+      title: projectMetrics[3],
+      score: 5 / 5,
     },
     {
-      title: "Sense of development ease",
-      score: 5,
+      title: projectMetrics[4],
+      score: 5 / 5,
     },
     {
-      title: "Experience as a whole",
-      score: 5,
+      title: projectMetrics[5],
+      score: 5 / 5,
     },
   ],
   lessonsSummary: {
@@ -126,28 +124,28 @@ const Inaflash = {
   },
   metrics: [
     {
-      title: "Minimize time losses",
-      score: 2,
+      title: projectMetrics[0],
+      score: 5 / 5,
     },
     {
-      title: "As simple as possible",
-      score: 2,
+      title: projectMetrics[1],
+      score: 5 / 5,
     },
     {
-      title: "Prioritize",
-      score: 2,
+      title: projectMetrics[2],
+      score: 5 / 5,
     },
     {
-      title: "ABCD contingencies vs slowdowns/roadblocks",
-      score: 4,
+      title: projectMetrics[3],
+      score: 5 / 5,
     },
     {
-      title: "Sense of development ease",
-      score: 1,
+      title: projectMetrics[4],
+      score: 5 / 5,
     },
     {
-      title: "Experience as a whole",
-      score: 1,
+      title: projectMetrics[5],
+      score: 5 / 5,
     },
   ],
   lessonsSummary: {
@@ -177,28 +175,28 @@ const Anglr = {
   },
   metrics: [
     {
-      title: "Minimize time losses",
-      score: 4,
+      title: projectMetrics[0],
+      score: 5 / 5,
     },
     {
-      title: "As simple as possible",
-      score: 4,
+      title: projectMetrics[1],
+      score: 5 / 5,
     },
     {
-      title: "Prioritize",
-      score: 4,
+      title: projectMetrics[2],
+      score: 5 / 5,
     },
     {
-      title: "ABCD contingencies vs slowdowns/roadblocks",
-      score: 2,
+      title: projectMetrics[3],
+      score: 5 / 5,
     },
     {
-      title: "Sense of development ease",
-      score: 5,
+      title: projectMetrics[4],
+      score: 5 / 5,
     },
     {
-      title: "Experience as a whole",
-      score: 5,
+      title: projectMetrics[5],
+      score: 5 / 5,
     },
   ],
   lessonsSummary: {
@@ -228,28 +226,28 @@ const CarbyneExplorations = {
   },
   metrics: [
     {
-      title: "Minimize time losses",
-      score: 3,
+      title: projectMetrics[0],
+      score: 5 / 5,
     },
     {
-      title: "As simple as possible",
-      score: 3,
+      title: projectMetrics[1],
+      score: 5 / 5,
     },
     {
-      title: "Prioritize",
-      score: 3,
+      title: projectMetrics[2],
+      score: 5 / 5,
     },
     {
-      title: "ABCD contingencies vs slowdowns/roadblocks",
-      score: 1,
+      title: projectMetrics[3],
+      score: 5 / 5,
     },
     {
-      title: "Sense of development ease",
-      score: 1,
+      title: projectMetrics[4],
+      score: 5 / 5,
     },
     {
-      title: "Experience as a whole",
-      score: 4,
+      title: projectMetrics[5],
+      score: 5 / 5,
     },
   ],
   lessonsSummary: {
