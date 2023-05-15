@@ -1,4 +1,5 @@
-import portfolioData from "./portfolioData";
+import { portfolioData } from "./portfolioData";
+import { projectMetrics } from "./portfolioData";
 
 import { useState, Fragment } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
@@ -39,6 +40,7 @@ function Portfolio() {
   const handleSort = (e) => {
     setSortBy(e.target.value);
   };
+
   const showList = portfolioData.filter((item) =>
     shownProjects.includes(item.type)
   );
@@ -65,9 +67,9 @@ function Portfolio() {
         </ToggleButton>
       </ToggleButtonGroup>
       <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-        <Dropdown.Item as={Button}>Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+        {projectMetrics.map((metric) => (
+          <Dropdown.Item as={Button}>{metric}</Dropdown.Item>
+        ))}
       </DropdownButton>
 
       <Container className="mt-3 mb-3">

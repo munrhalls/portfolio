@@ -266,4 +266,5 @@ const CarbyneExplorations = {
 
 const portfolioData = [Taizyu, Portfolio, Inaflash, Anglr, CarbyneExplorations];
 
-export default portfolioData;
+export { projectMetrics };
+export { portfolioData };
