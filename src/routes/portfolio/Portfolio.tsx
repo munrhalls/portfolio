@@ -20,6 +20,7 @@ import {
   Accordion,
   Image,
 } from "react-bootstrap";
+import { useMediaQuery } from "react-responsive";
 
 import {
   MetricLiItem,
@@ -37,6 +38,7 @@ function Portfolio() {
   ]);
   const [sortBy, setSortBy] = useState("None");
   const [sortOrder, setSortOrder] = useState("asc");
+  const isMobile = useMediaQuery({ maxWidth: 576 });
 
   const handleChange = (shownProjects: string[]) => {
     setShownProjects(shownProjects);
@@ -80,7 +82,8 @@ function Portfolio() {
               </ToggleButton>
             </ToggleButtonGroup>
           </Col>
-          <Col xs={12} sm="auto" className="d-flex">
+
+          <Col xs={12} sm="auto" className={`d-flex ${isMobile ? "mt-3" : ""}`}>
             <FaSort size={32} style={{ margin: "0 1rem" }} />
             <DropdownButton
               variant="dark"
