@@ -76,9 +76,16 @@ function Portfolio() {
           </ToggleButtonGroup>
         </Col>
         <Col className="d-flex">
-          <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+          <DropdownButton
+            id="dropdown-basic-button"
+            title={`Sort by: ${sortBy}`}
+          >
             {projectMetrics.map((metric) => (
-              <Dropdown.Item key={metric} as={Button}>
+              <Dropdown.Item
+                key={metric}
+                as={Button}
+                onClick={() => setSortBy(metric)}
+              >
                 {metric}
               </Dropdown.Item>
             ))}
