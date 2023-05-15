@@ -1,7 +1,7 @@
 import dojoImg from "./../../assets/f7.png";
 
 const projectMetrics = [
-  "Prevent roadblocks/slowdowns",
+  "Prevent slowdowns",
   "As simple as possible",
   "Prioritize",
   "Track progress & adapt",
