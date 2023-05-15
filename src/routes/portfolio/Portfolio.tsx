@@ -48,36 +48,46 @@ function Portfolio() {
 
   return (
     <>
-      <ToggleButtonGroup
-        type="checkbox"
-        value={shownProjects}
-        onChange={handleChange}
-      >
-        <ToggleButton variant="dark" id="shownFilter-btn-1" value={"Website"}>
-          <ToggleBtnText>Websites</ToggleBtnText>
-        </ToggleButton>
-        <ToggleButton variant="dark" id="shownFilter-btn-2" value={"App"}>
-          <ToggleBtnText>Apps</ToggleBtnText>
-        </ToggleButton>
-        <ToggleButton
-          variant="dark"
-          id="shownFilter-btn-3"
-          value={"Learning project"}
-        >
-          <ToggleBtnText>Self-learning</ToggleBtnText>
-        </ToggleButton>
-      </ToggleButtonGroup>
-      <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-        {projectMetrics.map((metric) => (
-          <Dropdown.Item key={metric} as={Button}>
-            {metric}
-          </Dropdown.Item>
-        ))}
-      </DropdownButton>
-      <Button>
-        <BsSortUp />
-        <BsSortDown />
-      </Button>
+      <Row>
+        <Col>
+          <ToggleButtonGroup
+            type="checkbox"
+            value={shownProjects}
+            onChange={handleChange}
+          >
+            <ToggleButton
+              variant="dark"
+              id="shownFilter-btn-1"
+              value={"Website"}
+            >
+              <ToggleBtnText>Websites</ToggleBtnText>
+            </ToggleButton>
+            <ToggleButton variant="dark" id="shownFilter-btn-2" value={"App"}>
+              <ToggleBtnText>Apps</ToggleBtnText>
+            </ToggleButton>
+            <ToggleButton
+              variant="dark"
+              id="shownFilter-btn-3"
+              value={"Learning project"}
+            >
+              <ToggleBtnText>Self-learning</ToggleBtnText>
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Col>
+        <Col className="d-flex">
+          <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+            {projectMetrics.map((metric) => (
+              <Dropdown.Item key={metric} as={Button}>
+                {metric}
+              </Dropdown.Item>
+            ))}
+          </DropdownButton>
+          <Button>
+            <BsSortUp />
+            <BsSortDown />
+          </Button>
+        </Col>
+      </Row>
 
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
