@@ -93,6 +93,7 @@ function Portfolio() {
                 {metric}
               </Dropdown.Item>
             ))}
+            <hr />
             <Dropdown.Item as={Button} onClick={() => setSortBy("None")}>
               None
             </Dropdown.Item>
@@ -116,7 +117,8 @@ function Portfolio() {
           <Row>
             <Col>
               <Alert variant="dark">
-                <span style={{ fontWeight: "bold" }}>Sorting by:</span> {sortBy}
+                <span style={{ fontWeight: "bold" }}>Sorting by metric:</span>{" "}
+                {sortBy}
                 {"  "}
                 {sortOrder === "asc" ? (
                   <BsSortUp size={24} />
