@@ -50,7 +50,7 @@ function Portfolio() {
   return (
     <>
       <Row>
-        <Col>
+        <Col xs={10} sm="auto">
           <ToggleButtonGroup
             type="checkbox"
             value={shownProjects}
@@ -75,7 +75,7 @@ function Portfolio() {
             </ToggleButton>
           </ToggleButtonGroup>
         </Col>
-        <Col className="d-flex">
+        <Col xs={10} sm="auto" className="d-flex">
           <DropdownButton
             variant="dark"
             id="dropdown-basic-button"
