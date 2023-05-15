@@ -37,14 +37,6 @@ const Taizyu = {
       title: projectMetrics[3],
       score: 5 / 5,
     },
-    {
-      title: projectMetrics[4],
-      score: 5 / 5,
-    },
-    {
-      title: projectMetrics[5],
-      score: 5 / 5,
-    },
   ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
@@ -86,14 +78,6 @@ const Portfolio = {
     },
     {
       title: projectMetrics[3],
-      score: 5 / 5,
-    },
-    {
-      title: projectMetrics[4],
-      score: 5 / 5,
-    },
-    {
-      title: projectMetrics[5],
       score: 5 / 5,
     },
   ],
@@ -139,14 +123,6 @@ const Inaflash = {
       title: projectMetrics[3],
       score: 5 / 5,
     },
-    {
-      title: projectMetrics[4],
-      score: 5 / 5,
-    },
-    {
-      title: projectMetrics[5],
-      score: 5 / 5,
-    },
   ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
@@ -190,14 +166,6 @@ const Anglr = {
       title: projectMetrics[3],
       score: 5 / 5,
     },
-    {
-      title: projectMetrics[4],
-      score: 5 / 5,
-    },
-    {
-      title: projectMetrics[5],
-      score: 5 / 5,
-    },
   ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
@@ -239,14 +207,6 @@ const CarbyneExplorations = {
     },
     {
       title: projectMetrics[3],
-      score: 5 / 5,
-    },
-    {
-      title: projectMetrics[4],
-      score: 5 / 5,
-    },
-    {
-      title: projectMetrics[5],
       score: 5 / 5,
     },
   ],

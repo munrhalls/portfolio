@@ -6,7 +6,6 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Card from "react-bootstrap/Card";
 import { BsSortDown, BsSortUp } from "react-icons/bs";
-import { BiMinus } from "react-icons/bi";
 import {
   Container,
   Row,
@@ -33,7 +32,7 @@ function Portfolio() {
     "App",
     "Learning project",
   ]);
-  const [sortBy, setSortBy] = useState(null);
+  const [sortBy, setSortBy] = useState("None");
   const [sortOrder, setSortOrder] = useState("asc");
 
   const handleChange = (shownProjects: string[]) => {
@@ -81,9 +80,7 @@ function Portfolio() {
             variant="dark"
             id="dropdown-basic-button"
             title={
-              <span style={{ fontSize: ".75rem" }}>
-                Sort by: {sortBy ? sortBy : <BiMinus />}
-              </span>
+              <span style={{ fontSize: ".75rem" }}>Sort by: {sortBy}</span>
             }
           >
             {projectMetrics.map((metric) => (
