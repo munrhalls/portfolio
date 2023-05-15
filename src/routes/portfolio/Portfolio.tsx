@@ -5,6 +5,7 @@ import { useState, Fragment } from "react";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Card from "react-bootstrap/Card";
+import { BsSortDown, BsSortUp } from "react-icons/bs";
 import {
   Container,
   Row,
@@ -73,6 +74,10 @@ function Portfolio() {
           </Dropdown.Item>
         ))}
       </DropdownButton>
+      <Button>
+        <BsSortUp />
+        <BsSortDown />
+      </Button>
 
       <Container className="mt-3 mb-3">
         <Row className="justify-content-center">
