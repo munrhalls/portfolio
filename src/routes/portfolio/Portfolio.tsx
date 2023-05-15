@@ -2,6 +2,8 @@ import { portfolioData } from "./portfolioData";
 import { projectMetrics } from "./portfolioData";
 
 import { useState, Fragment } from "react";
+import Badge from "react-bootstrap/Badge";
+import Alert from "react-bootstrap/Alert";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Card from "react-bootstrap/Card";
@@ -78,6 +80,7 @@ function Portfolio() {
         <Col xs={10} sm="auto" className="d-flex">
           <DropdownButton
             variant="dark"
+            style={{ minWidth: "8rem" }}
             id="dropdown-basic-button"
             title={`Sort by: ${sortBy}`}
           >
@@ -109,6 +112,21 @@ function Portfolio() {
       </Row>
 
       <Container className="mt-3 mb-3">
+        {sortBy !== "None" && (
+          <Row>
+            <Col>
+              <Alert variant="dark">
+                <span style={{ fontWeight: "bold" }}>Sorting by:</span> {sortBy}
+                {"  "}
+                {sortOrder === "asc" ? (
+                  <BsSortUp size={24} />
+                ) : (
+                  <BsSortDown size={24} />
+                )}
+              </Alert>
+            </Col>
+          </Row>
+        )}
         <Row className="justify-content-center">
           {showList.map((project) => {
             return (
