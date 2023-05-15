@@ -1,19 +1,31 @@
 import dojoImg from "./../../assets/f7.png";
 
 const projectMetrics = [
-  "Prevent slowdowns",
+  "Prevent roadblocks/slowdowns",
   "As simple as possible",
   "Prioritize",
   "Track progress & adapt",
 ];
 
+class Header {
+  constructor(src: string, title: string) {
+    this.title = title;
+    this.symbolImg = src;
+  }
+}
+
+class MetricOne {
+  constructor(number) {
+    this.one = ["Prevent roadblocks/slowdowns", number];
+  }
+}
+
+const header = new Header(dojoImg, "Taizyu");
+console.log(header);
+
 const Taizyu = {
   type: "App",
-  mainHeader: {
-    symbolImg: dojoImg,
-    title: "Taizyu",
-  },
-  mainImg: dojoImg,
+  mainHeader: new Header(dojoImg, "Taizyu"),
   shortDescription: "Provides cubes (short desc):",
   valueToUser: "Enables the user doing ...",
   subtitle: "Visual aid for navigating time-blocks",
@@ -23,19 +35,19 @@ const Taizyu = {
   metrics: [
     {
       title: projectMetrics[0],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[1],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[2],
-      score: 5 / 5,
+      score: 3,
     },
     {
       title: projectMetrics[3],
-      score: 5 / 5,
+      score: 5,
     },
   ],
   lessonsSummary: {
@@ -52,10 +64,7 @@ const Taizyu = {
 
 const Portfolio = {
   type: "Website",
-  mainHeader: {
-    symbolImg: dojoImg,
-    title: "Portfolio",
-  },
+  mainHeader: new Header(dojoImg, "Portfolio"),
   mainImg: dojoImg,
   shortDescription: "Portfolio",
   valueToUser: "Shows projects",
@@ -66,19 +75,19 @@ const Portfolio = {
   metrics: [
     {
       title: projectMetrics[0],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[1],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[2],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[3],
-      score: 5 / 5,
+      score: 5,
     },
   ],
   lessonsSummary: {
@@ -95,10 +104,7 @@ const Portfolio = {
 
 const Inaflash = {
   type: "Website",
-  mainHeader: {
-    symbolImg: dojoImg,
-    title: "Inaflash",
-  },
+  mainHeader: new Header(dojoImg, "Inaflash"),
   mainImg: dojoImg,
   shortDescription: "Inaflash",
   valueToUser: "Electronic flashcards",
@@ -109,19 +115,19 @@ const Inaflash = {
   metrics: [
     {
       title: projectMetrics[0],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[1],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[2],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[3],
-      score: 5 / 5,
+      score: 5,
     },
   ],
   lessonsSummary: {
@@ -138,10 +144,7 @@ const Inaflash = {
 
 const Anglr = {
   type: "Website",
-  mainHeader: {
-    symbolImg: dojoImg,
-    title: "Anglr",
-  },
+  mainHeader: new Header(dojoImg, "Angular"),
   mainImg: dojoImg,
   shortDescription: "Anglr",
   valueToUser: "Anglr proj",
@@ -152,19 +155,19 @@ const Anglr = {
   metrics: [
     {
       title: projectMetrics[0],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[1],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[2],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[3],
-      score: 5 / 5,
+      score: 5,
     },
   ],
   lessonsSummary: {
@@ -181,10 +184,7 @@ const Anglr = {
 
 const CarbyneExplorations = {
   type: "Website",
-  mainHeader: {
-    symbolImg: dojoImg,
-    title: "CarbyneExplorations",
-  },
+  mainHeader: new Header(dojoImg, "Carbyne"),
   mainImg: dojoImg,
   shortDescription: "CarbyneExplorations",
   valueToUser: "CarbyneExplorations proj",
@@ -195,19 +195,19 @@ const CarbyneExplorations = {
   metrics: [
     {
       title: projectMetrics[0],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[1],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[2],
-      score: 5 / 5,
+      score: 5,
     },
     {
       title: projectMetrics[3],
-      score: 5 / 5,
+      score: 5,
     },
   ],
   lessonsSummary: {

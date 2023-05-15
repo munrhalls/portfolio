@@ -36,22 +36,33 @@ function Portfolio() {
     "App",
     "Learning project",
   ]);
-  const [sortBy, setSortBy] = useState("None");
+  const [sortByMetric, setSortByMetric] = useState("None");
   const [sortOrder, setSortOrder] = useState("asc");
   const isMobile = useMediaQuery({ maxWidth: 576 });
 
-  const handleChange = (shownProjects: string[]) => {
+  const handleFilter = (shownProjects: string[]) => {
     setShownProjects(shownProjects);
   };
 
-  const handleSort = (e) => {
-    setSortBy(e.target.value);
-  };
-
-  const showList = portfolioData.filter((item) =>
+  const filtered = portfolioData.filter((item) =>
     shownProjects.includes(item.type)
   );
 
+  const handleSort = (e) => {
+    setSortByMetric(e.target.value);
+  };
+
+  const sortedFiltered =
+    sortByMetric === "None"
+      ? filtered
+      : filtered.sort((a, b) => {
+          return sortOrder === "asc"
+            ? a.metrics[sortByMetric].score - b.metrics[sortByMetric].score
+            : b.metrics[sortByMetric].score - a.metrics[sortByMetric].score;
+        });
+
+  // projectA[getsToMetricType].score - projectA[getsToMetricType].score
+  console.log(sortedFiltered);
   return (
     <>
       <Container className="mt-3 mb-3">
@@ -61,7 +72,7 @@ function Portfolio() {
             <ToggleButtonGroup
               type="checkbox"
               value={shownProjects}
-              onChange={handleChange}
+              onChange={handleFilter}
             >
               <ToggleButton
                 variant="dark"
@@ -90,17 +101,20 @@ function Portfolio() {
               id="dropdown-basic-button"
               title={`Sort`}
             >
-              {projectMetrics.map((metric) => (
+              {projectMetrics.map((metric, index) => (
                 <Dropdown.Item
                   key={metric}
                   as={Button}
-                  onClick={() => setSortBy(metric)}
+                  onClick={() => setSortByMetric(index)}
                 >
                   {metric}
                 </Dropdown.Item>
               ))}
               <hr />
-              <Dropdown.Item as={Button} onClick={() => setSortBy("None")}>
+              <Dropdown.Item
+                as={Button}
+                onClick={() => setSortByMetric("None")}
+              >
                 None
               </Dropdown.Item>
             </DropdownButton>
@@ -117,12 +131,12 @@ function Portfolio() {
             )}
           </Col>
         </Row>
-        {sortBy !== "None" && (
+        {sortByMetric !== "None" && (
           <Row className="mt-3">
             <Col>
               <Alert variant="dark">
                 <span style={{ fontWeight: "bold" }}>Sorting by metric:</span>{" "}
-                {sortBy}
+                {sortByMetric}
                 {"  "}
                 {sortOrder === "asc" ? (
                   <BsSortUp size={24} />
@@ -134,7 +148,7 @@ function Portfolio() {
           </Row>
         )}
         <Row className="mt-3 justify-content-center">
-          {showList.map((project) => {
+          {sortedFiltered.map((project) => {
             return (
               <Col key={project.mainHeader.title} xs={10} sm={6} md={6} lg={4}>
                 <Card>
