@@ -68,7 +68,9 @@ function Portfolio() {
       </ToggleButtonGroup>
       <DropdownButton id="dropdown-basic-button" title="Dropdown button">
         {projectMetrics.map((metric) => (
-          <Dropdown.Item as={Button}>{metric}</Dropdown.Item>
+          <Dropdown.Item key={metric} as={Button}>
+            {metric}
+          </Dropdown.Item>
         ))}
       </DropdownButton>
 
