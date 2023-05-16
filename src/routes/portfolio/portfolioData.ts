@@ -16,7 +16,7 @@ class MainSection {
 }
 
 class Metrics {
-  private table: [string, number][];
+  private readonly table: [string, number][];
 
   constructor(one: number, two: number, three: number, four: number) {
     this.table = [
