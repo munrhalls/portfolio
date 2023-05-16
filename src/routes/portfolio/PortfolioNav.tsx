@@ -7,15 +7,13 @@ import { BsSortDown, BsSortUp } from "react-icons/bs";
 import { FaFolderOpen, FaSort } from "react-icons/fa";
 import { Row, Col, Dropdown, DropdownButton, Button } from "react-bootstrap";
 
-type Project = [];
-
 type PortfolioNavProps = {
   handleFilter: (shownProjects: string[]) => void;
-  sortByMetricId: string | null;
-  setSortByMetricId: (value: string | null) => void;
+  sortByMetricId: number | null; // Updated to accept number | null
+  setSortByMetricId: (value: number | null) => void; // Updated to accept number | null
   setSortOrder: (value: string) => void;
   sortOrder: string;
-  shownProjects: Project[];
+  shownProjects: string[];
   projectMetrics: string[];
 };
 
@@ -70,7 +68,7 @@ const PortfolioNav: React.FC<PortfolioNavProps> = (props) => {
             id="dropdown-basic-button"
             title={`Sort`}
           >
-            {projectMetrics.map((metric: number, index: number) => (
+            {projectMetrics.map((metric, index: number) => (
               <Dropdown.Item
                 key={metric}
                 as={Button}
