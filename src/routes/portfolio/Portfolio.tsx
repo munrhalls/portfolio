@@ -165,16 +165,16 @@ function Portfolio() {
                   </Card.Header>
                   <Card.Img variant="top" src={project.mainImg} />
                   <Card.Body>
-                    <Card.Title>{project.subtitle}</Card.Title>
-                    <Card.Text>{project.shortDescription}</Card.Text>
+                    <Card.Title>{project.mainSection.subtitle}</Card.Title>
+                    <Card.Text>{project.mainSection.shortDesc}</Card.Text>
 
-                    <Card.Text>{project.valueToUser}</Card.Text>
+                    <Card.Text>{project.mainSection.valueToUser}</Card.Text>
                     <Accordion defaultActiveKey="0">
                       <Accordion.Item eventKey="0">
                         <Accordion.Header>Development summary</Accordion.Header>
                         <Accordion.Body>
                           <ul>
-                            {project.developmentSummary.items.map((item) => (
+                            {project.developmentSummary.map((item) => (
                               <li key={project.mainHeader.title + item}>
                                 {item}
                               </li>

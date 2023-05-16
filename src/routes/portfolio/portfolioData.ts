@@ -14,9 +14,11 @@ class Header {
   }
 }
 
-class MetricOne {
-  constructor(number) {
-    this.one = ["Prevent roadblocks/slowdowns", number];
+class MainSection {
+  constructor(subtitle: string, shortDesc: string, valueToUser: string) {
+    this.subtitle = subtitle;
+    this.shortDesc = shortDesc;
+    this.valueToUser = valueToUser;
   }
 }
 
@@ -26,12 +28,12 @@ console.log(header);
 const Taizyu = {
   type: "App",
   mainHeader: new Header(dojoImg, "Taizyu"),
-  shortDescription: "Provides cubes (short desc):",
-  valueToUser: "Enables the user doing ...",
-  subtitle: "Visual aid for navigating time-blocks",
-  developmentSummary: {
-    items: ["a...", "b...", "c..."],
-  },
+  mainSection: new MainSection(
+    "Visuals for timeroad",
+    "description description description description description ",
+    "value to uservalue to uservalue to uservalue to uservalue to user"
+  ),
+  developmentSummary: ["a...", "b...", "c..."],
   metrics: [
     {
       title: projectMetrics[0],
@@ -62,167 +64,7 @@ const Taizyu = {
   link: "https://awesome.com",
 };
 
-const Portfolio = {
-  type: "Website",
-  mainHeader: new Header(dojoImg, "Portfolio"),
-  mainImg: dojoImg,
-  shortDescription: "Portfolio",
-  valueToUser: "Shows projects",
-  subtitle: "",
-  developmentSummary: {
-    items: ["a...", "b...", "c..."],
-  },
-  metrics: [
-    {
-      title: projectMetrics[0],
-      score: 5,
-    },
-    {
-      title: projectMetrics[1],
-      score: 5,
-    },
-    {
-      title: projectMetrics[2],
-      score: 5,
-    },
-    {
-      title: projectMetrics[3],
-      score: 5,
-    },
-  ],
-  lessonsSummary: {
-    whatWentWell: [".a..2", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-  },
-  importantPoints: {
-    items: ["..a.123", ".b.4567.", ".c34543."],
-  },
-  link: "https://awesome1.com",
-};
-
-const Inaflash = {
-  type: "Website",
-  mainHeader: new Header(dojoImg, "Inaflash"),
-  mainImg: dojoImg,
-  shortDescription: "Inaflash",
-  valueToUser: "Electronic flashcards",
-  subtitle: "Simple, no nonsense flashcards",
-  developmentSummary: {
-    items: ["a...", "b...", "c..."],
-  },
-  metrics: [
-    {
-      title: projectMetrics[0],
-      score: 5,
-    },
-    {
-      title: projectMetrics[1],
-      score: 5,
-    },
-    {
-      title: projectMetrics[2],
-      score: 5,
-    },
-    {
-      title: projectMetrics[3],
-      score: 5,
-    },
-  ],
-  lessonsSummary: {
-    whatWentWell: [".a..2", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-  },
-  importantPoints: {
-    items: ["..a.123", ".b.4567.", ".c34543."],
-  },
-  link: "https://awesome1.com",
-};
-
-const Anglr = {
-  type: "Website",
-  mainHeader: new Header(dojoImg, "Angular"),
-  mainImg: dojoImg,
-  shortDescription: "Anglr",
-  valueToUser: "Anglr proj",
-  subtitle: "Simple, no nonsense Anglr proj",
-  developmentSummary: {
-    items: ["a...", "b...", "c..."],
-  },
-  metrics: [
-    {
-      title: projectMetrics[0],
-      score: 5,
-    },
-    {
-      title: projectMetrics[1],
-      score: 5,
-    },
-    {
-      title: projectMetrics[2],
-      score: 5,
-    },
-    {
-      title: projectMetrics[3],
-      score: 5,
-    },
-  ],
-  lessonsSummary: {
-    whatWentWell: [".a..2", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-  },
-  importantPoints: {
-    items: ["..a.123", ".b.4567.", ".c34543."],
-  },
-  link: "https://awesome1.com",
-};
-
-const CarbyneExplorations = {
-  type: "Website",
-  mainHeader: new Header(dojoImg, "Carbyne"),
-  mainImg: dojoImg,
-  shortDescription: "CarbyneExplorations",
-  valueToUser: "CarbyneExplorations proj",
-  subtitle: "Simple, no nonsense CarbyneExplorations proj",
-  developmentSummary: {
-    items: ["a...", "b...", "c..."],
-  },
-  metrics: [
-    {
-      title: projectMetrics[0],
-      score: 5,
-    },
-    {
-      title: projectMetrics[1],
-      score: 5,
-    },
-    {
-      title: projectMetrics[2],
-      score: 5,
-    },
-    {
-      title: projectMetrics[3],
-      score: 5,
-    },
-  ],
-  lessonsSummary: {
-    whatWentWell: [".a..2", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-  },
-  importantPoints: {
-    items: ["..a.123", ".b.4567.", ".c34543."],
-  },
-  link: "https://awesome1.com",
-};
-
-const portfolioData = [Taizyu, Portfolio, Inaflash, Anglr, CarbyneExplorations];
+const portfolioData = [Taizyu];
 
 export { projectMetrics };
 export { portfolioData };
