@@ -156,6 +156,66 @@ function About() {
           </p>
         </Col>
       </Row>
+
+      <Row>
+        <Col>
+          <h3>Cognitive biases</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse est
+            veniam delectus repellendus placeat, ipsum, at non odit consequatur
+            maiores quaerat vel modi libero adipisci, quasi quos cumque dolorum
+            quidem.
+          </p>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <h3>Philosophy in terms of the practical and actionable</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse est
+            veniam delectus repellendus placeat, ipsum, at non odit consequatur
+            maiores quaerat vel modi libero adipisci, quasi quos cumque dolorum
+            quidem.
+          </p>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <h3>Science, as a tool (most basic level, of course)</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse est
+            veniam delectus repellendus placeat, ipsum, at non odit consequatur
+            maiores quaerat vel modi libero adipisci, quasi quos cumque dolorum
+            quidem.
+          </p>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <h3>Cross-domain overlaps</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse est
+            veniam delectus repellendus placeat, ipsum, at non odit consequatur
+            maiores quaerat vel modi libero adipisci, quasi quos cumque dolorum
+            quidem.
+          </p>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <h3>The art of learning, expressing oneself</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse est
+            veniam delectus repellendus placeat, ipsum, at non odit consequatur
+            maiores quaerat vel modi libero adipisci, quasi quos cumque dolorum
+            quidem.
+          </p>
+        </Col>
+      </Row>
     </Container>
   );
 }
