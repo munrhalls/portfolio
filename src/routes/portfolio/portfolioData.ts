@@ -65,10 +65,6 @@ const Taizyu = {
     "value to uservalue to uservalue to uservalue to uservalue to user"
   ),
   developmentSummary: ["a...", "b...", "c..."],
-  // 1"Prevent roadblocks/slowdowns"
-  // 2"As simple as possible"
-  // 3"Prioritize"
-  // 4"Track progress & adapt"
   metrics: new Metrics(5, 4, 3, 2),
   lessonsSummary: {
     whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
@@ -81,7 +77,48 @@ const Taizyu = {
   link: "https://awesome.com",
 };
 
-const portfolioData = [Taizyu];
+const Portfolio = {
+  type: "Website",
+  header: new Header(dojoImg, "Portfolio", dojoImg),
+  mainSection: new MainSection(
+    "Projects showcase",
+    "description description description description description ",
+    "value to uservalue to uservalue to uservalue to uservalue to user"
+  ),
+  developmentSummary: ["a...", "b...", "c..."],
+  metrics: new Metrics(3, 1, 5, 4),
+  lessonsSummary: {
+    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+    rootCauses: ["..1a."],
+    neverAgain: ["..a.1", ".b.12.", ".3c.."],
+    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+  },
+  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  link: "https://awesome.com",
+};
+
+const Carbyne = {
+  type: "Website",
+  header: new Header(dojoImg, "Carbyne", dojoImg),
+  mainSection: new MainSection(
+    "Exploratory repository",
+    "description description description description description ",
+    "value to uservalue to uservalue to uservalue to uservalue to user"
+  ),
+  developmentSummary: ["a...", "b...", "c..."],
+  metrics: new Metrics(3, 1, 5, 4),
+  lessonsSummary: {
+    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+    rootCauses: ["..1a."],
+    neverAgain: ["..a.1", ".b.12.", ".3c.."],
+    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+  },
+  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  link: "https://awesome.com",
+};
+const portfolioData = [Taizyu, Portfolio, Carbyne];
 
 export { projectMetrics };
 export { portfolioData };

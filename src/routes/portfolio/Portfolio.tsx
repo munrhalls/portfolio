@@ -12,6 +12,7 @@ function Portfolio() {
     "Learning project",
   ]);
 
+  console.log(portfolioData);
   const [sortByMetricId, setSortByMetricId] = useState<number | null>(null);
   const [sortOrder, setSortOrder] = useState("asc");
 
