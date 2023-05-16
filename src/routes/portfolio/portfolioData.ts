@@ -16,6 +16,8 @@ class MainSection {
 }
 
 class Metrics {
+  private table: [string, number][];
+
   constructor(one: number, two: number, three: number, four: number) {
     this.table = [
       ["Prevent roadblocks/slowdowns", one],

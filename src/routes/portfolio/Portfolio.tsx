@@ -1,9 +1,7 @@
 import { portfolioData } from "./portfolioData";
 import { projectMetrics } from "./portfolioData";
-
 import { useState } from "react";
 import { Container, Row } from "react-bootstrap";
-
 import PortfolioProject from "./PortfolioProject";
 import PortfolioNav from "./PortfolioNav";
 
@@ -14,7 +12,7 @@ function Portfolio() {
     "Learning project",
   ]);
 
-  const [sortByMetricId, setSortByMetricId] = useState(null);
+  const [sortByMetricId, setSortByMetricId] = useState<string | null>(null);
   const [sortOrder, setSortOrder] = useState("asc");
 
   const handleFilter = (shownProjects: string[]) => {
@@ -25,7 +23,7 @@ function Portfolio() {
     shownProjects.includes(item.type)
   );
 
-  const handleSort = (e) => {
+  const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortByMetricId(e.target.value);
   };
 
