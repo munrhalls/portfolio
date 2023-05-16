@@ -9,23 +9,8 @@ import {
   MetricScoreColors,
 } from "./../../MainReusables";
 
-interface Project {
-  type: string;
-  mainHeader: Header;
-  mainSection: MainSection;
-  developmentSummary: string[];
-  metrics: Metrics;
-  lessonsSummary: {
-    whatWentWell: string[];
-    whatWentPoorly: string[];
-    rootCauses: string[];
-    neverAgain: string[];
-  };
-  importantPoints: {
-    items: string[];
-  };
-  link: string;
-}
+import Project from "./portfolioData";
+import { portfolioData } from "./portfolioData";
 
 function PortfolioProject({ project }: { project: Project }) {
   return (
@@ -53,7 +38,7 @@ function PortfolioProject({ project }: { project: Project }) {
               <Accordion.Header>Development summary</Accordion.Header>
               <Accordion.Body>
                 <ul>
-                  {project.developmentSummary.map((item) => (
+                  {project.developmentSummary.map((item: string) => (
                     <li key={project.mainHeader.title + item}>{item}</li>
                   ))}
                 </ul>
@@ -63,22 +48,24 @@ function PortfolioProject({ project }: { project: Project }) {
               <Accordion.Header>Metrics</Accordion.Header>
               <Accordion.Body>
                 <ul>
-                  {project.metrics.table.map((item, index) => (
-                    <Fragment key={project.mainHeader.title + item[0]}>
-                      <MetricLiItem>
-                        <MetricText>{item[0]}:</MetricText>
-                        <MetricScore
-                          style={{
-                            background: `${MetricScoreColors[item[1] - 1]}`,
-                            color: "#fff",
-                          }}
-                        >
-                          {item[1]}
-                        </MetricScore>
-                      </MetricLiItem>
-                      {index !== project.metrics.table.length - 1 && <hr />}
-                    </Fragment>
-                  ))}
+                  {project.metrics.table.map(
+                    (item: [string, number], index) => (
+                      <Fragment key={project.mainHeader.title + item[0]}>
+                        <MetricLiItem>
+                          <MetricText>{item[0]}:</MetricText>
+                          <MetricScore
+                            style={{
+                              background: `${MetricScoreColors[item[1] - 1]}`,
+                              color: "#fff",
+                            }}
+                          >
+                            {item[1]}
+                          </MetricScore>
+                        </MetricLiItem>
+                        {index !== project.metrics.table.length - 1 && <hr />}
+                      </Fragment>
+                    )
+                  )}
                 </ul>
               </Accordion.Body>
             </Accordion.Item>
@@ -87,33 +74,35 @@ function PortfolioProject({ project }: { project: Project }) {
               <Accordion.Body>
                 <p>What went well:</p>
                 <ul>
-                  {project.lessonsSummary.whatWentWell.map((item) => (
+                  {project.lessonsSummary.whatWentWell.map((item: string) => (
                     <li key={project.mainHeader.title + item}>{item}</li>
                   ))}
                 </ul>
                 <p>What went poorly:</p>
                 <ul>
-                  {project.lessonsSummary.whatWentPoorly.map((item) => (
+                  {project.lessonsSummary.whatWentPoorly.map((item: string) => (
                     <li key={project.mainHeader.title + item}>{item}</li>
                   ))}
                 </ul>
                 <p>Root causes:</p>
                 <ul>
-                  {project.lessonsSummary.rootCauses.map((item) => (
+                  {project.lessonsSummary.rootCauses.map((item: string) => (
                     <li key={project.mainHeader.title + item}>{item}</li>
                   ))}
                 </ul>
                 <p>"Never again"'s & next time:</p>
                 <ul>
-                  {project.lessonsSummary.neverAgain.map((item) => (
+                  {project.lessonsSummary.neverAgain.map((item: string) => (
                     <li key={project.mainHeader.title + item}>{item}</li>
                   ))}
                 </ul>
                 <p>How can I do it all better:</p>
                 <ul>
-                  {project.lessonsSummary.howCanIDoItAllBetter.map((item) => (
-                    <li key={project.mainHeader.title + item}>{item}</li>
-                  ))}
+                  {project.lessonsSummary.howCanIDoItAllBetter.map(
+                    (item: string) => (
+                      <li key={project.mainHeader.title + item}>{item}</li>
+                    )
+                  )}
                 </ul>
               </Accordion.Body>
             </Accordion.Item>
@@ -121,7 +110,7 @@ function PortfolioProject({ project }: { project: Project }) {
               <Accordion.Header>Important points</Accordion.Header>
               <Accordion.Body>
                 <ul>
-                  {project.importantPoints.items.map((item) => (
+                  {project.importantPoints.map((item: string) => (
                     <li key={project.mainHeader.title + item}>{item}</li>
                   ))}
                 </ul>

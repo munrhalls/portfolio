@@ -1,5 +1,23 @@
 import dojoImg from "./../../assets/f7.png";
 
+export interface Project {
+  type: string;
+  mainHeader: Header;
+  mainSection: MainSection;
+  developmentSummary: string[];
+  metrics: Metrics;
+  lessonsSummary: {
+    whatWentWell: string[];
+    whatWentPoorly: string[];
+    rootCauses: string[];
+    neverAgain: string[];
+  };
+  importantPoints: {
+    items: string[];
+  };
+  link: string;
+}
+
 class Header {
   constructor(public symbolImg: string, public title: string) {}
 }
@@ -50,15 +68,13 @@ const Taizyu = {
   // 4"Track progress & adapt"
   metrics: new Metrics(5, 4, 3, 2),
   lessonsSummary: {
-    whatWentWell: [".a..2", "..b3.", ".c.4."],
+    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
     rootCauses: ["..1a."],
     neverAgain: ["..a.1", ".b.12.", ".3c.."],
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
-  importantPoints: {
-    items: ["..a.123", ".b.4567.", ".c34543."],
-  },
+  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
   link: "https://awesome.com",
 };
 
