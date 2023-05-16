@@ -1,7 +1,31 @@
 import { Container, Row, Col } from "react-bootstrap";
 
 function EncasingTitle({ title }) {
-  return <h2 style={{ color: "#fff", padding: "1.5rem" }}>{title}</h2>;
+  return (
+    <h2 style={{ position: "relative", color: "#fff", padding: "1.5rem" }}>
+      {title}
+      <div
+        style={{
+          position: "absolute",
+          top: "0",
+          bottom: "0",
+
+          right: ".5rem",
+          color: "#fff",
+          borderLeft: "5px solid #fff",
+          borderRight: "5px solid #fff",
+          height: "125%",
+          width: "3rem",
+          display: "flex",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          wordBreak: "break-all",
+        }}
+      >
+        abcdefg
+      </div>
+    </h2>
+  );
 }
 
 function EncasingContent({ children }) {
