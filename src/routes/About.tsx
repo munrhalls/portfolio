@@ -1,8 +1,11 @@
 import { Container, Row, Col } from "react-bootstrap";
 
+function AquaticTitle({ title }) {
+  return <h2 style={{ color: "#fff", padding: "1.5rem" }}>{title}</h2>;
+}
 function About() {
   return (
-    <Container className="mt-3 mb-3">
+    <Container fluid style={{ background: "#fff" }} className={"pt-3 pb-3"}>
       <Row>
         <Col>
           <h1>Hello. I am a junior frontend web developer. </h1>
@@ -10,9 +13,9 @@ function About() {
         </Col>
       </Row>
 
-      <Row>
+      <Row style={{ background: "#000" }}>
         <Col>
-          <h2>Learning software development</h2>
+          <AquaticTitle title={"Learning software development"}></AquaticTitle>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae quae
             veniam delectus quo voluptates, pariatur nulla repudiandae hic
