@@ -16,16 +16,12 @@ class MainSection {
 }
 
 class Metrics {
-  constructor(one: number, two: number, three: number, four: number) {
-    this.one = ["Prevent roadblocks/slowdowns", one];
-    this.two = ["As simple as possible", two];
-    this.three = ["Prioritize", three];
-    this.four = ["Track progress & adapt", four];
+  constructor(one: number) {
+    this.table = [["Prevent roadblocks/slowdowns", one]];
   }
 }
-const projectMetrics = Object.values(new Metrics(0, 0, 0, 0)).map(
-  (metric) => metric[0]
-);
+
+const projectMetrics = new Metrics(0).table.map((line) => line[0]);
 
 const Taizyu = {
   type: "App",
@@ -40,7 +36,7 @@ const Taizyu = {
   // 2"As simple as possible"
   // 3"Prioritize"
   // 4"Track progress & adapt"
-  metrics: new Metrics(4, 4, 5, 5),
+  metrics: new Metrics(5),
 
   // [
   //   {

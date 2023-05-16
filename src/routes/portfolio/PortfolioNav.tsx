@@ -1,4 +1,4 @@
-import { projectMetrics } from "./portfolioData";
+// import { projectMetrics } from "./portfolioData";
 import useMediaQuery from "react-responsive";
 import Alert from "react-bootstrap/Alert";
 import ToggleButton from "react-bootstrap/ToggleButton";
@@ -18,9 +18,9 @@ const PortfolioNav = ({ props }) => {
   const {
     handleFilter,
     projectMetrics,
-    setSortByMetric,
+    sortByMetricId,
+    setSortByMetricId,
     setSortOrder,
-    sortByMetric,
     shownProjects,
     sortOrder,
     handleSort,
@@ -28,6 +28,7 @@ const PortfolioNav = ({ props }) => {
 
   const isMobile = useMediaQuery({ maxWidth: 576 });
 
+  console.log(projectMetrics);
   return (
     <>
       <Row>
@@ -69,13 +70,13 @@ const PortfolioNav = ({ props }) => {
               <Dropdown.Item
                 key={metric}
                 as={Button}
-                onClick={() => setSortByMetric(index)}
+                onClick={() => setSortByMetricId(index)}
               >
                 {metric}
               </Dropdown.Item>
             ))}
             <hr />
-            <Dropdown.Item as={Button} onClick={() => setSortByMetric("None")}>
+            <Dropdown.Item as={Button} onClick={() => setSortByMetricId(null)}>
               None
             </Dropdown.Item>
           </DropdownButton>
@@ -92,12 +93,12 @@ const PortfolioNav = ({ props }) => {
           )}
         </Col>
       </Row>
-      {sortByMetric !== "None" && (
+      {sortByMetricId !== null && (
         <Row className="mt-3">
           <Col>
             <Alert variant="dark">
-              <span style={{ fontWeight: "bold" }}>Sorting by metric:</span>{" "}
-              {sortByMetric}
+              <span style={{ fontWeight: "bold" }}>Sorting by metric: </span>{" "}
+              {projectMetrics[sortByMetricId]}
               {"  "}
               {sortOrder === "asc" ? (
                 <BsSortUp size={24} />

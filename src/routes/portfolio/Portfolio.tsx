@@ -3,7 +3,6 @@ import { projectMetrics } from "./portfolioData";
 
 import { useState } from "react";
 import { Container, Row } from "react-bootstrap";
-import { useMediaQuery } from "react-responsive";
 
 import PortfolioProject from "./PortfolioProject";
 import PortfolioNav from "./PortfolioNav";
@@ -14,9 +13,9 @@ function Portfolio() {
     "App",
     "Learning project",
   ]);
-  const [sortByMetric, setSortByMetric] = useState("None");
+
+  const [sortByMetricId, setSortByMetricId] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
-  const isMobile = useMediaQuery({ maxWidth: 576 });
 
   const handleFilter = (shownProjects: string[]) => {
     setShownProjects(shownProjects);
@@ -27,28 +26,28 @@ function Portfolio() {
   );
 
   const handleSort = (e) => {
-    setSortByMetric(e.target.value);
+    setSortByMetricId(e.target.value);
   };
 
-  const sortedFiltered =
-    sortByMetric === "None"
-      ? filtered
-      : filtered.sort((a, b) => {
-          return sortOrder === "asc"
-            ? a.metrics[sortByMetric].score - b.metrics[sortByMetric].score
-            : b.metrics[sortByMetric].score - a.metrics[sortByMetric].score;
-        });
+  const sortedFiltered = sortByMetricId
+    ? filtered.sort((a, b) => {
+        return sortOrder === "asc"
+          ? a.metrics.table[sortByMetricId][0] -
+              b.metrics.table[sortByMetricId][0]
+          : b.metrics.table[sortByMetricId][0] -
+              a.metrics.table[sortByMetricId][0];
+      })
+    : filtered;
 
   const PortfolioNavProps = {
     handleFilter,
-    projectMetrics,
-    setSortByMetric,
+    handleSort,
+    sortByMetricId,
+    setSortByMetricId,
     setSortOrder,
     sortOrder,
-    sortByMetric,
     shownProjects,
-    isMobile,
-    handleSort,
+    projectMetrics,
   };
 
   return (
