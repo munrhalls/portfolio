@@ -1,8 +1,21 @@
 import { Container, Row, Col } from "react-bootstrap";
 
-function AquaticTitle({ title }) {
+function EncasingTitle({ title }) {
   return <h2 style={{ color: "#fff", padding: "1.5rem" }}>{title}</h2>;
 }
+
+function EncasingContent({ children }) {
+  return (
+    <div style={{ background: "#fff" }}>
+      <Container className="pt-3">
+        <Row>
+          <Col>{children}</Col>
+        </Row>
+      </Container>
+    </div>
+  );
+}
+
 function About() {
   return (
     <Container fluid style={{ background: "#fff" }} className={"pt-3 pb-3"}>
@@ -15,25 +28,162 @@ function About() {
 
       <Row style={{ background: "#000" }}>
         <Col>
-          <AquaticTitle title={"Learning software development"}></AquaticTitle>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae quae
-            veniam delectus quo voluptates, pariatur nulla repudiandae hic
-            corrupti itaque eveniet. Corporis voluptate dolorum iure neque
-            veritatis illum atque quasi!
-          </p>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae quae
-            veniam delectus quo voluptates, pariatur nulla repudiandae hic
-            corrupti itaque eveniet. Corporis voluptate dolorum iure neque
-            veritatis illum atque quasi!Why
-          </p>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae quae
-            veniam delectus quo voluptates, pariatur nulla repudiandae hic
-            corrupti itaque eveniet. Corporis voluptate dolorum iure neque
-            veritatis illum atque quasi!How did it go
-          </p>
+          <EncasingTitle
+            title={"Learning software development"}
+          ></EncasingTitle>
+          <EncasingContent>
+            <h3>Point 1</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!
+            </p>
+            <h3>Point 2</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!Why
+            </p>
+            <h3>Point 3</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!How did it go
+            </p>
+          </EncasingContent>
+        </Col>
+      </Row>
+      <Row style={{ background: "#000" }}>
+        <Col>
+          <EncasingTitle
+            title={"Learning software development"}
+          ></EncasingTitle>
+          <EncasingContent>
+            <h3>Point 1</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!
+            </p>
+            <h3>Point 2</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!Why
+            </p>
+            <h3>Point 3</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!How did it go
+            </p>
+          </EncasingContent>
+        </Col>
+      </Row>
+      <Row style={{ background: "#000" }}>
+        <Col>
+          <EncasingTitle
+            title={"Learning software development"}
+          ></EncasingTitle>
+          <EncasingContent>
+            <h3>Point 1</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!
+            </p>
+            <h3>Point 2</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!Why
+            </p>
+            <h3>Point 3</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!How did it go
+            </p>
+          </EncasingContent>
+        </Col>
+      </Row>
+      <Row style={{ background: "#000" }}>
+        <Col>
+          <EncasingTitle
+            title={"Learning software development"}
+          ></EncasingTitle>
+          <EncasingContent>
+            <h3>Point 1</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!
+            </p>
+            <h3>Point 2</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!Why
+            </p>
+            <h3>Point 3</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!How did it go
+            </p>
+          </EncasingContent>
+        </Col>
+      </Row>
+      <Row style={{ background: "#000" }}>
+        <Col>
+          <EncasingTitle
+            title={"Learning software development"}
+          ></EncasingTitle>
+          <EncasingContent>
+            <h3>Point 1</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!
+            </p>
+            <h3>Point 2</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!Why
+            </p>
+            <h3>Point 3</h3>
+
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
+              quae veniam delectus quo voluptates, pariatur nulla repudiandae
+              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
+              veritatis illum atque quasi!How did it go
+            </p>
+          </EncasingContent>
         </Col>
       </Row>
       <Row>
