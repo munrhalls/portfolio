@@ -20,10 +20,9 @@ function EncasingTitle({ title }) {
           flexDirection: "column",
           flexWrap: "wrap",
           wordBreak: "break-all",
-          animation: "drift 10s linear infinite",
         }}
       >
-        abcdefg
+        <div style={{ animation: "drift 10s linear infinite" }}>abcdefg</div>
       </div>
       <style>
         {`
