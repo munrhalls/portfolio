@@ -1,33 +1,10 @@
 import { portfolioData } from "./portfolioData";
 import { projectMetrics } from "./portfolioData";
 
-import { useState, Fragment } from "react";
-import Alert from "react-bootstrap/Alert";
-import ToggleButton from "react-bootstrap/ToggleButton";
-import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
-import Card from "react-bootstrap/Card";
-import { BsSortDown, BsSortUp } from "react-icons/bs";
-import { FaFolderOpen, FaSort } from "react-icons/fa";
-import {
-  Container,
-  Row,
-  Col,
-  Dropdown,
-  DropdownButton,
-  Button,
-  ButtonGroup,
-  Accordion,
-  Image,
-} from "react-bootstrap";
+import { useState } from "react";
+import { Container, Row } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
 
-import {
-  MetricLiItem,
-  MetricText,
-  MetricScore,
-  MetricScoreColors,
-  span,
-} from "./../../MainReusables";
 import PortfolioProject from "./PortfolioProject";
 import PortfolioNav from "./PortfolioNav";
 
