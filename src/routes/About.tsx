@@ -20,10 +20,26 @@ function EncasingTitle({ title }) {
           flexDirection: "column",
           flexWrap: "wrap",
           wordBreak: "break-all",
+          animation: "drift 10s linear infinite",
         }}
       >
         abcdefg
       </div>
+      <style>
+        {`
+          @keyframes drift {
+            0% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-50%);
+            }
+            100% {
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
     </h2>
   );
 }
