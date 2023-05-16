@@ -21,7 +21,6 @@ import {
   Image,
 } from "react-bootstrap";
 
-
 import {
   MetricLiItem,
   MetricText,
@@ -66,23 +65,28 @@ function PortfolioProject({ project }) {
               <Accordion.Header>Metrics</Accordion.Header>
               <Accordion.Body>
                 <ul>
-                  {project.metrics.map((item, index) => (
+                  {Object.values(project.metrics).map((item, index) => (
+                    // 1. TURN TO {}
+                    // 2. ADJUST SYNTAX HERE, MAKE ITERABLE
+                    // metrics = {}
                     // can do metrics.entries().map(metricKeyValue => )
-                    <Fragment key={project.mainHeader.title + item.title}>
+                    <Fragment key={project.mainHeader.title + item[0]}>
                       <MetricLiItem>
-                        <MetricText>{item.title}:</MetricText>
+                        <MetricText>{item[0]}:</MetricText>
                         {/* can do metricKeyValue[0] instead */}
                         <MetricScore
                           style={{
-                            background: `${MetricScoreColors[item.score - 1]}`,
+                            background: `${MetricScoreColors[item[1] - 1]}`,
                             // can do metricKeyValue[1] instead
                             color: "#fff",
                           }}
                         >
-                          {item.score}
+                          {item[1]}
                         </MetricScore>
                       </MetricLiItem>
-                      {index !== project.metrics.length - 1 && <hr />}
+                      {index !== Object.values(project.metrics).length - 1 && (
+                        <hr />
+                      )}
                     </Fragment>
                   ))}
                 </ul>

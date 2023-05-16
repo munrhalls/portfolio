@@ -22,6 +22,15 @@ class MainSection {
   }
 }
 
+class Metrics {
+  constructor(one: number, two: number, three: number, four: number) {
+    this.one = ["Prevent roadblocks/slowdowns", one];
+    this.two = ["As simple as possible", two];
+    this.three = ["Prioritize", three];
+    this.four = ["Track progress & adapt", four];
+  }
+}
+
 const header = new Header(dojoImg, "Taizyu");
 console.log(header);
 
@@ -34,26 +43,30 @@ const Taizyu = {
     "value to uservalue to uservalue to uservalue to uservalue to user"
   ),
   developmentSummary: ["a...", "b...", "c..."],
-  // can do metrics: new Metrics(num, num, num, num)
+  // 1"Prevent roadblocks/slowdowns"
+  // 2"As simple as possible"
+  // 3"Prioritize"
+  // 4"Track progress & adapt"
+  metrics: new Metrics(4, 4, 5, 5),
 
-  metrics: [
-    {
-      title: projectMetrics[0],
-      score: 5,
-    },
-    {
-      title: projectMetrics[1],
-      score: 5,
-    },
-    {
-      title: projectMetrics[2],
-      score: 3,
-    },
-    {
-      title: projectMetrics[3],
-      score: 5,
-    },
-  ],
+  // [
+  //   {
+  //     title: projectMetrics[0],
+  //     score: 5,
+  //   },
+  //   {
+  //     title: projectMetrics[1],
+  //     score: 5,
+  //   },
+  //   {
+  //     title: projectMetrics[2],
+  //     score: 3,
+  //   },
+  //   {
+  //     title: projectMetrics[3],
+  //     score: 5,
+  //   },
+  // ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
