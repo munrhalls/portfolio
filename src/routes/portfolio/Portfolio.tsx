@@ -12,7 +12,7 @@ function Portfolio() {
     "Learning project",
   ]);
 
-  const [sortByMetricId, setSortByMetricId] = useState<string | null>(null);
+  const [sortByMetricId, setSortByMetricId] = useState<number | null>(null);
   const [sortOrder, setSortOrder] = useState("asc");
 
   const handleFilter = (shownProjects: string[]) => {
@@ -23,23 +23,19 @@ function Portfolio() {
     shownProjects.includes(item.type)
   );
 
-  const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortByMetricId(e.target.value);
-  };
-
   const sortedFiltered = sortByMetricId
     ? filtered.sort((a, b) => {
         return sortOrder === "asc"
-          ? a.metrics.table[sortByMetricId][0] -
-              b.metrics.table[sortByMetricId][0]
-          : b.metrics.table[sortByMetricId][0] -
-              a.metrics.table[sortByMetricId][0];
+          ? a.metrics.getTable()[sortByMetricId][0] -
+              b.metrics.getTable()[sortByMetricId][0]
+          : b.metrics.getTable()[sortByMetricId][0] -
+              a.metrics.getTable()[sortByMetricId][0];
+        // metrics.getScoreFromRowId(id)
       })
     : filtered;
 
   const PortfolioNavProps = {
     handleFilter,
-    handleSort,
     sortByMetricId,
     setSortByMetricId,
     setSortOrder,

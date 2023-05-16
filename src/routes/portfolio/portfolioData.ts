@@ -26,9 +26,17 @@ class Metrics {
       ["Track progress & adapt", four],
     ];
   }
+
+  getScoreFromRowId(id: number): number | null {
+    return this.table[id]?.[1] ?? null;
+  }
+
+  getTable(): [string, number][] {
+    return this.table;
+  }
 }
 
-const projectMetrics = new Metrics(0).table.map((row) => row[0]);
+const projectMetrics = new Metrics(0).getTable().map((row) => row[0]);
 
 const Taizyu = {
   type: "App",

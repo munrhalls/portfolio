@@ -5,14 +5,7 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import { BsSortDown, BsSortUp } from "react-icons/bs";
 import { FaFolderOpen, FaSort } from "react-icons/fa";
-import {
-  Row,
-  Col,
-  Dropdown,
-  DropdownButton,
-  Button,
-  ButtonGroup,
-} from "react-bootstrap";
+import { Row, Col, Dropdown, DropdownButton, Button } from "react-bootstrap";
 
 const PortfolioNav = ({ props }) => {
   const {
@@ -23,7 +16,6 @@ const PortfolioNav = ({ props }) => {
     setSortOrder,
     shownProjects,
     sortOrder,
-    handleSort,
   } = props;
 
   const isMobile = useMediaQuery({ maxWidth: 576 });
@@ -66,7 +58,7 @@ const PortfolioNav = ({ props }) => {
             id="dropdown-basic-button"
             title={`Sort`}
           >
-            {projectMetrics.map((metric, index) => (
+            {projectMetrics.map((metric: number, index: number) => (
               <Dropdown.Item
                 key={metric}
                 as={Button}
