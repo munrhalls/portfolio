@@ -65,27 +65,19 @@ function PortfolioProject({ project }) {
               <Accordion.Body>
                 <ul>
                   {project.metrics.table.map((item, index) => (
-                    // 1. TURN TO {}
-                    // 2. ADJUST SYNTAX HERE, MAKE ITERABLE
-                    // metrics = {}
-                    // can do metrics.entries().map(metricKeyValue => )
                     <Fragment key={project.mainHeader.title + item[0]}>
                       <MetricLiItem>
                         <MetricText>{item[0]}:</MetricText>
-                        {/* can do metricKeyValue[0] instead */}
                         <MetricScore
                           style={{
                             background: `${MetricScoreColors[item[1] - 1]}`,
-                            // can do metricKeyValue[1] instead
                             color: "#fff",
                           }}
                         >
                           {item[1]}
                         </MetricScore>
                       </MetricLiItem>
-                      {index !== Object.values(project.metrics).length - 1 && (
-                        <hr />
-                      )}
+                      {index !== project.metrics.table.length - 1 && <hr />}
                     </Fragment>
                   ))}
                 </ul>
