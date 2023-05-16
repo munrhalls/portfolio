@@ -1,3 +1,4 @@
+import { projectMetrics } from "./portfolioData";
 import useMediaQuery from "react-responsive";
 import Alert from "react-bootstrap/Alert";
 import ToggleButton from "react-bootstrap/ToggleButton";

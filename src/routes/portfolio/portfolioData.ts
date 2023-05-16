@@ -1,12 +1,5 @@
 import dojoImg from "./../../assets/f7.png";
 
-const projectMetrics = [
-  "Prevent roadblocks/slowdowns",
-  "As simple as possible",
-  "Prioritize",
-  "Track progress & adapt",
-];
-
 class Header {
   constructor(src: string, title: string) {
     this.title = title;
@@ -30,9 +23,9 @@ class Metrics {
     this.four = ["Track progress & adapt", four];
   }
 }
-
-const header = new Header(dojoImg, "Taizyu");
-console.log(header);
+const projectMetrics = Object.values(new Metrics(0, 0, 0, 0)).map(
+  (metric) => metric[0]
+);
 
 const Taizyu = {
   type: "App",
