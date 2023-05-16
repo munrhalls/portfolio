@@ -1,5 +1,4 @@
 // import { projectMetrics } from "./portfolioData";
-import useMediaQuery from "react-responsive";
 import Alert from "react-bootstrap/Alert";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
@@ -15,6 +14,7 @@ type PortfolioNavProps = {
   sortOrder: string;
   shownProjects: string[];
   projectMetrics: string[];
+  isMobile: boolean;
 };
 
 const PortfolioNav: React.FC<PortfolioNavProps> = (props) => {
@@ -26,14 +26,12 @@ const PortfolioNav: React.FC<PortfolioNavProps> = (props) => {
     setSortOrder,
     shownProjects,
     sortOrder,
+    isMobile,
   } = props;
 
-  const isMobile = useMediaQuery({ maxWidth: 576 });
-
-  console.log(projectMetrics);
   return (
     <>
-      <Row>
+      <Row className="mb-3">
         <Col xs={12} sm="auto">
           <FaFolderOpen
             size={isMobile ? 24 : 32}
