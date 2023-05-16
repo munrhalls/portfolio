@@ -49,30 +49,12 @@ const Taizyu = {
   // 3"Prioritize"
   // 4"Track progress & adapt"
   metrics: new Metrics(5, 4, 3, 2),
-
-  // [
-  //   {
-  //     title: projectMetrics[0],
-  //     score: 5,
-  //   },
-  //   {
-  //     title: projectMetrics[1],
-  //     score: 5,
-  //   },
-  //   {
-  //     title: projectMetrics[2],
-  //     score: 3,
-  //   },
-  //   {
-  //     title: projectMetrics[3],
-  //     score: 5,
-  //   },
-  // ],
   lessonsSummary: {
     whatWentWell: [".a..2", "..b3.", ".c.4."],
     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
     rootCauses: ["..1a."],
     neverAgain: ["..a.1", ".b.12.", ".3c.."],
+    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: {
     items: ["..a.123", ".b.4567.", ".c34543."],

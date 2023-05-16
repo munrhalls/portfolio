@@ -9,7 +9,25 @@ import {
   MetricScoreColors,
 } from "./../../MainReusables";
 
-function PortfolioProject({ project }) {
+interface Project {
+  type: string;
+  mainHeader: Header;
+  mainSection: MainSection;
+  developmentSummary: string[];
+  metrics: Metrics;
+  lessonsSummary: {
+    whatWentWell: string[];
+    whatWentPoorly: string[];
+    rootCauses: string[];
+    neverAgain: string[];
+  };
+  importantPoints: {
+    items: string[];
+  };
+  link: string;
+}
+
+function PortfolioProject({ project }: { project: Project }) {
   return (
     <Col xs={10} sm={6} md={6} lg={4}>
       <Card>
@@ -88,6 +106,12 @@ function PortfolioProject({ project }) {
                 <p>"Never again"'s & next time:</p>
                 <ul>
                   {project.lessonsSummary.neverAgain.map((item) => (
+                    <li key={project.mainHeader.title + item}>{item}</li>
+                  ))}
+                </ul>
+                <p>How can I do it all better:</p>
+                <ul>
+                  {project.lessonsSummary.howCanIDoItAllBetter.map((item) => (
                     <li key={project.mainHeader.title + item}>{item}</li>
                   ))}
                 </ul>
