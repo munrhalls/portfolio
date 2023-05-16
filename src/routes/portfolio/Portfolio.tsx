@@ -187,16 +187,19 @@ function Portfolio() {
                         <Accordion.Body>
                           <ul>
                             {project.metrics.map((item, index) => (
+                              // can do metrics.entries().map(metricKeyValue => )
                               <Fragment
                                 key={project.mainHeader.title + item.title}
                               >
                                 <MetricLiItem>
                                   <MetricText>{item.title}:</MetricText>
+                                  {/* can do metricKeyValue[0] instead */}
                                   <MetricScore
                                     style={{
                                       background: `${
                                         MetricScoreColors[item.score - 1]
                                       }`,
+                                      // can do metricKeyValue[1] instead
                                       color: "#fff",
                                     }}
                                   >

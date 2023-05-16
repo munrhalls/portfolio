@@ -12,7 +12,7 @@ import Authentication from "./routes/auth/Authentication.tsx";
 
 import Home from "./routes/Home.tsx";
 import Portfolio from "./routes/portfolio/Portfolio.tsx";
-import Articles from "./routes/Articles.tsx";
+import Articles from "./routes/articles/Articles.tsx";
 import About from "./routes/About.tsx";
 
 import Contact from "./routes/Contact.tsx";

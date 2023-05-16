@@ -1,6 +1,9 @@
+import { placeholdersArticle } from "./PlaceholdersBasedDevelopment";
+
 function Articles() {
   return (
     <>
+      {placeholdersArticle}
       <h1>
         Geometry of time, problem, solution and of the wholeness of solving
         activities.

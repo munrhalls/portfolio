@@ -34,6 +34,8 @@ const Taizyu = {
     "value to uservalue to uservalue to uservalue to uservalue to user"
   ),
   developmentSummary: ["a...", "b...", "c..."],
+  // can do metrics: new Metrics(num, num, num, num)
+
   metrics: [
     {
       title: projectMetrics[0],
