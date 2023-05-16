@@ -1,4 +1,5 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
+import f1 from "./../assets/f1.png";
 
 function EncasingTitle({ title }) {
   return (
@@ -22,7 +23,13 @@ function EncasingTitle({ title }) {
           wordBreak: "break-all",
         }}
       >
-        <div style={{ animation: "drift 10s linear infinite" }}>abcdefg</div>
+        <div style={{ animation: "drift 22.5s ease-out infinite" }}>
+          <Image
+            style={{ height: "3rem", width: "2rem", borderRadius: "5px" }}
+            src={f1}
+            alt={"abcd"}
+          />
+        </div>
       </div>
       <style>
         {`
