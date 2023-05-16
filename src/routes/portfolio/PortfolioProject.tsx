@@ -9,7 +9,7 @@ import {
   MetricScoreColors,
 } from "./../../MainReusables";
 
-import Project from "./portfolioData";
+import { Project } from "./portfolioData";
 import { portfolioData } from "./portfolioData";
 
 function PortfolioProject({ project }: { project: Project }) {
@@ -21,13 +21,13 @@ function PortfolioProject({ project }: { project: Project }) {
             <Image
               rounded
               style={{ width: "2.35rem", marginRight: "1rem" }}
-              src={project.mainHeader.symbolImg}
+              src={project.header.symbolImg}
               alt="smbl|"
             />
-            <span>{project.mainHeader.title}</span>
+            <span>{project.header.title}</span>
           </h2>
         </Card.Header>
-        <Card.Img variant="top" src={project.mainImg} />
+        <Card.Img variant="top" src={project.header.headerImg} />
         <Card.Body>
           <Card.Title>{project.mainSection.subtitle}</Card.Title>
           <Card.Text>{project.mainSection.shortDesc}</Card.Text>
@@ -39,7 +39,7 @@ function PortfolioProject({ project }: { project: Project }) {
               <Accordion.Body>
                 <ul>
                   {project.developmentSummary.map((item: string) => (
-                    <li key={project.mainHeader.title + item}>{item}</li>
+                    <li key={project.header.title + item}>{item}</li>
                   ))}
                 </ul>
               </Accordion.Body>
@@ -50,7 +50,7 @@ function PortfolioProject({ project }: { project: Project }) {
                 <ul>
                   {project.metrics.table.map(
                     (item: [string, number], index) => (
-                      <Fragment key={project.mainHeader.title + item[0]}>
+                      <Fragment key={project.header.title + item[0]}>
                         <MetricLiItem>
                           <MetricText>{item[0]}:</MetricText>
                           <MetricScore
@@ -75,32 +75,32 @@ function PortfolioProject({ project }: { project: Project }) {
                 <p>What went well:</p>
                 <ul>
                   {project.lessonsSummary.whatWentWell.map((item: string) => (
-                    <li key={project.mainHeader.title + item}>{item}</li>
+                    <li key={project.header.title + item}>{item}</li>
                   ))}
                 </ul>
                 <p>What went poorly:</p>
                 <ul>
                   {project.lessonsSummary.whatWentPoorly.map((item: string) => (
-                    <li key={project.mainHeader.title + item}>{item}</li>
+                    <li key={project.header.title + item}>{item}</li>
                   ))}
                 </ul>
                 <p>Root causes:</p>
                 <ul>
                   {project.lessonsSummary.rootCauses.map((item: string) => (
-                    <li key={project.mainHeader.title + item}>{item}</li>
+                    <li key={project.header.title + item}>{item}</li>
                   ))}
                 </ul>
                 <p>"Never again"'s & next time:</p>
                 <ul>
                   {project.lessonsSummary.neverAgain.map((item: string) => (
-                    <li key={project.mainHeader.title + item}>{item}</li>
+                    <li key={project.header.title + item}>{item}</li>
                   ))}
                 </ul>
                 <p>How can I do it all better:</p>
                 <ul>
                   {project.lessonsSummary.howCanIDoItAllBetter.map(
                     (item: string) => (
-                      <li key={project.mainHeader.title + item}>{item}</li>
+                      <li key={project.header.title + item}>{item}</li>
                     )
                   )}
                 </ul>
@@ -111,7 +111,7 @@ function PortfolioProject({ project }: { project: Project }) {
               <Accordion.Body>
                 <ul>
                   {project.importantPoints.map((item: string) => (
-                    <li key={project.mainHeader.title + item}>{item}</li>
+                    <li key={project.header.title + item}>{item}</li>
                   ))}
                 </ul>
               </Accordion.Body>

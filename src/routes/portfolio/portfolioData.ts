@@ -2,7 +2,7 @@ import dojoImg from "./../../assets/f7.png";
 
 export interface Project {
   type: string;
-  mainHeader: Header;
+  header: Header;
   mainSection: MainSection;
   developmentSummary: string[];
   metrics: Metrics;
@@ -12,14 +12,16 @@ export interface Project {
     rootCauses: string[];
     neverAgain: string[];
   };
-  importantPoints: {
-    items: string[];
-  };
+  importantPoints: string[];
   link: string;
 }
 
 class Header {
-  constructor(public symbolImg: string, public title: string) {}
+  constructor(
+    public symbolImg: string,
+    public title: string,
+    public headerImg: string
+  ) {}
 }
 
 class MainSection {
@@ -55,7 +57,7 @@ const projectMetrics = new Metrics(0, 0, 0, 0).getTable().map((row) => row[0]);
 
 const Taizyu = {
   type: "App",
-  mainHeader: new Header(dojoImg, "Taizyu"),
+  header: new Header(dojoImg, "Taizyu", dojoImg),
   mainSection: new MainSection(
     "Visuals for timeroad",
     "description description description description description ",
