@@ -11,6 +11,7 @@ export interface Project {
     whatWentPoorly: string[];
     rootCauses: string[];
     neverAgain: string[];
+    howCanIDoItAllBetter: string[];
   };
   importantPoints: string[];
   link: string;

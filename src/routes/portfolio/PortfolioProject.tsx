@@ -10,7 +10,6 @@ import {
 } from "./../../MainReusables";
 
 import { Project } from "./portfolioData";
-import { portfolioData } from "./portfolioData";
 
 function PortfolioProject({ project }: { project: Project }) {
   return (
@@ -48,8 +47,9 @@ function PortfolioProject({ project }: { project: Project }) {
               <Accordion.Header>Metrics</Accordion.Header>
               <Accordion.Body>
                 <ul>
-                  {project.metrics.table.map(
-                    (item: [string, number], index) => (
+                  {project.metrics
+                    .getTable()
+                    .map((item: [string, number], index) => (
                       <Fragment key={project.header.title + item[0]}>
                         <MetricLiItem>
                           <MetricText>{item[0]}:</MetricText>
@@ -62,10 +62,11 @@ function PortfolioProject({ project }: { project: Project }) {
                             {item[1]}
                           </MetricScore>
                         </MetricLiItem>
-                        {index !== project.metrics.table.length - 1 && <hr />}
+                        {index !== project.metrics.getTable().length - 1 && (
+                          <hr />
+                        )}
                       </Fragment>
-                    )
-                  )}
+                    ))}
                 </ul>
               </Accordion.Body>
             </Accordion.Item>
