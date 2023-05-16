@@ -2,7 +2,6 @@ import { portfolioData } from "./portfolioData";
 import { projectMetrics } from "./portfolioData";
 
 import { useState, Fragment } from "react";
-import Badge from "react-bootstrap/Badge";
 import Alert from "react-bootstrap/Alert";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
@@ -29,6 +28,7 @@ import {
   MetricScoreColors,
   span,
 } from "./../../MainReusables";
+import PortfolioProject from "./PortfolioProject";
 
 function Portfolio() {
   const [shownProjects, setShownProjects] = useState([
@@ -147,7 +147,8 @@ function Portfolio() {
             </Col>
           </Row>
         )}
-        <Row className="mt-3 justify-content-center">
+        // TURN TO COMP PORTFOLIO MENU
+        {/* <Row className="mt-3 justify-content-center">
           {sortedFiltered.map((project) => {
             return (
               <Col key={project.mainHeader.title} xs={10} sm={6} md={6} lg={4}>
@@ -187,19 +188,16 @@ function Portfolio() {
                         <Accordion.Body>
                           <ul>
                             {project.metrics.map((item, index) => (
-                              // can do metrics.entries().map(metricKeyValue => )
                               <Fragment
                                 key={project.mainHeader.title + item.title}
                               >
                                 <MetricLiItem>
                                   <MetricText>{item.title}:</MetricText>
-                                  {/* can do metricKeyValue[0] instead */}
                                   <MetricScore
                                     style={{
                                       background: `${
                                         MetricScoreColors[item.score - 1]
                                       }`,
-                                      // can do metricKeyValue[1] instead
                                       color: "#fff",
                                     }}
                                   >
@@ -273,7 +271,8 @@ function Portfolio() {
               </Col>
             );
           })}
-        </Row>
+        </Row> */}
+        <PortfolioProject sortedFiltered={sortedFiltered} />
       </Container>
     </>
   );
