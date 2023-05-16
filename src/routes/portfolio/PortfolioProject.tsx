@@ -21,7 +21,6 @@ import {
   Image,
 } from "react-bootstrap";
 
-import { useMediaQuery } from "react-responsive";
 
 import {
   MetricLiItem,
