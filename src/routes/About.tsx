@@ -1,7 +1,15 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
 import f1 from "./../assets/f1.png";
 
-function EncasingTitle({ title }) {
+interface EncasingContentProps {
+  children: React.ReactNode;
+}
+
+interface EncasingTitleProps {
+  title: string;
+}
+
+function EncasingTitle({ title }: EncasingTitleProps) {
   return (
     <h2 style={{ position: "relative", color: "#fff", padding: "1.5rem" }}>
       {title}
@@ -50,7 +58,7 @@ function EncasingTitle({ title }) {
   );
 }
 
-function EncasingContent({ children }) {
+function EncasingContent({ children }: EncasingContentProps) {
   return (
     <div style={{ background: "#fff" }}>
       <Container className="pt-3">
