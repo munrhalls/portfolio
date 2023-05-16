@@ -16,8 +16,13 @@ class MainSection {
 }
 
 class Metrics {
-  constructor(one: number) {
-    this.table = [["Prevent roadblocks/slowdowns", one]];
+  constructor(one: number, two: number, three: number, four: number) {
+    this.table = [
+      ["Prevent roadblocks/slowdowns", one],
+      ["As simple as possible", two],
+      ["Prioritize", three],
+      ["Track progress & adapt", four],
+    ];
   }
 }
 
@@ -36,7 +41,7 @@ const Taizyu = {
   // 2"As simple as possible"
   // 3"Prioritize"
   // 4"Track progress & adapt"
-  metrics: new Metrics(5),
+  metrics: new Metrics(5, 4, 3, 2),
 
   // [
   //   {
