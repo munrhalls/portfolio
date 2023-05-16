@@ -25,12 +25,13 @@ function Portfolio() {
 
   const sortedFiltered = sortByMetricId
     ? filtered.sort((a, b) => {
+        console.log(a.metrics.getScoreFromRowId(sortByMetricId));
+
         return sortOrder === "asc"
-          ? a.metrics.getTable()[sortByMetricId][0] -
-              b.metrics.getTable()[sortByMetricId][0]
-          : b.metrics.getTable()[sortByMetricId][0] -
-              a.metrics.getTable()[sortByMetricId][0];
-        // metrics.getScoreFromRowId(id)
+          ? a.metrics.getScoreFromRowId(sortByMetricId)! -
+              b.metrics.getScoreFromRowId(sortByMetricId)!
+          : b.metrics.getScoreFromRowId(sortByMetricId)! -
+              a.metrics.getScoreFromRowId(sortByMetricId)!;
       })
     : filtered;
 
