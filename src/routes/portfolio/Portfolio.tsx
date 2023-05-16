@@ -25,13 +25,14 @@ function Portfolio() {
 
   const sortedFiltered = sortByMetricId
     ? filtered.sort((a, b) => {
-        console.log(a.metrics.getScoreFromRowId(sortByMetricId));
+        const scoreA = a.metrics.getScoreFromRowId(sortByMetricId);
+        const scoreB = b.metrics.getScoreFromRowId(sortByMetricId);
 
-        return sortOrder === "asc"
-          ? a.metrics.getScoreFromRowId(sortByMetricId)! -
-              b.metrics.getScoreFromRowId(sortByMetricId)!
-          : b.metrics.getScoreFromRowId(sortByMetricId)! -
-              a.metrics.getScoreFromRowId(sortByMetricId)!;
+        if (scoreA !== null && scoreB !== null) {
+          return sortOrder === "asc" ? scoreA - scoreB : scoreB - scoreA;
+        }
+
+        return 0;
       })
     : filtered;
 
@@ -48,7 +49,7 @@ function Portfolio() {
   return (
     <>
       <Container className="mt-3 mb-3">
-        <PortfolioNav props={PortfolioNavProps} />
+        <PortfolioNav {...PortfolioNavProps} />
 
         <Row className="mt-3 justify-content-center">
           {sortedFiltered.map((project) => {

@@ -1,18 +1,15 @@
 import dojoImg from "./../../assets/f7.png";
 
 class Header {
-  constructor(src: string, title: string) {
-    this.title = title;
-    this.symbolImg = src;
-  }
+  constructor(public symbolImg: string, public title: string) {}
 }
 
 class MainSection {
-  constructor(subtitle: string, shortDesc: string, valueToUser: string) {
-    this.subtitle = subtitle;
-    this.shortDesc = shortDesc;
-    this.valueToUser = valueToUser;
-  }
+  constructor(
+    public subtitle: string,
+    public shortDesc: string,
+    public valueToUser: string
+  ) {}
 }
 
 class Metrics {
@@ -36,7 +33,7 @@ class Metrics {
   }
 }
 
-const projectMetrics = new Metrics(0).getTable().map((row) => row[0]);
+const projectMetrics = new Metrics(0, 0, 0, 0).getTable().map((row) => row[0]);
 
 const Taizyu = {
   type: "App",
