@@ -35,7 +35,10 @@ const PortfolioNav: React.FC<PortfolioNavProps> = (props) => {
     <>
       <Row>
         <Col xs={12} sm="auto">
-          <FaFolderOpen size={32} style={{ margin: "0 1rem" }} />
+          <FaFolderOpen
+            size={isMobile ? 24 : 32}
+            style={{ margin: "0 1rem" }}
+          />
           <ToggleButtonGroup
             type="checkbox"
             value={shownProjects}
@@ -62,7 +65,7 @@ const PortfolioNav: React.FC<PortfolioNavProps> = (props) => {
         </Col>
 
         <Col xs={12} sm="auto" className={`d-flex ${isMobile ? "mt-3" : ""}`}>
-          <FaSort size={32} style={{ margin: "0 1rem" }} />
+          <FaSort size={isMobile ? 24 : 32} style={{ margin: "0 1rem" }} />
           <DropdownButton
             variant="dark"
             id="dropdown-basic-button"
