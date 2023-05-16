@@ -12,8 +12,8 @@ function EncasingTitle({ title }) {
 
           right: ".5rem",
           color: "#fff",
-          borderLeft: "5px solid #fff",
-          borderRight: "5px solid #fff",
+          borderLeft: "3px solid #fff",
+          borderRight: "3px solid #fff",
           height: "125%",
           width: "3rem",
           display: "flex",
