@@ -1,5 +1,4 @@
 import { portfolioData } from "./portfolioData";
-import { projectMetrics } from "./portfolioData";
 
 import { useState, Fragment } from "react";
 import Badge from "react-bootstrap/Badge";
@@ -65,7 +64,7 @@ function PortfolioProject({ project }) {
               <Accordion.Header>Metrics</Accordion.Header>
               <Accordion.Body>
                 <ul>
-                  {Object.values(project.metrics).map((item, index) => (
+                  {project.metrics.table.map((item, index) => (
                     // 1. TURN TO {}
                     // 2. ADJUST SYNTAX HERE, MAKE ITERABLE
                     // metrics = {}

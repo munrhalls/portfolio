@@ -21,7 +21,7 @@ class Metrics {
   }
 }
 
-const projectMetrics = new Metrics(0).table.map((line) => line[0]);
+const projectMetrics = new Metrics(0).table.map((row) => row[0]);
 
 const Taizyu = {
   type: "App",
