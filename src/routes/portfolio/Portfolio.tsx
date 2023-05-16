@@ -147,7 +147,6 @@ function Portfolio() {
             </Col>
           </Row>
         )}
-        // TURN TO COMP PORTFOLIO MENU
         {/* <Row className="mt-3 justify-content-center">
           {sortedFiltered.map((project) => {
             return (
@@ -272,7 +271,16 @@ function Portfolio() {
             );
           })}
         </Row> */}
-        <PortfolioProject sortedFiltered={sortedFiltered} />
+        <Row className="mt-3 justify-content-center">
+          {sortedFiltered.map((project) => {
+            return (
+              <PortfolioProject
+                key={project.mainHeader.title}
+                project={project}
+              />
+            );
+          })}
+        </Row>
       </Container>
     </>
   );
