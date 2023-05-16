@@ -118,7 +118,121 @@ const Carbyne = {
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
   link: "https://awesome.com",
 };
-const portfolioData = [Taizyu, Portfolio, Carbyne];
+
+const Inaflash = {
+  type: "App",
+  header: new Header(dojoImg, "Inaflash", dojoImg),
+  mainSection: new MainSection(
+    "Flashcards",
+    "description description description description description ",
+    "value to uservalue to uservalue to uservalue to uservalue to user"
+  ),
+  developmentSummary: ["a...", "b...", "c..."],
+  metrics: new Metrics(3, 1, 5, 4),
+  lessonsSummary: {
+    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+    rootCauses: ["..1a."],
+    neverAgain: ["..a.1", ".b.12.", ".3c.."],
+    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+  },
+  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  link: "https://awesome.com",
+};
+
+const BulbazaurProject = {
+  type: "Website",
+  header: new Header(dojoImg, "BulbazaurProject", dojoImg),
+  mainSection: new MainSection(
+    "Flashcards",
+    "description description description description description ",
+    "value to uservalue to uservalue to uservalue to uservalue to user"
+  ),
+  developmentSummary: ["a...", "b...", "c..."],
+  metrics: new Metrics(5, 5, 5, 5),
+  lessonsSummary: {
+    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+    rootCauses: ["..1a."],
+    neverAgain: ["..a.1", ".b.12.", ".3c.."],
+    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+  },
+  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  link: "https://awesome.com",
+};
+
+const TestOnes = {
+  type: "App",
+  header: new Header(dojoImg, "TestOnes", dojoImg),
+  mainSection: new MainSection(
+    "Flashcards",
+    "description description description description description ",
+    "value to uservalue to uservalue to uservalue to uservalue to user"
+  ),
+  developmentSummary: ["a...", "b...", "c..."],
+  metrics: new Metrics(1, 1, 1, 1),
+  lessonsSummary: {
+    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+    rootCauses: ["..1a."],
+    neverAgain: ["..a.1", ".b.12.", ".3c.."],
+    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+  },
+  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  link: "https://awesome.com",
+};
+
+const TestThrees = {
+  type: "App",
+  header: new Header(dojoImg, "TestThrees", dojoImg),
+  mainSection: new MainSection(
+    "Flashcards",
+    "description description description description description ",
+    "value to uservalue to uservalue to uservalue to uservalue to user"
+  ),
+  developmentSummary: ["a...", "b...", "c..."],
+  metrics: new Metrics(3, 3, 3, 3),
+  lessonsSummary: {
+    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+    rootCauses: ["..1a."],
+    neverAgain: ["..a.1", ".b.12.", ".3c.."],
+    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+  },
+  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  link: "https://awesome.com",
+};
+
+const TestFours = {
+  type: "App",
+  header: new Header(dojoImg, "TestFours", dojoImg),
+  mainSection: new MainSection(
+    "Flashcards",
+    "description description description description description ",
+    "value to uservalue to uservalue to uservalue to uservalue to user"
+  ),
+  developmentSummary: ["a...", "b...", "c..."],
+  metrics: new Metrics(4, 4, 4, 4),
+  lessonsSummary: {
+    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+    rootCauses: ["..1a."],
+    neverAgain: ["..a.1", ".b.12.", ".3c.."],
+    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+  },
+  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  link: "https://awesome.com",
+};
+const portfolioData = [
+  Taizyu,
+  Portfolio,
+  Carbyne,
+  Inaflash,
+  BulbazaurProject,
+  TestOnes,
+  TestThrees,
+  TestFours,
+];
 
 export { projectMetrics };
 export { portfolioData };
