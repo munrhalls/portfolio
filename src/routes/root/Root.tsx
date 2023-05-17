@@ -3,12 +3,22 @@ import { Container, Navbar, Nav, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Outlet } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { useMediaQuery } from "react-responsive";
 import Logo from "./../../assets/LOGO.png";
 
 function Root() {
+  const isMobile = useMediaQuery({ maxWidth: 576 });
+
   return (
     <>
-      <Navbar bg="light" expand="md">
+      <Navbar
+        style={{
+          background: "#fff",
+          borderBottom: "3px solid #000",
+          padding: "12px",
+        }}
+        expand="md"
+      >
         <Container>
           <Navbar.Brand
             style={{
@@ -39,11 +49,29 @@ function Root() {
             </span>
           </Navbar.Brand>
           <Navbar.Toggle style={{ outline: "none" }} />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            style={isMobile ? { paddingTop: "8px" } : {}}
+          >
             <Nav>
-              <LinkContainer to="/">
-                <Nav.Link>Home</Nav.Link>
-              </LinkContainer>
+              <div
+                style={{
+                  borderBottom: `${
+                    isMobile ? "1px solid rgba(0, 0, 0, 0.55)" : "none"
+                  }`,
+                  borderRight: `${
+                    isMobile ? "none" : "1px solid rgba(0, 0, 0, 0.55)"
+                  }`,
+                  paddingRight: `${isMobile ? "" : "8px"}`,
+                  paddingLeft: `${isMobile ? "" : "8px"}`,
+                  marginRight: `${isMobile ? "" : "8px"}`,
+                  marginLeft: `${isMobile ? "" : "8px"}`,
+                }}
+              >
+                <LinkContainer to="/">
+                  <Nav.Link>Home</Nav.Link>
+                </LinkContainer>
+              </div>
               <LinkContainer to="/portfolio">
                 <Nav.Link>Portfolio</Nav.Link>
               </LinkContainer>
