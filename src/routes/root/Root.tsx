@@ -5,17 +5,25 @@ import { Outlet } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { useMediaQuery } from "react-responsive";
 import Logo from "./../../assets/LOGO.png";
+import styled from "styled-components";
+// import { NavbarProps } from "react-bootstrap";
+
+// interface CustomNavbarProps extends NavbarProps {}
+
+const CustomNavbar = styled(Navbar)`
+  background: black;
+`;
 
 function Root() {
   const isMobile = useMediaQuery({ maxWidth: 576 });
 
   return (
     <>
-      <Navbar
+      <CustomNavbar
         style={{
           background: "#fff",
           borderBottom: "3px solid #000",
-          padding: "12px",
+          padding: `${isMobile ? "12px" : "0"}`,
         }}
         expand="md"
       >
@@ -54,42 +62,35 @@ function Root() {
             style={isMobile ? { paddingTop: "8px" } : {}}
           >
             <Nav>
-              <div
-                style={{
-                  borderBottom: `${
-                    isMobile ? "1px solid rgba(0, 0, 0, 0.55)" : "none"
-                  }`,
-                  borderRight: `${
-                    isMobile ? "none" : "1px solid rgba(0, 0, 0, 0.55)"
-                  }`,
-                  paddingRight: `${isMobile ? "" : "8px"}`,
-                  paddingLeft: `${isMobile ? "" : "8px"}`,
-                  marginRight: `${isMobile ? "" : "8px"}`,
-                  marginLeft: `${isMobile ? "" : "8px"}`,
-                }}
-              >
+              <div>
                 <LinkContainer to="/">
                   <Nav.Link>Home</Nav.Link>
                 </LinkContainer>
               </div>
-              <LinkContainer to="/portfolio">
-                <Nav.Link>Portfolio</Nav.Link>
-              </LinkContainer>
-
-              <LinkContainer to="/articles">
-                <Nav.Link>Articles</Nav.Link>
-              </LinkContainer>
-
-              <LinkContainer to="/about">
-                <Nav.Link>About</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/contact">
-                <Nav.Link>Contact</Nav.Link>
-              </LinkContainer>
+              <div>
+                <LinkContainer to="/portfolio">
+                  <Nav.Link>Portfolio</Nav.Link>
+                </LinkContainer>
+              </div>
+              <div>
+                <LinkContainer to="/articles">
+                  <Nav.Link>Articles</Nav.Link>
+                </LinkContainer>
+              </div>
+              <div>
+                <LinkContainer to="/about">
+                  <Nav.Link>About</Nav.Link>
+                </LinkContainer>
+              </div>
+              <div>
+                <LinkContainer to="/contact">
+                  <Nav.Link>Contact</Nav.Link>
+                </LinkContainer>
+              </div>
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </CustomNavbar>
 
       <Outlet />
     </>
