@@ -1,7 +1,7 @@
 import dojoImg from "./../../assets/f7.png";
 
 export interface Project {
-  type: string;
+  technology: string;
   header: Header;
   mainSection: MainSection;
   developmentSummary: string[];
@@ -57,7 +57,7 @@ class Metrics {
 const projectMetrics = new Metrics(0, 0, 0, 0).getTable().map((row) => row[0]);
 
 const Taizyu = {
-  type: "App",
+  technology: "React",
   header: new Header(dojoImg, "Taizyu", dojoImg),
   mainSection: new MainSection(
     "Visuals for timeroad",
@@ -78,7 +78,7 @@ const Taizyu = {
 };
 
 const Portfolio = {
-  type: "Website",
+  technology: "Angular",
   header: new Header(dojoImg, "Portfolio", dojoImg),
   mainSection: new MainSection(
     "Projects showcase",
@@ -99,7 +99,7 @@ const Portfolio = {
 };
 
 const Carbyne = {
-  type: "Website",
+  technology: "React",
   header: new Header(dojoImg, "Carbyne", dojoImg),
   mainSection: new MainSection(
     "Exploratory repository",
@@ -120,7 +120,7 @@ const Carbyne = {
 };
 
 const Inaflash = {
-  type: "App",
+  technology: "Javascript",
   header: new Header(dojoImg, "Inaflash", dojoImg),
   mainSection: new MainSection(
     "Flashcards",
@@ -141,7 +141,7 @@ const Inaflash = {
 };
 
 const BulbazaurProject = {
-  type: "Website",
+  technology: "Angular",
   header: new Header(dojoImg, "BulbazaurProject", dojoImg),
   mainSection: new MainSection(
     "Flashcards",
@@ -162,7 +162,7 @@ const BulbazaurProject = {
 };
 
 const TestOnes = {
-  type: "App",
+  technology: "React",
   header: new Header(dojoImg, "TestOnes", dojoImg),
   mainSection: new MainSection(
     "Flashcards",
@@ -183,7 +183,7 @@ const TestOnes = {
 };
 
 const TestThrees = {
-  type: "App",
+  technology: "React",
   header: new Header(dojoImg, "TestThrees", dojoImg),
   mainSection: new MainSection(
     "Flashcards",
@@ -204,7 +204,7 @@ const TestThrees = {
 };
 
 const TestFours = {
-  type: "App",
+  technology: "React",
   header: new Header(dojoImg, "TestFours", dojoImg),
   mainSection: new MainSection(
     "Flashcards",

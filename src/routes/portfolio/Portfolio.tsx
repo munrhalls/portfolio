@@ -8,9 +8,9 @@ import PortfolioNav from "./PortfolioNav";
 
 function Portfolio() {
   const [shownProjects, setShownProjects] = useState([
-    "Website",
-    "App",
-    "Learning project",
+    "Angular",
+    "React",
+    "Javascript",
   ]);
   const [sortByMetricId, setSortByMetricId] = useState<number | null>(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -31,7 +31,7 @@ function Portfolio() {
   };
 
   const filtered = portfolioData.filter((item) =>
-    shownProjects.includes(item.type)
+    shownProjects.includes(item.technology)
   );
 
   const sortedFiltered =

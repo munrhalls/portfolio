@@ -41,23 +41,25 @@ const PortfolioNav: React.FC<PortfolioNavProps> = (props) => {
             type="checkbox"
             value={shownProjects}
             onChange={handleFilter}
+            defaultValue={["Angular", "React", "Javascript"]}
           >
             <ToggleButton
               variant="dark"
               id="shownFilter-btn-1"
-              value={"Website"}
+              value={"Angular"}
             >
-              <span>Websites</span>
+              <span>Angular</span>
             </ToggleButton>
-            <ToggleButton variant="dark" id="shownFilter-btn-2" value={"App"}>
-              <span>Apps</span>
+            <ToggleButton variant="dark" id="shownFilter-btn-2" value={"React"}>
+              <span>React</span>
             </ToggleButton>
             <ToggleButton
               variant="dark"
+              checked
               id="shownFilter-btn-3"
-              value={"Learning project"}
+              value={"Javascript"}
             >
-              <span>Practice</span>
+              <span>Javascript</span>
             </ToggleButton>
           </ToggleButtonGroup>
         </Col>
