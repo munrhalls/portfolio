@@ -74,8 +74,16 @@ function Home() {
                   </CustomParagraphsGroup>
                 </Accordion.Body>
               </Accordion.Item>
-
               <Accordion.Item eventKey="1">
+                <CustomAccordionHeader text=" Programming concepts skills" />
+                <Accordion.Body style={{ background: "#000" }}>
+                  <CustomParagraphsGroup>
+                    <p></p>
+                  </CustomParagraphsGroup>
+                  <hr />
+                </Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="2">
                 <CustomAccordionHeader text="Problem solving skills" />
                 <Accordion.Body style={{ background: "#000" }}>
                   <CustomParagraphsGroup>
@@ -112,7 +120,7 @@ function Home() {
                   </CustomParagraphsGroup>
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="2">
+              <Accordion.Item eventKey="3">
                 <CustomAccordionHeader text="Programming languages, frameworks skills" />
 
                 <Accordion.Body style={{ background: "#000" }}>
@@ -143,7 +151,7 @@ function Home() {
                   </CustomParagraphsGroup>
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="3">
+              <Accordion.Item eventKey="4">
                 <CustomAccordionHeader text="Managing development process skills" />
 
                 <Accordion.Body style={{ background: "#000" }}>
