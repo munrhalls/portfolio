@@ -22,20 +22,8 @@ function PortfolioProject({
     <>
       <Col xs={10} sm={6} md={4} lg={3} className={"mb-5"}>
         <Card>
-          <Card.Header>
-            <h2 style={{ fontSize: "1.33rem" }}>
-              <span
-                style={{
-                  display: "inline-block",
-                  maxWidth: "80%",
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                {project.header.title}
-              </span>
-            </h2>
+          <Card.Header style={{ background: "#000", color: "#fff" }}>
+            <h2>{project.header.category}</h2>
           </Card.Header>
           <a href={project.link} target="_blank">
             <Card.Img
@@ -53,7 +41,7 @@ function PortfolioProject({
                 See code
               </Button>
             </ButtonGroup>
-            <Card.Title>{project.mainSection.subtitle}</Card.Title>
+            <Card.Title>{project.mainSection.title}</Card.Title>
             <Card.Text>{project.mainSection.shortDesc}</Card.Text>
 
             <Card.Text>{project.mainSection.valueToUser}</Card.Text>

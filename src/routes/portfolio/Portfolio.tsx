@@ -55,7 +55,7 @@ function Portfolio() {
         <Row className="mt-3 justify-content-center">
           {sortedFiltered.map((project) => (
             <PortfolioProject
-              key={project.header.title}
+              key={project.mainSection.title}
               project={project}
               isMobile={isMobile}
             />

@@ -20,7 +20,7 @@ export interface Project {
 
 class Header {
   constructor(
-    public title: string,
+    public category: string,
     public symbolImg: string,
     public headerImg: string
   ) {}
@@ -28,7 +28,7 @@ class Header {
 
 class MainSection {
   constructor(
-    public subtitle: string,
+    public title: string,
     public shortDesc: string,
     public valueToUser: string
   ) {}
@@ -59,7 +59,7 @@ const projectMetrics = new Metrics(0, 0, 0, 0).getTable().map((row) => row[0]);
 
 const Carbyne = {
   technology: "React",
-  header: new Header("Carbyne", carbyneHeader, carbyneHeader),
+  header: new Header("App", carbyneHeader, carbyneHeader),
   mainSection: new MainSection(
     "Exploratory repository",
     "description description description description description ",
