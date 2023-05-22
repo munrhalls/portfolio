@@ -14,7 +14,7 @@ export interface Project {
     howCanIDoItAllBetter: string[];
   };
   importantPoints: string[];
-  github: "https://github.com";
+  github: string;
   link: string;
 }
 
