@@ -20,13 +20,13 @@ function Home() {
   return (
     <>
       <Container>
-        <Row className="justify-content-start">
-          <Col xs={10}>
+        <Row className="justify-content-center">
+          <Col xs={12} md={10}>
             <h1 className="mt-5 mb-5">Junior Web Developer</h1>
           </Col>
         </Row>
-        <Row>
-          <Col xs={10}>
+        <Row className="justify-content-center">
+          <Col xs={12} md={10}>
             <Accordion>
               <Accordion.Item eventKey="0">
                 <CustomAccordionHeader text="What I can do, synopsis:" />
