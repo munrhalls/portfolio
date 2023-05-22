@@ -48,27 +48,11 @@ function Portfolio() {
         })
       : filtered;
 
-  const ProjectRows = [];
-  for (let i = 0; i < sortedFiltered.length; i += 4) {
-    const rowProjects = sortedFiltered.slice(i, i + 4);
-    ProjectRows.push(
-      <Row key={`row-${i / 4}`} className="mt-3 justify-content-center">
-        {rowProjects.map((project) => (
-          <PortfolioProject
-            key={project.header.title}
-            project={project}
-            isMobile={isMobile}
-          />
-        ))}
-      </Row>
-    );
-  }
-
   return (
     <>
       <Container className="mt-3 mb-3">
         <PortfolioNav {...PortfolioNavProps} />
-        <Row>
+        <Row className="mt-3 justify-content-center">
           {sortedFiltered.map((project) => (
             <PortfolioProject
               key={project.header.title}
