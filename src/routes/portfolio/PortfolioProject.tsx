@@ -44,7 +44,7 @@ function PortfolioProject({
           />
           <Card.Body>
             <ButtonGroup className={"mt-3 mb-4"} style={{ width: "100%" }}>
-              <Button variant="light" href="{project.link}">
+              <Button variant="light" href={project.link} target="_blank">
                 See live
               </Button>
               <Button variant="dark" href={project.github} target="_blank">

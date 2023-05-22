@@ -76,7 +76,7 @@ const Carbyne = {
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
   github: "https://github.com/munrhalls/Carbyne-explorations",
-  link: "https://awesome.com",
+  link: "https://carbyne-explorations.netlify.app",
 };
 
 // const Taizyu = {
