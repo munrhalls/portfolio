@@ -14,6 +14,7 @@ export interface Project {
     howCanIDoItAllBetter: string[];
   };
   importantPoints: string[];
+  github: "https://github.com";
   link: string;
 }
 
@@ -74,6 +75,7 @@ const Taizyu = {
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  github: "https://github.com",
   link: "https://awesome.com",
 };
 
@@ -95,6 +97,7 @@ const Portfolio = {
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  github: "https://github.com",
   link: "https://awesome.com",
 };
 
@@ -116,6 +119,7 @@ const Carbyne = {
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  github: "https://github.com",
   link: "https://awesome.com",
 };
 
@@ -137,6 +141,7 @@ const Inaflash = {
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  github: "https://github.com",
   link: "https://awesome.com",
 };
 
@@ -158,6 +163,7 @@ const BulbazaurProject = {
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  github: "https://github.com",
   link: "https://awesome.com",
 };
 
@@ -179,6 +185,7 @@ const TestOnes = {
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  github: "https://github.com",
   link: "https://awesome.com",
 };
 
@@ -200,6 +207,7 @@ const TestThrees = {
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  github: "https://github.com",
   link: "https://awesome.com",
 };
 
@@ -221,6 +229,7 @@ const TestFours = {
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+  github: "https://github.com",
   link: "https://awesome.com",
 };
 const portfolioData = [

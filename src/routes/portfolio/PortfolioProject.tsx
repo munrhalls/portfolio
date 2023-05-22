@@ -39,7 +39,7 @@ function PortfolioProject({
               <Button variant="light" href="{project.link}">
                 See live
               </Button>
-              <Button variant="dark" href="{project.link}">
+              <Button variant="dark" href="{project.github}">
                 See code
               </Button>
             </ButtonGroup>
@@ -47,7 +47,7 @@ function PortfolioProject({
             <Card.Text>{project.mainSection.shortDesc}</Card.Text>
 
             <Card.Text>{project.mainSection.valueToUser}</Card.Text>
-            <Accordion defaultActiveKey="0">
+            <Accordion>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Development summary</Accordion.Header>
                 <Accordion.Body>
