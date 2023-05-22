@@ -77,7 +77,29 @@ function Home() {
               <Accordion.Item eventKey="1">
                 <CustomAccordionHeader text=" Programming concepts skills" />
                 <Accordion.Body style={{ background: "#000" }}>
-                  <CustomParagraphsGroup></CustomParagraphsGroup>
+                  <CustomParagraphsGroup>
+                    <p>Programming concepts:</p>
+                    <ul>
+                      <li>concept of data types</li>
+                      <li>why data types exist</li>
+                      <hr />
+                      <li>values</li>
+                      <li>variable</li>
+                      <hr />
+                      <li>control flow</li>
+                      <hr />
+                      <li>loops</li>
+                      <li>functions</li>
+                      <hr />
+                      <li>objects (prototype chain in Javascript)</li>
+                      <li>classes (as object blueprint) and instances</li>
+                      <li>Object Oriented Programming (intermediate level)</li>
+                      <li>SOLID principles</li>
+                      <hr />
+                      <li>Imperative / Procedural / Declarative programming</li>
+                      <li>Functional paradigm vs Object oriented paradigm</li>
+                    </ul>
+                  </CustomParagraphsGroup>
                   <CustomParagraphsGroup>
                     <p>Data structures:</p>
                     <ul>
@@ -135,6 +157,18 @@ function Home() {
                   <CustomParagraphsGroup>
                     <ul>
                       <li>Javascript</li>
+                      <hr />
+                      <li>
+                        I can work with, understand, read, write, modify, debug
+                        advanced features
+                      </li>
+                      <hr />
+                      <li>
+                        For example: recursion, function currying, closures,
+                        multidimensional arrays and objects, deep vs shallow
+                        copy
+                      </li>
+                      <hr />
                       <li>Typescript (basic)</li>
                       <li>Managing DOM with Javascript</li>
                       <hr />
