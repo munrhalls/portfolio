@@ -24,12 +24,6 @@ function PortfolioProject({
         <Card>
           <Card.Header>
             <h2 style={{ fontSize: "1.33rem" }}>
-              <Image
-                rounded
-                style={{ width: "2.35rem", marginRight: "1rem" }}
-                src={project.header.symbolImg}
-                alt="smbl|"
-              />
               <span
                 style={{
                   display: "inline-block",
@@ -43,13 +37,17 @@ function PortfolioProject({
               </span>
             </h2>
           </Card.Header>
-          <Card.Img variant="top" src={project.header.headerImg} />
+          <Card.Img
+            variant="top"
+            src={project.header.headerImg}
+            style={{ border: "10px solid #eee", borderRadius: "0" }}
+          />
           <Card.Body>
             <ButtonGroup className={"mt-3 mb-4"} style={{ width: "100%" }}>
               <Button variant="light" href="{project.link}">
                 See live
               </Button>
-              <Button variant="dark" href="{project.github}">
+              <Button variant="dark" href={project.github} target="_blank">
                 See code
               </Button>
             </ButtonGroup>

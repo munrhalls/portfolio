@@ -1,4 +1,4 @@
-import dojoImg from "./../../assets/f7.png";
+import carbyneHeader from "./../../assets/projectImages/carbyneHeader.png";
 
 export interface Project {
   technology: string;
@@ -20,8 +20,8 @@ export interface Project {
 
 class Header {
   constructor(
-    public symbolImg: string,
     public title: string,
+    public symbolImg: string,
     public headerImg: string
   ) {}
 }
@@ -57,53 +57,9 @@ class Metrics {
 
 const projectMetrics = new Metrics(0, 0, 0, 0).getTable().map((row) => row[0]);
 
-const Taizyu = {
-  technology: "React",
-  header: new Header(dojoImg, "Taizyu", dojoImg),
-  mainSection: new MainSection(
-    "Visuals for timeroad",
-    "description description description description description ",
-    "value to uservalue to uservalue to uservalue to uservalue to user"
-  ),
-  developmentSummary: ["a...", "b...", "c..."],
-  metrics: new Metrics(5, 4, 3, 2),
-  lessonsSummary: {
-    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
-  },
-  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
-  github: "https://github.com",
-  link: "https://awesome.com",
-};
-
-const Portfolio = {
-  technology: "Angular",
-  header: new Header(dojoImg, "Portfolio", dojoImg),
-  mainSection: new MainSection(
-    "Projects showcase",
-    "description description description description description ",
-    "value to uservalue to uservalue to uservalue to uservalue to user"
-  ),
-  developmentSummary: ["a...", "b...", "c..."],
-  metrics: new Metrics(3, 1, 5, 4),
-  lessonsSummary: {
-    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
-  },
-  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
-  github: "https://github.com",
-  link: "https://awesome.com",
-};
-
 const Carbyne = {
   technology: "React",
-  header: new Header(dojoImg, "Carbyne", dojoImg),
+  header: new Header("Carbyne", carbyneHeader, carbyneHeader),
   mainSection: new MainSection(
     "Exploratory repository",
     "description description description description description ",
@@ -119,128 +75,172 @@ const Carbyne = {
     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
   },
   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
-  github: "https://github.com",
+  github: "https://github.com/munrhalls/Carbyne-explorations",
   link: "https://awesome.com",
 };
 
-const Inaflash = {
-  technology: "Javascript",
-  header: new Header(dojoImg, "Inaflash", dojoImg),
-  mainSection: new MainSection(
-    "Flashcards",
-    "description description description description description ",
-    "value to uservalue to uservalue to uservalue to uservalue to user"
-  ),
-  developmentSummary: ["a...", "b...", "c..."],
-  metrics: new Metrics(3, 1, 5, 4),
-  lessonsSummary: {
-    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
-  },
-  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
-  github: "https://github.com",
-  link: "https://awesome.com",
-};
+// const Taizyu = {
+//   technology: "React",
+//   header: new Header(dojoImg, "Taizyu", dojoImg),
+//   mainSection: new MainSection(
+//     "Visuals for timeroad",
+//     "description description description description description ",
+//     "value to uservalue to uservalue to uservalue to uservalue to user"
+//   ),
+//   developmentSummary: ["a...", "b...", "c..."],
+//   metrics: new Metrics(5, 4, 3, 2),
+//   lessonsSummary: {
+//     whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+//     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+//     rootCauses: ["..1a."],
+//     neverAgain: ["..a.1", ".b.12.", ".3c.."],
+//     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+//   },
+//   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+//   github: "https://github.com",
+//   link: "https://awesome.com",
+// };
 
-const BulbazaurProject = {
-  technology: "Angular",
-  header: new Header(dojoImg, "BulbazaurProject", dojoImg),
-  mainSection: new MainSection(
-    "Flashcards",
-    "description description description description description ",
-    "value to uservalue to uservalue to uservalue to uservalue to user"
-  ),
-  developmentSummary: ["a...", "b...", "c..."],
-  metrics: new Metrics(5, 5, 5, 5),
-  lessonsSummary: {
-    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
-  },
-  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
-  github: "https://github.com",
-  link: "https://awesome.com",
-};
+// const Portfolio = {
+//   technology: "Angular",
+//   header: new Header(dojoImg, "Portfolio", dojoImg),
+//   mainSection: new MainSection(
+//     "Projects showcase",
+//     "description description description description description ",
+//     "value to uservalue to uservalue to uservalue to uservalue to user"
+//   ),
+//   developmentSummary: ["a...", "b...", "c..."],
+//   metrics: new Metrics(3, 1, 5, 4),
+//   lessonsSummary: {
+//     whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+//     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+//     rootCauses: ["..1a."],
+//     neverAgain: ["..a.1", ".b.12.", ".3c.."],
+//     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+//   },
+//   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+//   github: "https://github.com",
+//   link: "https://awesome.com",
+// };
 
-const TestOnes = {
-  technology: "React",
-  header: new Header(dojoImg, "TestOnes", dojoImg),
-  mainSection: new MainSection(
-    "Flashcards",
-    "description description description description description ",
-    "value to uservalue to uservalue to uservalue to uservalue to user"
-  ),
-  developmentSummary: ["a...", "b...", "c..."],
-  metrics: new Metrics(1, 1, 1, 1),
-  lessonsSummary: {
-    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
-  },
-  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
-  github: "https://github.com",
-  link: "https://awesome.com",
-};
+// const Inaflash = {
+//   technology: "Javascript",
+//   header: new Header(dojoImg, "Inaflash", dojoImg),
+//   mainSection: new MainSection(
+//     "Flashcards",
+//     "description description description description description ",
+//     "value to uservalue to uservalue to uservalue to uservalue to user"
+//   ),
+//   developmentSummary: ["a...", "b...", "c..."],
+//   metrics: new Metrics(3, 1, 5, 4),
+//   lessonsSummary: {
+//     whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+//     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+//     rootCauses: ["..1a."],
+//     neverAgain: ["..a.1", ".b.12.", ".3c.."],
+//     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+//   },
+//   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+//   github: "https://github.com",
+//   link: "https://awesome.com",
+// };
 
-const TestThrees = {
-  technology: "React",
-  header: new Header(dojoImg, "TestThrees", dojoImg),
-  mainSection: new MainSection(
-    "Flashcards",
-    "description description description description description ",
-    "value to uservalue to uservalue to uservalue to uservalue to user"
-  ),
-  developmentSummary: ["a...", "b...", "c..."],
-  metrics: new Metrics(3, 3, 3, 3),
-  lessonsSummary: {
-    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
-  },
-  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
-  github: "https://github.com",
-  link: "https://awesome.com",
-};
+// const BulbazaurProject = {
+//   technology: "Angular",
+//   header: new Header(dojoImg, "BulbazaurProject", dojoImg),
+//   mainSection: new MainSection(
+//     "Flashcards",
+//     "description description description description description ",
+//     "value to uservalue to uservalue to uservalue to uservalue to user"
+//   ),
+//   developmentSummary: ["a...", "b...", "c..."],
+//   metrics: new Metrics(5, 5, 5, 5),
+//   lessonsSummary: {
+//     whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+//     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+//     rootCauses: ["..1a."],
+//     neverAgain: ["..a.1", ".b.12.", ".3c.."],
+//     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+//   },
+//   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+//   github: "https://github.com",
+//   link: "https://awesome.com",
+// };
 
-const TestFours = {
-  technology: "React",
-  header: new Header(dojoImg, "TestFours", dojoImg),
-  mainSection: new MainSection(
-    "Flashcards",
-    "description description description description description ",
-    "value to uservalue to uservalue to uservalue to uservalue to user"
-  ),
-  developmentSummary: ["a...", "b...", "c..."],
-  metrics: new Metrics(4, 4, 4, 4),
-  lessonsSummary: {
-    whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
-    whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
-    rootCauses: ["..1a."],
-    neverAgain: ["..a.1", ".b.12.", ".3c.."],
-    howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
-  },
-  importantPoints: ["..a.123", ".b.4567.", ".c34543."],
-  github: "https://github.com",
-  link: "https://awesome.com",
-};
+// const TestOnes = {
+//   technology: "React",
+//   header: new Header(dojoImg, "TestOnes", dojoImg),
+//   mainSection: new MainSection(
+//     "Flashcards",
+//     "description description description description description ",
+//     "value to uservalue to uservalue to uservalue to uservalue to user"
+//   ),
+//   developmentSummary: ["a...", "b...", "c..."],
+//   metrics: new Metrics(1, 1, 1, 1),
+//   lessonsSummary: {
+//     whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+//     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+//     rootCauses: ["..1a."],
+//     neverAgain: ["..a.1", ".b.12.", ".3c.."],
+//     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+//   },
+//   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+//   github: "https://github.com",
+//   link: "https://awesome.com",
+// };
+
+// const TestThrees = {
+//   technology: "React",
+//   header: new Header(dojoImg, "TestThrees", dojoImg),
+//   mainSection: new MainSection(
+//     "Flashcards",
+//     "description description description description description ",
+//     "value to uservalue to uservalue to uservalue to uservalue to user"
+//   ),
+//   developmentSummary: ["a...", "b...", "c..."],
+//   metrics: new Metrics(3, 3, 3, 3),
+//   lessonsSummary: {
+//     whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+//     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+//     rootCauses: ["..1a."],
+//     neverAgain: ["..a.1", ".b.12.", ".3c.."],
+//     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+//   },
+//   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+//   github: "https://github.com",
+//   link: "https://awesome.com",
+// };
+
+// const TestFours = {
+//   technology: "React",
+//   header: new Header(dojoImg, "TestFours", dojoImg),
+//   mainSection: new MainSection(
+//     "Flashcards",
+//     "description description description description description ",
+//     "value to uservalue to uservalue to uservalue to uservalue to user"
+//   ),
+//   developmentSummary: ["a...", "b...", "c..."],
+//   metrics: new Metrics(4, 4, 4, 4),
+//   lessonsSummary: {
+//     whatWentWell: ["Developing syntax", "..b3.", ".c.4."],
+//     whatWentPoorly: ["..a1.", "..b.2", "..3.c"],
+//     rootCauses: ["..1a."],
+//     neverAgain: ["..a.1", ".b.12.", ".3c.."],
+//     howCanIDoItAllBetter: ["...a.1", "....12.", "...3c.."],
+//   },
+//   importantPoints: ["..a.123", ".b.4567.", ".c34543."],
+//   github: "https://github.com",
+//   link: "https://awesome.com",
+// };
 const portfolioData = [
-  Taizyu,
-  Portfolio,
+  // Taizyu,
+  // Portfolio,
   Carbyne,
-  Inaflash,
-  BulbazaurProject,
-  TestOnes,
-  TestThrees,
-  TestFours,
+  // Inaflash,
+  // BulbazaurProject,
+  // TestOnes,
+  // TestThrees,
+  // TestFours,
 ];
 
 export { projectMetrics };
