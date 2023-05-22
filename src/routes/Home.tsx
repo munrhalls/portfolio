@@ -77,8 +77,16 @@ function Home() {
               <Accordion.Item eventKey="1">
                 <CustomAccordionHeader text=" Programming concepts skills" />
                 <Accordion.Body style={{ background: "#000" }}>
+                  <CustomParagraphsGroup></CustomParagraphsGroup>
                   <CustomParagraphsGroup>
-                    <p></p>
+                    <p>Data structures:</p>
+                    <ul>
+                      <li>Array</li>
+                      <li>Linked list</li>
+                      <li>Stack</li>
+                      <li>Set</li>
+                      <li>Binary Search Tree</li>
+                    </ul>
                   </CustomParagraphsGroup>
                   <hr />
                 </Accordion.Body>
@@ -139,6 +147,7 @@ function Home() {
                       <hr />
                       <li>HTML</li>
                       <li>CSS</li>
+                      <li>SVG</li>
                       <hr />
                       <li>Developer tools</li>
                       <hr />
