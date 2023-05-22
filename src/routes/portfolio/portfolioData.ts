@@ -63,20 +63,21 @@ const portfolioData = [
     header: new Header("Website", carbyneHeader, carbyneHeader),
     mainSection: new MainSection(
       "Carbyne explorations",
-      "Artistically-themed personal repository website.",
+      "Artistically-themed personal repository website. Graphics made with custom SVG's.",
       ""
     ),
     developmentSummary: [
-      "Graphics made from custom SVG's, using path attribute",
-      "All SVG graphics are React components, adjusted by custom hook",
-      "Development was mostly a poorly organized struggle but rich in lessons on how-to develop apps in  general",
+      "All SVG graphics are done with path attribute and are React components. Adjusted by custom hook, for responsiveness.",
+      "Development process was non-existent.",
+      "Very high randomness of effort.",
+      "Took 20-30x longer than it needed to.",
     ],
     metrics: new Metrics(1, 1, 2, 1),
     lessonsSummary: {
       whatWentWell: ["Appearance is high quality and unique"],
       whatWentPoorly: [
         "Took 10x longer than needed.",
-        "Repetetive, circular development actions",
+        "Repetetive, circular, inefficient development actions",
       ],
       rootCauses: [
         "Inexperienced",
@@ -85,20 +86,16 @@ const portfolioData = [
       ],
       nextTime: [
         "Mindset: never tolerate poor development rate",
+        "Mindset: appreciate steadfast development rate as core priority",
         "Simple: have to break down project into components and see how the components fit together *before* start",
       ],
       howCanIDoItAllBetter: [
-        "Realize: much of the development success is determined before you even start developing",
-        "Well-prepared development process is well-balanced in terms of dichotomies",
-        "Plan but don't overplan; as simple as possible but not too simple; extreme-prioratization but no target-fixaton, if a task stumps development rate, drop it, adapt",
+        "Understand: much of the development success is determined before you even start developing",
+        "Understand: preparing tasks and contingencies is time well-spent, you lose 10-30x that time on bugs and roadblocks, if you skip it",
       ],
     },
     importantPoints: [
-      "It was mostly an exercise in development cluelessness",
-      "I ignored time, when in reality, time is by far the first and last, most important factor all throughout the development process",
-      "The codebase is completely unmaintainable, which is due to my then lack of experience with design patterns",
-      "I thought design patterns don't matter; and that you can just and get on with it, no tasks or plan needed; this app was a proof to me on why that's not the case",
-      "I achieved the look I wanted, though - it's a success in terms of outcome space but a complete failure in terms of time, and outcome codebase",
+      "There's no point starting the development process, if you don't at least have a general roadmap and contingencies against likely roadblocks",
     ],
     github: "https://github.com/munrhalls/Carbyne-explorations",
     link: "https://carbyne-explorations.netlify.app",
@@ -108,34 +105,32 @@ const portfolioData = [
     header: new Header("App", snakeHeader, snakeHeader),
     mainSection: new MainSection(
       "Snake",
-      "Just the classic snake game. Written in OOP style. Multiple levels of difficulty. Many grid sizes. ",
-      "My first app. Wrote it after studying Headfirst Javascript book."
+      "Just a snake game. OOP style. Multiple difficulty levels, many grid sizes. ",
+      "My first app, wrote it after studying Headfirst Javascript book."
     ),
-    developmentSummary: [
-      "Took months. Everything was new to me.",
-      "Development was the opposite of effective approach: trial & error.",
-    ],
-    metrics: new Metrics(1, 2, 2, 1),
+    developmentSummary: ["Took months. Everything was new to me."],
+    metrics: new Metrics(1, 1, 1, 1),
     lessonsSummary: {
       whatWentWell: [
         "Learned enough & persistend long enough to complete the project",
       ],
       whatWentPoorly: [
         "Took months",
-        "Did nothing about setting up the development process, lining up tasks etc.",
+        "Most of the things a newbie could do wrong: \n no tasks, \n no roadmap, \n no contingencies, \n no prototype'ing.",
+        "Just dived right into it and sank for months",
       ],
       rootCauses: ["First app, inexperienced."],
       nextTime: [
-        "If I went back in time, I would tell my younger self that you need to struggle effectively, not just struggle.",
+        "Next time I am inexperienced at doing a given thing and it's complex, I'll take it much more gradually, many more steps in between point A and point B",
       ],
-      howCanIDoItAllBetter: [""],
+      howCanIDoItAllBetter: [
+        "In terms of learning new and complex abilities: at least try to be aware that there are always shoreter and longer ways...it pays to be good at looking for the shorter ones",
+      ],
     },
     importantPoints: [
-      "It was mostly an exercise in development cluelessness",
-      "I ignored time, when in reality, time is by far the first and last, most important factor all throughout the development process",
-      "The codebase is completely unmaintainable, which is due to my then lack of experience with design patterns",
-      "I thought design patterns don't matter; and that you can just and get on with it, no tasks or plan needed; this app was a proof to me on why that's not the case",
-      "I achieved the look I wanted, though - it's a success in terms of outcome space but a complete failure in terms of time, and outcome codebase",
+      "There are many types of struggling, some of them are much more effective at yielding improvement, than others",
+      "It pays to be skilled at looking for those types that are most effective",
+      "In fact, it pays even more to have a framework for doing so, so that you find the best types of struggling, that give the best learning and growthh rates for you as a software developer",
     ],
     github: "https://github.com/munrhalls/Carbyne-explorations",
     link: "https://carbyne-explorations.netlify.app",
