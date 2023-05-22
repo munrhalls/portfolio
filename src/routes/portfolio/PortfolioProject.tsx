@@ -30,7 +30,7 @@ function PortfolioProject({
               variant="top"
               src={project.header.headerImg}
               style={{
-                border: "10px solid #212121",
+                border: "10px solid #000",
                 borderRadius: "0",
               }}
             />
