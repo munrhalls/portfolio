@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Card from "react-bootstrap/Card";
-import { Col, Button, Accordion, Image } from "react-bootstrap";
+import { Col, ButtonGroup, Button, Accordion, Image } from "react-bootstrap";
 
 import {
   MetricLiItem,
@@ -35,12 +35,14 @@ function PortfolioProject({
           </Card.Header>
           <Card.Img variant="top" src={project.header.headerImg} />
           <Card.Body>
-            <Button variant="info" href="{project.link}">
-              View live
-            </Button>
-            <Button variant="light" href="{project.link}">
-              View Github
-            </Button>
+            <ButtonGroup className={"mt-3 mb-4"} style={{ width: "100%" }}>
+              <Button variant="light" href="{project.link}">
+                See live
+              </Button>
+              <Button variant="dark" href="{project.link}">
+                See code
+              </Button>
+            </ButtonGroup>
             <Card.Title>{project.mainSection.subtitle}</Card.Title>
             <Card.Text>{project.mainSection.shortDesc}</Card.Text>
 
