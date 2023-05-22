@@ -6,12 +6,14 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useMediaQuery } from "react-responsive";
 import Logo from "./../../assets/LOGO.png";
 import styled from "styled-components";
-// import { NavbarProps } from "react-bootstrap";
-
-// interface CustomNavbarProps extends NavbarProps {}
 
 const CustomNavbar = styled(Navbar)`
-  background: black;
+  border-bottom: 3px solid black;
+`;
+
+const CustomLinkContainer = styled(LinkContainer)`
+  text-align: center;
+  padding-bottom: 1.25rem;
 `;
 
 function Root() {
@@ -19,14 +21,7 @@ function Root() {
 
   return (
     <>
-      <CustomNavbar
-        style={{
-          background: "#fff",
-          borderBottom: "3px solid #000",
-          padding: `${isMobile ? "12px" : "0"}`,
-        }}
-        expand="md"
-      >
+      <CustomNavbar expand="md">
         <Container>
           <Navbar.Brand
             style={{
@@ -63,29 +58,29 @@ function Root() {
           >
             <Nav>
               <div>
-                <LinkContainer to="/">
+                <CustomLinkContainer to="/">
                   <Nav.Link>Home</Nav.Link>
-                </LinkContainer>
+                </CustomLinkContainer>
               </div>
               <div>
-                <LinkContainer to="/portfolio">
+                <CustomLinkContainer to="/portfolio">
                   <Nav.Link>Portfolio</Nav.Link>
-                </LinkContainer>
+                </CustomLinkContainer>
               </div>
               <div>
-                <LinkContainer to="/articles">
+                <CustomLinkContainer to="/articles">
                   <Nav.Link>Articles</Nav.Link>
-                </LinkContainer>
+                </CustomLinkContainer>
               </div>
               <div>
-                <LinkContainer to="/about">
+                <CustomLinkContainer to="/about">
                   <Nav.Link>About</Nav.Link>
-                </LinkContainer>
+                </CustomLinkContainer>
               </div>
               <div>
-                <LinkContainer to="/contact">
+                <CustomLinkContainer to="/contact">
                   <Nav.Link>Contact</Nav.Link>
-                </LinkContainer>
+                </CustomLinkContainer>
               </div>
             </Nav>
           </Navbar.Collapse>
