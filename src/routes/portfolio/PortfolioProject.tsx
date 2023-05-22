@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Card from "react-bootstrap/Card";
-import { Col, ButtonGroup, Button, Accordion, Image } from "react-bootstrap";
+import { Col, ButtonGroup, Button, Accordion } from "react-bootstrap";
 
 import {
   MetricLiItem,
@@ -54,7 +54,7 @@ function PortfolioProject({
                 <Accordion.Body>
                   <ul>
                     {project.developmentSummary.map((item: string) => (
-                      <li key={project.header.title + item}>{item}</li>
+                      <li key={project.mainSection.title + item}>{item}</li>
                     ))}
                   </ul>
                 </Accordion.Body>
@@ -66,7 +66,7 @@ function PortfolioProject({
                     {project.metrics
                       .getTable()
                       .map((item: [string, number], index) => (
-                        <Fragment key={project.header.title + item[0]}>
+                        <Fragment key={project.mainSection.title + item[0]}>
                           <MetricLiItem>
                             <MetricText>{item[0]}:</MetricText>
                             <MetricScore
@@ -92,34 +92,34 @@ function PortfolioProject({
                   <p>What went well:</p>
                   <ul>
                     {project.lessonsSummary.whatWentWell.map((item: string) => (
-                      <li key={project.header.title + item}>{item}</li>
+                      <li key={project.mainSection.title + item}>{item}</li>
                     ))}
                   </ul>
                   <p>What went poorly:</p>
                   <ul>
                     {project.lessonsSummary.whatWentPoorly.map(
                       (item: string) => (
-                        <li key={project.header.title + item}>{item}</li>
+                        <li key={project.mainSection.title + item}>{item}</li>
                       )
                     )}
                   </ul>
                   <p>Root causes:</p>
                   <ul>
                     {project.lessonsSummary.rootCauses.map((item: string) => (
-                      <li key={project.header.title + item}>{item}</li>
+                      <li key={project.mainSection.title + item}>{item}</li>
                     ))}
                   </ul>
                   <p>"Never again"'s & next time:</p>
                   <ul>
                     {project.lessonsSummary.neverAgain.map((item: string) => (
-                      <li key={project.header.title + item}>{item}</li>
+                      <li key={project.mainSection.title + item}>{item}</li>
                     ))}
                   </ul>
                   <p>How can I do it all better:</p>
                   <ul>
                     {project.lessonsSummary.howCanIDoItAllBetter.map(
                       (item: string) => (
-                        <li key={project.header.title + item}>{item}</li>
+                        <li key={project.mainSection.title + item}>{item}</li>
                       )
                     )}
                   </ul>
@@ -130,7 +130,7 @@ function PortfolioProject({
                 <Accordion.Body>
                   <ul>
                     {project.importantPoints.map((item: string) => (
-                      <li key={project.header.title + item}>{item}</li>
+                      <li key={project.mainSection.title + item}>{item}</li>
                     ))}
                   </ul>
                 </Accordion.Body>
