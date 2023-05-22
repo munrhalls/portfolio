@@ -39,7 +39,7 @@ class Metrics {
 
   constructor(one: number, two: number, three: number, four: number) {
     this.table = [
-      ["Prevent roadblocks/slowdowns", one],
+      ["Prevent slowdowns", one],
       ["As simple as possible", two],
       ["Prioritize", three],
       ["Track progress & adapt", four],

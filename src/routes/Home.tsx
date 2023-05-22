@@ -18,7 +18,7 @@ function Home() {
   return (
     <>
       <Container>
-        <h1 className="mt-3 mb-3">Junior Web Developer</h1>
+        <h1 className="mt-5 mb-5">Junior Web Developer</h1>
         <Accordion>
           <Accordion.Item eventKey="0">
             <CustomAccordionHeader text="Synopsis of what I can currently do" />

@@ -67,6 +67,9 @@ export const MetricLiItem = styled.li`
 export const MetricText = styled.span`
   color: #000;
   white-space: pre-line;
+  @media (min-width: 768px) {
+    font-size: 0.75rem;
+  }
   @media (max-width: 768px) {
     font-size: 0.61rem;
   }
