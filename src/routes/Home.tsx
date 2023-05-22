@@ -29,7 +29,7 @@ function Home() {
           <Col xs={12} md={10}>
             <Accordion>
               <Accordion.Item eventKey="0">
-                <CustomAccordionHeader text="What I can do, synopsis:" />
+                <CustomAccordionHeader text="Problem solving skills" />
                 <Accordion.Body style={{ background: "#000" }}>
                   <CustomParagraphsGroup>
                     <p>
@@ -76,7 +76,7 @@ function Home() {
               </Accordion.Item>
 
               <Accordion.Item eventKey="1">
-                <CustomAccordionHeader text="Strengths & Weaknesses:" />
+                <CustomAccordionHeader text="Programming concepts skills" />
                 <Accordion.Body style={{ background: "#000" }}>
                   <CustomParagraphsGroup>
                     <h3>Areas of strength:</h3>
@@ -153,7 +153,7 @@ function Home() {
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
-                <CustomAccordionHeader text="What I'm doing to improve strengths & weaknesses" />
+                <CustomAccordionHeader text="Programming languages skills" />
 
                 <Accordion.Body style={{ background: "#000" }}>
                   <CustomParagraphsGroup>
@@ -239,7 +239,7 @@ function Home() {
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="3">
-                <CustomAccordionHeader text="Current level of hard skills and understanding" />
+                <CustomAccordionHeader text="Managing development process skills" />
 
                 <Accordion.Body style={{ background: "#000" }}>
                   <CustomParagraphsGroup>
