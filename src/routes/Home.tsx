@@ -20,21 +20,21 @@ function Home() {
   return (
     <>
       <Container>
-        <Row>
-          <Col>
+        <Row className="justify-content-start">
+          <Col xs={10}>
             <h1 className="mt-5 mb-5">Junior Web Developer</h1>
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col xs={10}>
             <Accordion>
               <Accordion.Item eventKey="0">
                 <CustomAccordionHeader text="What I can do, synopsis:" />
                 <Accordion.Body style={{ background: "#000" }}>
                   <CustomParagraphsGroup>
                     <p>
-                      - with with Javascript at a high level - comfortable with
-                      concepts of recursion, currying, OOP, working with
+                      - work with with Javascript at a high level - comfortable
+                      with concepts of recursion, currying, OOP, working with
                       multidimensional constructs such as matrices, arrays
                       within arrays, etc.
                     </p>
