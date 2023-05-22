@@ -32,7 +32,7 @@ function PortfolioProject({
               />
               <span
                 style={{
-                  display: "inline",
+                  display: "inline-block",
                   maxWidth: "80%",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
