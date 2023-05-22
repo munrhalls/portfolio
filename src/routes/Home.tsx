@@ -85,113 +85,61 @@ function Home() {
                     </p>
                     <ul>
                       <li>developing numerous web applications, websites</li>
+                      <hr />
+                      <li>
+                        encountering bugs, roadblocks, obstacles in developing,
+                        and solving them
+                      </li>
+                      <hr />
                       <li>
                         by practicing solving coding challenges on platforms
                         such as codewars.com
                       </li>
+                      <hr />
+
                       <li>
-                        by thinking about software concepts and deepening my
-                        overall understanding of it
+                        by studying and thinking about software concepts and
+                        deepening my overall understanding of it
                       </li>
-                    </ul>
-                  </CustomParagraphsGroup>
-                  <CustomParagraphsGroup>
-                    <p>
-                      I've also problem solving in general, and in particular,
-                      materials by V. Anton Spraul in his book "Think like a
-                      programmer".
-                    </p>
-                    <p> With that I learned to:</p>
-                    <ul>
-                      <li>Never just attack a problem head-on</li>
-                      <li>Strive to always have a plan and stay systematic</li>
+                      <hr />
+
+                      <li>
+                        by studying problem solving itself, in particular, from
+                        the teacher V. Antom Spraul and his book "Think like a
+                        programmer"
+                      </li>
                     </ul>
                   </CustomParagraphsGroup>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="2">
-                <CustomAccordionHeader text="Programming languages skills" />
+                <CustomAccordionHeader text="Programming languages, frameworks skills" />
 
                 <Accordion.Body style={{ background: "#000" }}>
                   <CustomParagraphsGroup>
-                    <p>
-                      - using pomodoro technique, for quality of focus but just
-                      as importantly, for keeping it real in terms of alotted
-                      time
-                    </p>
-                    <p>
-                      - always starting my choice-making from the "how much time
-                      do I have?" question and integrating time-estimate with
-                      what-to-do choices
-                    </p>
-                    <p>
-                      - using task definitions that help me work around my
-                      weaknesses, e.g. if I do feature X, I'll define it as
-                      "feature X is ok enough" and ASAP that, first;
-                      <br />
-                      only if I have time and it's worth it afterwards, will I
-                      proceed to improve it any further (from self-knowledge, I
-                      know if I define it as "feature X's excellent", I'll just
-                      be perfecting some small tiny icky bit for an absurd
-                      amount of time)
-                    </p>
-                    <p>
-                      - sequence *practically*: I don't think "feature X is
-                      awesome!" and then try do that because that will take a
-                      year; I first look at what's available in my
-                      tools/framework and then "what ok enough solution can be
-                      assembled from that realistically"
-                    </p>
-                    <p>
-                      - operational definition "ok enough" outperforms
-                      "excellent" almost always because it leads me to
-                      respectimg time
-                    </p>
-                  </CustomParagraphsGroup>
-                  <CustomParagraphsGroup>
-                    <p>
-                      - working in manner of self-challenges, along the lines of
-                      "timing pushes", that is:
-                    </p>
-                    <ol>
-                      <li>
-                        Set "GET X DONE" in Y POMODOROS
-                        <div>E.g. complete homepage in 3 pomodoros.</div>
-                      </li>
-                      <li>
-                        Map it out rapidly, in a simple, no nonsense way. Time
-                        threats. Opportunities. Preventive measures,
-                        contingencies, if-adaptions, important points.
-                      </li>
-                      <li>Wing it, just go.</li>
-                      <li>
-                        Careful but quick and rapid, no-nonsense review after,
-                        feedback, extract as much lesson value and realistic
-                        adaptation for my next steps, as I can from it.
-                      </li>
-                      <li>
-                        Importantly: not having lots of little changes from
-                        feedback session to feedback session, it's very few
-                        items drilled deeply to an improvement that
-                        lasts...errors that matter are usually thematic,
-                        repeating over and over so I aim at fixing that, in a
-                        lasting way
-                      </li>
-                    </ol>
-                  </CustomParagraphsGroup>
-                  <CustomParagraphsGroup>
-                    <p>
-                      - practicing dynamic, agressive mindset about driving
-                      real, required tasks to conclusion fast
-                    </p>
-                  </CustomParagraphsGroup>
-                  <CustomParagraphsGroup>
-                    <p>
-                      - the one thing I keep doing no matter what, regardless of
-                      how any project goes or doesn't go, irrespective of any
-                      set of failures or successes, is developing software and
-                      enjoying the process of learning in doing so
-                    </p>
+                    <ul>
+                      <li>Javascript</li>
+                      <li>Typescript (basic)</li>
+                      <li>Managing DOM with Javascript</li>
+                      <hr />
+                      <li>Angular (basic)</li>
+                      <li>React</li>
+                      <li>Redux</li>
+                      <hr />
+                      <li>Sass</li>
+                      <li>Bootstrap</li>
+                      <hr />
+                      <li>HTML</li>
+                      <li>CSS</li>
+                      <hr />
+                      <li>Developer tools</li>
+                      <hr />
+                      <li>Git</li>
+                      <li>Terminal (basic)</li>
+                      <li>VSCode IDE</li>
+                      <hr />
+                      <li>Hosting</li>
+                    </ul>
                   </CustomParagraphsGroup>
                 </Accordion.Body>
               </Accordion.Item>
