@@ -29,47 +29,35 @@ function Home() {
           <Col xs={12} md={10}>
             <Accordion>
               <Accordion.Item eventKey="0">
-                <CustomAccordionHeader text="Problem solving skills" />
+                <CustomAccordionHeader text="Experience" />
                 <Accordion.Body style={{ background: "#000" }}>
                   <CustomParagraphsGroup>
                     <p>
-                      - work with with Javascript at a high level - comfortable
-                      with concepts of recursion, currying, OOP, working with
-                      multidimensional constructs such as matrices, arrays
-                      within arrays, etc.
+                      Worked for two years at a start-up company. Learned
+                      practical problem-solving abilities and delivering
+                      software tasks under time pressure.
                     </p>
                   </CustomParagraphsGroup>
                   <CustomParagraphsGroup>
                     <p>
-                      - develop a small but modern, fast, responsive web
-                      application, using React / React-router / Typescript /
-                      Redux / Firebase
-                    </p>
-                  </CustomParagraphsGroup>
-
-                  <CustomParagraphsGroup>
-                    <p>- work with API and promises at basic level</p>
-                  </CustomParagraphsGroup>
-                  <CustomParagraphsGroup>
-                    <p>
-                      - set up basic backend storage (i.e. firebase) and connect
-                      frontend features with backend services, using REST
-                      endpoints; set up authentication and authorization
+                      Had a lot of exposure with the scenario of being new to a
+                      very large codebase with a lot of new technologies I did't
+                      yet know, and tasks to be delivered sooner, rather than
+                      later.
                     </p>
                   </CustomParagraphsGroup>
                   <CustomParagraphsGroup>
                     <p>
-                      - debug using conceptual understanding of code, tracing
-                      its execution, setting up checks with developer tools
+                      Participated in the agile development process and learned
+                      how to deal effectively with pressures, and problems
+                      invovled with, the product releases every two weeks.
                     </p>
                   </CustomParagraphsGroup>
                   <CustomParagraphsGroup>
-                    <p>- navigate and modify DOM tree with Javascript</p>
-                  </CustomParagraphsGroup>
-                  <CustomParagraphsGroup>
                     <p>
-                      - basic comprehension & skill with data structures: Array,
-                      Linked list, Stack, Set, Binary Search Tree
+                      Probably most importantly, I learned how to learn
+                      efficiently, in the ever-more dynamically changing,
+                      demanding world of IT.
                     </p>
                   </CustomParagraphsGroup>
                 </Accordion.Body>

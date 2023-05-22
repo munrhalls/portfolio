@@ -56,7 +56,7 @@ export function CustomParagraphsGroup({ children }: Props) {
     <div
       style={{
         border: "1px solid #fff",
-        borderRadius: "3rem",
+        borderRadius: "5px",
         background: "#fff",
         marginBottom: "1rem",
         padding: "1.25rem 2rem .5rem",
