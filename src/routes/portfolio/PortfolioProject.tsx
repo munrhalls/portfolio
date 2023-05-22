@@ -35,6 +35,12 @@ function PortfolioProject({
           </Card.Header>
           <Card.Img variant="top" src={project.header.headerImg} />
           <Card.Body>
+            <Button variant="info" href="{project.link}">
+              View live
+            </Button>
+            <Button variant="light" href="{project.link}">
+              View Github
+            </Button>
             <Card.Title>{project.mainSection.subtitle}</Card.Title>
             <Card.Text>{project.mainSection.shortDesc}</Card.Text>
 
@@ -128,9 +134,6 @@ function PortfolioProject({
               </Accordion.Item>
             </Accordion>
             <hr />
-            <Button variant="info" href="{project.link}">
-              View live
-            </Button>
           </Card.Body>
         </Card>
       </Col>

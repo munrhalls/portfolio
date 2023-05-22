@@ -41,7 +41,6 @@ const PortfolioNav: React.FC<PortfolioNavProps> = (props) => {
             type="checkbox"
             value={shownProjects}
             onChange={handleFilter}
-            defaultValue={["Angular", "React", "Javascript"]}
           >
             <ToggleButton
               variant="dark"
