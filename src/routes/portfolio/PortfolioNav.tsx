@@ -86,12 +86,20 @@ const PortfolioNav: React.FC<PortfolioNavProps> = (props) => {
           </DropdownButton>
 
           {sortOrder === "asc" && (
-            <Button variant="dark" onClick={() => setSortOrder("desc")}>
+            <Button
+              variant="dark"
+              onClick={() => setSortOrder("desc")}
+              disabled={sortByMetricId === null}
+            >
               <BsSortUp />
             </Button>
           )}
           {sortOrder === "desc" && (
-            <Button variant="dark" onClick={() => setSortOrder("asc")}>
+            <Button
+              variant="dark"
+              onClick={() => setSortOrder("asc")}
+              disabled={sortByMetricId === null}
+            >
               <BsSortDown />
             </Button>
           )}
