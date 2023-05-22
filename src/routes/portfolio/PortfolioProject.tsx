@@ -37,11 +37,13 @@ function PortfolioProject({
               </span>
             </h2>
           </Card.Header>
-          <Card.Img
-            variant="top"
-            src={project.header.headerImg}
-            style={{ border: "10px solid #eee", borderRadius: "0" }}
-          />
+          <a href={project.link} target="_blank">
+            <Card.Img
+              variant="top"
+              src={project.header.headerImg}
+              style={{ border: "10px solid #eee", borderRadius: "0" }}
+            />
+          </a>
           <Card.Body>
             <ButtonGroup className={"mt-3 mb-4"} style={{ width: "100%" }}>
               <Button variant="light" href={project.link} target="_blank">
