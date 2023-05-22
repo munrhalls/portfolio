@@ -132,8 +132,8 @@ const portfolioData = [
       "It pays to be skilled at looking for those types that are most effective",
       "In fact, it pays even more to have a framework for doing so, so that you find the best types of struggling, that give the best learning and growthh rates for you as a software developer",
     ],
-    github: "https://github.com/munrhalls/Carbyne-explorations",
-    link: "https://carbyne-explorations.netlify.app",
+    github: "https://github.com/munrhalls/snake__",
+    link: "https://snakehalls.netlify.app",
   },
 ];
 
