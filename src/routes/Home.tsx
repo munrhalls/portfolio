@@ -40,17 +40,29 @@ function Home() {
                   </CustomParagraphsGroup>
                   <CustomParagraphsGroup>
                     <p>
-                      Had a lot of exposure with the scenario of being new to a
-                      very large codebase with a lot of new technologies I did't
-                      yet know, and tasks to be delivered sooner, rather than
-                      later.
+                      Frequent exposure familiarized me with the scenario of
+                      being new to a very large codebase.
+                    </p>
+                    <p>
+                      Codebase with a lot of new technologies I did't yet know,
+                      and tasks to be delivered sooner, rather than later.
+                    </p>
+                    <p> I got better at handling that scenario.</p>
+                  </CustomParagraphsGroup>
+                  <CustomParagraphsGroup>
+                    <p>
+                      Learned operating within the agile development process. I
+                      got better at knowing how to deal effectively with
+                      pressures, and problems invovled with, the product
+                      releases every two weeks.
                     </p>
                   </CustomParagraphsGroup>
                   <CustomParagraphsGroup>
                     <p>
-                      Participated in the agile development process and learned
-                      how to deal effectively with pressures, and problems
-                      invovled with, the product releases every two weeks.
+                      Learned effective communication: every work day meant
+                      "daily" and talking about software, from which I learned
+                      how to form my thoughts about it in a simple, clear and
+                      concise manner.
                     </p>
                   </CustomParagraphsGroup>
                   <CustomParagraphsGroup>
@@ -64,79 +76,36 @@ function Home() {
               </Accordion.Item>
 
               <Accordion.Item eventKey="1">
-                <CustomAccordionHeader text="Programming concepts skills" />
+                <CustomAccordionHeader text="Problem solving skills" />
                 <Accordion.Body style={{ background: "#000" }}>
                   <CustomParagraphsGroup>
-                    <h3>Areas of strength:</h3>
                     <p>
-                      - multidimensional, abstract, spatial reasoning and
-                      constructs
+                      Aside from work experience, I've trained problem solving
+                      by:
                     </p>
-                    <p>
-                      - finding novel, unlikely angles of approaching a subject
-                    </p>
-                    <p>
-                      - noticing connections and parallels between seemingly
-                      utterly unrelated items
-                    </p>
-                    <p>
-                      - high levels of curiosity, fascination about worlds of
-                      code and ideas of developing it
-                    </p>
-                    <p>
-                      - finding useful, practical insights, noticing practical
-                      relationships between things
-                    </p>
-                    <p>
-                      - using analogies, metaphors, simplifications, summaries
-                      quite well, being a decently articulate communicator
-                    </p>
-                    <p>
-                      - general, practical self-education that spans titles such
-                      as "The Art of Learning" by J. Waitzkin, "The inner game
-                      of tennis" by T. Gallwey, "Learn like a pro" by B. Oakley,
-                      "Extreme Ownership" by J. Willin, L. Babin, "Principles"
-                      by R. Dalio, "The One Thing" by G. Keller, and goes way
-                      beyond just reading it; it involved and still does,
-                      flashcards, experimentation, ways of internalizing,
-                      self-training, contemplation, regular journaling, symbolic
-                      drawings and diagrams, and more - whatever it takes to get
-                      the most out of it
-                    </p>
+                    <ul>
+                      <li>developing numerous web applications, websites</li>
+                      <li>
+                        by practicing solving coding challenges on platforms
+                        such as codewars.com
+                      </li>
+                      <li>
+                        by thinking about software concepts and deepening my
+                        overall understanding of it
+                      </li>
+                    </ul>
                   </CustomParagraphsGroup>
                   <CustomParagraphsGroup>
-                    <h3>Areas of weakness:</h3>
                     <p>
-                      - vulnerable to becoming highly unrealistic,
-                      overly-aspirational and not realizing it until really late
+                      I've also problem solving in general, and in particular,
+                      materials by V. Anton Spraul in his book "Think like a
+                      programmer".
                     </p>
-                    <p>
-                      - vulnerable to becoming naive about time - getting lost
-                      in just doing the motions and naively believing I'll make
-                      in time somehow
-                    </p>
-                    <p>
-                      - easily stuck, takes me quite a lot of self-awareness,
-                      method and alertness to avoid getting stuck or lost in a
-                      very inefficient way of doing a thing
-                    </p>
-                    <p>
-                      - tendency to get bogged down and lost in the weeds,
-                      working on perfecting some minor detail that doesn't
-                      really matter that much
-                    </p>
-                    <p>
-                      - for some reason, I tend to be bad with efficiency,
-                      despite my best efforts to work with a systematic process
-                      to avert it - I'm too worried about some aspect of
-                      symmetry or look or whatever else of whatever it is that
-                      I'm working on, it's an absurdly notorious hassle for me
-                    </p>
-                    <p>
-                      - time estimates, even if I use task-complexity scale
-                      (e.g. Fibonacci) to denote how hard it is for me, it's
-                      still prone to wild inaccuracies
-                    </p>
+                    <p> With that I learned to:</p>
+                    <ul>
+                      <li>Never just attack a problem head-on</li>
+                      <li>Strive to always have a plan and stay systematic</li>
+                    </ul>
                   </CustomParagraphsGroup>
                 </Accordion.Body>
               </Accordion.Item>
