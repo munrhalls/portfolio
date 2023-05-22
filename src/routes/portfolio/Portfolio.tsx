@@ -68,7 +68,15 @@ function Portfolio() {
     <>
       <Container className="mt-3 mb-3">
         <PortfolioNav {...PortfolioNavProps} />
-        {ProjectRows}
+        <Row>
+          {sortedFiltered.map((project) => (
+            <PortfolioProject
+              key={project.header.title}
+              project={project}
+              isMobile={isMobile}
+            />
+          ))}
+        </Row>
       </Container>
     </>
   );
