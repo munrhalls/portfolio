@@ -29,10 +29,17 @@ function PortfolioProject({
             <Card.Img
               variant="top"
               src={project.header.headerImg}
-              style={{ border: "10px solid #eee", borderRadius: "0" }}
+              style={{
+                border: "10px solid #212121",
+                borderRadius: "0",
+              }}
             />
           </a>
           <Card.Body>
+            <Card.Title>{project.mainSection.title}</Card.Title>
+            <Card.Text>{project.mainSection.shortDesc}</Card.Text>
+
+            <Card.Text>{project.mainSection.valueToUser}</Card.Text>
             <ButtonGroup className={"mt-3 mb-4"} style={{ width: "100%" }}>
               <Button variant="light" href={project.link} target="_blank">
                 See live
@@ -41,10 +48,6 @@ function PortfolioProject({
                 See code
               </Button>
             </ButtonGroup>
-            <Card.Title>{project.mainSection.title}</Card.Title>
-            <Card.Text>{project.mainSection.shortDesc}</Card.Text>
-
-            <Card.Text>{project.mainSection.valueToUser}</Card.Text>
             <Accordion>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Development summary</Accordion.Header>
