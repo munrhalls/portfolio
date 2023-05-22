@@ -23,14 +23,24 @@ function PortfolioProject({
       <Col xs={10} sm={6} md={4} lg={3} className={"mb-5"}>
         <Card>
           <Card.Header>
-            <h2>
+            <h2 style={{ fontSize: "1.33rem" }}>
               <Image
                 rounded
                 style={{ width: "2.35rem", marginRight: "1rem" }}
                 src={project.header.symbolImg}
                 alt="smbl|"
               />
-              <span>{project.header.title}</span>
+              <span
+                style={{
+                  display: "inline",
+                  maxWidth: "80%",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {project.header.title}
+              </span>
             </h2>
           </Card.Header>
           <Card.Img variant="top" src={project.header.headerImg} />
