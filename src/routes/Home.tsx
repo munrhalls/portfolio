@@ -157,7 +157,6 @@ function Home() {
                   <CustomParagraphsGroup>
                     <ul>
                       <li>Javascript</li>
-                      <hr />
                       <li>
                         I can work with, understand, read, write, modify, debug
                         advanced features
@@ -166,7 +165,7 @@ function Home() {
                       <li>
                         For example: recursion, function currying, closures,
                         multidimensional arrays and objects, deep vs shallow
-                        copy
+                        copy, complex DOM operations
                       </li>
                       <hr />
                       <li>Typescript (basic)</li>
