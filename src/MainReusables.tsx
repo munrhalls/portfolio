@@ -43,6 +43,14 @@ export function CustomAccordionHeader({ text }: TextProps) {
   );
 }
 
+export function ProjectLessonsHeader({ children }: Props) {
+  return (
+    <h3 style={{ fontSize: "1rem", textDecoration: "underline" }}>
+      {children}
+    </h3>
+  );
+}
+
 export function CustomParagraphsGroup({ children }: Props) {
   return (
     <div

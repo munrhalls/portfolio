@@ -7,6 +7,7 @@ import {
   MetricText,
   MetricScore,
   MetricScoreColors,
+  ProjectLessonsHeader,
 } from "./../../MainReusables";
 
 import { Project } from "./portfolioData";
@@ -53,9 +54,17 @@ function PortfolioProject({
                 <Accordion.Header>Development summary</Accordion.Header>
                 <Accordion.Body>
                   <ul>
-                    {project.developmentSummary.map((item: string) => (
-                      <li key={project.mainSection.title + item}>{item}</li>
-                    ))}
+                    {project.developmentSummary.map(
+                      (item: string, index: number) => (
+                        <li key={project.mainSection.title + item}>
+                          {item}
+
+                          {index !== project.developmentSummary.length - 1 && (
+                            <hr />
+                          )}
+                        </li>
+                      )
+                    )}
                   </ul>
                 </Accordion.Body>
               </Accordion.Item>
@@ -89,37 +98,73 @@ function PortfolioProject({
               <Accordion.Item eventKey="2">
                 <Accordion.Header>Lessons summary</Accordion.Header>
                 <Accordion.Body>
-                  <p>What went well:</p>
+                  <ProjectLessonsHeader>What went well:</ProjectLessonsHeader>
                   <ul>
-                    {project.lessonsSummary.whatWentWell.map((item: string) => (
-                      <li key={project.mainSection.title + item}>{item}</li>
-                    ))}
-                  </ul>
-                  <p>What went poorly:</p>
-                  <ul>
-                    {project.lessonsSummary.whatWentPoorly.map(
-                      (item: string) => (
-                        <li key={project.mainSection.title + item}>{item}</li>
+                    {project.lessonsSummary.whatWentWell.map(
+                      (item: string, index: number) => (
+                        <li key={project.mainSection.title + item}>
+                          {item}{" "}
+                          {index !==
+                            project.lessonsSummary.whatWentWell.length - 1 && (
+                            <hr />
+                          )}
+                        </li>
                       )
                     )}
                   </ul>
-                  <p>Root causes:</p>
+                  <ProjectLessonsHeader>What went poorly:</ProjectLessonsHeader>
                   <ul>
-                    {project.lessonsSummary.rootCauses.map((item: string) => (
-                      <li key={project.mainSection.title + item}>{item}</li>
-                    ))}
+                    {project.lessonsSummary.whatWentPoorly.map(
+                      (item: string, index: number) => (
+                        <li key={project.mainSection.title + item}>
+                          {item}{" "}
+                          {index !==
+                            project.lessonsSummary.whatWentPoorly.length -
+                              1 && <hr />}
+                        </li>
+                      )
+                    )}
                   </ul>
-                  <p>"Never again"'s & next time:</p>
+                  <ProjectLessonsHeader>Root causes:</ProjectLessonsHeader>
                   <ul>
-                    {project.lessonsSummary.neverAgain.map((item: string) => (
-                      <li key={project.mainSection.title + item}>{item}</li>
-                    ))}
+                    {project.lessonsSummary.rootCauses.map(
+                      (item: string, index: number) => (
+                        <li key={project.mainSection.title + item}>
+                          {item}{" "}
+                          {index !==
+                            project.lessonsSummary.rootCauses.length - 1 && (
+                            <hr />
+                          )}
+                        </li>
+                      )
+                    )}
                   </ul>
-                  <p>How can I do it all better:</p>
+                  <ProjectLessonsHeader>Next time:</ProjectLessonsHeader>
+                  <ul>
+                    {project.lessonsSummary.nextTime.map(
+                      (item: string, index: number) => (
+                        <li key={project.mainSection.title + item}>
+                          {item}{" "}
+                          {index !==
+                            project.lessonsSummary.nextTime.length - 1 && (
+                            <hr />
+                          )}
+                        </li>
+                      )
+                    )}
+                  </ul>
+                  <ProjectLessonsHeader>
+                    How can I do it all better:
+                  </ProjectLessonsHeader>
                   <ul>
                     {project.lessonsSummary.howCanIDoItAllBetter.map(
-                      (item: string) => (
-                        <li key={project.mainSection.title + item}>{item}</li>
+                      (item: string, index: number) => (
+                        <li key={project.mainSection.title + item}>
+                          {item}
+                          {index !==
+                            project.lessonsSummary.howCanIDoItAllBetter.length -
+                              1 && <hr />}
+                        </li>
                       )
                     )}
                   </ul>
@@ -129,9 +174,16 @@ function PortfolioProject({
                 <Accordion.Header>Important points</Accordion.Header>
                 <Accordion.Body>
                   <ul>
-                    {project.importantPoints.map((item: string) => (
-                      <li key={project.mainSection.title + item}>{item}</li>
-                    ))}
+                    {project.importantPoints.map(
+                      (item: string, index: number) => (
+                        <li key={project.mainSection.title + item}>
+                          {item}
+                          {index !== project.importantPoints.length - 1 && (
+                            <hr />
+                          )}
+                        </li>
+                      )
+                    )}
                   </ul>
                 </Accordion.Body>
               </Accordion.Item>
