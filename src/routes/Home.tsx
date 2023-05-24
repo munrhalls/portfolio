@@ -12,21 +12,30 @@ import Container from "react-bootstrap/Container";
 // import { useAppSelector } from "./../hooks/hooks";
 // import homeImg from "./../assets/homeImg.png";
 // import dojoImg from "./../assets/dojoImg.png";
+import homeBg from "./../assets/simpleGeometricSpread3.png";
 import { CustomParagraphsGroup } from "../MainReusables";
 
 function Home() {
   // const author = useAppSelector((state) => state.auth.value);
 
   return (
-    <>
-      <Container>
+    <div>
+      <Container
+        style={{
+          minHeight: "100vh",
+          backgroundImage: `url(${homeBg})`,
+          backgroundSize: "68% 100vh",
+          backgroundRepeat: "no-repeat",
+          backgroundPositionX: "90%",
+        }}
+      >
         <Row className="justify-content-center">
-          <Col xs={12} md={10}>
+          <Col xs={12} md={10} xl={8}>
             <h1 className="mt-5 mb-5">Junior Web Developer</h1>
           </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col xs={12} md={10}>
+          <Col xs={12} md={10} xl={8}>
             <Accordion>
               <Accordion.Item eventKey="0">
                 <CustomAccordionHeader text="Experience" />
@@ -252,7 +261,7 @@ function Home() {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }
 
