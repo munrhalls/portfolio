@@ -19,16 +19,14 @@ function Home() {
   // const author = useAppSelector((state) => state.auth.value);
 
   return (
-    <div>
-      <Container
-        style={{
-          minHeight: "100vh",
-          backgroundImage: `url(${homeBg})`,
-          backgroundSize: "68% 100vh",
-          backgroundRepeat: "no-repeat",
-          backgroundPositionX: "90%",
-        }}
-      >
+    <div
+      style={{
+        minHeight: "80vh",
+        background: `url(${homeBg}) no-repeat center right fixed`,
+        backgroundSize: "contain",
+      }}
+    >
+      <Container>
         <Row className="justify-content-center">
           <Col xs={12} md={10} xl={8}>
             <h1 className="mt-5 mb-5">Junior Web Developer</h1>
