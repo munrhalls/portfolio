@@ -3,7 +3,7 @@ import artimg from "./../graphics/f0.png";
 
 const placeholdersArticle = (
   <>
-    <h1>article test</h1>
+    <h1>Lorem article</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo beatae rerum
       dicta vel, delectus doloremque cum enim. Perspiciatis, consequatur
@@ -13,7 +13,7 @@ const placeholdersArticle = (
     <h2>Lorem, lorem</h2>
     <Image
       style={{
-        maxWidth: "35%",
+        maxWidth: "40%",
         float: "left",
         marginTop: "0.5rem",
         marginRight: "1.5rem",
@@ -48,6 +48,17 @@ const placeholdersArticle = (
       voluptatibus omnis placeat explicabo debitis quia, ullam dolorem. Autem
       harum pariatur eius corrupti.{" "}
     </p>
+    <Image
+      style={{
+        maxWidth: "40%",
+        float: "right",
+        marginTop: "0.5rem",
+        marginLeft: "1.5rem",
+      }}
+      rounded
+      src={artimg}
+      alt="Article image"
+    />
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur natus
       ipsa perferendis rem necessitatibus quis repudiandae accusantium,
