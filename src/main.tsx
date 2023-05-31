@@ -12,7 +12,7 @@ import Authentication from "./routes/auth/Authentication.tsx";
 
 import Home from "./routes/Home.tsx";
 import Portfolio from "./routes/portfolio/Portfolio.tsx";
-import Articles from "./routes/articles/Articles.tsx";
+import Content from "./routes/content/Content.tsx";
 import About from "./routes/About.tsx";
 
 import Contact from "./routes/Contact.tsx";
@@ -22,7 +22,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Root />}>
       <Route index element={<Home />} />
       <Route path="portfolio" element={<Portfolio />}></Route>
-      <Route path="articles" element={<Articles />}></Route>
+      <Route path="content" element={<Content />}></Route>
       <Route path="about" element={<About />}></Route>
       <Route path="contact" element={<Contact />}></Route>
       <Route path="login" element={<Authentication />}></Route>
