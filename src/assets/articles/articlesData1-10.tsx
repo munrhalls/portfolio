@@ -12,11 +12,15 @@ const placeholdersArticle = (
     </p>
     <h2>Lorem, lorem</h2>
     <Image
-      style={{ maxWidth: "35%", float: "left", marginRight: "1rem" }}
+      style={{
+        maxWidth: "35%",
+        float: "left",
+        marginTop: "0.5rem",
+        marginRight: "1.5rem",
+      }}
       rounded
       src={artimg}
       alt="Article image"
-      className="float-left"
     />
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur natus
