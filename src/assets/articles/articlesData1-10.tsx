@@ -1,13 +1,23 @@
+import { Image } from "react-bootstrap";
+import artimg from "./../graphics/f0.png";
+
 const placeholdersArticle = (
   <>
     <h1>article test</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo beatae rerum
       dicta vel, delectus doloremque cum enim. Perspiciatis, consequatur
-      dolorem! Doloribus ex, assumenda inventore iusto vitae fugiat dignissimos
-      natus optio.
+      dolorem! Doloribus ex, assumenda inventore iusto vitae fugiat
+      dignissimos`x` natus optio.
     </p>
-    <h2>lorem ipsum</h2>
+    <h2>Lorem, lorem</h2>
+    <Image
+      style={{ maxWidth: "35%", float: "left", marginRight: "1rem" }}
+      rounded
+      src={artimg}
+      alt="Article image"
+      className="float-left"
+    />
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur natus
       ipsa perferendis rem necessitatibus quis repudiandae accusantium,
