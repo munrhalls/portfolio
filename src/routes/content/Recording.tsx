@@ -5,16 +5,16 @@ import { Button } from "react-bootstrap";
 
 function Recording() {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card className="d-flex">
       <Card.Img
         style={{ padding: "1.5rem" }}
         variant="top"
         src={recordingSymbol}
       />
-      <Card.Body>
+      <Card.Body className="flex-column">
         <Card.Title>Card Title</Card.Title>
         <Card.Text>
-          <audio src={audioFile} controls></audio>
+          <audio src={audioFile} controls className="d-block w-100"></audio>
         </Card.Text>
 
         <Button variant="primary">Go somewhere</Button>

@@ -6,7 +6,7 @@ function Articles() {
   return (
     <>
       {articlesData.map((article) => {
-        return <h2>Articles test</h2>;
+        return <>{article}</>;
       })}
       <Recording />
     </>
