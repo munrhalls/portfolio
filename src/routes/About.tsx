@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
-import f1 from "./../assets/f1.png";
+import f1 from "./../assets/graphics/f1.png";
 
 interface EncasingContentProps {
   children: React.ReactNode;

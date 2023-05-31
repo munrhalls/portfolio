@@ -10,9 +10,9 @@ import Container from "react-bootstrap/Container";
 // import { H1Image } from "../MainReusables";
 // import Button from "react-bootstrap/Button";
 // import { useAppSelector } from "./../hooks/hooks";
-// import homeImg from "./../assets/homeImg.png";
-// import dojoImg from "./../assets/dojoImg.png";
-import homeBg from "./../assets/simpleGeometricSpread3.png";
+// import homeImg from "./../assets/graphics/homeImg.png";
+// import dojoImg from "./../assets/graphics/dojoImg.png";
+import homeBg from "./../assets/graphics/simpleGeometricSpread3.png";
 import { CustomParagraphsGroup } from "../MainReusables";
 
 function Home() {

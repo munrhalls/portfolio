@@ -3,7 +3,7 @@ import "./MainReusables.css";
 import { ReactNode } from "react";
 import { Card, Image } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
-import dojoImg from "./assets/dojoImg1.png";
+import dojoImg from "./assets/graphics/dojoImg1.png";
 
 interface H1ImageProps {
   src: string;

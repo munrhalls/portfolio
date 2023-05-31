@@ -1,5 +1,5 @@
 import audioFile from "./../../assets/recordings/Nathan-Fake-Outhouse.mp3";
-import recordingSymbol from "./../../assets/recordingSymbol.png";
+import recordingSymbol from "./../../assets/graphics/recordingSymbol.png";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 

@@ -7,12 +7,12 @@ function Articles() {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col className="mt-3" xs={12}>
           {articlesData.map((article) => {
             return <>{article}</>;
           })}
         </Col>
-        <Col>
+        <Col className="mt-3" xs={12}>
           <Recording />
         </Col>
       </Row>
