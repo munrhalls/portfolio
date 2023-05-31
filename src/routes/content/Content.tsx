@@ -9,7 +9,7 @@ function Articles() {
       <Row>
         <Col className="mt-3" xs={12}>
           {articlesData.map((article) => {
-            return <>{article}</>;
+            return article;
           })}
         </Col>
         <Col className="mt-3" xs={12}>
