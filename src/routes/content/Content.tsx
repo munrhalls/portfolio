@@ -27,8 +27,8 @@ const StyledRowReflector = styled(Row)`
     background: linear-gradient(
       90deg,
       rgba(255, 255, 255, 0.025) 40%,
-      rgba(255, 255, 255, 0.15) 80%,
-      rgba(255, 255, 255, 0.23) 87%,
+      rgba(255, 255, 255, 0.15) 85%,
+      rgba(255, 255, 255, 0.23) 95%,
       rgba(255, 255, 255, 0.05) 100%
     );
     background-size: 100% 100%;
@@ -36,7 +36,7 @@ const StyledRowReflector = styled(Row)`
   }
 `;
 
-function Articles() {
+function Content() {
   const [subjectFilter, setSubjectFilter] = useState("Any");
   const [typeFilter, setTypeFilter] = useState("Any");
   console.log(subjectFilter, typeFilter);
@@ -215,4 +215,4 @@ function Articles() {
   );
 }
 
-export default Articles;
+export default Content;
