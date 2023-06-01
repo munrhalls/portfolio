@@ -52,7 +52,7 @@ function Articles() {
   return (
     <Container>
       <Row
-        className="d-flex justify-content-start mt-1 pl-3 pr-3 pb-3 pt-0"
+        className="d-flex justify-content-start mt-4 pl-3 pr-3 pb-3 pt-0"
         style={{
           borderRadius: "5px",
           background: "rgb(33, 37, 41)",
@@ -139,7 +139,7 @@ function Articles() {
         </Col>
       </Row>
       {isFiltered && (
-        <Row className="mt-5">
+        <Row className="mt-4">
           <Col>
             <Alert variant="dark">
               {subjectFilter !== "Any" && (
