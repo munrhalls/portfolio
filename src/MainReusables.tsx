@@ -118,8 +118,31 @@ export function CustomCardImage({ src, alt }: ImageProps) {
 }
 
 // MOSTLY FOR CONTENT PAGE
+export const CustomFormLabel = styled(Form.Label)`
+  background: #fff;
+  width: 100%;
+  color: #000;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+`;
+
+export const CustomFormCheck = styled(Form.Check)`
+  text-transform: uppercase;
+  @media screen and (max-width: 768px) {
+    font-size: 0.75rem;
+  }
+`;
+export const CustomFormCheckLabel = styled(Form.Check.Label)``;
+
 export const CustomFormCheckInput = styled(Form.Check.Input)`
-  color: #fff;
-  background: ${({ checked }) => (checked ? "#000" : "#fff")};
-  border: 3px solid #fff;
+  padding: 0.25rem;
+  color: #fff !important;
+  // #fff on checked
+  background: ${({ checked }) =>
+    checked ? "#fff !important" : "#000 !important"};
+  // #fff on checked
+  border: ${({ checked }) =>
+    checked ? "3px solid #fff !important" : "1px solid #fff !important"};
+  cursor: pointer;
 `;

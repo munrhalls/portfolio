@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { CustomFormCheckInput } from "./../../MainReusables";
+import {
+  CustomFormLabel,
+  CustomFormCheck,
+  CustomFormCheckInput,
+} from "./../../MainReusables";
 import { Container, Row, Col, Form, FormGroup, Alert } from "react-bootstrap";
 import { articlesData } from "../../assets/articles/articlesData1-10";
 import { recordingsData } from "../../assets/recordings/recordingsData";
@@ -48,18 +52,20 @@ function Articles() {
   return (
     <Container>
       <Row
-        className="mt-1 pl-3 pr-3 pb-3 pt-0"
+        className="d-flex justify-content-start mt-1 pl-3 pr-3 pb-3 pt-0"
         style={{
           borderRadius: "5px",
           background: "rgb(33, 37, 41)",
           color: "#fff",
         }}
       >
-        <Col className="mt-3" xs={6}>
+        <Col className="mt-3" xs={5}>
           <Form>
             <FormGroup>
-              <Form.Label htmlFor="filter-subject">SUBJECT</Form.Label>
-              <Form.Check>
+              <CustomFormLabel htmlFor="filter-subject">
+                SUBJECT
+              </CustomFormLabel>
+              <CustomFormCheck>
                 <Form.Check.Label>Any</Form.Check.Label>
                 <CustomFormCheckInput
                   type="radio"
@@ -67,57 +73,67 @@ function Articles() {
                   name="filter-subject"
                   value="Any"
                   checked={subjectFilter === "Any"}
-                  style={{
-                    color: "#fff",
-                    background: `${subjectFilter === "Any" ? "#000" : "#fff"}`,
-                    border: "3px solid #fff",
-                  }}
                   onChange={handleFilterChange}
                 />
-              </Form.Check>
-              <Form.Check
-                type="radio"
-                id="filter-work-effectiveness"
-                name="filter-subject"
-                label="Work effectiveness"
-                value="Work effectiveness"
-                checked={subjectFilter === "Work effectiveness"}
-                onChange={handleFilterChange}
-              />
+              </CustomFormCheck>
+              <CustomFormCheck>
+                <Form.Check.Label>Work effectiveness</Form.Check.Label>
+                <CustomFormCheckInput
+                  type="radio"
+                  id="filter-work-effectiveness"
+                  name="filter-subject"
+                  value="Work effectiveness"
+                  checked={subjectFilter === "Work effectiveness"}
+                  onChange={handleFilterChange}
+                />
+              </CustomFormCheck>
             </FormGroup>
           </Form>
         </Col>
-        <Col className="mt-3" xs={6}>
+        <Col className="mt-3" xs={4}>
           <Form>
             <FormGroup>
-              <Form.Label htmlFor="filter-type">TYPE</Form.Label>
-              <Form.Check
+              <CustomFormLabel htmlFor="filter-type">TYPE</CustomFormLabel>
+              <CustomFormCheck
                 type="radio"
                 id="filter-type-any"
                 name="filter-type"
-                label="Any"
                 value="Any"
                 checked={typeFilter === "Any"}
                 onChange={handleTypeFilterChange}
-              />
-              <Form.Check
-                type="radio"
-                id="filter-audio"
-                name="filter-type"
-                label="Audio"
-                value="Audio"
-                checked={typeFilter === "Audio"}
-                onChange={handleTypeFilterChange}
-              />
-              <Form.Check
-                type="radio"
-                id="filter-Text"
-                name="filter-type"
-                label="Text"
-                value="Text"
-                checked={typeFilter === "Text"}
-                onChange={handleTypeFilterChange}
-              />
+              >
+                <Form.Check.Label>Any</Form.Check.Label>
+                <CustomFormCheckInput
+                  type="radio"
+                  id="filter-type-any"
+                  name="filter-type"
+                  value="Any"
+                  checked={typeFilter === "Any"}
+                  onChange={handleTypeFilterChange}
+                />
+              </CustomFormCheck>
+              <CustomFormCheck>
+                <Form.Check.Label>Audio</Form.Check.Label>{" "}
+                <CustomFormCheckInput
+                  type="radio"
+                  id="filter-audio"
+                  name="filter-type"
+                  value="Audio"
+                  checked={typeFilter === "Audio"}
+                  onChange={handleTypeFilterChange}
+                />
+              </CustomFormCheck>
+              <CustomFormCheck>
+                <Form.Check.Label>Text</Form.Check.Label>{" "}
+                <CustomFormCheckInput
+                  type="radio"
+                  id="filter-Text"
+                  name="filter-type"
+                  value="Text"
+                  checked={typeFilter === "Text"}
+                  onChange={handleTypeFilterChange}
+                />
+              </CustomFormCheck>
             </FormGroup>
           </Form>
         </Col>
