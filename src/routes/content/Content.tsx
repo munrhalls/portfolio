@@ -16,7 +16,7 @@ import Recording from "./Recording";
 function Articles() {
   const [subjectFilter, setSubjectFilter] = useState("Any");
   const [typeFilter, setTypeFilter] = useState("Any");
-
+  console.log(subjectFilter, typeFilter);
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSubjectFilter(event.target.value);
   };
@@ -49,6 +49,8 @@ function Articles() {
     }
     return false;
   });
+
+  const isFiltered = subjectFilter !== "Any" || typeFilter !== "Any";
 
   return (
     <Container>
@@ -113,18 +115,32 @@ function Articles() {
           </Form>
         </Col>
       </Row>
-      {subjectFilter !== "Any" && (
+      {isFiltered && (
         <Row className="mt-5">
           <Col>
             <Alert variant="dark">
-              Showing only content relevant to:
-              <div className="mt-1" style={{ fontWeight: "bold" }}>
-                {subjectFilter}
-              </div>
+              {subjectFilter !== "Any" && (
+                <div>
+                  Showing only content relevant to:
+                  <div className="mt-1" style={{ fontWeight: "bold" }}>
+                    {subjectFilter}
+                  </div>
+                </div>
+              )}
+              {subjectFilter !== "Any" && typeFilter !== "Any" ? <hr /> : ""}
+              {typeFilter !== "Any" && (
+                <div>
+                  Showing only type:
+                  <div className="mt-1" style={{ fontWeight: "bold" }}>
+                    {typeFilter}
+                  </div>
+                </div>
+              )}
             </Alert>
           </Col>
         </Row>
       )}
+
       <Row>
         {filteredArticles.map((article) => {
           return (
