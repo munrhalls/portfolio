@@ -120,12 +120,16 @@ export function CustomCardImage({ src, alt }: ImageProps) {
 // MOSTLY FOR CONTENT PAGE
 export const CustomFormLabel = styled(Form.Label)`
   background: #fff;
-  width: 8rem;
+  width: 6rem;
   color: #000;
   border-radius: 5px;
   padding: 0.5rem 0.75rem;
   font-weight: bold;
   opacity: 0.51;
+
+  @media screen and (max-width: 768px) {
+    width: 6rem;
+  }
 `;
 
 export const CustomFormCheck = styled(Form.Check)`
@@ -149,4 +153,5 @@ export const CustomFormCheckInput = styled(Form.Check.Input)`
   border: ${({ checked }) =>
     checked ? "3px solid #fff !important" : "1px solid #fff !important"};
   cursor: pointer;
+  z-index: 10;
 `;

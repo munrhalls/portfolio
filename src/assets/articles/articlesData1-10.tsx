@@ -15,10 +15,10 @@ const placeholdersArticle = {
       <p>
         Anything in a more complex application, that is dealt with on an
         individual basis, has an uncanny potential to multiply overall
-        complexity. It makes keeping things consistent that much harder and more
-        obfuscated, unclear.
+        complexity. It makes keeping things consistent harder and more
+        obfuscated.
       </p>
-      <h2>Lorem, lorem</h2>
+      <h2>Work</h2>
       <Image
         style={{
           maxWidth: "40%",

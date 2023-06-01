@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "styled-components";
 import {
   CustomFormLabel,
   CustomFormCheck,
@@ -8,6 +9,40 @@ import { Container, Row, Col, Form, FormGroup, Alert } from "react-bootstrap";
 import { articlesData } from "../../assets/articles/articlesData1-10";
 import { recordingsData } from "../../assets/recordings/recordingsData";
 import Recording from "./Recording";
+
+const StyledRowReflector = styled(Row)`
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(255, 255, 255, 0.13) 77%,
+      rgba(255, 255, 255, 0.5) 92%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 100% 100%;
+    animation: shine 1s infinite;
+    z-index: -10;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 0 100%;
+    }
+  }
+`;
 
 function Articles() {
   const [subjectFilter, setSubjectFilter] = useState("Any");
@@ -20,6 +55,10 @@ function Articles() {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setTypeFilter(event.target.value);
+  };
+
+  const handleButtonClick = (event) => {
+    event.stopPropagation();
   };
 
   const filteredArticles = articlesData.filter((article) => {
@@ -51,12 +90,14 @@ function Articles() {
 
   return (
     <Container>
-      <Row
+      <StyledRowReflector
         className="d-flex justify-content-start mt-4 pl-3 pr-3 pb-3 pt-0"
         style={{
+          position: "relative",
           borderRadius: "5px",
           background: "rgb(33, 37, 41)",
           color: "#fff",
+          zIndex: "2",
         }}
       >
         <Col className="mt-3" xs={5}>
@@ -137,7 +178,7 @@ function Articles() {
             </FormGroup>
           </Form>
         </Col>
-      </Row>
+      </StyledRowReflector>
       {isFiltered && (
         <Row className="mt-4">
           <Col>
