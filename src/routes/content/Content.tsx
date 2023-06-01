@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
 import {
   CustomFormLabel,
   CustomFormCheck,
@@ -9,32 +8,6 @@ import { Container, Row, Col, Form, FormGroup, Alert } from "react-bootstrap";
 import { articlesData } from "../../assets/articles/articlesData1-10";
 import { recordingsData } from "../../assets/recordings/recordingsData";
 import Recording from "./Recording";
-
-const StyledRowReflector = styled(Row)`
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.025) 40%,
-      rgba(255, 255, 255, 0.15) 85%,
-      rgba(255, 255, 255, 0.23) 95%,
-      rgba(255, 255, 255, 0.05) 100%
-    );
-    background-size: 100% 100%;
-    z-index: -10;
-  }
-`;
 
 function Content() {
   const [subjectFilter, setSubjectFilter] = useState("Any");
@@ -78,7 +51,7 @@ function Content() {
 
   return (
     <Container>
-      <StyledRowReflector
+      <Row
         className="d-flex justify-content-start mt-4 pl-3 pr-3 pb-3 pt-0"
         style={{
           position: "relative",
@@ -166,7 +139,7 @@ function Content() {
             </FormGroup>
           </Form>
         </Col>
-      </StyledRowReflector>
+      </Row>
       {isFiltered && (
         <Row className="mt-4">
           <Col>
