@@ -33,15 +33,7 @@ const StyledRowReflector = styled(Row)`
     );
     background-position: 0% 10%;
     background-size: 100% 100%;
-    animation: shine 10s infinite;
     z-index: -10;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  @keyframes shine {
-    to {
-      background-position: 100% 30%;
-    }
   }
 `;
 
