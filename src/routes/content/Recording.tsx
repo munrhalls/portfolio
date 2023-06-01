@@ -1,8 +1,7 @@
 import recordingSymbol from "./../../assets/graphics/recordingSymbol.png";
 import { Card } from "react-bootstrap";
-import { Button } from "react-bootstrap";
 
-function Recording({ recordingSrc }) {
+function Recording({ recordingSrc }: string) {
   return (
     <Card className="d-flex mb-3">
       <Card.Header

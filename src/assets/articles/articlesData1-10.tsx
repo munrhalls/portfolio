@@ -3,6 +3,7 @@ import artimg from "./../graphics/f0.png";
 
 const placeholdersArticle = {
   id: "article-frameWorkvsWork-1",
+  type: "text",
   subject: "Work effectiveness",
   html: (
     <>

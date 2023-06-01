@@ -1,16 +1,7 @@
 import { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  FormGroup,
-  Alert,
-  Dropdown,
-} from "react-bootstrap";
+import { Container, Row, Col, Form, FormGroup, Alert } from "react-bootstrap";
 import { articlesData } from "../../assets/articles/articlesData1-10";
 import { recordingsData } from "../../assets/recordings/recordings";
-import audioFile from "./../../assets/recordings/Nathan-Fake-Outhouse.mp3";
 import Recording from "./Recording";
 
 function Articles() {
@@ -42,7 +33,6 @@ function Articles() {
     if (subjectFilter === "Any") {
       return true;
     } else if (subjectFilter === "Work effectiveness") {
-      // Replace this with the actual topic you want to filter by
       return recording.subject === "Work effectiveness";
     } else if (subjectFilter === "chronological") {
       return true;
@@ -51,6 +41,8 @@ function Articles() {
   });
 
   const isFiltered = subjectFilter !== "Any" || typeFilter !== "Any";
+  const isArticles = typeFilter === "Any" || typeFilter === "Text";
+  const isAudio = typeFilter === "Any" || typeFilter === "Audio";
 
   return (
     <Container>
@@ -142,20 +134,22 @@ function Articles() {
       )}
 
       <Row>
-        {filteredArticles.map((article) => {
-          return (
-            <Col key={article.id} className="mt-3" xs={12}>
-              {article.html};
-            </Col>
-          );
-        })}
-        {filteredRecordings.map((recording) => {
-          return (
-            <Col key={recording.id} className="mt-3" xs={12}>
-              <Recording recordingSrc={recording.mp3} />
-            </Col>
-          );
-        })}
+        {isArticles &&
+          filteredArticles.map((article) => {
+            return (
+              <Col key={article.id} className="mt-3" xs={12}>
+                {article.html};
+              </Col>
+            );
+          })}
+        {isAudio &&
+          filteredRecordings.map((recording) => {
+            return (
+              <Col key={recording.id} className="mt-3" xs={12}>
+                <Recording recordingSrc={recording.mp3} />
+              </Col>
+            );
+          })}
       </Row>
     </Container>
   );
