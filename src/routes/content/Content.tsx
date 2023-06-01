@@ -28,12 +28,20 @@ const StyledRowReflector = styled(Row)`
       90deg,
       rgba(255, 255, 255, 0.025) 0%,
       rgba(255, 255, 255, 0.15) 77%,
-      rgba(255, 255, 255, 0.21) 92%,
+      rgba(255, 255, 255, 0.23) 92%,
       rgba(255, 255, 255, 0.05) 100%
     );
     background-position: 0% 10%;
     background-size: 100% 100%;
+    animation: shine 10s infinite;
     z-index: -10;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 100% 30%;
+    }
   }
 `;
 
