@@ -54,14 +54,12 @@ function Content() {
       <Row
         className="d-flex justify-content-start mt-4 pl-3 pr-3 pb-3 pt-0"
         style={{
-          position: "relative",
           borderRadius: "5px",
           background: "rgb(12, 17, 21)",
           color: "#fff",
-          zIndex: "2",
         }}
       >
-        <Col className="mt-3" xs={5}>
+        <Col className="mt-3" md="auto" lg="4">
           <Form>
             <FormGroup>
               <CustomFormLabel htmlFor="filter-subject">
@@ -92,7 +90,7 @@ function Content() {
             </FormGroup>
           </Form>
         </Col>
-        <Col className="mt-3" xs={4}>
+        <Col className="mt-3" xs md={{ span: 4, offset: 3 }}>
           <Form>
             <FormGroup>
               <CustomFormLabel htmlFor="filter-type">TYPE</CustomFormLabel>
@@ -166,11 +164,11 @@ function Content() {
         </Row>
       )}
 
-      <Row>
+      <Row className="d-flex justify-content-center">
         {isArticles &&
           filteredArticles.map((article) => {
             return (
-              <Col key={article.id} className="mt-3" xs={12}>
+              <Col key={article.id} className="mt-3" xs={12} lg={9}>
                 {article.html};
               </Col>
             );
@@ -178,7 +176,7 @@ function Content() {
         {isAudio &&
           filteredRecordings.map((recording) => {
             return (
-              <Col key={recording.id} className="mt-3" xs={12}>
+              <Col key={recording.id} className="mt-3" xs={12} lg={8}>
                 <Recording recordingSrc={recording.mp3} />
               </Col>
             );
