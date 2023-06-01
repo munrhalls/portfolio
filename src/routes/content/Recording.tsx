@@ -1,9 +1,8 @@
-import audioFile from "./../../assets/recordings/Nathan-Fake-Outhouse.mp3";
 import recordingSymbol from "./../../assets/graphics/recordingSymbol.png";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
-function Recording() {
+function Recording({ recordingSrc }) {
   return (
     <Card className="d-flex mb-3">
       <Card.Header
@@ -20,8 +19,8 @@ function Recording() {
       <Card.Body className="flex-column">
         <Card.Title>Lorem title of audio entry</Card.Title>
         <Card.Text>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <audio src={audioFile} controls className="d-block w-100"></audio>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <audio src={recordingSrc} controls className="d-block w-100"></audio>
         </Card.Text>
       </Card.Body>
     </Card>
