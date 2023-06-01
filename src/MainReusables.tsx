@@ -125,7 +125,7 @@ export const CustomFormLabel = styled(Form.Label)`
   border-radius: 5px;
   padding: 0.5rem 0.75rem;
   font-weight: bold;
-  opacity: 0.5;
+  opacity: 0.51;
 `;
 
 export const CustomFormCheck = styled(Form.Check)`
