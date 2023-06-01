@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import "./MainReusables.css";
 import { ReactNode } from "react";
-import { Card, Image } from "react-bootstrap";
+import { Card, Image, Form } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import dojoImg from "./assets/graphics/dojoImg1.png";
 
@@ -23,6 +23,7 @@ interface ImageProps {
   alt: string;
 }
 
+// MOSTLY FOR HOMEPAGE
 export function H1Image({ src, alt }: H1ImageProps) {
   return (
     <Image
@@ -115,3 +116,10 @@ export const MetricScoreColors = [
 export function CustomCardImage({ src, alt }: ImageProps) {
   return <Card.Img src={src} alt={alt} />;
 }
+
+// MOSTLY FOR CONTENT PAGE
+export const CustomFormCheckInput = styled(Form.Check.Input)`
+  color: #fff;
+  background: ${({ checked }) => (checked ? "#000" : "#fff")};
+  border: 3px solid #fff;
+`;

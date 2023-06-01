@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CustomFormCheckInput } from "./../../MainReusables";
 import { Container, Row, Col, Form, FormGroup, Alert } from "react-bootstrap";
 import { articlesData } from "../../assets/articles/articlesData1-10";
 import { recordingsData } from "../../assets/recordings/recordingsData";
@@ -46,20 +47,34 @@ function Articles() {
 
   return (
     <Container>
-      <Row>
-        <Col className="mt-3" xs={3}>
+      <Row
+        className="mt-1 pl-3 pr-3 pb-3 pt-0"
+        style={{
+          borderRadius: "5px",
+          background: "rgb(33, 37, 41)",
+          color: "#fff",
+        }}
+      >
+        <Col className="mt-3" xs={6}>
           <Form>
             <FormGroup>
               <Form.Label htmlFor="filter-subject">SUBJECT</Form.Label>
-              <Form.Check
-                type="radio"
-                id="filter-subject-any"
-                name="filter-subject"
-                label="Any"
-                value="Any"
-                checked={subjectFilter === "Any"}
-                onChange={handleFilterChange}
-              />
+              <Form.Check>
+                <Form.Check.Label>Any</Form.Check.Label>
+                <CustomFormCheckInput
+                  type="radio"
+                  id="filter-subject-any"
+                  name="filter-subject"
+                  value="Any"
+                  checked={subjectFilter === "Any"}
+                  style={{
+                    color: "#fff",
+                    background: `${subjectFilter === "Any" ? "#000" : "#fff"}`,
+                    border: "3px solid #fff",
+                  }}
+                  onChange={handleFilterChange}
+                />
+              </Form.Check>
               <Form.Check
                 type="radio"
                 id="filter-work-effectiveness"
