@@ -3,7 +3,7 @@ import artimg from "./../graphics/f0.png";
 
 const placeholdersArticle = {
   id: "article-frameWorkvsWork-1",
-  subject: "Work vs Framework",
+  subject: "Work effectiveness",
   html: (
     <>
       <h1>Work vs Framework</h1>
