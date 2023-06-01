@@ -26,22 +26,13 @@ const StyledRowReflector = styled(Row)`
     height: 100%;
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.025) 0%,
-      rgba(255, 255, 255, 0.15) 77%,
-      rgba(255, 255, 255, 0.23) 92%,
+      rgba(255, 255, 255, 0.025) 40%,
+      rgba(255, 255, 255, 0.15) 80%,
+      rgba(255, 255, 255, 0.23) 87%,
       rgba(255, 255, 255, 0.05) 100%
     );
-    background-position: 0% 10%;
     background-size: 100% 100%;
-    animation: shine 10s infinite;
     z-index: -10;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  @keyframes shine {
-    to {
-      background-position: 100% 30%;
-    }
   }
 `;
 
@@ -92,7 +83,7 @@ function Articles() {
         style={{
           position: "relative",
           borderRadius: "5px",
-          background: "rgb(33, 37, 41)",
+          background: "rgb(12, 17, 21)",
           color: "#fff",
           zIndex: "2",
         }}
