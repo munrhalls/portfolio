@@ -1,7 +1,11 @@
 import recordingSymbol from "./../../assets/graphics/recordingSymbol.png";
 import { Card } from "react-bootstrap";
 
-function Recording({ recordingSrc }) {
+interface RecordingSrcProps {
+  recordingSrc: string;
+}
+
+function Recording({ recordingSrc }: RecordingSrcProps) {
   return (
     <Card className="d-flex mb-3">
       <Card.Header
