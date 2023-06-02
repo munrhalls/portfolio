@@ -75,13 +75,13 @@ function Other() {
   return (
     <Container fluid style={{ background: "#fff" }} className={" pt-3 pb-3"}>
       <Row className="justify-content-center mt-3 mb-5">
-        <Col xs={4}>
+        <Col xs={3}>
           <h1>My poetry</h1>
         </Col>
       </Row>
       {poemsData.map((poem) => (
         <Row className="justify-content-center" key={poem.title}>
-          <Col xs={4}>
+          <Col xs={3}>
             {poem.content}
             <hr className="mt-5 mb-5" />
           </Col>
