@@ -1,18 +1,9 @@
-import { useSpring, animated } from "@react-spring/web";
 import { Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { EncasingContent, EncasingTitle } from "../MainReusables";
 import { poemsData } from "../assets/poems/poemsData";
 
-const AnimatedCol = animated(Col);
-
 function Other() {
-  const springs = useSpring({
-    from: { x: 0 },
-    to: { x: 100 },
-    loop: true,
-  });
-
   return (
     <Container
       fluid
@@ -39,13 +30,14 @@ function Other() {
           <h1>Poems</h1>
         </Col>
       </Row>
+
       {poemsData.map((poem) => (
         <Fragment key={poem.title}>
           <Row className="justify-content-around">
-            <Col xs={1}></Col>
             <Col
               className="pt-3 pt-3"
               style={{
+                position: "relative",
                 borderRadius: "5px",
                 boxShadow: "0 0 50px 100px #fff",
                 background: "#fff",
@@ -58,10 +50,6 @@ function Other() {
             >
               {poem.content}
             </Col>
-            <Col
-              xs={1}
-              style={{ borderRight: ".15rem solid #fff", flexBasis: "0" }}
-            ></Col>
           </Row>
           <hr style={{ marginTop: "12rem", marginBottom: "12rem" }} />
         </Fragment>
