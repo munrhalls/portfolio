@@ -15,8 +15,6 @@ import Portfolio from "./routes/portfolio/Portfolio.tsx";
 import Content from "./routes/content/Content.tsx";
 import Other from "./routes/Other.tsx";
 
-import Contact from "./routes/Contact.tsx";
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
