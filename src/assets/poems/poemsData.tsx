@@ -68,8 +68,13 @@ const poemOne = {
       <p>These do not have any problem, splitting, from the one table.</p>
       <p> There are stories, that are, actually, not fiction.</p>
       <p>There's only one problem, with these, though:</p>
-      they exist.
-      <p>What drinks fit on the table, when telling such stories?</p>
+      <p>they exist.</p>
+      <p>What drinks fit on the table, when telling these stories? </p>
+      <p>
+        Who listens, when the fabric of meaning is woven from nothing but the
+        pure, endless paradox of
+        <PoemSpan> the real?</PoemSpan>
+      </p>
     </>
   ),
 };

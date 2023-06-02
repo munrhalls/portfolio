@@ -1,5 +1,4 @@
 import { useSpring, animated } from "@react-spring/web";
-import UndulatingBorder from "./UndulatingBorder";
 import { Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { EncasingContent, EncasingTitle } from "../MainReusables";
@@ -43,16 +42,7 @@ function Other() {
       {poemsData.map((poem) => (
         <Fragment key={poem.title}>
           <Row className="justify-content-around">
-            <UndulatingBorder>
-              <AnimatedCol
-                xs={1}
-                style={{
-                  borderRight: "1rem solid #fff",
-                  background: "blue !important",
-                  ...springs,
-                }}
-              ></AnimatedCol>
-            </UndulatingBorder>
+            <Col xs={1}></Col>
             <Col
               className="pt-3 pt-3"
               style={{
