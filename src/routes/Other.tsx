@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { poemsData } from "../assets/poems/poemsData";
 import f1 from "./../assets/graphics/f1.png";
@@ -92,24 +93,26 @@ function Other() {
         </Col>
       </Row>
       {poemsData.map((poem) => (
-        <Row className="justify-content-center" key={poem.title}>
-          <Col
-            className="pt-3 pt-3"
-            style={{
-              borderRadius: "5px",
-              boxShadow: "0 0 50px 100px #fff",
-              background: "#fff",
-            }}
-            xs={7}
-            sm={5}
-            md={4}
-            lg={4}
-            xl={2}
-          >
-            {poem.content}
-            <hr className="mt-5 mb-5" />
-          </Col>
-        </Row>
+        <Fragment key={poem.title}>
+          <Row className="justify-content-center">
+            <Col
+              className="pt-3 pt-3"
+              style={{
+                borderRadius: "5px",
+                boxShadow: "0 0 50px 100px #fff",
+                background: "#fff",
+              }}
+              xs={7}
+              sm={5}
+              md={4}
+              lg={4}
+              xl={2}
+            >
+              {poem.content}
+            </Col>
+          </Row>
+          <hr style={{ marginTop: "12rem", marginBottom: "12rem" }} />
+        </Fragment>
       ))}
       <Row style={{ background: "#000" }}>
         <Col>
