@@ -74,7 +74,14 @@ function EncasingContent({ children }: EncasingContentProps) {
 
 function Other() {
   return (
-    <Container fluid style={{ background: "#000" }} className={" pt-5 pb-5"}>
+    <Container
+      fluid
+      style={{
+        paddingTop: "3rem",
+        paddingBottom: "3rem",
+        background: "#000",
+      }}
+    >
       <Row className="justify-content-center mt-3 mb-5">
         <Col
           className="pt-3 pt-3"
