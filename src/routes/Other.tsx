@@ -96,7 +96,7 @@ function Other() {
           lg={4}
           xl={2}
         >
-          <h1>My poems</h1>
+          <h1>Poems</h1>
         </Col>
       </Row>
       {poemsData.map((poem) => (
