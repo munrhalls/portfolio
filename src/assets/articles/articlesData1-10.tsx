@@ -5,7 +5,7 @@ import framework from "./../graphics/framework.jpg";
 const placeholdersArticle = {
   id: "article-frameWorkvsWork-1",
   type: "text",
-  subject: "Work effectiveness",
+  subject: "SD SOP - Software Development Standard Operating Procedure",
   html: (
     <>
       <h1>Software work vs Software framework</h1>

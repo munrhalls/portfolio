@@ -18,10 +18,39 @@ const poemOne = {
         mirages.
       </p>
       <p>Thirst for something to see. To touch and hear. Smell or taste.</p>
-      Indicipheribility, my friend, is a bottle of another kind.
       <p>
-        It's fluids, light like a feather, yet molten from true meaning, are
-        undrinkable.
+        Indicipheribility of the real is a bottle of another kind, holding the
+        ephemereal perfume
+        <PoemSpan>of the formless mental forms that hope,</PoemSpan>
+        <PoemSpan>they are not illiterate in its realm.</PoemSpan>
+      </p>
+      <p>
+        They are, though and yet,
+        <PoemSpan>that is the only true literacy,</PoemSpan>
+        <PoemSpan>accepted by the endlessness,</PoemSpan>
+        <PoemSpan>of the paradox,</PoemSpan>
+        <PoemSpan>of the real.</PoemSpan>
+      </p>
+      <p>
+        Only in paradox do you find the real,
+        <PoemSpan>just as only in sense,</PoemSpan>
+        <PoemSpan>do you find the illusions,</PoemSpan>
+        <PoemSpan>of rational irrationality,</PoemSpan>
+        <PoemSpan>believed by everyone.</PoemSpan>
+      </p>
+      <p>
+        Fluids of The Indicipheribility, light like a feather, yet molten from
+        true meaning, are undrinkable.
+      </p>
+      <p>
+        The mind cannot make sense of such material,
+        <PoemSpan>as it is not material.</PoemSpan>
+      </p>
+      <p>
+        And so it does, endlessly,
+        <PoemSpan>keeping itself hostage,</PoemSpan>
+        <PoemSpan>by its desire to understand,</PoemSpan>
+        <PoemSpan>when that desire is its very prison.</PoemSpan>
       </p>
       <p>They do not quench, the thirst of expectation.</p>
       <p>
