@@ -82,7 +82,6 @@ function Other() {
       {poemsData.map((poem) => (
         <Row className="justify-content-center" key={poem.title}>
           <Col xs={4}>
-            {poem.title}
             {poem.content}
             <hr className="mt-5 mb-5" />
           </Col>
