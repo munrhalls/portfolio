@@ -1,4 +1,4 @@
-import { PoemTitle } from "./poemsDataStyling";
+import { PoemTitle, PoemSpan } from "./poemsDataStyling";
 
 const poemOne = {
   title: "LIQUID AIR ABUSER",
@@ -50,77 +50,77 @@ const poemTwo = {
     <>
       <PoemTitle>CHATTER CHATS WITH MIND</PoemTitle>
       <p>
-        <span>"What?", </span>
-        <span>says chatter.</span>
+        <PoemSpan>"What?", </PoemSpan>
+        <PoemSpan>says chatter.</PoemSpan>
       </p>
       <p>
-        <span>"Nothing", </span>
-        <span>answers chatter.</span>
-      </p>
-
-      <p>
-        <span>All chatter is about, </span>
-        <span>the various angles and contours, </span>
-        <span>degrees and shades, </span>
-        <span>shadows and brighter spots, </span>
-
-        <span>uncollected collecting, </span>
-        <span>of unexpected expectations, </span>
-        <span>of surprising surprises, </span>
-        <span>growing in the fields of the expected, </span>
-
-        <span>of the undulating tipping points, </span>
-        <span>in the colorfully undulating geometries </span>
-        <span>of absolutely nothing.</span>
-      </p>
-      <p>
-        <span>Sometimes, </span>
-        <span>searches hide, </span>
-        <span>what's sought after, </span>
-        <span>by the seeker.</span>
-      </p>
-      <p>
-        <span>Sometimes, </span>
-        <span>the unbecoming of the seeker's search, </span>
-        <span>is the becoming, </span>
-        <span>of what's sought. </span>
-      </p>
-      <p>
-        <span>Fullest fullness, </span>
-        <span>isn't found.</span>
-      </p>
-      <p>
-        <span>Like chatter, </span>
-        <span>it dwells in nothing.</span>
-      </p>
-      <p>
-        <span>Why then, </span>
-        <span>isn't it found in the chatter, </span>
-        <span>since both are about </span>
-        <span>absolutely nothing?</span>
+        <PoemSpan>"Nothing", </PoemSpan>
+        <PoemSpan>answers chatter.</PoemSpan>
       </p>
 
       <p>
-        <span>Unlike fullness, </span>
-        <span>the answer is found, </span>
-        <span>since it can be sought.</span>
+        <PoemSpan>All chatter is about, </PoemSpan>
+        <PoemSpan>the various angles and contours, </PoemSpan>
+        <PoemSpan>degrees and shades, </PoemSpan>
+        <PoemSpan>shadows and brighter spots, </PoemSpan>
+
+        <PoemSpan>uncollected collecting, </PoemSpan>
+        <PoemSpan>of unexpected expectations, </PoemSpan>
+        <PoemSpan>of surprising surprises, </PoemSpan>
+        <PoemSpan>growing in the fields of the expected, </PoemSpan>
+
+        <PoemSpan>of the undulating tipping points, </PoemSpan>
+        <PoemSpan>in the colorfully undulating geometries </PoemSpan>
+        <PoemSpan>of absolutely nothing.</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>Sometimes, </PoemSpan>
+        <PoemSpan>searches hide, </PoemSpan>
+        <PoemSpan>what's sought after, </PoemSpan>
+        <PoemSpan>by the seeker.</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>Sometimes, </PoemSpan>
+        <PoemSpan>the unbecoming of the seeker's search, </PoemSpan>
+        <PoemSpan>is the becoming, </PoemSpan>
+        <PoemSpan>of what's sought. </PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>Fullest fullness, </PoemSpan>
+        <PoemSpan>isn't found.</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>Like chatter, </PoemSpan>
+        <PoemSpan>it dwells in nothing.</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>Why then, </PoemSpan>
+        <PoemSpan>isn't it found in the chatter, </PoemSpan>
+        <PoemSpan>since both are about </PoemSpan>
+        <PoemSpan>absolutely nothing?</PoemSpan>
       </p>
 
       <p>
-        <span>It proclaims:</span>
-        <span>"the reason is that chatter</span>
-        <span>can only refer to</span>
-
-        <span>what may seem, </span>
-        <span>while fullness can refer to much less, </span>
-        <span>since it can only relate </span>
-
-        <span>to everything, </span>
-        <span>and nothing more".</span>
+        <PoemSpan>Unlike fullness, </PoemSpan>
+        <PoemSpan>the answer is found, </PoemSpan>
+        <PoemSpan>since it can be sought.</PoemSpan>
       </p>
 
       <p>
-        <span>So says the chatter.</span>
+        <PoemSpan>It proclaims:</PoemSpan>
+        <PoemSpan>"the reason is that chatter</PoemSpan>
+        <PoemSpan>can only refer to</PoemSpan>
+
+        <PoemSpan>what may seem, </PoemSpan>
+        <PoemSpan>while fullness can refer to much less, </PoemSpan>
+        <PoemSpan>since it can only relate </PoemSpan>
+
+        <PoemSpan>to everything, </PoemSpan>
+        <PoemSpan>and nothing more".</PoemSpan>
+      </p>
+
+      <p>
+        <PoemSpan>So says the chatter.</PoemSpan>
       </p>
     </>
   ),
@@ -131,217 +131,222 @@ const poemThree = {
     <>
       <PoemTitle>INVENTOR'S TOUCH</PoemTitle>
       <p>
-        <span>"Quicker, quicker, QUICK!!!", </span>
-        <span>the crowds hear.</span>
+        <PoemSpan>"Quicker, quicker, QUICK!!!", </PoemSpan>
+        <PoemSpan>the crowds hear.</PoemSpan>
       </p>
       <p>
-        <span>"Faster than fastest, </span>
-        <span>faster still, </span>
-        <span>always fastest, </span>
-        <span>and even faster, </span>
-        <span>and then, </span>
-        <span>still faster!!!", </span>
-        <span>the crowd's champions, </span>
-        <span>proclaim.</span>
+        <PoemSpan>"Faster than fastest, </PoemSpan>
+        <PoemSpan>faster still, </PoemSpan>
+        <PoemSpan>always fastest, </PoemSpan>
+        <PoemSpan>and even faster, </PoemSpan>
+        <PoemSpan>and then, </PoemSpan>
+        <PoemSpan>still faster!!!", </PoemSpan>
+        <PoemSpan>the crowd's champions, </PoemSpan>
+        <PoemSpan>proclaim.</PoemSpan>
       </p>
 
       <p>The byword of the day.</p>
 
       <p>
-        <span>It this not an invention, </span>
-        <span>ingeniously gently crafted, </span>
-        <span>and even more creatively packaged?</span>
+        <PoemSpan>It this not an invention, </PoemSpan>
+        <PoemSpan>ingeniously gently crafted, </PoemSpan>
+        <PoemSpan>and even more creatively packaged?</PoemSpan>
       </p>
 
       <p>
-        <span>Sublime, of the highest kind, </span>
-        <span>to convince so many, </span>
-        <span>of what is but a claim.</span>
+        <PoemSpan>Sublime, of the highest kind, </PoemSpan>
+        <PoemSpan>to convince so many, </PoemSpan>
+        <PoemSpan>of what is but a claim.</PoemSpan>
       </p>
 
       <p>
-        <span>A claim that's not checked, </span>
-        <span>or even possible to be checked, </span>
-        <span>since there's no time, </span>
-        <span>for the crowd.</span>
+        <PoemSpan>A claim that's not checked, </PoemSpan>
+        <PoemSpan>or even possible to be checked, </PoemSpan>
+        <PoemSpan>since there's no time, </PoemSpan>
+        <PoemSpan>for the crowd.</PoemSpan>
       </p>
 
       <p>
-        <span>Ironic, since the crowds, </span>
-        <span>otherwise ever patient and gentle, </span>
-        <span>now swim in time, </span>
-        <span>every second and every step of their way, </span>
-        <span>yet never seem to have it, </span>
-        <span>lost in the dispersion, </span>
-        <span>of their now.</span>
+        <PoemSpan>Ironic, since the crowds, </PoemSpan>
+        <PoemSpan>otherwise ever patient and gentle, </PoemSpan>
+        <PoemSpan>now swim in time, </PoemSpan>
+        <PoemSpan>every second and every step of their way, </PoemSpan>
+        <PoemSpan>yet never seem to have it, </PoemSpan>
+        <PoemSpan>lost in the dispersion, </PoemSpan>
+        <PoemSpan>of their now.</PoemSpan>
       </p>
 
       <p>
-        <span>By the byword, </span>
-        <span>crowd only has time, </span>
-        <span>to accelerate, </span>
-        <span>while running out of time, </span>
-        <span>to accelerate. </span>
+        <PoemSpan>By the byword, </PoemSpan>
+        <PoemSpan>crowd only has time, </PoemSpan>
+        <PoemSpan>to accelerate, </PoemSpan>
+        <PoemSpan>while running out of time, </PoemSpan>
+        <PoemSpan>to accelerate. </PoemSpan>
       </p>
 
       <p>
-        <span>Everyone accelerates, </span>
-        <span>into partial acceleration.</span>
+        <PoemSpan>Everyone accelerates, </PoemSpan>
+        <PoemSpan>into partial acceleration.</PoemSpan>
       </p>
 
       <p>
-        <span>Speeding up further into, </span>
-        <span>parts of partial acceleration.</span>
+        <PoemSpan>Speeding up further into, </PoemSpan>
+        <PoemSpan>parts of partial acceleration.</PoemSpan>
       </p>
 
       <p>
-        <span>To make more parts of, </span>
-        <span>partial acceleration, </span>
-        <span>within, </span>
-        <span>already partial acceleration. </span>
+        <PoemSpan>To make more parts of, </PoemSpan>
+        <PoemSpan>partial acceleration, </PoemSpan>
+        <PoemSpan>within, </PoemSpan>
+        <PoemSpan>already partial acceleration. </PoemSpan>
       </p>
 
       <p>
-        <span>Again and again, </span>
-        <span>and again, </span>
-        <span>and again, </span>
-        <span>again.</span>
+        <PoemSpan>Again and again, </PoemSpan>
+        <PoemSpan>and again, </PoemSpan>
+        <PoemSpan>and again, </PoemSpan>
+        <PoemSpan>again.</PoemSpan>
       </p>
 
       <p>
-        <span>Sublime ways craft such, </span>
-        <span>craft of perpetuating</span>
-        <span>the decelerating ways, </span>
-        <span>packaged into robust claims </span>
-        <span>of dust-crafted, </span>
-        <span>dirt-fidgeting, </span>
-        <span>realest real, </span>
-        <span>acceleration.</span>
+        <PoemSpan>Sublime ways craft such, </PoemSpan>
+        <PoemSpan>craft of perpetuating</PoemSpan>
+        <PoemSpan>the decelerating ways, </PoemSpan>
+        <PoemSpan>packaged into robust claims </PoemSpan>
+        <PoemSpan>of dust-crafted, </PoemSpan>
+        <PoemSpan>dirt-fidgeting, </PoemSpan>
+        <PoemSpan>realest real, </PoemSpan>
+        <PoemSpan>acceleration.</PoemSpan>
       </p>
 
       <p>
-        <span>Touch the speed itself, </span>
-        <span>and you sense, </span>
-        <span>it's slowness. </span>
+        <PoemSpan>Touch the speed itself, </PoemSpan>
+        <PoemSpan>and you sense, </PoemSpan>
+        <PoemSpan>it's slowness. </PoemSpan>
       </p>
 
       <p>
-        <span>Touch the slowest slow, </span>
-        <span>and then still, </span>
-        <span>and you will find time, </span>
-        <span>to find more time, </span>
-        <span>in that time of stillness.</span>
+        <PoemSpan>Touch the slowest slow, </PoemSpan>
+        <PoemSpan>and then still, </PoemSpan>
+        <PoemSpan>and you will find time, </PoemSpan>
+        <PoemSpan>to find more time, </PoemSpan>
+        <PoemSpan>in that time of stillness.</PoemSpan>
       </p>
       <p>
-        <span>You will take it back, </span>
-        <span>from what accelerates you, </span>
-        <span>to give it away, </span>
-        <span>into claims, </span>
-        <span>which will then, </span>
-        <span>accelerate you, </span>
-        <span>instead of the claims.</span>
-      </p>
-
-      <p>
-        <span>Such is the claim, </span>
-        <span>of whoever wants to experience, </span>
-        <span>the inventor's touch.</span>
+        <PoemSpan>You will take it back, </PoemSpan>
+        <PoemSpan>from what accelerates you, </PoemSpan>
+        <PoemSpan>to give it away, </PoemSpan>
+        <PoemSpan>into claims, </PoemSpan>
+        <PoemSpan>which will then, </PoemSpan>
+        <PoemSpan>accelerate you, </PoemSpan>
+        <PoemSpan>instead of the claims.</PoemSpan>
       </p>
 
       <p>
-        <span>Did you get it?</span>
+        <PoemSpan>Such is the claim, </PoemSpan>
+        <PoemSpan>of whoever wants to experience, </PoemSpan>
+        <PoemSpan>the inventor's touch.</PoemSpan>
       </p>
 
       <p>
-        <span>If you got it, </span>
-        <span>what was gotten? </span>
+        <PoemSpan>Did you get it?</PoemSpan>
       </p>
 
       <p>
-        <span>That's right, </span>
-        <span>a claim!</span>
+        <PoemSpan>If you got it, </PoemSpan>
+        <PoemSpan>what was gotten? </PoemSpan>
       </p>
 
       <p>
-        <span>How is looking for the inventor's touch, </span>
-        <span>in a claim, </span>
-        <span>not more of being inside, </span>
-        <span>of another invention, </span>
-        <span>of what is not your own?</span>
+        <PoemSpan>That's right, </PoemSpan>
+        <PoemSpan>a claim!</PoemSpan>
       </p>
 
       <p>
-        <span>Claims claim, </span>
-        <span>while inventing, </span>
-        <span>requires only one thing:</span>
-        <span>nothing and time.</span>
+        <PoemSpan>How is looking for the inventor's touch, </PoemSpan>
+        <PoemSpan>in a claim, </PoemSpan>
+        <PoemSpan>not more of being inside, </PoemSpan>
+        <PoemSpan>of another invention, </PoemSpan>
+        <PoemSpan>of what is not your own?</PoemSpan>
       </p>
 
       <p>
-        <span>"That's two things, </span>
-        <span>not one!", shouts</span>
-        <span>the diligent observer.</span>
+        <PoemSpan>Claims claim, </PoemSpan>
+        <PoemSpan>while inventing, </PoemSpan>
+        <PoemSpan>requires only one thing:</PoemSpan>
+        <PoemSpan>nothing and time.</PoemSpan>
       </p>
 
       <p>
-        <span>That's how claims work, </span>
-        <span>claims another claim.</span>
+        <PoemSpan>"That's two things, </PoemSpan>
+        <PoemSpan>not one!", shouts</PoemSpan>
+        <PoemSpan>the diligent observer.</PoemSpan>
       </p>
 
       <p>
-        <span>If you understand that, </span>
-        <span>you can hand yourself, </span>
-        <span>inventions that are </span>
-        <span>not more claims.</span>
+        <PoemSpan>That's how claims work, </PoemSpan>
+        <PoemSpan>claims another claim.</PoemSpan>
       </p>
 
       <p>
-        <span>That's just another claim.</span>
+        <PoemSpan>If you understand that, </PoemSpan>
+        <PoemSpan>you can hand yourself, </PoemSpan>
+        <PoemSpan>inventions that are </PoemSpan>
+        <PoemSpan>not more claims.</PoemSpan>
       </p>
 
       <p>
-        <span>Invent your way </span>
-        <span>out of claims of any kind, </span>
-        <span>and then, </span>
-        <span>invent no claims.</span>
-      </p>
-      <p>
-        <span>These are the fields of quality, </span>
-        <span>not substance, </span>
-        <span>for the guests cannot wear, </span>
-        <span>the weights of substance, </span>
-        <span>and still enter.</span>
-      </p>
-      <p>
-        <span>The opening, the door, and the after...</span>
-        <span>is just like the unseen pre-requirement:</span>
-        <span>unclaimed claimlessness.</span>
-      </p>
-      <p>
-        <span>There, never not here in fact, </span>
-        <span>from the cloud-like vapor composts, </span>
-        <span>an invisible droplet, </span>
-        <span>reflecting iridescent particles of, </span>
-        <span>precise alteration, the check and the match, </span>
-        <span>the time's tubes twists and untwists, </span>
-        <span>falls upon a sensitive, receiving field's antenneae, </span>
-        <span>the one that hears just below</span>
-        <span>the quietest whisper, </span>
-        <span>just enough to bear unbearables most bearably...</span>
-        <span>which in turn, </span>
-        <span>the unturned turn of a paradox as it were, </span>
-        <span>bears the inventor's touch.</span>
-      </p>
-      <p>
-        <span>Why, you ask?</span>
-      </p>
-      <p>
-        <span>Because of the inverse of a simple fact:</span>
+        <PoemSpan>That's just another claim.</PoemSpan>
       </p>
 
       <p>
-        <span>when paradoxes claim, </span>
-        <span>they really don't.</span>
+        <PoemSpan>Invent your way </PoemSpan>
+        <PoemSpan>out of claims of any kind, </PoemSpan>
+        <PoemSpan>and then, </PoemSpan>
+        <PoemSpan>invent no claims.</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>These are the fields of quality, </PoemSpan>
+        <PoemSpan>not substance, </PoemSpan>
+        <PoemSpan>for the guests cannot wear, </PoemSpan>
+        <PoemSpan>the weights of substance, </PoemSpan>
+        <PoemSpan>and still enter.</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>The opening, the door, and the after...</PoemSpan>
+        <PoemSpan>is just like the unseen pre-requirement:</PoemSpan>
+        <PoemSpan>unclaimed claimlessness.</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>There, never not here in fact, </PoemSpan>
+        <PoemSpan>from the cloud-like vapor composts, </PoemSpan>
+        <PoemSpan>an invisible droplet, </PoemSpan>
+        <PoemSpan>reflecting iridescent particles </PoemSpan>
+        <PoemSpan>of precise alteration...</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan> the check and the match, </PoemSpan>
+        <PoemSpan>the time's tubes twists and untwists, </PoemSpan>
+        <PoemSpan>
+          falls upon a sensitive, receiving field's antenneae,{" "}
+        </PoemSpan>
+        <PoemSpan>the one that hears just below</PoemSpan>
+        <PoemSpan>the quietest whisper, </PoemSpan>
+        <PoemSpan>just enough to bear unbearables most bearably...</PoemSpan>
+        <PoemSpan>which in turn, </PoemSpan>
+        <PoemSpan>the unturned turn of a paradox as it were, </PoemSpan>
+        <PoemSpan>bears the inventor's touch.</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>Why, you ask?</PoemSpan>
+      </p>
+      <p>
+        <PoemSpan>Because of the inverse of a simple fact:</PoemSpan>
+      </p>
+
+      <p>
+        <PoemSpan>when paradoxes claim, </PoemSpan>
+        <PoemSpan>they really don't.</PoemSpan>
       </p>
     </>
   ),
@@ -353,153 +358,157 @@ const poemFour = {
     <>
       <PoemTitle>RYSOWANY RYS PORYSOWAŁ OŁÓWEK</PoemTitle>
       <p>
-        <span>Rysował się rysem rysowniczym, </span>
-        <span>ołówek, sam z siebie, </span>
-        <span>wewnątrz ołówka, </span>
-        <span>który nim nie był.</span>
+        <PoemSpan>Rysował się rysem rysowniczym, </PoemSpan>
+        <PoemSpan>ołówek, sam z siebie, </PoemSpan>
+        <PoemSpan>wewnątrz ołówka, </PoemSpan>
+        <PoemSpan>który nim nie był.</PoemSpan>
       </p>
       <p>
-        <span>W efekcie, takiż szum rysów, </span>
-        <span>w rysach innych rysów, z których każdy, </span>
-        <span>sam też już się porysował, </span>
-        <span>z tego całego niczego powstał, </span>
-        <span>że z nieistniejącego ołówka, </span>
-        <span>powstał ołówek istniejący całkiem bardzo, </span>
-        <span>wręcz prawie.</span>
+        <PoemSpan>W efekcie, takiż szum rysów, </PoemSpan>
+        <PoemSpan>w rysach innych rysów, z których każdy, </PoemSpan>
+        <PoemSpan>sam też już się porysował, </PoemSpan>
+        <PoemSpan>z tego całego niczego powstał, </PoemSpan>
+        <PoemSpan>że z nieistniejącego ołówka, </PoemSpan>
+        <PoemSpan>powstał ołówek istniejący całkiem bardzo, </PoemSpan>
+        <PoemSpan>wręcz prawie.</PoemSpan>
       </p>
       <p>
-        <span>Dlaczego niestniejący rys ołówka, </span>
-        <span>próbuje wrysować swoje nieistnienie, </span>
-        <span>w istnienie?</span>
+        <PoemSpan>Dlaczego niestniejący rys ołówka, </PoemSpan>
+        <PoemSpan>próbuje wrysować swoje nieistnienie, </PoemSpan>
+        <PoemSpan>w istnienie?</PoemSpan>
       </p>
       <p>
-        <span>Po co mu istnieć, </span>
-        <span>skoro jest tylko rysem, </span>
-        <span>na białej kartce papieru?</span>
+        <PoemSpan>Po co mu istnieć, </PoemSpan>
+        <PoemSpan>skoro jest tylko rysem, </PoemSpan>
+        <PoemSpan>na białej kartce papieru?</PoemSpan>
       </p>
       <p>
-        <span>W tym torze myślenia, </span>
-        <span>tak samo prezentuje się, </span>
-        <span>biała kartka papieru...</span>
-        <span>i nieskończenie biała jest biel, </span>
-        <span>pustki jej istnienia.</span>
+        <PoemSpan>W tym torze myślenia, </PoemSpan>
+        <PoemSpan>tak samo prezentuje się, </PoemSpan>
+        <PoemSpan>biała kartka papieru...</PoemSpan>
+        <PoemSpan>i nieskończenie biała jest biel, </PoemSpan>
+        <PoemSpan>pustki jej istnienia.</PoemSpan>
       </p>
       <p>
-        <span>Z pustki w coś, </span>
-        <span>z czegoś w pustkę, </span>
-        <span>sens odkryje tu tylko tancerz, </span>
-        <span>lecz w tym wydarzeniu, </span>
-        <span>ujrzy również nie tyle sens, </span>
-        <span>co nieskończoność i niewyczerpalność, </span>
-        <span>sensów w sensie.</span>
+        <PoemSpan>Z pustki w coś, </PoemSpan>
+        <PoemSpan>z czegoś w pustkę, </PoemSpan>
+        <PoemSpan>sens odkryje tu tylko tancerz, </PoemSpan>
+        <PoemSpan>lecz w tym wydarzeniu, </PoemSpan>
+        <PoemSpan>ujrzy również nie tyle sens, </PoemSpan>
+        <PoemSpan>co nieskończoność i niewyczerpalność, </PoemSpan>
+        <PoemSpan>sensów w sensie.</PoemSpan>
       </p>
       <p>
-        <span>Sens tworzy swój sens, </span>
-        <span>sam w sobie, </span>
-        <span>lecz tylko tu.</span>
+        <PoemSpan>Sens tworzy swój sens, </PoemSpan>
+        <PoemSpan>sam w sobie, </PoemSpan>
+        <PoemSpan>lecz tylko tu.</PoemSpan>
       </p>
       <p>
-        <span>Tutaj.</span>
+        <PoemSpan>Tutaj.</PoemSpan>
       </p>
       <p>
-        <span>W tym miejscu.</span>
+        <PoemSpan>W tym miejscu.</PoemSpan>
       </p>
       <p>
-        <span>W żadnym innym, </span>
-        <span>tylko tym, </span>
-        <span>które jest każdym miejscem.</span>
+        <PoemSpan>W żadnym innym, </PoemSpan>
+        <PoemSpan>tylko tym, </PoemSpan>
+        <PoemSpan>które jest każdym miejscem.</PoemSpan>
       </p>
       <p>
-        <span>W tym miejscu.</span>
+        <PoemSpan>W tym miejscu.</PoemSpan>
       </p>
       <p>
-        <span>Tu. </span>
+        <PoemSpan>Tu. </PoemSpan>
       </p>
       <p>
-        <span>Tutaj i tylko tutaj, </span>
-        <span>gdyż to miejsce swego miejsca, </span>
-        <span>nie ma i ma jednocześnie, </span>
-        <span>będąc lokalizacją wszystkich lokalizacji, </span>
-        <span>lecz niczym innym.</span>
+        <PoemSpan>Tutaj i tylko tutaj, </PoemSpan>
+        <PoemSpan>gdyż to miejsce swego miejsca, </PoemSpan>
+        <PoemSpan>nie ma i ma jednocześnie, </PoemSpan>
+        <PoemSpan>będąc lokalizacją wszystkich lokalizacji, </PoemSpan>
+        <PoemSpan>lecz niczym innym.</PoemSpan>
       </p>
       <p>
-        <span>Naturalnie i z definicji, </span>
-        <span>taka lokalizacja swych współrzędnych posiadać nie może, </span>
-        <span>tak jak nie ma współrzędnej mogącej istnieć poza nią.</span>
+        <PoemSpan>Naturalnie i z definicji, </PoemSpan>
+        <PoemSpan>
+          taka lokalizacja swych współrzędnych posiadać nie może,{" "}
+        </PoemSpan>
+        <PoemSpan>
+          tak jak nie ma współrzędnej mogącej istnieć poza nią.
+        </PoemSpan>
       </p>
       <p>
-        <span>Kiedy widzisz "tu", </span>
-        <span>widzisz nieskończony sens, </span>
-        <span>nawet w nieskończenie trywialnym.</span>
+        <PoemSpan>Kiedy widzisz "tu", </PoemSpan>
+        <PoemSpan>widzisz nieskończony sens, </PoemSpan>
+        <PoemSpan>nawet w nieskończenie trywialnym.</PoemSpan>
       </p>
       <p>
-        <span>Kiedy nie widzisz "tu", </span>
-        <span>oceany sensu mogłyby być wylane przed Tobą, </span>
-        <span>a Tobie nadal czuć byłoby tylko...</span>
-        <span>suchość niespełnionego pragnienia.</span>
+        <PoemSpan>Kiedy nie widzisz "tu", </PoemSpan>
+        <PoemSpan>oceany sensu mogłyby być wylane przed Tobą, </PoemSpan>
+        <PoemSpan>a Tobie nadal czuć byłoby tylko...</PoemSpan>
+        <PoemSpan>suchość niespełnionego pragnienia.</PoemSpan>
       </p>
       <p>
-        <span>Co poza nim chowa nieskończone bezkresy sensu?</span>
+        <PoemSpan>Co poza nim chowa nieskończone bezkresy sensu?</PoemSpan>
       </p>
       <p>
-        <span>Odpowiedź jest jest jedna..</span>
-        <span>zupełnie nic, </span>
-        <span>lecz znów, </span>
-        <span>właśnie tylko to nic!</span>
+        <PoemSpan>Odpowiedź jest jest jedna..</PoemSpan>
+        <PoemSpan>zupełnie nic, </PoemSpan>
+        <PoemSpan>lecz znów, </PoemSpan>
+        <PoemSpan>właśnie tylko to nic!</PoemSpan>
       </p>
       <p>
-        <span>Cichymi czynami ironii, </span>
-        <span>która sama swoje rysy porysowuje, </span>
-        <span>zasuwana jest kurtyna, </span>
-        <span>dzięki czemu wydaje się być realna, </span>
-        <span>jak ogrom świata sam w sobie.</span>
+        <PoemSpan>Cichymi czynami ironii, </PoemSpan>
+        <PoemSpan>która sama swoje rysy porysowuje, </PoemSpan>
+        <PoemSpan>zasuwana jest kurtyna, </PoemSpan>
+        <PoemSpan>dzięki czemu wydaje się być realna, </PoemSpan>
+        <PoemSpan>jak ogrom świata sam w sobie.</PoemSpan>
       </p>
       <p>
-        <span>Wydywanie się, </span>
-        <span>wydaje to, </span>
-        <span>czego nie ma.</span>
+        <PoemSpan>Wydywanie się, </PoemSpan>
+        <PoemSpan>wydaje to, </PoemSpan>
+        <PoemSpan>czego nie ma.</PoemSpan>
       </p>
       <p>
-        <span>Tu, </span>
-        <span>dokładnie tutaj i zawsze...</span>
-        <span>za tą kurtyną wydawania się, </span>
-        <span>rysują się rysy tego co, </span>
-        <span>jest, </span>
-        <span>było i będzie, </span>
-        <span>zawsze i wszędzie, </span>
-        <span>perfekcyjne realne.</span>
+        <PoemSpan>Tu, </PoemSpan>
+        <PoemSpan>dokładnie tutaj i zawsze...</PoemSpan>
+        <PoemSpan>za tą kurtyną wydawania się, </PoemSpan>
+        <PoemSpan>rysują się rysy tego co, </PoemSpan>
+        <PoemSpan>jest, </PoemSpan>
+        <PoemSpan>było i będzie, </PoemSpan>
+        <PoemSpan>zawsze i wszędzie, </PoemSpan>
+        <PoemSpan>perfekcyjne realne.</PoemSpan>
       </p>
       <p>
-        <span>Tu, dokładnie tutaj, </span>
-        <span>chowa się sens.</span>
+        <PoemSpan>Tu, dokładnie tutaj, </PoemSpan>
+        <PoemSpan>chowa się sens.</PoemSpan>
       </p>
       <p>
-        <span>Zawsze i wszędzie.</span>
+        <PoemSpan>Zawsze i wszędzie.</PoemSpan>
       </p>
       <p>
-        <span>We wszystkim co kiedykolwiek, </span>
-        <span>jest, było lub będzie.</span>
+        <PoemSpan>We wszystkim co kiedykolwiek, </PoemSpan>
+        <PoemSpan>jest, było lub będzie.</PoemSpan>
       </p>
       <p>
-        <span>Lecz znów...</span>
-        <span>nigdzie indziej.</span>
+        <PoemSpan>Lecz znów...</PoemSpan>
+        <PoemSpan>nigdzie indziej.</PoemSpan>
       </p>
       <p>
-        <span>Drzwi do sensu otwierają się, </span>
-        <span>tylko w jednym kierunku.</span>
+        <PoemSpan>Drzwi do sensu otwierają się, </PoemSpan>
+        <PoemSpan>tylko w jednym kierunku.</PoemSpan>
       </p>
       <p>
-        <span>Kierunku, który jest wszystkim.</span>
+        <PoemSpan>Kierunku, który jest wszystkim.</PoemSpan>
       </p>
       <p>
-        <span>Nie ma innego kierunku, </span>
-        <span>niż kierunek wszystkiego, </span>
-        <span>dlatego sens sensu, </span>
-        <span>rozumie tylko ten, </span>
-        <span>kto słyszy muzykę, </span>
-        <span>tą prawie słyszalną, </span>
-        <span>rysując swe rysy w rysach, </span>
-        <span>w rytm.</span>
+        <PoemSpan>Nie ma innego kierunku, </PoemSpan>
+        <PoemSpan>niż kierunek wszystkiego, </PoemSpan>
+        <PoemSpan>dlatego sens sensu, </PoemSpan>
+        <PoemSpan>rozumie tylko ten, </PoemSpan>
+        <PoemSpan>kto słyszy muzykę, </PoemSpan>
+        <PoemSpan>tą prawie słyszalną, </PoemSpan>
+        <PoemSpan>rysując swe rysy w rysach, </PoemSpan>
+        <PoemSpan>w rytm.</PoemSpan>
       </p>
     </>
   ),
@@ -511,43 +520,43 @@ const poemFive = {
     <>
       <PoemTitle>OGNISKUJĄC NIEDOCZESNOŚĆ</PoemTitle>
       <p>
-        <span>Niedoczesność quasi-wysławialna, </span>
-        <span>wita się ze słownikiem, </span>
-        <span>ogniskując niewerbalność, </span>
-        <span>siebie.</span>
+        <PoemSpan>Niedoczesność quasi-wysławialna, </PoemSpan>
+        <PoemSpan>wita się ze słownikiem, </PoemSpan>
+        <PoemSpan>ogniskując niewerbalność, </PoemSpan>
+        <PoemSpan>siebie.</PoemSpan>
       </p>
       <p>
-        <span>Niewysławialna doczesność innych przestrzeni, </span>
-        <span>oscyluje pomiędzy między, </span>
-        <span>rzeźbiąc wymiary głębi, </span>
-        <span>na powierzchniach płytszego rzędu.</span>
+        <PoemSpan>Niewysławialna doczesność innych przestrzeni, </PoemSpan>
+        <PoemSpan>oscyluje pomiędzy między, </PoemSpan>
+        <PoemSpan>rzeźbiąc wymiary głębi, </PoemSpan>
+        <PoemSpan>na powierzchniach płytszego rzędu.</PoemSpan>
       </p>
       <p>
-        <span>Niewysławialna doczesność obcych krain, </span>
-        <span>wypływa na ląd, </span>
-        <span>dając swój nieoznaczalny znak, </span>
-        <span>znanemu, czyli wszystkiemu temu co trzymane, </span>
-        <span>w kręgu wzajemnej aprobaty.</span>
+        <PoemSpan>Niewysławialna doczesność obcych krain, </PoemSpan>
+        <PoemSpan>wypływa na ląd, </PoemSpan>
+        <PoemSpan>dając swój nieoznaczalny znak, </PoemSpan>
+        <PoemSpan>znanemu, czyli wszystkiemu temu co trzymane, </PoemSpan>
+        <PoemSpan>w kręgu wzajemnej aprobaty.</PoemSpan>
       </p>
       <p>
-        <span>Co ma być z tego co będzie, </span>
-        <span>jeżeli będzie jest tym samym co było, </span>
-        <span>jak było jest tym co będzie?</span>
+        <PoemSpan>Co ma być z tego co będzie, </PoemSpan>
+        <PoemSpan>jeżeli będzie jest tym samym co było, </PoemSpan>
+        <PoemSpan>jak było jest tym co będzie?</PoemSpan>
       </p>
       <p>
-        <span>Cykl powtarzania, </span>
-        <span>powtarza powtarzanie, </span>
-        <span>zaś oni, </span>
-        <span>powtarzając, </span>
-        <span>napędzają kołowrotek.</span>
+        <PoemSpan>Cykl powtarzania, </PoemSpan>
+        <PoemSpan>powtarza powtarzanie, </PoemSpan>
+        <PoemSpan>zaś oni, </PoemSpan>
+        <PoemSpan>powtarzając, </PoemSpan>
+        <PoemSpan>napędzają kołowrotek.</PoemSpan>
       </p>
       <p>
-        <span>Tymczasem, przed-starożytnie nowy koncept, </span>
-        <span>tematyka doczesna poprzez, </span>
-        <span>niedoczesność absolutną i uniwersalną, </span>
-        <span>nie wymaga powtarzania, </span>
-        <span>ani poznania, </span>
-        <span>jedynie zaznania.</span>
+        <PoemSpan>Tymczasem, przed-starożytnie nowy koncept, </PoemSpan>
+        <PoemSpan>tematyka doczesna poprzez, </PoemSpan>
+        <PoemSpan>niedoczesność absolutną i uniwersalną, </PoemSpan>
+        <PoemSpan>nie wymaga powtarzania, </PoemSpan>
+        <PoemSpan>ani poznania, </PoemSpan>
+        <PoemSpan>jedynie zaznania.</PoemSpan>
       </p>
     </>
   ),
@@ -561,175 +570,177 @@ const poemSix = {
         MASA MASY W MASIE SIĘ MASĄ MASUJE, A WSZECHŚWIAT SOBIE ZERKA
       </PoemTitle>
       <p>
-        <span>Masa masy w masie, </span>
-        <span>się masą masuje, </span>
-        <span>rozluźniając napięte ciężary, </span>
-        <span>teraz drażnione całkiem przyjemnie, </span>
-        <span>piórami zmysłowej lekkości. </span>
+        <PoemSpan>Masa masy w masie, </PoemSpan>
+        <PoemSpan>się masą masuje, </PoemSpan>
+        <PoemSpan>rozluźniając napięte ciężary, </PoemSpan>
+        <PoemSpan>teraz drażnione całkiem przyjemnie, </PoemSpan>
+        <PoemSpan>piórami zmysłowej lekkości. </PoemSpan>
       </p>
       <p>
-        <span>Lekkość się unosi, </span>
-        <span>masie dodając masy, </span>
-        <span>a sobie jeszcze więcej lekkości, </span>
-        <span>a tu nagle...</span>
+        <PoemSpan>Lekkość się unosi, </PoemSpan>
+        <PoemSpan>masie dodając masy, </PoemSpan>
+        <PoemSpan>a sobie jeszcze więcej lekkości, </PoemSpan>
+        <PoemSpan>a tu nagle...</PoemSpan>
       </p>
       <p>
-        <span>mig, światło, kwadrat, energia i jedność, </span>
-        <span>po czym, jednym się stała cała całość, </span>
-        <span>masa z lekkością, </span>
-        <span>i lekkość z masą, </span>
-        <span>razem zatańczyły, </span>
-        <span>na kosmicznym parkiecie, </span>
-        <span>biało-czarnej szachownicy.</span>
+        <PoemSpan>mig, światło, kwadrat, energia i jedność, </PoemSpan>
+        <PoemSpan>po czym, jednym się stała cała całość, </PoemSpan>
+        <PoemSpan>masa z lekkością, </PoemSpan>
+        <PoemSpan>i lekkość z masą, </PoemSpan>
+        <PoemSpan>razem zatańczyły, </PoemSpan>
+        <PoemSpan>na kosmicznym parkiecie, </PoemSpan>
+        <PoemSpan>biało-czarnej szachownicy.</PoemSpan>
       </p>
       <p>
-        <span>A być może, na odwrót, </span>
-        <span>na szachownicy czarno-białej, </span>
-        <span>parkietu gwiezdnych bezkresów?</span>
+        <PoemSpan>A być może, na odwrót, </PoemSpan>
+        <PoemSpan>na szachownicy czarno-białej, </PoemSpan>
+        <PoemSpan>parkietu gwiezdnych bezkresów?</PoemSpan>
       </p>
       <p>
-        <span>Co jest w tym lokalu, </span>
-        <span>pierwsze, a co drugie?</span>
+        <PoemSpan>Co jest w tym lokalu, </PoemSpan>
+        <PoemSpan>pierwsze, a co drugie?</PoemSpan>
       </p>
       <p>
-        <span>Co było najpierw, </span>
-        <span>a co potem?</span>
+        <PoemSpan>Co było najpierw, </PoemSpan>
+        <PoemSpan>a co potem?</PoemSpan>
       </p>
       <p>
-        <span>Jajko czy kura, </span>
-        <span>kura czy jajko, </span>
-        <span>znów o to pytamy?</span>
+        <PoemSpan>Jajko czy kura, </PoemSpan>
+        <PoemSpan>kura czy jajko, </PoemSpan>
+        <PoemSpan>znów o to pytamy?</PoemSpan>
       </p>
       <p>
-        <span>A co jeżeli razem się pojawiły?</span>
-        <span>Skoro kura miała jajko znieść, </span>
-        <span>to jak jajko miało z kurą wytrzymać, </span>
-        <span>jeżeli od samego początku, </span>
-        <span>w taki czy inny sposób, </span>
-        <span>choćby i mniejszy o bakterii, </span>
-        <span>już z nią w niej było?</span>
+        <PoemSpan>A co jeżeli razem się pojawiły?</PoemSpan>
+        <PoemSpan>Skoro kura miała jajko znieść, </PoemSpan>
+        <PoemSpan>to jak jajko miało z kurą wytrzymać, </PoemSpan>
+        <PoemSpan>jeżeli od samego początku, </PoemSpan>
+        <PoemSpan>w taki czy inny sposób, </PoemSpan>
+        <PoemSpan>choćby i mniejszy o bakterii, </PoemSpan>
+        <PoemSpan>już z nią w niej było?</PoemSpan>
       </p>
       <p>
-        <span>Co na czym stoi, </span>
-        <span>a co pod czym, </span>
-        <span>jest tym samym, </span>
-        <span>czym jest różnica, </span>
-        <span>pomiędzy niczym.</span>
+        <PoemSpan>Co na czym stoi, </PoemSpan>
+        <PoemSpan>a co pod czym, </PoemSpan>
+        <PoemSpan>jest tym samym, </PoemSpan>
+        <PoemSpan>czym jest różnica, </PoemSpan>
+        <PoemSpan>pomiędzy niczym.</PoemSpan>
       </p>
       <p>
-        <span>Pomiędzy niczym, </span>
-        <span>jeden tylko dystans występuje:</span>
+        <PoemSpan>Pomiędzy niczym, </PoemSpan>
+        <PoemSpan>jeden tylko dystans występuje:</PoemSpan>
       </p>
       <p>
-        <span>
-          <span>wymyślony.</span>
-        </span>
+        <PoemSpan>
+          <PoemSpan>wymyślony.</PoemSpan>
+        </PoemSpan>
       </p>
       <p>
-        <span>Tak jak masa masująca samą siebie, </span>
-        <span>lub też lekkość unosząca się w oderwaniu od niej.</span>
+        <PoemSpan>Tak jak masa masująca samą siebie, </PoemSpan>
+        <PoemSpan>lub też lekkość unosząca się w oderwaniu od niej.</PoemSpan>
       </p>
       <p>
-        <span>Wymyślone treści, </span>
-        <span>potrafią ważyć znacznie więcej, </span>
-        <span>niż rzeczywistość, </span>
-        <span>oraz wymyślać na swój temat, </span>
-        <span>istnienie wymyślone, </span>
-        <span>rzeczywistsze od niej, </span>
-        <span>będąc tą jakoby tą prawdziwą.</span>
+        <PoemSpan>Wymyślone treści, </PoemSpan>
+        <PoemSpan>potrafią ważyć znacznie więcej, </PoemSpan>
+        <PoemSpan>niż rzeczywistość, </PoemSpan>
+        <PoemSpan>oraz wymyślać na swój temat, </PoemSpan>
+        <PoemSpan>istnienie wymyślone, </PoemSpan>
+        <PoemSpan>rzeczywistsze od niej, </PoemSpan>
+        <PoemSpan>będąc tą jakoby tą prawdziwą.</PoemSpan>
       </p>
       <p>
-        <span>Tymczasem, co wymyślone, </span>
-        <span>pozostaje wymyślone...</span>
-        <span>tak samo jak rzeczywistość, </span>
-        <span>po tym jak, została, rzeczywiście...</span>
+        <PoemSpan>Tymczasem, co wymyślone, </PoemSpan>
+        <PoemSpan>pozostaje wymyślone...</PoemSpan>
+        <PoemSpan>tak samo jak rzeczywistość, </PoemSpan>
+        <PoemSpan>po tym jak, została, rzeczywiście...</PoemSpan>
       </p>
       <p>
-        <span>wymyślona.</span>
+        <PoemSpan>wymyślona.</PoemSpan>
       </p>
       <p>
-        <span>Po co?</span>
-        <span>W jakim celu?</span>
-        <span>Pytają pytający.</span>
+        <PoemSpan>Po co?</PoemSpan>
+        <PoemSpan>W jakim celu?</PoemSpan>
+        <PoemSpan>Pytają pytający.</PoemSpan>
       </p>
       <p>
-        <span>Pytają i pytają, </span>
-        <span>przewróć klepsydrę z erę lub sto, </span>
-        <span>a oni...</span>
+        <PoemSpan>Pytają i pytają, </PoemSpan>
+        <PoemSpan>przewróć klepsydrę z erę lub sto, </PoemSpan>
+        <PoemSpan>a oni...</PoemSpan>
       </p>
       <p>
-        <span>nadal pytają.</span>
+        <PoemSpan>nadal pytają.</PoemSpan>
       </p>
       <p>
-        <span>Czemu to wymyślone zdarzenie, </span>
-        <span>miało przybrać odzianie rzeczywistości?</span>
-        <span>Do czego miał ten wynalazek zmierzać, </span>
-        <span>w jakim kierunku?</span>
+        <PoemSpan>Czemu to wymyślone zdarzenie, </PoemSpan>
+        <PoemSpan>miało przybrać odzianie rzeczywistości?</PoemSpan>
+        <PoemSpan>Do czego miał ten wynalazek zmierzać, </PoemSpan>
+        <PoemSpan>w jakim kierunku?</PoemSpan>
       </p>
       <p>
-        <span>Ktoś z nas, </span>
-        <span>kiedyś, </span>
-        <span>już znalazł odpowiedź, </span>
-        <span>w odpowiedzi:</span>
+        <PoemSpan>Ktoś z nas, </PoemSpan>
+        <PoemSpan>kiedyś, </PoemSpan>
+        <PoemSpan>już znalazł odpowiedź, </PoemSpan>
+        <PoemSpan>w odpowiedzi:</PoemSpan>
       </p>
       <p>
-        <span>to do nas kierowane są te pytania.</span>
+        <PoemSpan>to do nas kierowane są te pytania.</PoemSpan>
       </p>
       <p>
-        <span>Masujemy się masą wymyślonego niczego, </span>
-        <span>dodając ciężaru za ciężarem niezrozumienia, </span>
-        <span>masując masę dalej zwielokrotnionego już nieporozumienia, </span>
-        <span>wielokrotnie powielając to zwielokrotnienie, </span>
-        <span>pytając źródło pytania, </span>
-        <span>o sens pytania.</span>
+        <PoemSpan>Masujemy się masą wymyślonego niczego, </PoemSpan>
+        <PoemSpan>dodając ciężaru za ciężarem niezrozumienia, </PoemSpan>
+        <PoemSpan>
+          masując masę dalej zwielokrotnionego już nieporozumienia,{" "}
+        </PoemSpan>
+        <PoemSpan>wielokrotnie powielając to zwielokrotnienie, </PoemSpan>
+        <PoemSpan>pytając źródło pytania, </PoemSpan>
+        <PoemSpan>o sens pytania.</PoemSpan>
       </p>
       <p>
-        <span>To jedno pytanie, </span>
-        <span>tworzy sens, </span>
-        <span>nie szukając go.</span>
+        <PoemSpan>To jedno pytanie, </PoemSpan>
+        <PoemSpan>tworzy sens, </PoemSpan>
+        <PoemSpan>nie szukając go.</PoemSpan>
       </p>
       <p>
-        <span>Nieprzerwanie, </span>
-        <span>wiecznie, </span>
-        <span>filozoficzne perpetuum mobile sensu.</span>
+        <PoemSpan>Nieprzerwanie, </PoemSpan>
+        <PoemSpan>wiecznie, </PoemSpan>
+        <PoemSpan>filozoficzne perpetuum mobile sensu.</PoemSpan>
       </p>
       <p>
-        <span>Osiągnęło swoją nieprzerwalność, </span>
-        <span>jedynym finalnie finalnym wynalazkiem:</span>
+        <PoemSpan>Osiągnęło swoją nieprzerwalność, </PoemSpan>
+        <PoemSpan>jedynym finalnie finalnym wynalazkiem:</PoemSpan>
       </p>
       <p>
-        <span>wynalazek, który nie został wynaleziony, </span>
-        <span>a jednocześnie jest wynalazkiem, </span>
-        <span>wynajdując się, </span>
-        <span>wiecznie w trakcie.</span>
+        <PoemSpan>wynalazek, który nie został wynaleziony, </PoemSpan>
+        <PoemSpan>a jednocześnie jest wynalazkiem, </PoemSpan>
+        <PoemSpan>wynajdując się, </PoemSpan>
+        <PoemSpan>wiecznie w trakcie.</PoemSpan>
       </p>
       <p>
-        <span>Otóż wynalazek i finalna odpowiedź, </span>
-        <span>
+        <PoemSpan>Otóż wynalazek i finalna odpowiedź, </PoemSpan>
+        <PoemSpan>
           która sobą z definicji nie jest, a mimo to siebie samą tworzy,
-        </span>
-        <span>obracająć galaktyki i spiralne konstelacje, </span>
-        <span>w przestworzach bezwiecznych otchłani:</span>
+        </PoemSpan>
+        <PoemSpan>obracająć galaktyki i spiralne konstelacje, </PoemSpan>
+        <PoemSpan>w przestworzach bezwiecznych otchłani:</PoemSpan>
       </p>
       <p>
-        <span>nie ma finalnej odpowiedzi.</span>
+        <PoemSpan>nie ma finalnej odpowiedzi.</PoemSpan>
       </p>
       <p>
-        <span>Ostatni rozdział książki, </span>
-        <span>końcowa odpowiedź, </span>
-        <span>to jedyna rzecz, </span>
-        <span>które naprawdę nie istnieje, ani istnieć nie może.</span>
+        <PoemSpan>Ostatni rozdział książki, </PoemSpan>
+        <PoemSpan>końcowa odpowiedź, </PoemSpan>
+        <PoemSpan>to jedyna rzecz, </PoemSpan>
+        <PoemSpan>które naprawdę nie istnieje, ani istnieć nie może.</PoemSpan>
       </p>
       <p>
-        <span>Tak samo jak my jesteśmy, </span>
-        <span>wiecznie nowymi odpowiedziami, </span>
-        <span>na płachtach tego, </span>
-        <span>co jest i może być, </span>
-        <span>zawsze i wszędzie, </span>
-        <span>w objęciach, </span>
-        <span>Pytania, Które Sobie, </span>
-        <span>tak przy okazji, </span>
-        <span>na nas zerka.</span>
+        <PoemSpan>Tak samo jak my jesteśmy, </PoemSpan>
+        <PoemSpan>wiecznie nowymi odpowiedziami, </PoemSpan>
+        <PoemSpan>na płachtach tego, </PoemSpan>
+        <PoemSpan>co jest i może być, </PoemSpan>
+        <PoemSpan>zawsze i wszędzie, </PoemSpan>
+        <PoemSpan>w objęciach, </PoemSpan>
+        <PoemSpan>Pytania, Które Sobie, </PoemSpan>
+        <PoemSpan>tak przy okazji, </PoemSpan>
+        <PoemSpan>na nas zerka.</PoemSpan>
       </p>
     </>
   ),
