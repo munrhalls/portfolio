@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import "./MainReusables.css";
 import { ReactNode } from "react";
-import { Card, Image, Form } from "react-bootstrap";
+import { Container, Row, Col, Card, Image, Form } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import dojoImg from "./assets/graphics/dojoImg1.png";
+import f1 from "./../assets/graphics/f1.png";
 
 interface H1ImageProps {
   src: string;
@@ -155,3 +156,72 @@ export const CustomFormCheckInput = styled(Form.Check.Input)`
   cursor: pointer;
   z-index: 10;
 `;
+
+interface EncasingContentProps {
+  children: React.ReactNode;
+}
+
+interface EncasingTitleProps {
+  title: string;
+}
+
+export function EncasingTitle({ title }: EncasingTitleProps) {
+  return (
+    <h2 style={{ position: "relative", color: "#fff", padding: "1.5rem" }}>
+      {title}
+      <div
+        style={{
+          position: "absolute",
+          top: "0",
+          bottom: "0",
+
+          right: ".5rem",
+          color: "#fff",
+          borderLeft: "3px solid #fff",
+          borderRight: "3px solid #fff",
+          height: "125%",
+          width: "3rem",
+          display: "flex",
+          flexDirection: "column",
+          flexWrap: "wrap",
+          wordBreak: "break-all",
+        }}
+      >
+        <div style={{ animation: "drift 22.5s ease-out infinite" }}>
+          <Image
+            style={{ height: "3rem", width: "2rem", borderRadius: "5px" }}
+            src={f1}
+            alt={"abcd"}
+          />
+        </div>
+      </div>
+      <style>
+        {`
+          @keyframes drift {
+            0% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-50%);
+            }
+            100% {
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
+    </h2>
+  );
+}
+
+export function EncasingContent({ children }: EncasingContentProps) {
+  return (
+    <div style={{ background: "#fff" }}>
+      <Container className="pt-3">
+        <Row>
+          <Col>{children}</Col>
+        </Row>
+      </Container>
+    </div>
+  );
+}

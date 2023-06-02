@@ -1,78 +1,21 @@
+import { useSpring, animated } from "@react-spring/web";
 import { Fragment } from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import { EncasingContent, EncasingTitle } from "../MainReusables";
 import { poemsData } from "../assets/poems/poemsData";
-import f1 from "./../assets/graphics/f1.png";
 
-interface EncasingContentProps {
-  children: React.ReactNode;
-}
-
-interface EncasingTitleProps {
-  title: string;
-}
-
-function EncasingTitle({ title }: EncasingTitleProps) {
-  return (
-    <h2 style={{ position: "relative", color: "#fff", padding: "1.5rem" }}>
-      {title}
-      <div
-        style={{
-          position: "absolute",
-          top: "0",
-          bottom: "0",
-
-          right: ".5rem",
-          color: "#fff",
-          borderLeft: "3px solid #fff",
-          borderRight: "3px solid #fff",
-          height: "125%",
-          width: "3rem",
-          display: "flex",
-          flexDirection: "column",
-          flexWrap: "wrap",
-          wordBreak: "break-all",
-        }}
-      >
-        <div style={{ animation: "drift 22.5s ease-out infinite" }}>
-          <Image
-            style={{ height: "3rem", width: "2rem", borderRadius: "5px" }}
-            src={f1}
-            alt={"abcd"}
-          />
-        </div>
-      </div>
-      <style>
-        {`
-          @keyframes drift {
-            0% {
-              transform: translateY(0);
-            }
-            50% {
-              transform: translateY(-50%);
-            }
-            100% {
-              transform: translateY(0);
-            }
-          }
-        `}
-      </style>
-    </h2>
-  );
-}
-
-function EncasingContent({ children }: EncasingContentProps) {
-  return (
-    <div style={{ background: "#fff" }}>
-      <Container className="pt-3">
-        <Row>
-          <Col>{children}</Col>
-        </Row>
-      </Container>
-    </div>
-  );
-}
+const AnimatedCol = animated(Col);
 
 function Other() {
+  const springs = useSpring({
+    from: { x: 0 },
+    to: { x: 100 },
+    width: "40vw",
+    height: "20vh",
+    borderRadius: "8px",
+    backgroundColor: "#fff",
+  });
+
   return (
     <Container
       fluid
@@ -83,6 +26,8 @@ function Other() {
       }}
     >
       <Row className="justify-content-center mt-3 mb-5">
+        <AnimatedCol xs={1} style={springs}></AnimatedCol>
+
         <Col
           className="pt-3 pt-3"
           style={{
@@ -101,7 +46,8 @@ function Other() {
       </Row>
       {poemsData.map((poem) => (
         <Fragment key={poem.title}>
-          <Row className="justify-content-center">
+          <Row className="justify-content-around">
+            <AnimatedCol xs={1} style={springs}></AnimatedCol>
             <Col
               className="pt-3 pt-3"
               style={{
@@ -117,6 +63,10 @@ function Other() {
             >
               {poem.content}
             </Col>
+            <Col
+              xs={1}
+              style={{ borderRight: ".15rem solid #fff", flexBasis: "0" }}
+            ></Col>
           </Row>
           <hr style={{ marginTop: "12rem", marginBottom: "12rem" }} />
         </Fragment>
