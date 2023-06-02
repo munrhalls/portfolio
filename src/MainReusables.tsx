@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { Container, Row, Col, Card, Image, Form } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import dojoImg from "./assets/graphics/dojoImg1.png";
-import f1 from "./../assets/graphics/f1.png";
+import f1 from "./assets/graphics/f1.png";
 
 interface H1ImageProps {
   src: string;
