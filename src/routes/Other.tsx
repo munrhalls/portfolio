@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { poemsData } from "../assets/poems/poemsData";
 import f1 from "./../assets/graphics/f1.png";
@@ -74,12 +73,20 @@ function EncasingContent({ children }: EncasingContentProps) {
 
 function Other() {
   return (
-    <Container fluid style={{ background: "#fff" }} className={"pt-3 pb-3"}>
+    <Container fluid style={{ background: "#fff" }} className={" pt-3 pb-3"}>
+      <Row className="justify-content-center mt-3 mb-5">
+        <Col xs={4}>
+          <h1>My poetry</h1>
+        </Col>
+      </Row>
       {poemsData.map((poem) => (
-        <Fragment key={poem.title}>
-          {poem.title}
-          {poem.content}
-        </Fragment>
+        <Row className="justify-content-center" key={poem.title}>
+          <Col xs={4}>
+            {poem.title}
+            {poem.content}
+            <hr className="mt-5 mb-5" />
+          </Col>
+        </Row>
       ))}
       <Row style={{ background: "#000" }}>
         <Col>
