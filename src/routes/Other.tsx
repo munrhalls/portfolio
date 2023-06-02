@@ -73,13 +73,6 @@ function EncasingContent({ children }: EncasingContentProps) {
 function About() {
   return (
     <Container fluid style={{ background: "#fff" }} className={"pt-3 pb-3"}>
-      <Row>
-        <Col>
-          <h1>Hello. I am a junior frontend web developer. </h1>
-          <p>Briefly introducing myself.</p>
-        </Col>
-      </Row>
-
       <Row style={{ background: "#000" }}>
         <Col>
           <EncasingTitle

@@ -73,13 +73,8 @@ function Root() {
                 </CustomLinkContainer>
               </div>
               <div>
-                <CustomLinkContainer to="/about">
-                  <Nav.Link>About</Nav.Link>
-                </CustomLinkContainer>
-              </div>
-              <div>
-                <CustomLinkContainer to="/contact">
-                  <Nav.Link>Contact</Nav.Link>
+                <CustomLinkContainer to="/other">
+                  <Nav.Link>Other</Nav.Link>
                 </CustomLinkContainer>
               </div>
             </Nav>
