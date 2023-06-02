@@ -73,15 +73,39 @@ function EncasingContent({ children }: EncasingContentProps) {
 
 function Other() {
   return (
-    <Container fluid style={{ background: "#fff" }} className={" pt-3 pb-3"}>
+    <Container fluid style={{ background: "#000" }} className={" pt-3 pb-3"}>
       <Row className="justify-content-center mt-3 mb-5">
-        <Col xs={7} sm={5} md={4} lg={4} xl={2}>
-          <h1>My poetry</h1>
+        <Col
+          className="pt-3 pt-3"
+          style={{
+            borderRadius: "5px",
+            boxShadow: "0 25px 50px 100px #fff",
+            background: "#fff",
+          }}
+          xs={7}
+          sm={5}
+          md={4}
+          lg={4}
+          xl={2}
+        >
+          <h1>My poems</h1>
         </Col>
       </Row>
       {poemsData.map((poem) => (
         <Row className="justify-content-center" key={poem.title}>
-          <Col xs={7} sm={5} md={4} lg={4} xl={2}>
+          <Col
+            className="pt-3 pt-3"
+            style={{
+              borderRadius: "5px",
+              boxShadow: "0 0 50px 100px #fff",
+              background: "#fff",
+            }}
+            xs={7}
+            sm={5}
+            md={4}
+            lg={4}
+            xl={2}
+          >
             {poem.content}
             <hr className="mt-5 mb-5" />
           </Col>
