@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PoemTitle = styled.h2`
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   margin-bottom: 1.25rem;
 `;
 
