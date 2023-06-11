@@ -17,14 +17,16 @@ import { CustomParagraphsGroup } from "../MainReusables";
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
-  min-height: 100vh;
+  flex-grow: 1;
   position: relative;
+  overflow-x: hidden;
+
   &:after {
     z-index: -2;
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
+    height: 175%;
     width: 175%;
     content: " ";
     background: url(${homeBg}) repeat 400% 400%;
