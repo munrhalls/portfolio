@@ -17,30 +17,27 @@ import { CustomParagraphsGroup } from "../MainReusables";
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
-  min-height: 80vh;
+  min-height: 100vh;
   position: relative;
-  z-index: 0;
   &:after {
-    z-index: -1;
+    z-index: -2;
     position: absolute;
-    top: 1rem;
-    right: 0;
-    bottom: 0;
+    top: 0;
     left: 0;
     height: 100%;
-    width: 100%;
+    width: 175%;
     content: " ";
-    background: url(${homeBg}) no-repeat center right fixed;
+    background: url(${homeBg}) repeat 400% 400%;
     background-color: transparent;
     backgroundsize: contain;
-    animation: rotate 10s infinite;
+    animation: rotate 15s ease-in infinite;
 
     @keyframes rotate {
       from {
-        transform: rotate(0deg);
+        left: -50%;
       }
       to {
-        transform: rotate(-360deg);
+        left: 0;
       }
     }
   }
@@ -51,10 +48,15 @@ function Home() {
 
   return (
     <StyledContainer>
-      <Container>
+      <Container style={{ position: "relative", zIndex: "1000" }}>
         <Row className="justify-content-center">
           <Col xs={12} md={10} xl={8}>
-            <h1 className="mt-5 mb-5">Junior Web Developer</h1>
+            <h1
+              style={{ color: "#fff", fontWeight: "bold" }}
+              className="mt-5 mb-5"
+            >
+              Junior Web Developer
+            </h1>
           </Col>
         </Row>
         <Row className="justify-content-center">
