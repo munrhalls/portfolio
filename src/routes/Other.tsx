@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { EncasingContent, EncasingTitle } from "../MainReusables";
+// import { EncasingContent, EncasingTitle } from "../MainReusables";
 import { poemsData } from "../assets/poems/poemsData";
 
 function Other() {
@@ -8,7 +8,7 @@ function Other() {
     <Container
       fluid
       style={{
-        paddingTop: "3rem",
+        paddingTop: "7rem",
         paddingBottom: "3rem",
         background: "#000",
       }}
@@ -54,38 +54,6 @@ function Other() {
           <hr style={{ marginTop: "12rem", marginBottom: "12rem" }} />
         </Fragment>
       ))}
-      <Row style={{ background: "#000" }}>
-        <Col>
-          <EncasingTitle
-            title={"Learning software development"}
-          ></EncasingTitle>
-          <EncasingContent>
-            <h3>Point 1</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
-              quae veniam delectus quo voluptates, pariatur nulla repudiandae
-              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
-              veritatis illum atque quasi!
-            </p>
-            <h3>Point 2</h3>
-
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
-              quae veniam delectus quo voluptates, pariatur nulla repudiandae
-              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
-              veritatis illum atque quasi!Why
-            </p>
-            <h3>Point 3</h3>
-
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae
-              quae veniam delectus quo voluptates, pariatur nulla repudiandae
-              hic corrupti itaque eveniet. Corporis voluptate dolorum iure neque
-              veritatis illum atque quasi!How did it go
-            </p>
-          </EncasingContent>
-        </Col>
-      </Row>
     </Container>
   );
 }

@@ -386,7 +386,7 @@ const poemThree = {
   ),
 };
 
-const poemFour = {
+const poemSix = {
   title: "RYSOWANY RYS PORYSOWAŁ OŁÓWEK",
   content: (
     <>
@@ -596,12 +596,12 @@ const poemFive = {
   ),
 };
 
-const poemSix = {
-  title: "MASA MASY W MASIE SIĘ MASĄ MASUJE, A WSZECHŚWIAT SOBIE ZERKA",
+const poemFour = {
+  title: "MASA MASY, W MASIE, MASĄ SIĘ MASUJE, A WSZECHŚWIAT ZERKA",
   content: (
     <>
       <PoemTitle>
-        MASA MASY W MASIE SIĘ MASĄ MASUJE, A WSZECHŚWIAT SOBIE ZERKA
+        MASA MASY, W MASIE, MASĄ SIĘ MASUJE, A WSZECHŚWIAT ZERKA
       </PoemTitle>
       <p>
         <PoemSpan>Masa masy w masie, </PoemSpan>
