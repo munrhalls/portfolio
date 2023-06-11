@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const homeSlice = createSlice({
+export const aboutSlice = createSlice({
   name: "home",
   initialState: {
     value: "",
@@ -12,9 +12,9 @@ export const homeSlice = createSlice({
   },
 });
 
-export const { edit } = homeSlice.actions;
+export const { edit } = aboutSlice.actions;
 
-export default homeSlice.reducer;
+export default aboutSlice.reducer;
 // comment
 // <Form onSubmit={handleEdit} className="text-center mb-3">
 //   <Form.Group className="mb-3">

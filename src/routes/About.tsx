@@ -45,7 +45,7 @@ const StyledContainer = styled.div`
   }
 `;
 
-function Home() {
+function About() {
   // const author = useAppSelector((state) => state.auth.value);
 
   return (
@@ -292,4 +292,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default About;

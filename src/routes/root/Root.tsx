@@ -59,12 +59,12 @@ function Root() {
             <Nav>
               <div>
                 <CustomLinkContainer to="/">
-                  <Nav.Link>Home</Nav.Link>
+                  <Nav.Link>Portfolio</Nav.Link>
                 </CustomLinkContainer>
               </div>
               <div>
-                <CustomLinkContainer to="/portfolio">
-                  <Nav.Link>Portfolio</Nav.Link>
+                <CustomLinkContainer to="/about">
+                  <Nav.Link>About</Nav.Link>
                 </CustomLinkContainer>
               </div>
               <div>
