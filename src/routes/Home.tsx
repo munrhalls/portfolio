@@ -14,18 +14,43 @@ import Container from "react-bootstrap/Container";
 // import dojoImg from "./../assets/graphics/dojoImg.png";
 import homeBg from "./../assets/graphics/simpleGeometricSpread3.png";
 import { CustomParagraphsGroup } from "../MainReusables";
+import styled from "styled-components";
+
+const StyledContainer = styled.div`
+  min-height: 80vh;
+  position: relative;
+  z-index: 0;
+  &:after {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    content: " ";
+    background: url(${homeBg}) no-repeat center right fixed;
+    background-color: transparent;
+    backgroundsize: contain;
+    animation: rotate 10s infinite;
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+  }
+`;
 
 function Home() {
   // const author = useAppSelector((state) => state.auth.value);
 
   return (
-    <div
-      style={{
-        minHeight: "80vh",
-        background: `url(${homeBg}) no-repeat center right fixed`,
-        backgroundSize: "contain",
-      }}
-    >
+    <StyledContainer>
       <Container>
         <Row className="justify-content-center">
           <Col xs={12} md={10} xl={8}>
@@ -259,7 +284,7 @@ function Home() {
           </Col>
         </Row>
       </Container>
-    </div>
+    </StyledContainer>
   );
 }
 
