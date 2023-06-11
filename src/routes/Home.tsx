@@ -23,7 +23,7 @@ const StyledContainer = styled.div`
   &:after {
     z-index: -1;
     position: absolute;
-    top: 0;
+    top: 1rem;
     right: 0;
     bottom: 0;
     left: 0;
