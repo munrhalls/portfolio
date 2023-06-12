@@ -8,13 +8,13 @@ import styled from "styled-components";
 const LiquidAirAbuserImage = styled(Image)`
   height: 50%;
   width: 50%;
-  animation: rotate 25s infinite linear;
+  animation: rotate 6s infinite linear;
   @keyframes rotate {
     from {
       transform: rotate3d(1, 1, 1, 0deg);
     }
     to {
-      transform: rotate3d(1, 1, 1, 45deg);
+      transform: rotate3d(1, 1, 1, 5deg);
     }
   }
 `;
@@ -49,8 +49,8 @@ function Other() {
         return (
           <Fragment key={poem.title}>
             <Row className="justify-content-center pt-5">
-              // use flex order for that
               <>
+                <Col xs={1} sm={2}></Col>
                 <Col
                   style={{
                     position: "relative",
@@ -66,9 +66,11 @@ function Other() {
                 >
                   {poem.content}
                 </Col>
-                <Col xs={10} sm={5} md={4} lg={4} xl={2}>
+                <Col xs={1} sm={2}></Col>
+                <Col xs={7} sm>
                   {poemImages[0]}
                 </Col>
+                <Col xs={1}></Col>
               </>
             </Row>
             <hr style={{ marginTop: "12rem", marginBottom: "12rem" }} />
