@@ -55,8 +55,8 @@ function Root() {
           >
             <Image
               style={{
-                height: "2.75rem",
-                width: "2.75rem",
+                height: "2.5rem",
+                width: "2.5rem",
                 border: "1px solid #000",
                 padding: ".25rem .25rem",
                 borderRadius: "5px",
