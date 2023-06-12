@@ -32,14 +32,14 @@ const poemBgStyles = [
     padding: "2.5rem 0",
   },
   {
-    backgroundImage: `url(${"/public/assets/poems/poemImages/masaMasySieMasaMasuje.jpg"})`,
+    backgroundImage: `url(${"/public/assets/poems/poemImages/ogniskujacNiedoczesnosc.jpg"})`,
     backgroundSize: "175% 100%",
     backgroundPosition: "center center",
     borderRadius: "5px",
     padding: "2.5rem 0",
   },
   {
-    backgroundImage: `url(${"/public/assets/poems/poemImages/ogniskujacNiedoczesnosc.jpg"})`,
+    backgroundImage: `url(${"/public/assets/poems/poemImages/masaMasySieMasaMasuje.jpg"})`,
     backgroundSize: "175% 100%",
     backgroundPosition: "center center",
     borderRadius: "5px",

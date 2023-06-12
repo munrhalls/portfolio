@@ -923,7 +923,7 @@ const poemSix = {
   imageUrl: "./public/assets/poems/poemImages/liquidAirAbuser.jpg",
 };
 
-const poemFive = {
+const poemFour = {
   title: "OGNISKUJĄC NIEDOCZESNOŚĆ",
   content: (
     <PoemContainer>
@@ -1014,7 +1014,7 @@ const poemFive = {
   imageUrl: "./public/assets/poems/poemImages/liquidAirAbuser.jpg",
 };
 
-const poemFour = {
+const poemFive = {
   title:
     "MASA MASY, <br></br>W MASIE, <br></br>MASĄ SIĘ MASUJE, <br></br>A WSZECHŚWIAT ZERKA",
   content: (
