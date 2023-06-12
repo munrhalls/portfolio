@@ -3,6 +3,15 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 // import { EncasingContent, EncasingTitle } from "../MainReusables";
 import { poemsData } from "./../../public/assets/poems/poemsData";
 import { useMediaQuery } from "react-responsive";
+import styled from "styled-components";
+
+const LiquidAirAbuserImage = styled(Image)`
+  height: 50px;
+`;
+
+const poemImages = [
+  <LiquidAirAbuserImage src="./public/assets/poems/poemImages/liquidAirAbuserImage.png" />,
+];
 
 function Other() {
   const isMobile = useMediaQuery({ maxWidth: 576 });
@@ -70,7 +79,7 @@ function Other() {
                     lg={4}
                     xl={2}
                   >
-                    <Image src={poem.imageUrl} alt="Poem image" />
+                    {poemImages[0]}
                   </Col>
                 </>
               ) : (

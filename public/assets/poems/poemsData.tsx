@@ -77,7 +77,7 @@ const poemOne = {
       </p>
     </>
   ),
-  imageUrl: "./public/assets/graphics/f4.png",
+  imageUrl: "./public/assets/poems/liquidAirAbuserImage.png",
 };
 const poemTwo = {
   title: "CHATTER CHATS WITH MIND",
