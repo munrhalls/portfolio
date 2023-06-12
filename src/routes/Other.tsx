@@ -8,13 +8,13 @@ import styled from "styled-components";
 const LiquidAirAbuserImage = styled(Image)`
   height: 50%;
   width: 50%;
-  animation: rotate 6s infinite linear;
+  animation: rotate 1.5s infinite linear;
   @keyframes rotate {
     from {
-      transform: rotate3d(1, 1, 1, 0deg);
+      transform: rotate3d(0, 1, 0, 0deg);
     }
     to {
-      transform: rotate3d(1, 1, 1, 5deg);
+      transform: rotate3d(0, 1, 0, 360deg);
     }
   }
 `;
