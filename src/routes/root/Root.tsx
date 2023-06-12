@@ -14,6 +14,22 @@ const CustomNavbar = styled(Navbar)`
 const CustomLinkContainer = styled(LinkContainer)`
   text-align: center;
   padding-bottom: 12px;
+  &:hover {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  &:hover&.active {
+    background-color: #000;
+    color: silver;
+    cursor: not-allowed;
+    border-radius: 5px;
+  }
+  &.active {
+    font-weight: bold;
+    transform: scale(1.05);
+  }
 `;
 
 function Root() {
@@ -90,7 +106,9 @@ function Root() {
               <div
                 style={{
                   margin: `${isMobile ? "0" : "0 1.5rem"}`,
-                  borderBottom: "2px solid #000",
+                  borderBottom: `${
+                    isMobile ? "2px solid transparent" : "2px solid #000"
+                  }`,
                 }}
               >
                 <CustomLinkContainer to="/other">
