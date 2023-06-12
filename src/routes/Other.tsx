@@ -67,7 +67,11 @@ function Other() {
                   {poem.content}
                 </Col>
                 <Col xs={1} sm={2}></Col>
-                <Col xs={7} sm>
+                <Col
+                  xs={7}
+                  sm
+                  style={{ marginTop: `${isMobile ? "10rem" : "0"}` }}
+                >
                   {poemImages[0]}
                 </Col>
                 <Col xs={1}></Col>
