@@ -18,7 +18,6 @@ const CustomLinkContainer = styled(LinkContainer)`
   &:hover {
     background-color: #000;
     color: #fff;
-    font-weight: bold;
     border-radius: 5px;
     opacity: 0.9;
   }
