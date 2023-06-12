@@ -1,4 +1,4 @@
-import recordingSymbol from "./../../assets/graphics/recordingSymbol.png";
+import recordingSymbol from "./../../../public/assets/graphics/recordingSymbol.png";
 import { Card } from "react-bootstrap";
 
 interface RecordingSrcProps {

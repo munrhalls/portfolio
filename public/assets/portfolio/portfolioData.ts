@@ -1,5 +1,5 @@
-import carbyneHeader from "./../../assets/projectImages/carbyneHeader.png";
-import snakeHeader from "./../../assets/projectImages/snakeHeader.png";
+import carbyneHeader from "./projectImages/carbyneHeader.png";
+import snakeHeader from "./projectImages/snakeHeader.png";
 
 export interface Project {
   technology: string;

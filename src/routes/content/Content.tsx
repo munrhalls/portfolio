@@ -5,8 +5,8 @@ import {
   CustomFormCheckInput,
 } from "./../../MainReusables";
 import { Container, Row, Col, Form, FormGroup, Alert } from "react-bootstrap";
-import { articlesData } from "../../assets/articles/articlesData1-10";
-import { recordingsData } from "../../assets/recordings/recordingsData";
+import { articlesData } from "../../../public/assets/articles/articlesData1-10";
+import { recordingsData } from "../../../public/assets/recordings/recordingsData";
 import Recording from "./Recording";
 
 function Content() {

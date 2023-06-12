@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Outlet } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { useMediaQuery } from "react-responsive";
-import Logo from "./../../assets/graphics/LOGO.png";
+import Logo from "./../../../public/assets/graphics/LOGO.png";
 import styled from "styled-components";
 
 const CustomNavbar = styled(Navbar)`

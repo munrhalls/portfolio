@@ -10,7 +10,7 @@ import {
   ProjectLessonsHeader,
 } from "./../../MainReusables";
 
-import { Project } from "./portfolioData";
+import { Project } from "../../../public/assets/portfolio/portfolioData";
 
 function PortfolioProject({
   project,

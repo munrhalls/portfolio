@@ -1,5 +1,5 @@
-import { portfolioData } from "./portfolioData";
-import { projectMetrics } from "./portfolioData";
+import { portfolioData } from "../../../public/assets/portfolio/portfolioData";
+import { projectMetrics } from "../../../public/assets/portfolio/portfolioData";
 import { useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useMediaQuery } from "react-responsive";
