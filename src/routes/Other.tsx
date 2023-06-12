@@ -7,6 +7,15 @@ import styled from "styled-components";
 
 const LiquidAirAbuserImage = styled(Image)`
   height: 50px;
+  animation: rotate 1s infinite linear;
+  @keyframes rotate {
+    from {
+      margin-top: 0;
+    }
+    to {
+      margin-top: 10rem;
+    }
+  }
 `;
 
 const poemImages = [
