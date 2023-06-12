@@ -55,10 +55,10 @@ function Other() {
                   style={{
                     position: "relative",
                     borderRadius: "5px",
-                    boxShadow: "0 0 40px 80px #fff",
+                    boxShadow: "0 0 16px 48px #fff",
                     background: "#fff",
                   }}
-                  xs={10}
+                  xs={7}
                   sm={5}
                   md={4}
                   lg={4}
