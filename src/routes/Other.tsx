@@ -2,8 +2,11 @@ import { Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 // import { EncasingContent, EncasingTitle } from "../MainReusables";
 import { poemsData } from "../assets/poems/poemsData";
+import { useMediaQuery } from "react-responsive";
 
 function Other() {
+  const isMobile = useMediaQuery({ maxWidth: 576 });
+
   return (
     <Container
       fluid
@@ -60,7 +63,7 @@ function Other() {
                     boxShadow: "0 0 50px 100px #fff",
                     background: "#fff",
                   }}
-                  xs={5}
+                  xs={7}
                   sm={5}
                   md={4}
                   lg={4}
@@ -79,7 +82,7 @@ function Other() {
                     boxShadow: "0 0 50px 100px #fff",
                     background: "#fff",
                   }}
-                  xs={5}
+                  xs={7}
                   sm={5}
                   md={4}
                   lg={4}
