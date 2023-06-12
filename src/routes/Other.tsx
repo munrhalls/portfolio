@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 // import { EncasingContent, EncasingTitle } from "../MainReusables";
 import { poemsData } from "./../../public/assets/poems/poemsData";
-import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 
 const RowBGProvider = styled(Row)`
@@ -16,8 +15,6 @@ const PoemsTitle = styled.h1`
 `;
 
 function Other() {
-  const isMobile = useMediaQuery({ maxWidth: 576 });
-
   return (
     <Container
       fluid
@@ -39,7 +36,7 @@ function Other() {
         </Col>
       </Row>
 
-      {poemsData.map((poem, index) => {
+      {poemsData.map((poem) => {
         return (
           <Fragment key={poem.title}>
             <RowBGProvider className="mt-5 d-flex justify-content-center">
