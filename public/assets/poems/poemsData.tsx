@@ -77,7 +77,7 @@ const poemOne = {
       </p>
     </>
   ),
-  imageUrl: "./../graphics/f4.png",
+  imageUrl: "./public/assets/graphics/f4.png",
 };
 const poemTwo = {
   title: "CHATTER CHATS WITH MIND",
@@ -159,7 +159,7 @@ const poemTwo = {
       </p>
     </>
   ),
-  imageUrl: "./../graphics/f4.png",
+  imageUrl: "./public/assets/graphics/f4.png",
 };
 const poemThree = {
   title: "INVENTOR'S TOUCH",
@@ -386,7 +386,7 @@ const poemThree = {
       </p>
     </>
   ),
-  imageUrl: "./../public/assets/graphics/f4.png",
+  imageUrl: "./public/assets/graphics/f4.png",
 };
 
 const poemSix = {
@@ -549,7 +549,7 @@ const poemSix = {
       </p>
     </>
   ),
-  imageUrl: "./../graphics/f4.png",
+  imageUrl: "./public/assets/graphics/f4.png",
 };
 
 const poemFive = {
@@ -598,7 +598,7 @@ const poemFive = {
       </p>
     </>
   ),
-  imageUrl: "./../graphics/f4.png",
+  imageUrl: "./public/assets/graphics/f4.png",
 };
 
 const poemFour = {
@@ -783,7 +783,7 @@ const poemFour = {
       </p>
     </>
   ),
-  imageUrl: "./../graphics/f4.png",
+  imageUrl: "./public/assets/graphics/f4.png",
 };
 export const poemsData = [
   poemOne,

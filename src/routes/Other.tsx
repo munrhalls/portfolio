@@ -70,7 +70,7 @@ function Other() {
                     lg={4}
                     xl={2}
                   >
-                    <Image src={require(`${poem.imageUrl}`)} alt="Poem image" />
+                    <Image src={poem.imageUrl} alt="Poem image" />
                   </Col>
                 </>
               ) : (
