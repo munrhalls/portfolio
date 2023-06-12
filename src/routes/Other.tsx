@@ -26,7 +26,7 @@ const poemBgStyles = [
   },
   {
     backgroundImage: `url(${"./public/assets/poems/poemImages/inventorsTouch.jpg"})`,
-    backgroundSize: "175% 100%",
+    backgroundSize: "700% 100%",
     backgroundPosition: "center center",
     borderRadius: "5px",
     padding: "2.5rem 0",
