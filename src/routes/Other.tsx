@@ -27,7 +27,7 @@ function Other() {
       }}
     >
       <Row className="justify-content-center">
-        <Col xs={7} sm={5} md={4} lg={4} xl={2}>
+        <Col xs={10} sm={5} md={4} lg={4} xl={2}>
           <PoemsTitle>Poems</PoemsTitle>
         </Col>
       </Row>
@@ -39,10 +39,8 @@ function Other() {
               <Col
                 style={{
                   position: "relative",
-                  borderRadius: "5px",
-                  background: "#fff",
                 }}
-                xs={7}
+                xs={10}
                 sm={5}
                 md={4}
                 lg={4}

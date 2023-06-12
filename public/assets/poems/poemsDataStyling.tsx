@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const PoemContainer = styled.div`
-  padding: 1rem;
+  padding: 1.5rem;
+  max-width: 16rem;
+  background: #fff;
+  border-radius: 5px;
 `;
 
 export const PoemTitle = styled.h2`
