@@ -8,25 +8,6 @@ import styled from "styled-components";
 const RowBGProvider = styled(Row)`
   position: relative;
   overflow: hidden;
-  &:before {
-    z-index: 0;
-    position: absolute;
-    content: " ";
-    top: : 0;
-    background: url(./public/assets/poems/poemImages/liquidAirAbuserImage.png);
-    background-repeat: repeat;
-    height: 150%;
-    width: 100%;
-    animation: slide 3s linear infinite;
-    @keyframes slide {
-      from {
-        top: -40%;
-      } 
-      to {
-        top: 0;
-      }
-    }
-  }
 `;
 
 const PoemsTitle = styled.h1`
@@ -53,8 +34,8 @@ function Other() {
 
       {poemsData.map((poem, index) => {
         return (
-          <>
-            <RowBGProvider key={poem.title} className="justify-content-center">
+          <Fragment key={poem.title}>
+            <RowBGProvider className="justify-content-center">
               <Col
                 style={{
                   position: "relative",
@@ -71,7 +52,7 @@ function Other() {
               </Col>
             </RowBGProvider>
             <hr style={{ marginTop: "12rem", marginBottom: "12rem" }} />
-          </>
+          </Fragment>
         );
       })}
     </Container>

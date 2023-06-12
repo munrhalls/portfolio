@@ -1,9 +1,9 @@
-import { PoemTitle, PoemSpan } from "./poemsDataStyling";
+import { PoemContainer, PoemTitle, PoemSpan } from "./poemsDataStyling";
 
 const poemOne = {
   title: "LIQUID AIR ABUSER",
   content: (
-    <>
+    <PoemContainer>
       <PoemTitle>LIQUID AIR ABUSER</PoemTitle>
       <p>Sober liquids flow through, the veins of airy vastness.</p>
       <p>Winds work a little bit weird, in these channels.</p>
@@ -75,14 +75,14 @@ const poemOne = {
         pure, endless paradox of
         <PoemSpan> the real?</PoemSpan>
       </p>
-    </>
+    </PoemContainer>
   ),
   imageUrl: "./public/assets/poems/liquidAirAbuserImage.png",
 };
 const poemTwo = {
   title: "CHATTER CHATS WITH MIND",
   content: (
-    <>
+    <PoemContainer>
       <PoemTitle>CHATTER CHATS WITH MIND</PoemTitle>
       <p>
         <PoemSpan>"What?", </PoemSpan>
@@ -157,14 +157,14 @@ const poemTwo = {
       <p>
         <PoemSpan>So says the chatter.</PoemSpan>
       </p>
-    </>
+    </PoemContainer>
   ),
   imageUrl: "./public/assets/graphics/f4.png",
 };
 const poemThree = {
   title: "INVENTOR'S TOUCH",
   content: (
-    <>
+    <PoemContainer>
       <PoemTitle>INVENTOR'S TOUCH</PoemTitle>
       <p>
         <PoemSpan>"Quicker, quicker, QUICK!!!", </PoemSpan>
@@ -384,7 +384,7 @@ const poemThree = {
         <PoemSpan>when paradoxes claim, </PoemSpan>
         <PoemSpan>they really don't.</PoemSpan>
       </p>
-    </>
+    </PoemContainer>
   ),
   imageUrl: "./public/assets/graphics/f4.png",
 };
@@ -392,7 +392,7 @@ const poemThree = {
 const poemSix = {
   title: "RYSOWANY RYS PORYSOWAŁ OŁÓWEK",
   content: (
-    <>
+    <PoemContainer>
       <PoemTitle>RYSOWANY RYS PORYSOWAŁ OŁÓWEK</PoemTitle>
       <p>
         <PoemSpan>Rysował się rysem rysowniczym, </PoemSpan>
@@ -547,7 +547,7 @@ const poemSix = {
         <PoemSpan>rysując swe rysy w rysach, </PoemSpan>
         <PoemSpan>w rytm.</PoemSpan>
       </p>
-    </>
+    </PoemContainer>
   ),
   imageUrl: "./public/assets/graphics/f4.png",
 };
@@ -555,7 +555,7 @@ const poemSix = {
 const poemFive = {
   title: "OGNISKUJĄC NIEDOCZESNOŚĆ",
   content: (
-    <>
+    <PoemContainer>
       <PoemTitle>OGNISKUJĄC NIEDOCZESNOŚĆ</PoemTitle>
       <p>
         <PoemSpan>Niedoczesność quasi-wysławialna, </PoemSpan>
@@ -596,7 +596,7 @@ const poemFive = {
         <PoemSpan>ani poznania, </PoemSpan>
         <PoemSpan>jedynie zaznania.</PoemSpan>
       </p>
-    </>
+    </PoemContainer>
   ),
   imageUrl: "./public/assets/graphics/f4.png",
 };
@@ -604,7 +604,7 @@ const poemFive = {
 const poemFour = {
   title: "MASA MASY, W MASIE, MASĄ SIĘ MASUJE, A WSZECHŚWIAT ZERKA",
   content: (
-    <>
+    <PoemContainer>
       <PoemTitle>
         MASA MASY, W MASIE, MASĄ SIĘ MASUJE, A WSZECHŚWIAT ZERKA
       </PoemTitle>
@@ -781,7 +781,7 @@ const poemFour = {
         <PoemSpan>tak przy okazji, </PoemSpan>
         <PoemSpan>na nas zerka.</PoemSpan>
       </p>
-    </>
+    </PoemContainer>
   ),
   imageUrl: "./public/assets/graphics/f4.png",
 };
