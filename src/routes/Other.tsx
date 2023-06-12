@@ -10,10 +10,10 @@ const LiquidAirAbuserImage = styled(Image)`
   animation: rotate 1s infinite linear;
   @keyframes rotate {
     from {
-      margin-top: 0;
+      transform: rotate(0deg);
     }
     to {
-      margin-top: 10rem;
+      transform: rotate(360deg);
     }
   }
 `;
