@@ -6,14 +6,15 @@ import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 
 const LiquidAirAbuserImage = styled(Image)`
-  height: 50px;
-  animation: rotate 1s infinite linear;
+  height: 50%;
+  width: 50%;
+  animation: rotate 25s infinite linear;
   @keyframes rotate {
     from {
-      transform: rotate(0deg);
+      transform: rotate3d(1, 1, 1, 0deg);
     }
     to {
-      transform: rotate(360deg);
+      transform: rotate3d(1, 1, 1, 45deg);
     }
   }
 `;
@@ -22,6 +23,11 @@ const poemImages = [
   <LiquidAirAbuserImage src="./public/assets/poems/poemImages/liquidAirAbuserImage.png" />,
 ];
 
+const PoemsTitle = styled.h1`
+  color: #fff;
+  font-size: 2.75rem;
+`;
+
 function Other() {
   const isMobile = useMediaQuery({ maxWidth: 576 });
 
@@ -29,104 +35,41 @@ function Other() {
     <Container
       fluid
       style={{
-        paddingTop: "7rem",
         paddingBottom: "3rem",
         background: "#000",
       }}
     >
       <Row className="justify-content-center mt-3 mb-5">
-        <Col
-          className="mb-5 pt-3 pt-3"
-          style={{
-            borderRadius: "5px",
-            boxShadow: "0 25px 50px 100px #fff",
-            background: "#fff",
-          }}
-          xs={7}
-          sm={5}
-          md={4}
-          lg={4}
-          xl={2}
-        >
-          <h1>Poems</h1>
+        <Col className="mt-3" xs={7} sm={5} md={4} lg={4} xl={2}>
+          <PoemsTitle>Poems</PoemsTitle>
         </Col>
       </Row>
 
       {poemsData.map((poem, index) => {
         return (
           <Fragment key={poem.title}>
-            <Row className="justify-content-around">
-              {index % 2 === 0 ? (
-                <>
-                  <Col
-                    className="pt-3 pt-3"
-                    style={{
-                      position: "relative",
-                      borderRadius: "5px",
-                      boxShadow: "0 0 50px 100px #fff",
-                      background: "#fff",
-                    }}
-                    xs={7}
-                    sm={5}
-                    md={4}
-                    lg={4}
-                    xl={2}
-                  >
-                    {poem.content}
-                  </Col>
-                  <Col
-                    className="pt-3 pt-3"
-                    style={{
-                      position: "relative",
-                      borderRadius: "5px",
-                      boxShadow: "0 0 50px 100px #fff",
-                      background: "#fff",
-                    }}
-                    xs={7}
-                    sm={5}
-                    md={4}
-                    lg={4}
-                    xl={2}
-                  >
-                    {poemImages[0]}
-                  </Col>
-                </>
-              ) : (
-                <>
-                  <Col
-                    className="pt-3 pt-3"
-                    style={{
-                      position: "relative",
-                      borderRadius: "5px",
-                      boxShadow: "0 0 50px 100px #fff",
-                      background: "#fff",
-                    }}
-                    xs={7}
-                    sm={5}
-                    md={4}
-                    lg={4}
-                    xl={2}
-                  >
-                    <h1>ALTERNATING RIGHT</h1>
-                  </Col>
-                  <Col
-                    className="pt-3 pt-3"
-                    style={{
-                      position: "relative",
-                      borderRadius: "5px",
-                      boxShadow: "0 0 50px 100px #fff",
-                      background: "#fff",
-                    }}
-                    xs={7}
-                    sm={5}
-                    md={4}
-                    lg={4}
-                    xl={2}
-                  >
-                    {poem.content}
-                  </Col>
-                </>
-              )}
+            <Row className="pt-5">
+              // use flex order for that
+              <>
+                <Col
+                  style={{
+                    position: "relative",
+                    borderRadius: "5px",
+                    boxShadow: "0 0 50px 100px #fff",
+                    background: "#fff",
+                  }}
+                  xs={7}
+                  sm={5}
+                  md={4}
+                  lg={4}
+                  xl={2}
+                >
+                  {poem.content}
+                </Col>
+                <Col xs={7} sm={5} md={4} lg={4} xl={2}>
+                  {poemImages[0]}
+                </Col>
+              </>
             </Row>
             <hr style={{ marginTop: "12rem", marginBottom: "12rem" }} />
           </Fragment>
