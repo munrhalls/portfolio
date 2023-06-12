@@ -11,42 +11,42 @@ const PoemsTitle = styled.h1`
 
 const poemBgStyles = [
   {
-    backgroundImage: `url(${"./public/assets/poems/poemImages/liquidAirAbuser.jpg"})`,
+    backgroundImage: `url(${"/public/assets/poems/poemImages/liquidAirAbuser.jpg"})`,
     backgroundSize: "contain",
     backgroundPosition: "left center",
     borderRadius: "5px",
     padding: "2.5rem 0",
   },
   {
-    backgroundImage: `url(${"./public/assets/poems/poemImages/chatterChatsWithMind.jpg"})`,
+    backgroundImage: `url(${"/public/assets/poems/poemImages/chatterChatsWithMind.jpg"})`,
     backgroundSize: "175% 100%",
     backgroundPosition: "center center",
     borderRadius: "5px",
     padding: "2.5rem 0",
   },
   {
-    backgroundImage: `url(${"./public/assets/poems/poemImages/inventorsTouch.jpg"})`,
+    backgroundImage: `url(${"/public/assets/poems/poemImages/inventorsTouch.jpg"})`,
     backgroundSize: "700% 100%",
     backgroundPosition: "center center",
     borderRadius: "5px",
     padding: "2.5rem 0",
   },
   {
-    backgroundImage: `url(${"./public/assets/poems/poemImages/masaMasySieMasaMasuje.jpg"})`,
+    backgroundImage: `url(${"/public/assets/poems/poemImages/masaMasySieMasaMasuje.jpg"})`,
     backgroundSize: "175% 100%",
     backgroundPosition: "center center",
     borderRadius: "5px",
     padding: "2.5rem 0",
   },
   {
-    backgroundImage: `url(${"./public/assets/poems/poemImages/ogniskujacNiedoczesnosc.jpg"})`,
+    backgroundImage: `url(${"/public/assets/poems/poemImages/ogniskujacNiedoczesnosc.jpg"})`,
     backgroundSize: "175% 100%",
     backgroundPosition: "center center",
     borderRadius: "5px",
     padding: "2.5rem 0",
   },
   {
-    backgroundImage: `url(${"./public/assets/poems/poemImages/rysowanyRys.png"})`,
+    backgroundImage: `url(${"/public/assets/poems/poemImages/rysowanyRys.png"})`,
     backgroundSize: "10%",
     backgroundRepeat: "repeat",
     backgroundPosition: "center center",
