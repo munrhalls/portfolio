@@ -13,7 +13,7 @@ const CustomNavbar = styled(Navbar)`
 
 const CustomLinkContainer = styled(LinkContainer)`
   text-align: center;
-  padding-bottom: 1.25rem;
+  padding-bottom: 12px;
 `;
 
 function Root() {
@@ -57,22 +57,42 @@ function Root() {
             style={isMobile ? { paddingTop: "8px" } : {}}
           >
             <Nav>
-              <div>
+              <div
+                style={{
+                  margin: `${isMobile ? "0" : "0 1.5rem"}`,
+                  borderBottom: "2px solid #000",
+                }}
+              >
                 <CustomLinkContainer to="/">
                   <Nav.Link>Portfolio</Nav.Link>
                 </CustomLinkContainer>
               </div>
-              <div>
+              <div
+                style={{
+                  margin: `${isMobile ? "0" : "0 1.5rem"}`,
+                  borderBottom: "2px solid #000",
+                }}
+              >
                 <CustomLinkContainer to="/about">
                   <Nav.Link>About</Nav.Link>
                 </CustomLinkContainer>
               </div>
-              <div>
+              <div
+                style={{
+                  margin: `${isMobile ? "0" : "0 1.5rem"}`,
+                  borderBottom: "2px solid #000",
+                }}
+              >
                 <CustomLinkContainer to="/content">
                   <Nav.Link>Content</Nav.Link>
                 </CustomLinkContainer>
               </div>
-              <div>
+              <div
+                style={{
+                  margin: `${isMobile ? "0" : "0 1.5rem"}`,
+                  borderBottom: "2px solid #000",
+                }}
+              >
                 <CustomLinkContainer to="/other">
                   <Nav.Link>Other</Nav.Link>
                 </CustomLinkContainer>
