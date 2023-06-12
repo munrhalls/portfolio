@@ -1,28 +1,59 @@
 import { Fragment } from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 // import { EncasingContent, EncasingTitle } from "../MainReusables";
 import { poemsData } from "./../../public/assets/poems/poemsData";
 import styled from "styled-components";
-
-const RowBGProvider = styled(Row)`
-  position: relative;
-  overflow: hidden;
-`;
-
-const BGCol = styled(Col)`
-  background-image: url("./public/assets/poems/poemImages/liquidAirAbuser.jpg");
-  background-size: contain;
-  background-position: center center;
-  background-blend-mode: multiply;
-  border-radius: 5px;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-`;
 
 const PoemsTitle = styled.h1`
   font-size: 2.25rem;
   color: #fff;
 `;
+
+const poemBgStyles = [
+  {
+    backgroundImage: `url(${"./public/assets/poems/poemImages/liquidAirAbuser.jpg"})`,
+    backgroundSize: "contain",
+    backgroundPosition: "left center",
+    borderRadius: "5px",
+    padding: "2.5rem 0",
+  },
+  {
+    backgroundImage: `url(${"./public/assets/poems/poemImages/chatterChatsWithMind.jpg"})`,
+    backgroundSize: "175% 100%",
+    backgroundPosition: "center center",
+    borderRadius: "5px",
+    padding: "2.5rem 0",
+  },
+  {
+    backgroundImage: `url(${"./public/assets/poems/poemImages/inventorsTouch.jpg"})`,
+    backgroundSize: "175% 100%",
+    backgroundPosition: "center center",
+    borderRadius: "5px",
+    padding: "2.5rem 0",
+  },
+  {
+    backgroundImage: `url(${"./public/assets/poems/poemImages/masaMasySieMasaMasuje.jpg"})`,
+    backgroundSize: "175% 100%",
+    backgroundPosition: "center center",
+    borderRadius: "5px",
+    padding: "2.5rem 0",
+  },
+  {
+    backgroundImage: `url(${"./public/assets/poems/poemImages/ogniskujacNiedoczesnosc.jpg"})`,
+    backgroundSize: "175% 100%",
+    backgroundPosition: "center center",
+    borderRadius: "5px",
+    padding: "2.5rem 0",
+  },
+  {
+    backgroundImage: `url(${"./public/assets/poems/poemImages/rysowanyRys.png"})`,
+    backgroundSize: "10%",
+    backgroundRepeat: "repeat",
+    backgroundPosition: "center center",
+    borderRadius: "5px",
+    padding: "2.5rem 0",
+  },
+];
 
 function Other() {
   return (
@@ -46,11 +77,12 @@ function Other() {
         </Col>
       </Row>
 
-      {poemsData.map((poem) => {
+      {poemsData.map((poem, index) => {
         return (
           <Fragment key={poem.title}>
-            <RowBGProvider className="mt-5 d-flex justify-content-center">
-              <BGCol
+            <Row className="mt-5 d-flex justify-content-center">
+              <Col
+                style={poemBgStyles[index]}
                 className="d-flex justify-content-center"
                 xs={12}
                 sm={6}
@@ -59,8 +91,8 @@ function Other() {
                 xl={8}
               >
                 {poem.content}
-              </BGCol>
-            </RowBGProvider>
+              </Col>
+            </Row>
             <hr />
           </Fragment>
         );
