@@ -1,27 +1,31 @@
 import { Fragment } from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 // import { EncasingContent, EncasingTitle } from "../MainReusables";
 import { poemsData } from "./../../public/assets/poems/poemsData";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 
-const LiquidAirAbuserImage = styled(Image)`
-  height: 50%;
-  width: 50%;
-  animation: rotate 1.5s infinite linear;
-  @keyframes rotate {
-    from {
-      transform: rotate3d(0, 1, 0, 0deg);
-    }
-    to {
-      transform: rotate3d(0, 1, 0, 360deg);
+const BgProvider = styled.div`
+  position: relative;
+  &:before {
+    z-index: 0;
+    position: absolute;
+    content: " ";
+    top: : 0;
+    background: url(./public/assets/poems/poemImages/liquidAirAbuserImage.png) 5% 5% repeat;
+    height: 400%;
+    width: 100%;
+    animation: slide 30s ease-out infinite;
+    @keyframes slide {
+      from {
+        top: -25%;
+      } 
+      to {
+        top: 25%;
+      }
     }
   }
 `;
-
-const poemImages = [
-  <LiquidAirAbuserImage src="./public/assets/poems/poemImages/liquidAirAbuserImage.png" />,
-];
 
 const PoemsTitle = styled.h1`
   color: #fff;
@@ -47,10 +51,9 @@ function Other() {
 
       {poemsData.map((poem, index) => {
         return (
-          <Fragment key={poem.title}>
+          <BgProvider key={poem.title}>
             <Row className="justify-content-center pt-5">
               <>
-                <Col xs={1} sm={2}></Col>
                 <Col
                   style={{
                     position: "relative",
@@ -66,19 +69,10 @@ function Other() {
                 >
                   {poem.content}
                 </Col>
-                <Col xs={1} sm={2}></Col>
-                <Col
-                  xs={7}
-                  sm
-                  style={{ marginTop: `${isMobile ? "10rem" : "0"}` }}
-                >
-                  {poemImages[0]}
-                </Col>
-                <Col xs={1}></Col>
               </>
             </Row>
             <hr style={{ marginTop: "12rem", marginBottom: "12rem" }} />
-          </Fragment>
+          </BgProvider>
         );
       })}
     </Container>
