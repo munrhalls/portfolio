@@ -43,14 +43,14 @@ function Root() {
         <Container>
           <Navbar.Brand
             style={{
-              border: "2px solid #000",
+              // border: "1px solid #000",
               padding: "0 .5rem",
               borderRadius: "5px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-evenly",
               overflow: "hidden",
-              boxShadow: "#212121 3px 1px 7px 10px inset",
+              boxShadow: "#fefefe 3px 1px 7px 10px inset",
             }}
           >
             <Image
