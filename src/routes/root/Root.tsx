@@ -14,17 +14,20 @@ const CustomNavbar = styled(Navbar)`
 const CustomLinkContainer = styled(LinkContainer)`
   text-align: center;
   padding-bottom: 12px;
+  margin-bottom: 3px;
   &:hover {
     background-color: #000;
     color: #fff;
     font-weight: bold;
     border-radius: 5px;
+    opacity: 0.9;
   }
   &:hover&.active {
     background-color: #000;
     color: silver;
     cursor: not-allowed;
     border-radius: 5px;
+    opacity: 0.9;
   }
   &.active {
     font-weight: bold;
