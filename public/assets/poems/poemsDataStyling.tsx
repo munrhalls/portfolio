@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const PoemContainer = styled.div`
+  z-index: 1;
   padding: 1.5rem;
   max-width: 16rem;
   background: #fff;

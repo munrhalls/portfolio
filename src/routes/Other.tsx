@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 // import { EncasingContent, EncasingTitle } from "../MainReusables";
 import { poemsData } from "./../../public/assets/poems/poemsData";
 import styled from "styled-components";
@@ -7,6 +7,16 @@ import styled from "styled-components";
 const RowBGProvider = styled(Row)`
   position: relative;
   overflow: hidden;
+`;
+
+const BGCol = styled(Col)`
+  background-image: url("./public/assets/poems/poemImages/liquidAirAbuser.jpg");
+  background-size: contain;
+  background-position: center center;
+  background-blend-mode: multiply;
+  border-radius: 5px;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 `;
 
 const PoemsTitle = styled.h1`
@@ -40,19 +50,16 @@ function Other() {
         return (
           <Fragment key={poem.title}>
             <RowBGProvider className="mt-5 d-flex justify-content-center">
-              <Col
+              <BGCol
                 className="d-flex justify-content-center"
-                style={{
-                  position: "relative",
-                }}
-                xs={10}
+                xs={12}
                 sm={6}
-                md={6}
-                lg={4}
-                xl={4}
+                md={8}
+                lg={8}
+                xl={8}
               >
                 {poem.content}
-              </Col>
+              </BGCol>
             </RowBGProvider>
             <hr />
           </Fragment>

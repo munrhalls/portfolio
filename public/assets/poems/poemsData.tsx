@@ -109,7 +109,7 @@ const poemOne = {
       </p>
     </PoemContainer>
   ),
-  imageUrl: "./public/assets/poems/liquidAirAbuserImage.png",
+  imageUrl: "./public/assets/poems/poemImages/liquidAirAbuser.jpg",
 };
 const poemTwo = {
   title: "CHATTER CHATS WITH MIND",
@@ -243,7 +243,7 @@ const poemTwo = {
       </p>
     </PoemContainer>
   ),
-  imageUrl: "./public/assets/graphics/f4.png",
+  imageUrl: "./public/assets/poems/poemImages/liquidAirAbuser.jpg",
 };
 const poemThree = {
   title: "INVENTOR'S TOUCH",
@@ -635,7 +635,7 @@ const poemThree = {
       </p>
     </PoemContainer>
   ),
-  imageUrl: "./public/assets/graphics/f4.png",
+  imageUrl: "./public/assets/poems/poemImages/liquidAirAbuser.jpg",
 };
 
 const poemSix = {
@@ -920,7 +920,7 @@ const poemSix = {
       </p>
     </PoemContainer>
   ),
-  imageUrl: "./public/assets/graphics/f4.png",
+  imageUrl: "./public/assets/poems/poemImages/liquidAirAbuser.jpg",
 };
 
 const poemFive = {
@@ -1011,7 +1011,7 @@ const poemFive = {
       </p>
     </PoemContainer>
   ),
-  imageUrl: "./public/assets/graphics/f4.png",
+  imageUrl: "./public/assets/poems/poemImages/liquidAirAbuser.jpg",
 };
 
 const poemFour = {
@@ -1346,7 +1346,7 @@ const poemFour = {
       </p>
     </PoemContainer>
   ),
-  imageUrl: "./public/assets/graphics/f4.png",
+  imageUrl: "./public/assets/poems/poemImages/liquidAirAbuser.jpg",
 };
 export const poemsData = [
   poemOne,
