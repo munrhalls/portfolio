@@ -20,6 +20,7 @@ const CustomLinkContainer = styled(LinkContainer)`
     color: #fff;
     border-radius: 5px;
     opacity: 0.9;
+    box-shadow: inset 0 0 3px 5px #333;
   }
   &:hover&.active {
     background-color: #000;
@@ -27,6 +28,7 @@ const CustomLinkContainer = styled(LinkContainer)`
     cursor: not-allowed;
     border-radius: 5px;
     opacity: 0.9;
+    box-shadow: none;
   }
   &.active {
     font-weight: bold;
