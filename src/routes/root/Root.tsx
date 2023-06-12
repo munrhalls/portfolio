@@ -43,31 +43,53 @@ function Root() {
         <Container>
           <Navbar.Brand
             style={{
-              border: "1px solid #000",
+              border: "2px solid #000",
               padding: "0 .5rem",
               borderRadius: "5px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-evenly",
+              overflow: "hidden",
+              boxShadow: "#212121 3px 1px 7px 10px inset",
             }}
           >
             <Image
               style={{
-                height: "2.5rem",
-                width: "2.5rem",
+                height: "2.25rem",
+                width: "2.25rem",
                 border: "1px solid #000",
-                padding: "0 .25rem",
+                padding: ".25rem .25rem",
+                borderRadius: "5px",
+                margin: "0rem",
+                transform: "rotate(45deg) skew(0, 15deg)",
               }}
               rounded
               src={Logo}
               alt="Munrhalls"
             />
-            <span
+            <div
               style={{
-                letterSpacing: "2px",
-                marginLeft: "0.75rem",
-                fontSize: ".85rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "2.15rem",
+                borderRadius: "5px",
+                padding: "0 0.25rem",
+                width: "100%",
+                marginLeft: "0.25rem",
               }}
             >
-              Munrhalls
-            </span>
+              <span
+                style={{
+                  letterSpacing: "2px",
+                  fontSize: ".8rem",
+                  padding: "0.1rem 0.25rem",
+                  width: "100%",
+                }}
+              >
+                Munrhalls
+              </span>
+            </div>
           </Navbar.Brand>
           <Navbar.Toggle style={{ outline: "none" }} />
           <Navbar.Collapse
