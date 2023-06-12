@@ -26,8 +26,15 @@ function Other() {
         background: "#000",
       }}
     >
-      <Row className="justify-content-center">
-        <Col xs={10} sm={5} md={4} lg={4} xl={2}>
+      <Row className="mt-5 d-flex justify-content-center">
+        <Col
+          className="d-flex justify-content-center"
+          xs={10}
+          sm={6}
+          md={6}
+          lg={4}
+          xl={4}
+        >
           <PoemsTitle>Poems</PoemsTitle>
         </Col>
       </Row>
@@ -35,21 +42,22 @@ function Other() {
       {poemsData.map((poem, index) => {
         return (
           <Fragment key={poem.title}>
-            <RowBGProvider className="justify-content-center">
+            <RowBGProvider className="mt-5 d-flex justify-content-center">
               <Col
+                className="d-flex justify-content-center"
                 style={{
                   position: "relative",
                 }}
                 xs={10}
-                sm={5}
-                md={4}
+                sm={6}
+                md={6}
                 lg={4}
-                xl={2}
+                xl={4}
               >
                 {poem.content}
               </Col>
             </RowBGProvider>
-            <hr style={{ marginTop: "12rem", marginBottom: "12rem" }} />
+            <hr />
           </Fragment>
         );
       })}
