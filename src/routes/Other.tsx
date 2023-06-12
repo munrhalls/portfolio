@@ -15,7 +15,7 @@ function Other() {
     >
       <Row className="justify-content-center mt-3 mb-5">
         <Col
-          className="pt-3 pt-3"
+          className="mb-5 pt-3 pt-3"
           style={{
             borderRadius: "5px",
             boxShadow: "0 25px 50px 100px #fff",
