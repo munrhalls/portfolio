@@ -48,17 +48,17 @@ function Other() {
       {poemsData.map((poem, index) => {
         return (
           <Fragment key={poem.title}>
-            <Row className="pt-5">
+            <Row className="justify-content-center pt-5">
               // use flex order for that
               <>
                 <Col
                   style={{
                     position: "relative",
                     borderRadius: "5px",
-                    boxShadow: "0 0 50px 100px #fff",
+                    boxShadow: "0 0 40px 80px #fff",
                     background: "#fff",
                   }}
-                  xs={7}
+                  xs={10}
                   sm={5}
                   md={4}
                   lg={4}
@@ -66,7 +66,7 @@ function Other() {
                 >
                   {poem.content}
                 </Col>
-                <Col xs={7} sm={5} md={4} lg={4} xl={2}>
+                <Col xs={10} sm={5} md={4} lg={4} xl={2}>
                   {poemImages[0]}
                 </Col>
               </>
