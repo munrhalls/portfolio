@@ -40,14 +40,14 @@ const poemBgStyles = [
   },
   {
     backgroundImage: `url(${"/assets/poems/poemImages/masaMasySieMasaMasuje.jpg"})`,
-    backgroundSize: "175% 100%",
+    backgroundSize: "contain",
     backgroundPosition: "center center",
     borderRadius: "5px",
     padding: "2.5rem 0",
   },
   {
-    backgroundImage: `url(${"/assets/poems/poemImages/rysowanyRys.png"})`,
-    backgroundSize: "10%",
+    backgroundImage: `url(${"/assets/poems/poemImages/rysowanyRys.jpg"})`,
+    backgroundSize: "contain",
     backgroundRepeat: "repeat",
     backgroundPosition: "center center",
     borderRadius: "5px",
