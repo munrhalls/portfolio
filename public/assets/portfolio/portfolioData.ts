@@ -65,7 +65,7 @@ const portfolioData = [
     header: new Header("App", examYourself, examYourself),
     mainSection: new MainSection(
       "Exam yourself",
-      "Make your own lists of Questions & Answers. Test yourself against the list of proper answers, which you make.",
+      "Make your own lists of Questions & Answers. Test yourself against the list of proper answers, which you make. Angular project.",
       ""
     ),
     developmentSummary: [
