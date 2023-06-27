@@ -109,7 +109,7 @@ const portfolioData = [
     link: "https://examyourself.netlify.app/",
   },
   {
-    technology: "React",
+    technology: "Angular",
     header: new Header("Website", carbyneHeader, carbyneHeader),
     mainSection: new MainSection(
       "Carbyne explorations",
