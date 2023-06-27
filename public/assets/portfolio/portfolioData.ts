@@ -1,3 +1,5 @@
+import examYourself from "./projectImages/examYourselfHeader.avif";
+
 import carbyneHeader from "./projectImages/carbyneHeader.png";
 import snakeHeader from "./projectImages/snakeHeader.png";
 
@@ -58,6 +60,54 @@ class Metrics {
 
 const projectMetrics = new Metrics(0, 0, 0, 0).getTable().map((row) => row[0]);
 const portfolioData = [
+  {
+    technology: "React",
+    header: new Header("App", examYourself, examYourself),
+    mainSection: new MainSection(
+      "Exam yourself",
+      "Make your own lists of Questions & Answers. Test yourself against the list of proper answers, which you make.",
+      ""
+    ),
+    developmentSummary: [
+      "Context: doing course on Angular. After learning components, data-bindings and directives, I realized I needed to test and push my new skills in a project, aside from deliberate reps.",
+      "Took about 7-8 hours total, in one day.",
+      "Pomodoro discipline gave way to riding a 'wave' of just pushing it hard to completion",
+      "Most time lost on: 1) the error of trying to do 'one-off' from the 'not-yet-learned' area, i.e. advanced Angular forms, and also bootstrap dropdowns; 2) the error of skipping abstraction-level-css consideration, so that all css flows from one pattern",
+    ],
+    metrics: new Metrics(3, 5, 3, 4),
+    lessonsSummary: {
+      whatWentWell: [
+        "Quick development.",
+        "Did complete.",
+        "Deliberate mental reps, active recall - works. Could make the project because of all the active recalls I did on sub-skills.",
+        "E.g. component, each form of data-binding, directive, passing data, etc.",
+        "Prevented quicksands of perfectionism, mindset of looking for no-nonsense, ok-enough alternatives to get the job done more efficiently.",
+      ],
+      whatWentPoorly: [
+        "Spent 3+ hours on trying to do the forms in some advanced way.",
+        "Struggled with bootstrap 'one-offs' - e.g. dropdown, or some other item, getting it to work.",
+        "Css became kinda messy, lots of inline styling",
+      ],
+      rootCauses: [
+        "Not yet well-trained in doing css in a framework-manner",
+        "Strategic error point in my 'how-to-learn-in-general': trying to do 'one-off' well from a 'not-yet-learned' area.",
+      ],
+      nextTime: [
+        "SOP: a) Rely on feel for it and begin with features, components, models plan.",
+        "b) Consider a few common sense contingencies, what if I see x starting to go wrong, get stuck etc., what will I do then, c) Plan css abstractions. Get every repeating sub-area to flow from a thematic abstraction, e.g. all menu buttons are custom like so and so, all title areas are so and so",
+        "d) Make placeholders for all comps - every comp needs to be there",
+        "e) Now, code it systematicaly, going from the top, and always starting from the Typescript model.",
+      ],
+      howCanIDoItAllBetter: [
+        "How to learn in general: regularly rehearse not repeating the error: trying to do a one-off well, from a 'not-yet-learned' area - that's a huge error because it's not going to be done well anyway because you haven't learned it yet, so you trying to guesswork it well.",
+      ],
+    },
+    importantPoints: [
+      "Remember to go by feel. It's not just technical process. If you don't feel like it's a good push, accurate stretch of your abilities - not too far, not too little - if it doesn't excite your nervous system - if you you're not riding the 'energetic wave', if it doesn't feel efficient, you know some stuff is wrong and you need to re-think your entire approach, first. This comes BEFORE anything technical or any results, this is a core, key aspect of valuing process before results.",
+    ],
+    github: "https://github.com/munrhalls/exam-yourself",
+    link: "https://examyourself.netlify.app/",
+  },
   {
     technology: "React",
     header: new Header("Website", carbyneHeader, carbyneHeader),
