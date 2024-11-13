@@ -16,23 +16,22 @@ const CustomLinkContainer = styled(LinkContainer)`
   padding-bottom: 12px;
   margin-bottom: 3px;
   &:hover {
+    cursor: pointer;
     background-color: #000;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 3px;
     opacity: 0.9;
-    box-shadow: inset 0 0 3px 5px #333;
   }
   &:hover&.active {
     background-color: #000;
     color: silver;
-    cursor: not-allowed;
-    border-radius: 5px;
+    cursor: auto;
+    border-radius: 3px;
     opacity: 0.9;
     box-shadow: none;
   }
   &.active {
     font-weight: bold;
-    transform: scale(1.05);
   }
 `;
 
