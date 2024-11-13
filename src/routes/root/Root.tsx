@@ -55,20 +55,25 @@ function Root() {
               boxShadow: "#fefefe 3px 1px 7px 10px inset",
             }}
           >
-            <Image
-              style={{
-                height: "2.5rem",
-                width: "2.5rem",
-                border: "1px solid #000",
-                padding: ".25rem .25rem",
-                borderRadius: "5px",
-                margin: "0rem",
-                transform: "rotate(45deg) skew(0, 15deg)",
-              }}
-              rounded
-              src={Logo}
-              alt="Munrhalls"
-            />
+            <LinkContainer to="/">
+              <Nav.Link>
+                <Image
+                  style={{
+                    height: "2.5rem",
+                    width: "2.5rem",
+                    border: "1px solid #000",
+                    padding: ".25rem .25rem",
+                    borderRadius: "5px",
+                    margin: "0rem",
+                    transform: "rotate(45deg) skew(0, 15deg)",
+                  }}
+                  rounded
+                  src={Logo}
+                  alt="PORTFOLIO"
+                />
+              </Nav.Link>
+            </LinkContainer>
+
             <div
               style={{
                 display: "flex",
@@ -84,12 +89,13 @@ function Root() {
               <span
                 style={{
                   letterSpacing: "2px",
-                  fontSize: ".8rem",
+                  fontSize: "1rem",
+                  marginLeft: ".5rem",
                   padding: "0.1rem 0.25rem",
                   width: "100%",
                 }}
               >
-                Munrhalls
+                Web Development | Jan Pilik
               </span>
             </div>
           </Navbar.Brand>
@@ -106,9 +112,10 @@ function Root() {
                 }}
               >
                 <CustomLinkContainer to="/">
-                  <Nav.Link>Portfolio</Nav.Link>
+                  <Nav.Link>Projects</Nav.Link>
                 </CustomLinkContainer>
               </div>
+
               <div
                 style={{
                   margin: `${isMobile ? "0" : "0 1.5rem"}`,
@@ -116,17 +123,7 @@ function Root() {
                 }}
               >
                 <CustomLinkContainer to="/about">
-                  <Nav.Link>About</Nav.Link>
-                </CustomLinkContainer>
-              </div>
-              <div
-                style={{
-                  margin: `${isMobile ? "0" : "0 1.5rem"}`,
-                  borderBottom: "2px solid #000",
-                }}
-              >
-                <CustomLinkContainer to="/content">
-                  <Nav.Link>Content</Nav.Link>
+                  <Nav.Link>Skills</Nav.Link>
                 </CustomLinkContainer>
               </div>
               <div
@@ -138,7 +135,17 @@ function Root() {
                 }}
               >
                 <CustomLinkContainer to="/other">
-                  <Nav.Link>Other</Nav.Link>
+                  <Nav.Link>Background</Nav.Link>
+                </CustomLinkContainer>
+              </div>
+              <div
+                style={{
+                  margin: `${isMobile ? "0" : "0 1.5rem"}`,
+                  borderBottom: "2px solid #000",
+                }}
+              >
+                <CustomLinkContainer to="/content">
+                  <Nav.Link>Blog</Nav.Link>
                 </CustomLinkContainer>
               </div>
             </Nav>

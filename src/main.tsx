@@ -8,7 +8,6 @@ import {
 import { store } from "./state/Store.ts";
 import { Provider } from "react-redux";
 import Root from "./routes/root/Root.tsx";
-import Authentication from "./routes/auth/Authentication.tsx";
 
 import About from "./routes/About.tsx";
 import Portfolio from "./routes/portfolio/Portfolio.tsx";
@@ -22,8 +21,6 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />}></Route>
       <Route path="content" element={<Content />}></Route>
       <Route path="other" element={<Other />}></Route>
-      {/* <Route path="contact" element={<Contact />}></Route> */}
-      <Route path="login" element={<Authentication />}></Route>
     </Route>
   )
 );
