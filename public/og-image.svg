@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#080808"/>
+  <text x="600" y="300" text-anchor="middle" dominant-baseline="middle" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700">munrhalls.com</text>
+  <text x="600" y="380" text-anchor="middle" dominant-baseline="middle" fill="#a0a0a0" font-family="system-ui, -apple-system, sans-serif" font-size="32">Full-stack developer portfolio</text>
+</svg>
