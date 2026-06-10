@@ -1,0 +1,183 @@
+# Sprint 0: Project Scaffold & Base Layout
+
+## Prerequisites
+
+Before the agent begins, the following must be true on the machine:
+- Node.js 20+ installed (`node --version` must show v20.x or higher)
+- npm available
+- Working directory is the empty project folder (the agent does not create or manage a git repo — git is handled separately by the human)
+
+## UX Flows
+
+1. [Any page]: User opens site → browser loads HTsprints/sprint-00-scaffold.todo sprints/sprint-01-homepage.todo sprints/sprint-02-sanglogium.todo sprints/sprint-03-pages.todo sprints/sprint-04-deploy.todoML shell → sees consistent nav and footer on every page → can click nav links to other pages
+2. [Dev workflow]: Developer installs dependencies → project builds without errors → dev server starts
+
+## End-State Overviewsprints/sprint-00-scaffold.todo sprints/sprint-01-homepage.tsprints/sprint-00-scaffold.todo sprints/sprint-01-homepage.todo sprints/sprint-02-sanglogium.todo sprints/sprint-03-pages.todo sprints/sprint-04-deploy.todoodo sprints/sprint-02-sanglogium.todo sprints/sprint-03-pages.todo sprints/sprint-04-deploy.todo
+sprints/sprint-00-scaffold.todo sprints/sprint-01-homepage.todo sprints/sprint-02-sanglogium.todo sprints/sprint-03-pages.todo sprints/sprint-04-deploy.todo
+A working Astro 5 + Tailwind CSS 3 project with a reusable base layout, zero-JS navigation, static footer, and placeholder assets in place. Every page renders with the same HTML shell, system font stack, and global styles. Nav links work between all planned routes.
+
+## Architecture Contract
+
+- **Framework**: Astro 5, `output: 'static'`
+- **Styling**: Tailwind CSS 3 via `@astrojs/tailwind` integration; `@tailwind` directives in `src/styles/global.css`
+- **Fonts**: System font stack only (`system-ui, -apple-system, sans-serif`) — zero web font requests
+- **Navigation**: Static Astro component, CSS hover states only, zero JS; active state is out of scope
+- **Routing**: File-based Astro routing (`src/pages/*.astro`); `trailingSlash: 'always'` set in config
+- **Client-side transitions**: `<ClientRouter />` in base layout for SPA-like navigation
+
+### File contracts
+
+- `astro.config.mjs` — must contain: `output: 'static'`, `site: 'https://munrhalls.com'`, `trailingSlash: 'always'`, `@astrojs/tailwind` integration
+- `src/layouts/Base.astro` — HTML shell: `<!DOCTYPE html>`, `<head>` with meta tags (title, description, OG tags), `<ClientRouter />`, nav slot, main slot, footer slot; accepts `title` and `description` props for per-page OG customization
+- `src/components/Nav.astro` — `<nav>` with 4 `<a>` links: About (`/about/`), Projects (`/projects/`), Skills (`/skills/`), Contact (`/contact/`); CSS hover underline/color change; no JS; no active state
+- `src/components/Footer.astro` — `<footer>` with static copyright text
+- `src/styles/global.css` — `@tailwind base; @tailwind components; @tailwind utilities;` + `body { font-family: system-ui, -apple-system, sans-serif; }` + `html { scroll-behavior: smooth; }`
+- `src/pages/index.astro` — placeholder page using Base layout (replaced fully in Sprint 1)
+- `src/pages/about.astro` — placeholder page using Base layout (replaced in Sprint 3)
+- `src/pages/projects.astro` — placeholder page using Base layout (replaced in Sprint 3)
+- `src/pages/projects/sanglogium.astro` — placeholder page using Base layout (replaced in Sprint 2)
+- `src/pages/skills.astro` — placeholder page using Base layout (replaced in Sprint 3)
+- `src/pages/contact.astro` — placeholder page using Base layout (replaced in Sprint 3)
+- `src/pages/404.astro` — simple "Page not found" page using Base layout; `export const prerender = true`
+- `src/assets/images/sanglogium/` — 12 placeholder PNGs (800×600, solid `#e2e2e2` fill)
+- `src/assets/images/sanglogium/architecture-diagram.svg` — placeholder SVG (rectangle with label "Architecture Diagram")
+- `src/assets/images/sanglogium/images-pipeline-diagram.svg` — placeholder SVG (rectangle with label "Image Pipeline Diagram")
+- `public/resume.pdf` — placeholder: empty text file renamed to resume.pdf
+- `public/favicon.svg` — simple SVG favicon: dark square (`#080808`) with a small white diamond shape centered; viewBox="0 0 32 32"
+
+### OG meta tag spec (Base.astro `<head>`)
+
+```html
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+```
+
+`Base.astro` accepts a `description` prop (string) alongside `title`. Default description: `"Full-stack developer portfolio — munrhalls.com"`.
+
+### Tailwind installation (exact commands)
+
+```bash
+npm create astro@latest . -- --template minimal --no-install --no-git
+npm install
+npx astro add tailwind
+```
+
+When `npx astro add tailwind` prompts, accept all defaults. This installs `@astrojs/tailwind` and Tailwind CSS 3. Do not install Tailwind 4 or `@tailwindcss/vite`.
+
+## Scope Contracts
+
+### Scope Contract 1: Astro + Tailwind Scaffold
+
+**UX Slice**
+- Developer runs setup commands → project initializes → no build errors
+
+**Architecture Slice**
+- Run the exact install commands from the Architecture Contract above
+- Verify `astro dev` starts without errors
+- Verify `astro build` completes without errors
+
+**Human Verification Checklist**
+- [ ] `npm run dev` starts on expected port with no errors
+- [ ] Opening `localhost` shows a page (no build crash)
+- [ ] Tailwind classes apply (test with a `bg-red-500` class on a div, confirm red background)
+- [ ] `astro.config.mjs` contains `output: 'static'`, `site: 'https://munrhalls.com'`, `trailingSlash: 'always'`
+
+---
+
+### Scope Contract 2: Placeholder Assets
+
+**UX Slice**
+- Image and file references in code resolve without 404s during development
+
+**Architecture Slice**
+- Create `src/assets/images/sanglogium/` directory
+- Generate 12 placeholder PNGs programmatically: 800×600 solid `#e2e2e2` — use a Node script or Python one-liner; do not source from the internet
+- Add `architecture-diagram.svg` and `images-pipeline-diagram.svg` as described in file contracts
+- Add `public/resume.pdf` (empty text file renamed)
+- Add `public/favicon.svg` as described in file contracts
+
+**Human Verification Checklist**
+- [ ] All 15 files exist at correct paths (12 PNG + 2 SVG + 1 PDF)
+- [ ] Astro `<Image>` component can reference placeholder PNGs without error
+- [ ] `public/resume.pdf` is servable at `/resume.pdf`
+- [ ] `public/favicon.svg` appears in browser tab
+
+---
+
+### Scope Contract 3: Base Layout
+
+**UX Slice**
+- User opens any page → sees consistent `<head>`, nav, and footer
+- Page title updates per route
+- OG meta tags present on every page
+
+**Architecture Slice**
+- `Base.astro` accepts `title` (required) and `description` (optional, has default) props
+- Includes `<ClientRouter />` and `<link rel="icon" href="/favicon.svg" />`
+- Includes OG meta tags per the spec in Architecture Contract above
+- System font stack in global CSS
+- Wraps content in `<main id="main-content">`
+
+**Human Verification Checklist**
+- [ ] Create a test page using Base layout → renders with nav and footer
+- [ ] Page `<title>` matches prop value
+- [ ] OG tags visible in page source (`view-source:`)
+- [ ] `<link rel="icon" href="/favicon.svg">` present in head; favicon visible in browser tab
+
+---
+
+### Scope Contract 4: Navigation Component
+
+**UX Slice**
+- User hovers over nav links → visual feedback (underline or color change)
+- User clicks nav link → navigates to correct page
+- No JavaScript required for hover or navigation
+
+**Architecture Slice**
+- `Nav.astro` — pure HTML + CSS, zero JS
+- Links: `/about/`, `/projects/`, `/skills/`, `/contact/` — 4 links total
+- CSS hover via Tailwind (`hover:underline` or `hover:text-gray-900`)
+- No active state logic
+
+**Human Verification Checklist**
+- [ ] All 4 nav links visible
+- [ ] Hover state visually distinct
+- [ ] Each link navigates to correct route (returns 200, not 404)
+- [ ] No JS errors in console
+
+---
+
+### Scope Contract 5: Global Styles + Footer + 404 Page
+
+**UX Slice**
+- Consistent base styling across all pages
+- Footer appears on every page with static content
+- Unknown URLs show a custom "Page not found" page instead of Spaceship's default error
+
+**Architecture Slice**
+- `src/styles/global.css` — Tailwind directives + body font-family + html smooth scroll
+- `Footer.astro` — static `<footer>` with copyright text
+- `404.astro` — uses Base layout, title "Page not found", short message, link back to `/`; `export const prerender = true` at top of frontmatter
+
+**Human Verification Checklist**
+- [ ] Global styles apply (check font family in DevTools)
+- [ ] Footer renders on every placeholder page
+- [ ] `astro build` generates `dist/404.html`
+- [ ] Visiting a bad URL locally (`astro preview`) shows the custom 404 page, not a server error
+
+## Continuous Verification
+
+- After each scope contract: run `astro dev`, open browser, verify checklist
+- After all scopes: navigate between all pages via nav links, confirm consistent layout and no 404s
+
+## Simplicity Guardrails
+
+- Is the nav the simplest possible? (Yes: static links, CSS hover, zero JS)
+- Is the layout the simplest possible? (Yes: single layout file, prop-driven title)
+- Are placeholders the simplest possible? (Yes: programmatically generated colored rectangles)
+- Is the 404 page the simplest possible? (Yes: Base layout + two lines of text + one link)

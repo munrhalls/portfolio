@@ -1,0 +1,195 @@
+# Sprint 4: Build, Deploy to munrhalls.com, Acceptance Verification
+
+## Human Steps in This Sprint
+
+Several scopes in Sprint 4 cannot be executed by the agent — they require human action in a web hosting control panel or browser. These are explicitly marked **[HUMAN STEP]** below. The agent's role in Sprint 4 is limited to: running the build, generating the .htaccess file, and running local verification. Everything else is human-executed.
+
+## Before Sprint 4 Begins — Human Checklist
+
+The following must be completed by the human before the agent runs the build:
+
+- [ ] Replace `HUMAN_SUPPLY_BIO` in `about.astro` with real bio text
+- [ ] Replace `HUMAN_SUPPLY_SKILLS` in `SkillsGrid.astro` with real technologies array
+- [ ] Replace `HUMAN_SUPPLY_EMAIL` in `contact.astro` and `ContactForm.astro` with real email address
+- [ ] Replace `HUMAN_SUPPLY_LINKEDIN` in `contact.astro` with real LinkedIn URL
+- [ ] Replace `HUMAN_SUPPLY_GITHUB` in `contact.astro` with real GitHub URL
+- [ ] Replace `HUMAN_SUPPLY_FORMSPREE` in `ContactForm.astro` with real Formspree endpoint URL
+- [ ] Replace `public/resume.pdf` with real resume PDF
+- [ ] All token strings (`HUMAN_SUPPLY_*`) are gone from all source files
+
+## UX Flows
+
+1. [Build]: Developer runs `astro build` → static files generated in `dist/` → no build errors
+2. [Deploy]: Human uploads `dist/` contents to Spaceship hosting → site live → all pages accessible
+3. [Performance]: User opens homepage → loads under 1 second → Lighthouse Performance score ≥ 90
+4. [Functionality]: User clicks all nav links → all pages render correctly → contact form submits → resume downloads
+5. [Accessibility]: User tabs through all interactive elements → focus rings visible → reduced motion respected
+
+## End-State Overview
+
+The complete 5-page portfolio site (6 routes including /skills/) is live on `munrhalls.com`. All pages load fast, the canvas animation runs at 60fps, the case study scrolls smoothly with working sticky nav, and all acceptance criteria pass. Lighthouse target is ≥ 90 (measured with placeholder assets — re-verify once real screenshots are added).
+
+## Architecture Contract
+
+- **Build**: Astro static build → `dist/` folder with all HTML, CSS, JS, optimized images
+- **Deploy**: Human uploads `dist/` contents to Spaceship hosting control panel; no CI/CD pipeline
+- **No server-side runtime**: Pure static files
+- **Domain**: `munrhalls.com` on Spaceship hosting (SSL via Spaceship)
+- **Routing**: `trailingSlash: 'always'` in `astro.config.mjs` (set in Sprint 0) ensures `dist/about/index.html` etc. are generated; this works on any static host including Spaceship
+- **Extensionless URL safety net**: `.htaccess` file in `public/` (copied to `dist/` on build) handles requests without trailing slash on Apache/LiteSpeed
+
+### .htaccess content (place in `public/.htaccess`)
+
+```apache
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+```
+
+This redirects extensionless URLs (e.g. `/about`) to their trailing-slash version (`/about/`) where the `index.html` lives. Spaceship hosting uses LiteSpeed which honors `.htaccess`.
+
+## Scope Contracts
+
+### Scope Contract 1: Static Build + Local Verification (AGENT)
+
+**UX Slice**
+- `astro build` completes without errors
+- `dist/` contains all expected HTML pages and assets
+
+**Architecture Slice**
+- Confirm all `HUMAN_SUPPLY_*` tokens have been replaced (grep check: `grep -r "HUMAN_SUPPLY_" src/` must return no results)
+- Add `.htaccess` to `public/` per the Architecture Contract above
+- Run `astro build`
+- Verify `dist/` structure:
+  - `dist/index.html`
+  - `dist/about/index.html`
+  - `dist/projects/index.html`
+  - `dist/projects/sanglogium/index.html`
+  - `dist/skills/index.html`
+  - `dist/contact/index.html`
+  - `dist/404.html`
+  - `dist/_astro/` (bundled JS/CSS)
+  - `dist/resume.pdf`
+  - `dist/favicon.svg`
+  - `dist/.htaccess`
+- Run `astro preview` and verify no 404s on all routes
+
+**Human Verification Checklist**
+- [ ] `grep -r "HUMAN_SUPPLY_" src/` returns no results (all tokens replaced)
+- [ ] Build completes with exit code 0 and no warnings
+- [ ] All 7 HTML pages exist in `dist/` (index, about, projects, projects/sanglogium, skills, contact, 404)
+- [ ] `dist/.htaccess` present
+- [ ] `astro preview` → all routes load without 404; visit `/about`, `/projects`, `/projects/sanglogium/`, `/skills/`, `/contact/`
+- [ ] No console errors in browser when using `astro preview`
+
+---
+
+### Scope Contract 2: Deploy to munrhalls.com — [HUMAN STEP]
+
+**⚠ This scope is executed by the human, not the agent.**
+
+**Actions**
+1. Confirm DNS: `munrhalls.com` nameservers or A record must point to Spaceship hosting servers — verify in Spaceship Domains panel
+2. Confirm SSL: in Spaceship hosting panel, confirm HTTPS/SSL certificate is active for `munrhalls.com`; activate Let's Encrypt if not already enabled
+3. Upload: in Spaceship hosting file manager (or FTP), navigate to the web root for `munrhalls.com` (typically `public_html/` or `www/`); upload the **contents** of `dist/` — not the `dist/` folder itself
+4. www handling: in Spaceship panel, configure `www.munrhalls.com` to redirect to `munrhalls.com` (canonical non-www)
+
+**Human Verification Checklist**
+- [ ] `https://munrhalls.com` loads homepage
+- [ ] `/about/`, `/projects/`, `/projects/sanglogium/`, `/skills/`, `/contact/` all load
+- [ ] `/about` (no trailing slash) redirects to `/about/` (301 redirect from .htaccess)
+- [ ] No mixed-content warnings (all resources HTTPS — check DevTools Console)
+- [ ] `www.munrhalls.com` redirects to `munrhalls.com`
+- [ ] `dist/.htaccess` is present in the uploaded root (verify via file manager)
+
+---
+
+### Scope Contract 3: Lighthouse Performance Audit — [HUMAN STEP]
+
+**⚠ This scope is executed by the human in Chrome DevTools.**
+
+Note: Lighthouse scores are measured with placeholder assets (small solid-color images). Scores will be artificially high. Re-run Lighthouse after real screenshots are added to get a production-representative score. The target at this stage is ≥ 90 (not ≥ 95) to account for placeholder-vs-real variance.
+
+**Actions**
+- Run Lighthouse in Chrome DevTools (Incognito mode, desktop preset) on:
+  - `https://munrhalls.com`
+  - `https://munrhalls.com/projects/sanglogium/`
+
+**Human Verification Checklist**
+- [ ] Homepage Lighthouse Performance ≥ 90 (placeholder assets)
+- [ ] Sanglogium page Lighthouse Performance ≥ 90 (placeholder assets)
+- [ ] Homepage LCP < 1.5s
+- [ ] No critical Lighthouse errors (red items)
+- [ ] Note: re-verify both pages after real screenshot assets are added
+
+---
+
+### Scope Contract 4: JavaScript Budget Verification — [HUMAN STEP]
+
+**⚠ This scope is executed by the human in Chrome DevTools.**
+
+**Actions**
+- DevTools Network tab → filter by JS → disable cache → hard reload each page
+
+**Human Verification Checklist**
+- [ ] Homepage total JS < 20KB
+- [ ] About page total JS < 20KB
+- [ ] Projects page total JS < 20KB
+- [ ] Sanglogium page total JS < 20KB
+- [ ] Skills page total JS < 20KB
+- [ ] Contact page total JS < 20KB
+
+---
+
+### Scope Contract 5: Full Acceptance Checklist — [HUMAN STEP]
+
+**⚠ This scope is executed by the human. No code changes.**
+
+Run every item below on the live `https://munrhalls.com` domain. Check each item as verified.
+
+**Layout & Responsiveness**
+- [ ] Desktop (≥ 1024px): homepage 3×3 grid, canvas centered, 4 zones in corners
+- [ ] Mobile (< 640px): homepage canvas at top, zones stacked in order (About, Sanglogium, Contact, Skills)
+- [ ] Desktop: case study 2-column alternating layout + sticky nav
+- [ ] Mobile: case study single column
+
+**Canvas**
+- [ ] Canvas animates at 60fps (DevTools Performance → FPS meter ≥ 55)
+- [ ] CJK ring rotates counter-clockwise
+- [ ] Matrix rain falls top-to-bottom inside inner diamond
+- [ ] OS `prefers-reduced-motion` ON → canvas shows static frame (two diamond outlines, no animation)
+- [ ] Switch tabs → animation pauses (verified via DevTools Performance CPU)
+- [ ] Navigate homepage → away → back → no duplicate animation loops
+
+**Case Study**
+- [ ] All 14 sections visible; sticky nav appears after hero scrolls past
+- [ ] Active section pill highlighted correctly while scrolling
+- [ ] Mobile: horizontal pill row scrollable; active pill auto-scrolls into view
+- [ ] Section titles fully visible below sticky nav after clicking pills (scroll-margin-top working)
+- [ ] Navigate case study → away → back → IntersectionObservers do not stack
+
+**Accessibility & Keyboard**
+- [ ] Keyboard Tab: all 4 HomeBlock zones reachable, focus rings visible
+- [ ] Keyboard Tab: sticky nav pills reachable on case study page
+- [ ] Skip link visible on first Tab press on case study page
+- [ ] `aria-current="true"` on active nav pill (DevTools Accessibility tree)
+
+**Contact Form**
+- [ ] Form submits successfully (verify in Formspree dashboard)
+- [ ] Honeypot field hidden in DOM; filling it silently blocks submission
+- [ ] Navigate away after submit → back → form resets to fresh state
+- [ ] Error state shows `mailto:` fallback link when Formspree is blocked
+
+**Content & Links**
+- [ ] Resume PDF downloads (`/resume.pdf`)
+- [ ] All 4 nav links resolve (no 404)
+- [ ] LinkedIn and GitHub links open correct pages in new tab
+- [ ] No 404s anywhere (check DevTools Network for red requests)
+
+## Simplicity Guardrails
+
+- Is build the simplest possible? (Yes: single `astro build` command)
+- Is deploy the simplest possible? (Yes: static file upload via hosting panel — no CI/CD pipeline)
+- Are acceptance checks the simplest possible? (Yes: manual browser verification + Lighthouse, no automated test suite)

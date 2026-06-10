@@ -1,0 +1,183 @@
+# Sprint 1: Homepage — Canvas Diamond Centerpiece + 4 HomeBlock Zones
+
+## UX Flows
+
+1. [Homepage load]: User opens `/` → sees animated canvas in center → sees 4 clickable zones in the corners → each zone has title + one-line preview
+2. [Homepage hover]: User hovers over zone → border darkens, background shifts to `#fafafa` → visual feedback without JS
+3. [Homepage click]: User clicks zone → navigates to linked page (About, Sanglogium case study, Contact, Skills)
+4. [Mobile]: User opens `/` on mobile (< 640px) → zones stack vertically in order: About, Sanglogium, Contact, Skills → canvas appears between nav and the first zone
+5. [Accessibility]: User enables `prefers-reduced-motion` → canvas draws one explicit static frame (diamond outlines only, no rain, no ring) and stops; no continuous animation
+
+## End-State Overview
+
+The homepage displays a 3×3 CSS Grid on desktop: the canvas occupies the center cell (column 2, row 2); four `HomeBlock` zones occupy the four corner cells (TL, TR, BL, BR). The two edge cells on each side are empty spacers. On mobile, the layout collapses to a single column: canvas at top, then zones stacked vertically. The canvas shows nested white diamond outlines, a ring of CJK/calligraphic symbols rotating counter-clockwise, and Matrix-style code rain falling top-to-bottom inside the inner diamond. Animation runs at 60fps, respects reduced motion, and pauses when the tab is hidden.
+
+## Architecture Contract
+
+- **Canvas**: Vanilla JS inside `MandorlaCanvas.astro`, no external libraries
+- **Animation loop**: `requestAnimationFrame`, integer-rounded `fillText` positions, `devicePixelRatio` scaling
+- **Layout**: CSS Grid 3×3 desktop; single column mobile via Tailwind breakpoints — see grid spec below
+- **Zero JS on zones**: `HomeBlock.astro` is a pure `<a>` element with Tailwind hover and focus states
+- **Performance guardrails**: `prefers-reduced-motion` draws explicit static frame and never starts loop; `visibilitychange` pauses loop; resize handler reinitializes canvas
+- **ClientRouter lifecycle**: Canvas setup inside `document.addEventListener('astro:page-load', ...)`, teardown (cancelAnimationFrame, remove resize/visibility listeners) inside `document.addEventListener('astro:before-swap', ...)`
+- **Color tokens**: Canvas bg `#080808`, outer diamond stroke `rgba(255,255,255,0.75)`, inner diamond stroke `rgba(255,255,255,0.45)`, ring symbols `rgba(160,170,200,0.5)`, matrix green `#00c853`, matrix blue `#2979ff`, matrix leading char `#ffffff` / `#b2ff59`, matrix trail fade `rgba(8,8,8,0.06)`
+- **Canvas sizing**: Desktop 400×400px CSS; Tablet 320×320px CSS; Mobile 70vw square, max 300px; internal resolution = CSS size × `devicePixelRatio`
+- **Diamond borders**: Clean straight-line strokes in the live animation. Organic/perturbed borders are a future visual refinement, out of scope for this sprint.
+
+### Grid layout spec (exact)
+
+Desktop (`sm:` and above):
+```
+display: grid;
+grid-template-columns: 1fr 400px 1fr;
+grid-template-rows: 1fr 400px 1fr;
+min-height: 100vh;
+```
+- Canvas: `grid-column: 2; grid-row: 2`
+- TL zone (About): `grid-column: 1; grid-row: 1`
+- TR zone (Sanglogium): `grid-column: 3; grid-row: 1`
+- BL zone (Contact): `grid-column: 1; grid-row: 3`
+- BR zone (Skills): `grid-column: 3; grid-row: 3`
+- Edge cells (col1/row2, col3/row2, col2/row1, col2/row3): empty — natural spacers
+
+Mobile (below `sm:` breakpoint — < 640px):
+```
+display: flex;
+flex-direction: column;
+align-items: center;
+```
+Stack order top to bottom: Canvas → About → Sanglogium → Contact → Skills
+
+### File contracts
+- `src/pages/index.astro` — uses `Base.astro`, renders 3×3 grid (desktop) or stacked column (mobile)
+- `src/components/MandorlaCanvas.astro` — `<canvas>` + inline `<script>` with animation logic
+- `src/components/HomeBlock.astro` — `<a>` wrapper: accepts `href`, `title`, `description` props; Tailwind hover and focus states
+
+## Scope Contracts
+
+### Scope Contract 1: Canvas Component — Static Diamonds
+
+**UX Slice**
+- User sees canvas → two concentric white diamond outlines on near-black background
+
+**Architecture Slice**
+- `MandorlaCanvas.astro` creates `<canvas>` with `role="img"` and `aria-label="Animated diamond mandorla with flowing calligraphic symbols and matrix code rain"`
+- Script: get center point, draw outer diamond (45° rotated square) with `rgba(255,255,255,0.75)` stroke, draw inner diamond with `rgba(255,255,255,0.45)` stroke
+- Handle `devicePixelRatio`: set `canvas.width = cssWidth * dpr`, `canvas.height = cssHeight * dpr`, `ctx.scale(dpr, dpr)`
+- Handle window resize: recalculate CSS pixel bounds from container, update canvas dimensions, reset scale, redraw
+
+**Human Verification Checklist**
+- [ ] Canvas visible on page with `#080808` background
+- [ ] Two white diamond outlines centered in canvas
+- [ ] Canvas crisp on high-DPI screen (check via DevTools device emulation — no blurry edges)
+- [ ] Resize window → canvas resizes without stretching or blurring
+
+---
+
+### Scope Contract 2: Canvas Component — Rotating CJK Ring
+
+**UX Slice**
+- User sees a ring of ~25 CJK/Hiragana/Katakana characters rotating smoothly counter-clockwise around the outer diamond
+
+**Architecture Slice**
+- Font: `16px serif` (system fallback — no web font request)
+- 25 characters placed on a circle whose radius sits just outside the outer diamond corners
+- Rotation: accumulated angle incremented by `-0.003 rad/frame` (counter-clockwise)
+- `requestAnimationFrame` loop: clear canvas → redraw diamonds → draw rotated ring
+- Characters placed with integer-rounded x/y coordinates
+
+**Human Verification Checklist**
+- [ ] ~25 characters visible in a ring around outer diamond
+- [ ] Ring rotates counter-clockwise smoothly
+- [ ] No web font requests in Network tab
+- [ ] Characters legible (not sub-pixel blurred)
+
+---
+
+### Scope Contract 3: Canvas Component — Matrix Code Rain
+
+**UX Slice**
+- User sees inside the inner diamond → green and blue character streams falling top-to-bottom, clipped to the diamond shape
+
+**Architecture Slice**
+- Font: `14px monospace`
+- Two color streams: `#00c853` (green) and `#2979ff` (blue)
+- Leading character per column: `#ffffff` (green columns) or `#b2ff59` (blue columns)
+- Clipped strictly to inner diamond path using `ctx.save()` → `ctx.clip()` → draw rain → `ctx.restore()`
+- Trail fade: each frame, before drawing rain, fill inner diamond with `rgba(8,8,8,0.06)` to fade old characters
+- Per-frame render order: (1) fade with rgba fill, (2) redraw diamond borders, (3) draw rain (clipped), (4) draw ring (rotated)
+- All `fillText` x/y positions rounded to integer before use: `Math.round(x)`
+
+**Human Verification Checklist**
+- [ ] Green and blue character streams visible inside inner diamond only
+- [ ] Rain does not leak outside inner diamond boundary
+- [ ] Animation smooth (DevTools FPS meter ≥ 55)
+- [ ] Characters have sharp edges (integer rounding applied)
+
+---
+
+### Scope Contract 4: Canvas Performance & Accessibility
+
+**UX Slice**
+- User switches tabs → animation pauses (saves CPU)
+- User enables `prefers-reduced-motion` → canvas shows one static frame: both diamond outlines drawn cleanly, no rain, no ring symbols; loop never starts
+- User resizes browser → canvas rescales without visual glitch
+
+**Architecture Slice**
+- `document.addEventListener('visibilitychange', ...)`: pause `requestAnimationFrame` when `document.hidden` is true; resume when false
+- `prefers-reduced-motion` check: `window.matchMedia('(prefers-reduced-motion: reduce)').matches`; if true, draw one static frame (both diamond outlines, `rgba(255,255,255,0.75)` outer + `rgba(255,255,255,0.45)` inner, canvas bg `#080808`), return without starting the rAF loop
+- Resize handler: debounced 150ms; on each resize recalculate CSS pixel bounds from container `getBoundingClientRect()`, update `canvas.width/height` to `cssWidth * devicePixelRatio` and `cssHeight * devicePixelRatio`, reset `ctx.scale(devicePixelRatio, devicePixelRatio)`, then either draw static frame (if reduced-motion) or restart animation loop
+- Mobile orientation change: handled by the same resize handler
+- ClientRouter teardown: on `astro:before-swap`, call `cancelAnimationFrame(rafId)`, remove resize and visibilitychange listeners, clear canvas
+
+**Human Verification Checklist**
+- [ ] Switch to another tab → DevTools Performance shows CPU drops to near zero
+- [ ] Enable OS `prefers-reduced-motion` → canvas is static (no animation, diamond outlines visible)
+- [ ] Resize window → canvas resizes correctly, no stretching or blurring
+- [ ] Rotate mobile device → canvas rescales correctly
+- [ ] Navigate away from homepage and back → canvas animation does not spawn duplicate rAF loops (check DevTools Performance — only one loop active)
+- [ ] No console errors on resize, rotation, or tab switch
+
+---
+
+### Scope Contract 5: Homepage Grid + HomeBlocks
+
+**UX Slice**
+- Desktop: 3×3 grid with canvas dead center, 4 zones in corners, edge cells empty
+- Mobile: canvas at top, zones stacked vertically (About, Sanglogium, Contact, Skills)
+- Each zone: title + one-line description → hover darkens border and shifts bg to `#fafafa`
+- Keyboard: Tab reaches each zone, focus ring visible
+
+**Architecture Slice**
+- `index.astro`: CSS Grid per the exact grid spec in Architecture Contract
+- `HomeBlock.astro`: `<a>` element, props: `href` (string), `title` (string), `description` (string)
+- Tailwind hover: `hover:border-gray-800 hover:bg-[#fafafa]`
+- Tailwind focus: `focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#222]`
+- No JS on zones — no event listeners
+- 4 instances:
+  - TL = About → `href="/about/"`, title "About", description "Full-stack developer"
+  - TR = Sanglogium → `href="/projects/sanglogium/"`, title "Sanglogium", description "E-commerce case study"
+  - BL = Contact → `href="/contact/"`, title "Contact", description "Get in touch"
+  - BR = Skills → `href="/skills/"`, title "Skills", description "Technologies & tools"
+
+**Human Verification Checklist**
+- [ ] Desktop: 3×3 grid, canvas in center cell, zones in exactly the four corner cells, edge cells empty
+- [ ] Mobile (< 640px): canvas at top, zones stacked in order: About, Sanglogium, Contact, Skills
+- [ ] All 4 zones clickable → navigate to correct routes (no 404)
+- [ ] Hover state visible on all zones (border darkens, bg shifts)
+- [ ] Focus ring visible on keyboard Tab navigation
+- [ ] No JS event listeners on HomeBlock elements (check DevTools → Elements → Event Listeners)
+- [ ] Canvas has `role="img"` and `aria-label` (check DevTools Accessibility tree)
+
+## Continuous Verification
+
+- After each scope contract: run `astro dev`, verify checklist in browser
+- After scope 5: test full page on actual mobile device or DevTools mobile emulation
+- Total JS on homepage via DevTools Network tab should be approximately 15KB (canvas script + ClientRouter)
+
+## Simplicity Guardrails
+
+- Is canvas the simplest possible? (Yes: single file, vanilla JS, no libraries)
+- Is grid layout the simplest possible? (Yes: explicit 3×3 Tailwind/CSS Grid with named cell placements — one unambiguous approach)
+- Are HomeBlocks the simplest possible? (Yes: `<a>` element with Tailwind, zero JS)
+- Is resize handling simple? (Yes: single debounced listener, recalculate and redraw)

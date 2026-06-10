@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Visual Sketch</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.5;
+    padding: 2rem;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: #111;
+  }
+  .page-section {
+    margin-bottom: 3rem;
+  }
+  .page-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #222;
+    border-bottom: 2px solid #222;
+    padding-bottom: 0.25rem;
+    display: inline-block;
+  }
+  .devices {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .device-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  /* Desktop frame */
+  .desktop {
+    width: 960px;
+    min-height: 540px;
+    border: 2px solid #333;
+    border-radius: 6px;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+  /* Mobile frame */
+  .mobile {
+    width: 375px;
+    min-height: 667px;
+    border: 2px solid #333;
+    border-radius: 24px;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Wireframe elements */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #ddd;
+    background: #fafafa;
+  }
+  .nav-links { display: flex; gap: 1.5rem; font-size: 0.85rem; }
+  .nav-links span { color: #666; }
+  .logo { font-weight: 700; font-size: 0.9rem; }
+
+  .content { padding: 1.5rem; }
+  .center { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .canvas-placeholder {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  .mobile .canvas-placeholder { width: 140px; height: 140px; }
+
+  h2 { font-size: 1.25rem; margin-bottom: 0.25rem; }
+  h3 { font-size: 0.9rem; color: #666; margin-bottom: 1rem; font-weight: 400; }
+  .cta {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    border: 2px solid #222;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid #ddd;
+    font-size: 0.75rem;
+    color: #888;
+    text-align: center;
+  }
+
+  /* Homepage blocks */
+  .blocks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+  }
+  .mobile .blocks-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem 1.5rem;
+  }
+  .home-block {
+    border: 1px solid #ddd;
+    padding: 2rem 1.5rem;
+    cursor: pointer;
+    text-align: center;
+  }
+  .home-block:hover {
+    background: #fafafa;
+    border-color: #999;
+  }
+  .home-block h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+  }
+  .home-block p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+  }
+  .mobile .home-block h4 { font-size: 1rem; }
+  .mobile .home-block { padding: 1.5rem 1rem; }
+
+  /* Bio / skills */
+  .bio { max-width: 500px; margin: 0 auto 1.5rem; font-size: 0.9rem; color: #555; }
+  .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; max-width: 500px; margin: 0 auto; }
+  .skill-tag {
+    padding: 0.35rem 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 0.75rem;
+    text-align: center;
+    color: #555;
+  }
+  .mobile .skills { grid-template-columns: repeat(2, 1fr); }
+
+  /* Project cards */
+  .project-card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    max-width: 600px;
+    margin-left: auto; margin-right: auto;
+  }
+  .project-card h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+  .project-card p { font-size: 0.8rem; color: #666; margin-bottom: 0.5rem; }
+  .badge { display: inline-block; padding: 0.15rem 0.4rem; border: 1px solid #ccc; font-size: 0.7rem; margin-right: 0.25rem; color: #555; }
+
+  /* Case study */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  .sticky-nav span { font-size: 0.75rem; color: #666; }
+  .sticky-nav .active { color: #000; font-weight: 600; }
+
+  .feature-section {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+  }
+  .feature-section h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .feature-section p { font-size: 0.8rem; color: #555; margin-bottom: 0.75rem; }
+  .screenshot-placeholder {
+    width: 100%;
+    height: 120px;
+    border: 1px dashed #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: #888;
+    background: #fafafa;
+    margin-bottom: 0.75rem;
+  }
+  .desktop .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .desktop .feature-grid .screenshot-placeholder { height: 160px; }
+  .challenge-box {
+    padding: 0.75rem;
+    border-left: 3px solid #333;
+    background: #fafafa;
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+
+  /* Contact */
+  .contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .field {
+    margin-bottom: 0.75rem;
+  }
+  .field label {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+    color: #555;
+  }
+  .field .input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 0.85rem;
+    background: #fafafa;
+  }
+  .links { text-align: center; margin-top: 1rem; }
+  .links span { font-size: 0.85rem; color: #555; margin: 0 0.5rem; }
+
+  .note {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Portfolio Visual Sketch — All Pages, Desktop & Mobile</h1>
+
+<!-- ==================== HOMEPAGE ==================== -->
+<div class="page-section">
+  <div class="page-title">Homepage /</div>
+  <div class="devices">
+    <!-- Desktop -->
+    <div>
+      <div class="device-label">Desktop (960px) — 2×2 Grid</div>
+      <div class="desktop" style="min-height: 700px;">
+        <div class="nav">
+          <span class="logo">Munrhalls</span>
+          <div class="nav-links"><span>About</span><span>Projects</span><span>Contact</span></div>
+        </div>
+        <!-- 2×2 grid: diamond center + 4 zones -->
+        <div style="padding: 1rem 1.5rem 2rem;">
+          <!-- Top row: Munrhalls/About | Sanglogium -->
+          <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin-bottom: 1rem;">
+            <div class="home-block" style="flex: 1; min-height: 120px; display: flex; flex-direction: column; justify-content: center;">
+              <h4>Munrhalls</h4>
+              <p>Full-stack developer. Brief introduction on who I am and what I do.</p>
+            </div>
+            <div class="home-block" style="flex: 1; min-height: 120px; display: flex; flex-direction: column; justify-content: center;">
+              <h4>Sanglogium</h4>
+              <p>3,505 commits. Full-stack e-commerce platform.</p>
+            </div>
+          </div>
+          <!-- Canvas center -->
+          <div class="center" style="margin-bottom: 1rem;">
+            <div class="canvas-placeholder">[Canvas: diamond ring + matrix rain]</div>
+            <h2 style="font-size:0.85rem; color:#666; font-weight:400;">Munrhalls — Full-Stack Developer</h2>
+          </div>
+          <!-- Bottom row: Contact/Resume | Skills -->
+          <div style="display: flex; gap: 1rem; align-items: center; justify-content: center;">
+            <div class="home-block" style="flex: 1; min-height: 120px; display: flex; flex-direction: column; justify-content: center;">
+              <h4>Contact</h4>
+              <p>Get in touch. Resume download.</p>
+            </div>
+            <div class="home-block" style="flex: 1; min-height: 120px; display: flex; flex-direction: column; justify-content: center;">
+              <h4>Skills</h4>
+              <p>Technologies and capabilities.</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+    <!-- Mobile -->
+    <div>
+      <div class="device-label">Mobile (375px) — Stacked</div>
+      <div class="mobile" style="min-height: 800px;">
+        <div class="nav">
+          <span class="logo">M</span>
+          <div class="nav-links"><span>About</span><span>Work</span><span>Contact</span></div>
+        </div>
+        <!-- Canvas at top -->
+        <div class="content center" style="padding: 1.5rem 1rem 1rem;">
+          <div class="canvas-placeholder">[Canvas]</div>
+          <h2 style="font-size:0.85rem; color:#666; font-weight:400;">Munrhalls — Full-Stack Developer</h2>
+        </div>
+        <!-- 4 zones stacked vertically -->
+        <div class="blocks-grid">
+          <div class="home-block">
+            <h4>Munrhalls</h4>
+            <p>Full-stack developer. Brief introduction on who I am and what I do.</p>
+          </div>
+          <div class="home-block">
+            <h4>Sanglogium</h4>
+            <p>3,505 commits. Full-stack e-commerce platform.</p>
+          </div>
+          <div class="home-block">
+            <h4>Contact</h4>
+            <p>Get in touch. Resume download.</p>
+          </div>
+          <div class="home-block">
+            <h4>Skills</h4>
+            <p>Technologies and capabilities.</p>
+          </div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ABOUT ==================== -->
+<div class="page-section">
+  <div class="page-title">About /about</div>
+  <div class="devices">
+    <!-- Desktop -->
+    <div>
+      <div class="device-label">Desktop</div>
+      <div class="desktop">
+        <div class="nav">
+          <span class="logo">Munrhalls</span>
+          <div class="nav-links"><span class="active">About</span><span>Projects</span><span>Contact</span></div>
+        </div>
+        <div class="content center" style="padding-top: 3rem;">
+          <h2>About</h2>
+          <p class="bio">Full-stack developer with 19 months of production e-commerce experience. Built Sanglogium solo — 3,505 commits of real shipping code.</p>
+          <div class="skills">
+            <span class="skill-tag">TypeScript</span><span class="skill-tag">React</span><span class="skill-tag">Next.js</span><span class="skill-tag">Astro</span>
+            <span class="skill-tag">Tailwind</span><span class="skill-tag">Node.js</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Redis</span>
+            <span class="skill-tag">Stripe</span><span class="skill-tag">Sanity</span><span class="skill-tag">Playwright</span><span class="skill-tag">Vitest</span>
+          </div>
+          <div class="cta" style="margin-top: 1.5rem;">↓ Download Resume</div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+    <!-- Mobile -->
+    <div>
+      <div class="device-label">Mobile</div>
+      <div class="mobile">
+        <div class="nav">
+          <span class="logo">M</span>
+          <div class="nav-links"><span class="active">About</span><span>Work</span><span>Contact</span></div>
+        </div>
+        <div class="content center" style="padding-top: 2rem;">
+          <h2 style="font-size:1.1rem;">About</h2>
+          <p class="bio" style="font-size:0.85rem;">Full-stack developer with 19 months of production e-commerce experience. Built Sanglogium solo.</p>
+          <div class="skills">
+            <span class="skill-tag">TypeScript</span><span class="skill-tag">React</span>
+            <span class="skill-tag">Next.js</span><span class="skill-tag">Astro</span>
+            <span class="skill-tag">Tailwind</span><span class="skill-tag">Node.js</span>
+            <span class="skill-tag">PostgreSQL</span><span class="skill-tag">Redis</span>
+            <span class="skill-tag">Stripe</span><span class="skill-tag">Sanity</span>
+            <span class="skill-tag">Playwright</span><span class="skill-tag">Vitest</span>
+          </div>
+          <div class="cta" style="margin-top: 1rem; font-size:0.8rem;">↓ Resume</div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PROJECTS ==================== -->
+<div class="page-section">
+  <div class="page-title">Projects /projects</div>
+  <div class="devices">
+    <!-- Desktop -->
+    <div>
+      <div class="device-label">Desktop</div>
+      <div class="desktop">
+        <div class="nav">
+          <span class="logo">Munrhalls</span>
+          <div class="nav-links"><span>About</span><span class="active">Projects</span><span>Contact</span></div>
+        </div>
+        <div class="content" style="padding-top: 2rem;">
+          <h2 style="text-align:center; margin-bottom:1.5rem;">Projects</h2>
+          <div class="project-card" style="border-width:2px; border-color:#333;">
+            <h4>Sanglogium</h4>
+            <p>Full-Stack E-Commerce Platform — 19 months, 3,505 commits, solo-built.</p>
+            <div><span class="badge">Next.js</span><span class="badge">React</span><span class="badge">TypeScript</span><span class="badge">Stripe</span><span class="badge">Sanity</span></div>
+            <div class="note">[Hero screenshot + View Case Study →]</div>
+          </div>
+          <div class="project-card">
+            <h4>Portfolio</h4>
+            <p>This site. Astro, Tailwind, Canvas 2D.</p>
+            <div><span class="badge">Astro</span><span class="badge">Tailwind</span></div>
+          </div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+    <!-- Mobile -->
+    <div>
+      <div class="device-label">Mobile</div>
+      <div class="mobile">
+        <div class="nav">
+          <span class="logo">M</span>
+          <div class="nav-links"><span>About</span><span class="active">Work</span><span>Contact</span></div>
+        </div>
+        <div class="content" style="padding-top: 1.5rem;">
+          <h2 style="font-size:1.1rem; text-align:center; margin-bottom:1rem;">Projects</h2>
+          <div class="project-card" style="border-width:2px; border-color:#333;">
+            <h4>Sanglogium</h4>
+            <p style="font-size:0.75rem;">Full-Stack E-Commerce — 19 months, solo.</p>
+            <div><span class="badge">Next.js</span><span class="badge">Stripe</span></div>
+            <div class="note">[View Case Study →]</div>
+          </div>
+          <div class="project-card">
+            <h4>Portfolio</h4>
+            <p style="font-size:0.75rem;">This site. Astro + Canvas.</p>
+            <div><span class="badge">Astro</span></div>
+          </div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SANGLOGIUM CASE STUDY ==================== -->
+<div class="page-section">
+  <div class="page-title">Sanglogium Case Study /projects/sanglogium</div>
+  <div class="devices">
+    <!-- Desktop -->
+    <div>
+      <div class="device-label">Desktop</div>
+      <div class="desktop" style="min-height: 700px;">
+        <div class="nav">
+          <span class="logo">Munrhalls</span>
+          <div class="nav-links"><span>About</span><span>Projects</span><span>Contact</span></div>
+        </div>
+
+        <!-- Sticky nav -->
+        <div class="sticky-nav">
+          <span class="active">Overview</span><span>Store</span><span>Search</span><span>Cart</span><span>Checkout</span>
+          <span>Payment</span><span>Shipping</span><span>Returns</span><span>Auth</span><span>Admin</span>
+          <span>Marketing</span><span>Images</span><span>Testing</span><span>↑</span>
+        </div>
+
+        <div class="content" style="padding-top: 0;">
+          <!-- HERO -->
+          <div class="feature-section" style="background:#fafafa;">
+            <h2 style="font-size:1.3rem; margin-bottom:0.25rem;">Sanglogium</h2>
+            <h3 style="font-size:0.9rem; margin-bottom:1rem;">Full-Stack E-Commerce Platform</h3>
+            <p style="font-size:0.85rem; color:#555; margin-bottom:1rem;">19 months · 3,505 commits · One developer</p>
+            <div class="screenshot-placeholder" style="height:100px;">[Architecture diagram]</div>
+            <div>
+              <span class="badge">Next.js</span><span class="badge">React 19</span><span class="badge">TypeScript</span>
+              <span class="badge">Tailwind</span><span class="badge">Sanity</span><span class="badge">Stripe</span>
+              <span class="badge">better-auth</span><span class="badge">Redis</span><span class="badge">Playwright</span>
+            </div>
+            <div style="margin-top:1rem;">
+              <span style="font-size:0.8rem; color:#888;">[View on GitHub] [Live site: offline]</span>
+            </div>
+          </div>
+
+          <!-- OVERVIEW -->
+          <div class="feature-section">
+            <h4>Overview</h4>
+            <p>Built a production-grade e-commerce reference platform to demonstrate full-stack capability.</p>
+            <div class="feature-grid">
+              <div class="screenshot-placeholder">[Desktop screenshot collage]</div>
+              <div>
+                <p><strong>Scale:</strong> 3,505 commits · 271MB · 19 months · solo</p>
+                <p><strong>Stack:</strong> Next.js 15 App Router, React 19, TypeScript, Tailwind, Sanity, Stripe, BLIK, better-auth, BullMQ, Redis, Sentry, Playwright, Vitest</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FEATURE: STOREFRONT -->
+          <div class="feature-section">
+            <h4>Storefront</h4>
+            <p>500+ products, categories, responsive design, Sanity CMS sync</p>
+            <div class="feature-grid">
+              <div class="screenshot-placeholder">[Storefront screenshot]</div>
+              <div>
+                <p>• 500+ product catalogue<br>• Category navigation<br>• Responsive mobile-first design<br>• Live CMS sync via Sanity</p>
+                <div class="challenge-box">Challenge: Managing a 500+ product catalogue with live CMS sync</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FEATURE: SEARCH -->
+          <div class="feature-section">
+            <h4>Search & Discovery</h4>
+            <p>Full-text search, filters, pagination, nuqs URL state</p>
+            <div class="feature-grid">
+              <div>
+                <p>• Full-text search<br>• Filter/sort UI<br>• Pagination<br>• nuqs URL state management</p>
+                <div class="challenge-box">Challenge: Search that survives catalogue growth</div>
+              </div>
+              <div class="screenshot-placeholder">[Search screenshot]</div>
+            </div>
+          </div>
+
+          <p class="note" style="padding:1rem;">[12 more feature sections follow same alternating 2-col pattern: Cart, Checkout, Payment, Shipping, Returns, Auth (code snippet), Admin, Marketing, Image Pipeline, Testing]</p>
+
+          <!-- FOOTER CTA -->
+          <div class="feature-section" style="background:#fafafa; text-align:center;">
+            <div class="cta" style="margin-bottom:0.5rem;">View the full codebase on GitHub →</div>
+            <p style="font-size:0.8rem; color:#666;">3,505 commits · 19 months · solo</p>
+            <p style="font-size:0.8rem; color:#888;">← Back to Projects &nbsp;&nbsp; Contact me →</p>
+          </div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+
+    <!-- Mobile -->
+    <div>
+      <div class="device-label">Mobile</div>
+      <div class="mobile" style="min-height: 800px;">
+        <div class="nav">
+          <span class="logo">M</span>
+          <div class="nav-links"><span>About</span><span>Work</span><span>Contact</span></div>
+        </div>
+        <!-- Sticky pills -->
+        <div class="sticky-nav" style="padding:0.5rem;">
+          <span class="active">Overview</span><span>Store</span><span>Search</span><span>Cart</span><span>Pay</span>
+          <span>Auth</span><span>Admin</span><span>Test</span><span>↑</span>
+        </div>
+        <div class="content" style="padding-top: 0;">
+          <div class="feature-section" style="background:#fafafa; padding:1rem;">
+            <h2 style="font-size:1rem;">Sanglogium</h2>
+            <h3 style="font-size:0.75rem;">Full-Stack E-Commerce</h3>
+            <p style="font-size:0.75rem; color:#555;">19 months · 3,505 commits · solo</p>
+            <div class="screenshot-placeholder" style="height:80px;">[Diagram]</div>
+            <div><span class="badge">Next.js</span><span class="badge">Stripe</span><span class="badge">Playwright</span></div>
+          </div>
+          <div class="feature-section" style="padding:1rem;">
+            <h4 style="font-size:0.9rem;">Storefront</h4>
+            <div class="screenshot-placeholder" style="height:100px;">[Screenshot]</div>
+            <p style="font-size:0.75rem;">• 500+ products<br>• Categories<br>• Responsive<br>• Sanity CMS</p>
+            <div class="challenge-box" style="font-size:0.75rem;">Challenge: 500+ product CMS sync</div>
+          </div>
+          <div class="feature-section" style="padding:1rem;">
+            <h4 style="font-size:0.9rem;">Search</h4>
+            <div class="screenshot-placeholder" style="height:100px;">[Screenshot]</div>
+            <p style="font-size:0.75rem;">• Full-text search<br>• Filters & sort<br>• Pagination</p>
+          </div>
+          <p class="note" style="padding:1rem;">[11 more sections, same single-col pattern, scrollable]</p>
+          <div class="feature-section" style="background:#fafafa; text-align:center; padding:1rem;">
+            <div class="cta" style="font-size:0.8rem; margin-bottom:0.5rem;">GitHub →</div>
+            <p style="font-size:0.75rem; color:#888;">← Projects &nbsp; Contact →</p>
+          </div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTACT ==================== -->
+<div class="page-section">
+  <div class="page-title">Contact /contact</div>
+  <div class="devices">
+    <!-- Desktop -->
+    <div>
+      <div class="device-label">Desktop</div>
+      <div class="desktop">
+        <div class="nav">
+          <span class="logo">Munrhalls</span>
+          <div class="nav-links"><span>About</span><span>Projects</span><span class="active">Contact</span></div>
+        </div>
+        <div class="content center" style="padding-top: 3rem;">
+          <h2>Contact</h2>
+          <div class="links">
+            <span>email@example.com</span><span>·</span><span>LinkedIn</span><span>·</span><span>GitHub</span>
+          </div>
+          <div class="contact-form" style="margin-top: 2rem;">
+            <div class="field"><label>Name</label><div class="input">[Your name]</div></div>
+            <div class="field"><label>Email</label><div class="input">[your@email.com]</div></div>
+            <div class="field"><label>Message</label><div class="input" style="min-height:80px;">[Your message...]</div></div>
+            <div class="cta" style="width:100%; text-align:center; margin-top:0.5rem;">Send Message</div>
+          </div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+    <!-- Mobile -->
+    <div>
+      <div class="device-label">Mobile</div>
+      <div class="mobile">
+        <div class="nav">
+          <span class="logo">M</span>
+          <div class="nav-links"><span>About</span><span>Work</span><span class="active">Contact</span></div>
+        </div>
+        <div class="content center" style="padding-top: 2rem;">
+          <h2 style="font-size:1.1rem;">Contact</h2>
+          <div class="links" style="font-size:0.8rem;">
+            <span>email</span><span>·</span><span>LinkedIn</span><span>·</span><span>GitHub</span>
+          </div>
+          <div class="contact-form" style="margin-top: 1.5rem; width:100%;">
+            <div class="field"><label style="font-size:0.75rem;">Name</label><div class="input" style="font-size:0.8rem;">[Name]</div></div>
+            <div class="field"><label style="font-size:0.75rem;">Email</label><div class="input" style="font-size:0.8rem;">[Email]</div></div>
+            <div class="field"><label style="font-size:0.75rem;">Message</label><div class="input" style="min-height:60px; font-size:0.8rem;">[Message]</div></div>
+            <div class="cta" style="width:100%; text-align:center; font-size:0.8rem; margin-top:0.5rem;">Send</div>
+          </div>
+        </div>
+        <div class="footer">© 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
