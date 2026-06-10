@@ -1,16 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
 <Base title="Contact">
-  <slot name="nav" slot="nav">
-    <Nav />
-  </slot>
-  <h1>Contact</h1>
-  <p>Placeholder - will be replaced in Sprint 3</p>
-  <slot name="footer" slot="footer">
-    <Footer />
-  </slot>
+  <section class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Contact</h1>
+
+    <ul class="space-y-3 mb-8">
+      <li>
+        <a href="mailto:HUMAN_SUPPLY_EMAIL" class="hover:underline">HUMAN_SUPPLY_EMAIL</a>
+      </li>
+      <li>
+        <a href="HUMAN_SUPPLY_LINKEDIN" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn</a>
+      </li>
+      <li>
+        <a href="HUMAN_SUPPLY_GITHUB" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub</a>
+      </li>
+    </ul>
+
+    <ContactForm />
+  </section>
+
+  <Footer slot="footer" />
 </Base>

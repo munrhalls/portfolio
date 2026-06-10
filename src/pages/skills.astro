@@ -1,16 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Base title="Skills">
-  <slot name="nav" slot="nav">
-    <Nav />
-  </slot>
-  <h1>Skills</h1>
-  <p>Placeholder - will be replaced in Sprint 3</p>
-  <slot name="footer" slot="footer">
-    <Footer />
-  </slot>
+  <section class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Skills</h1>
+    <div>
+      <p>[Content TBD]</p>
+      <!-- TODO: add skills content here -->
+    </div>
+  </section>
+
+  <Footer slot="footer" />
 </Base>
