@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Skills">
+  <slot name="nav" slot="nav">
+    <Nav />
+  </slot>
+  <h1>Skills</h1>
+  <p>Placeholder - will be replaced in Sprint 3</p>
+  <slot name="footer" slot="footer">
+    <Footer />
+  </slot>
+</Base>
