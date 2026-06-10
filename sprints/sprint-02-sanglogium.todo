@@ -32,6 +32,7 @@ A single long-scroll case study page with 14 `<section>` elements covering the S
 - `src/components/FeatureSection.astro` — reusable: accepts `title`, `description`, `reversed` (boolean) props; 2-column desktop layout; `slot="visual"` + `slot="text"`
 - `src/components/StickyNav.astro` — horizontal pill nav, accepts `sections` array prop
 
+(assets are not supplied yet, so put placeholders for assets)
 ### Section list (14 sections + footer)
 | # | id | Notes |
 |---|---|---|
