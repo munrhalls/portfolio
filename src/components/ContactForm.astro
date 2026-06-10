@@ -1,0 +1,109 @@
+---
+// no props
+---
+
+<form id="cf" class="space-y-4">
+  <div>
+    <label for="n" class="block text-sm font-medium mb-1">Name</label>
+    <input type="text" id="n" name="name" class="w-full rounded-lg border px-3 py-2" />
+    <span id="xn" class="error-msg hidden text-red-600 text-sm">Name is required</span>
+  </div>
+  <div>
+    <label for="e" class="block text-sm font-medium mb-1">Email</label>
+    <input type="email" id="e" name="email" class="w-full rounded-lg border px-3 py-2" />
+    <span id="xe" class="error-msg hidden text-red-600 text-sm">Valid email is required</span>
+  </div>
+  <div>
+    <label for="m" class="block text-sm font-medium mb-1">Message</label>
+    <textarea id="m" name="message" rows="4" class="w-full rounded-lg border px-3 py-2"></textarea>
+    <span id="xm" class="error-msg hidden text-red-600 text-sm">Message is required</span>
+  </div>
+  <input id="w" name="website" style="display:none" tabindex="-1" autocomplete="off" />
+  <button type="submit" class="rounded-lg border px-4 py-2 text-sm hover:bg-gray-100 transition-colors">Send</button>
+</form>
+
+<script is:inline>
+  const FORMSPREE_ENDPOINT = 'HUMAN_SUPPLY_FORMSPREE';
+  const CONTACT_EMAIL = 'HUMAN_SUPPLY_EMAIL';
+
+  const form = document.getElementById('cf');
+  const button = form.querySelector('button');
+  const nameInput = document.getElementById('n');
+  const emailInput = document.getElementById('e');
+  const messageInput = document.getElementById('m');
+  const nameError = document.getElementById('xn');
+  const emailError = document.getElementById('xe');
+  const messageError = document.getElementById('xm');
+
+  function validate() {
+    let valid = true;
+    const nameValue = nameInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const messageValue = messageInput.value.trim();
+
+    if (!nameValue) {
+      nameError.classList.remove('hidden');
+      valid = false;
+    } else {
+      nameError.classList.add('hidden');
+    }
+
+    if (!emailValue || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+      emailError.classList.remove('hidden');
+      valid = false;
+    } else {
+      emailError.classList.add('hidden');
+    }
+
+    if (!messageValue) {
+      messageError.classList.remove('hidden');
+      valid = false;
+    } else {
+      messageError.classList.add('hidden');
+    }
+
+    return valid ? { name: nameValue, email: emailValue, message: messageValue } : null;
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const data = validate();
+    if (!data || document.getElementById('w').value) return;
+
+    button.disabled = true;
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        form.outerHTML = '<p>Message sent — thank you!</p>';
+        return;
+      }
+    } catch (_) {}
+
+    form.insertAdjacentHTML(
+      'beforebegin',
+      '<p class="text-red-600 mb-4">Error sending message. <a href="mailto:' + CONTACT_EMAIL + '" class="underline">Send email directly</a>.</p>'
+    );
+    button.disabled = false;
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    const currentForm = document.getElementById('cf');
+    if (!currentForm) return;
+
+    currentForm.reset();
+    nameError.classList.add('hidden');
+    emailError.classList.add('hidden');
+    messageError.classList.add('hidden');
+
+    const prev = currentForm.previousElementSibling;
+    if (prev && prev.tagName === 'P' && prev.textContent.includes('Error')) {
+      prev.remove();
+    }
+
+    currentForm.querySelector('button').disabled = false;
+  });
+</script>

@@ -1,0 +1,374 @@
+---
+---
+
+<div class="mandorla-wrap">
+  <canvas
+    role="img"
+    aria-label="Animated diamond mandorla with flowing calligraphic symbols and matrix code rain"
+    style="width: 100%; height: 100%; background-color: #080808;"
+  ></canvas>
+  <button class="motion-toggle" type="button" aria-label="Enable animation">
+    <span class="motion-toggle-glow" aria-hidden="true"></span>
+    <span class="motion-toggle-text">Enable motion</span>
+  </button>
+</div>
+
+<style>
+  .mandorla-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .motion-toggle {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 7px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 9999px;
+    background: rgba(12, 12, 12, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: rgba(255, 255, 255, 0.75);
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    outline: none;
+  }
+  .motion-toggle.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .motion-toggle:hover,
+  .motion-toggle:focus-visible {
+    background: rgba(30, 30, 30, 0.88);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+  }
+  .motion-toggle:focus-visible {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+  }
+  .motion-toggle-glow {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #b2ff59;
+    box-shadow: 0 0 6px 1px rgba(178, 255, 89, 0.5);
+    animation: pulse-dot 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.25); }
+  }
+</style>
+
+<script>
+  let canvas: HTMLCanvasElement | null = null;
+  let ctx: CanvasRenderingContext2D | null = null;
+
+  let rafId: number | null = null;
+  let ringAngle = 0;
+  let isPaused = false;
+  let resizeTimeout: number | null = null;
+  let logicalWidth = 400;
+  let logicalHeight = 400;
+  let reducedMotion = false;
+  let userOverrideReducedMotion = false;
+  let motionToggle: HTMLButtonElement | null = null;
+  
+  const cjkChars = '日月星辰風雷水火山林木鳥獸虫魚金銀銅鉄青赤白黒天地人神鬼龍虎鳳凰心意情感智慧力勇仁義礼信忠孝悌慈愛和平自由真理正義美善光陰春夏秋冬東西南北上下左右前後内外遠近大小多少高低長短';
+  const katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+  const latinMix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
+
+  function randomMatrixChar(): string {
+    const r = Math.random();
+    if (r < 0.7) return katakana[Math.floor(Math.random() * katakana.length)];
+    if (r < 0.9) return cjkChars[Math.floor(Math.random() * cjkChars.length)];
+    return latinMix[Math.floor(Math.random() * latinMix.length)];
+  }
+
+  interface RainColumn {
+    x: number;
+    y: number;
+    speed: number;
+    delay: number;
+    char: string;
+    changeTimer: number;
+  }
+
+  let rainColumns: RainColumn[] = [];
+
+  function initRainColumns(width: number, height: number) {
+    const minDim = Math.min(width, height);
+    const outerSize = minDim * 0.4;
+    const innerSize = outerSize * 0.84;
+    const cx = width / 2;
+    const cy = height / 2;
+    const diamondHalfWidth = innerSize * 0.65;
+    const fontSize = 14;
+    const numColumns = Math.max(8, Math.floor((diamondHalfWidth * 2) / fontSize));
+    const startX = cx - diamondHalfWidth + fontSize / 2;
+
+    rainColumns = [];
+    for (let i = 0; i < numColumns; i++) {
+      const x = startX + i * fontSize;
+      const y = cy - innerSize - Math.random() * innerSize * 2;
+      const speed = (0.05 + Math.random() * 0.1) * fontSize;
+      const delay = Math.floor(Math.random() * 90);
+      rainColumns.push({
+        x,
+        y,
+        speed,
+        delay,
+        char: randomMatrixChar(),
+        changeTimer: Math.floor(Math.random() * 10)
+      });
+    }
+  }
+  
+  function drawDiamond(cx: number, cy: number, size: number, color: string) {
+    if (!ctx) return;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    const w = size * 0.65;
+    ctx.moveTo(cx, cy - size);
+    ctx.lineTo(cx + w, cy);
+    ctx.lineTo(cx, cy + size);
+    ctx.lineTo(cx - w, cy);
+    ctx.closePath();
+    ctx.stroke();
+  }
+  
+  function drawRing(cx: number, cy: number, radius: number) {
+    if (!ctx) return;
+    ctx.font = '16px serif';
+    ctx.fillStyle = 'rgba(160,170,200,0.5)';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    
+    const numChars = 25;
+    const angleStep = (Math.PI * 2) / numChars;
+    
+    for (let i = 0; i < numChars; i++) {
+      const angle = ringAngle + i * angleStep;
+      const x = Math.round(cx + Math.cos(angle) * radius);
+      const y = Math.round(cy + Math.sin(angle) * radius);
+      const char = cjkChars[i % cjkChars.length];
+      ctx.fillText(char, x, y);
+    }
+  }
+  
+  function drawRain(cx: number, cy: number, innerSize: number) {
+    if (!ctx) return;
+    const fontSize = 14;
+    ctx.font = `${fontSize}px monospace`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    const diamondTop = cy - innerSize;
+    const diamondBottom = cy + innerSize;
+
+    for (const col of rainColumns) {
+      if (col.delay > 0) {
+        col.delay--;
+        continue;
+      }
+
+      if (col.changeTimer <= 0) {
+        col.char = randomMatrixChar();
+        col.changeTimer = 2 + Math.floor(Math.random() * 8);
+      } else {
+        col.changeTimer--;
+      }
+
+      const x = Math.round(col.x);
+      const y = Math.round(col.y);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(col.char, x, y);
+
+      col.y += col.speed;
+
+      if (col.y > diamondBottom + fontSize) {
+        col.y = diamondTop - fontSize * (2 + Math.random() * 8);
+        col.delay = Math.floor(Math.random() * 90);
+        col.char = randomMatrixChar();
+      }
+    }
+  }
+  
+  function enableMotion() {
+    userOverrideReducedMotion = true;
+    try {
+      localStorage.setItem('mandorla-motion', 'enabled');
+    } catch {}
+    if (motionToggle) {
+      motionToggle.classList.remove('visible');
+      motionToggle.removeEventListener('click', enableMotion);
+    }
+    if (!isPaused && ctx && canvas) {
+      render();
+    }
+    console.info('[MandorlaCanvas] User enabled motion override');
+  }
+
+  function render() {
+    if (isPaused || !ctx || !canvas) return;
+    
+    const width = logicalWidth;
+    const height = logicalHeight;
+    const cx = width / 2;
+    const cy = height / 2;
+    const minDim = Math.min(width, height);
+    
+    const outerSize = minDim * 0.4;
+    const innerSize = outerSize * 0.84;
+    const ringRadius = outerSize * 0.92;
+    
+    // Global trail fade
+    ctx.fillStyle = 'rgba(8,8,8,0.06)';
+    ctx.fillRect(0, 0, width, height);
+    
+    // Redraw diamond borders
+    drawDiamond(cx, cy, outerSize, 'rgba(255,255,255,0.75)');
+    drawDiamond(cx, cy, innerSize, 'rgba(255,255,255,0.45)');
+    
+    // Draw rain clipped to inner diamond
+    ctx.save();
+    ctx.beginPath();
+    const iw = innerSize * 0.65;
+    ctx.moveTo(cx, cy - innerSize);
+    ctx.lineTo(cx + iw, cy);
+    ctx.lineTo(cx, cy + innerSize);
+    ctx.lineTo(cx - iw, cy);
+    ctx.closePath();
+    ctx.clip();
+    drawRain(cx, cy, innerSize);
+    ctx.restore();
+    
+    // Draw ring (rotated)
+    drawRing(cx, cy, ringRadius);
+    
+    ringAngle -= 0.003;
+    
+    rafId = requestAnimationFrame(render);
+  }
+  
+  function drawStaticFrame() {
+    if (!ctx || !canvas) return;
+    const width = logicalWidth;
+    const height = logicalHeight;
+    const cx = width / 2;
+    const cy = height / 2;
+    const minDim = Math.min(width, height);
+    
+    ctx.fillStyle = '#080808';
+    ctx.fillRect(0, 0, width, height);
+    
+    const outerSize = minDim * 0.4;
+    const innerSize = outerSize * 0.84;
+    
+    drawDiamond(cx, cy, outerSize, 'rgba(255,255,255,0.75)');
+    drawDiamond(cx, cy, innerSize, 'rgba(255,255,255,0.45)');
+  }
+  
+  function handleVisibilityChange() {
+    if (document.hidden) {
+      isPaused = true;
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    } else {
+      isPaused = false;
+      render();
+    }
+  }
+  
+  function resizeCanvas() {
+    if (!canvas || !ctx) return;
+    const dpr = window.devicePixelRatio || 1;
+    logicalWidth = canvas.offsetWidth || 400;
+    logicalHeight = canvas.offsetHeight || 400;
+    canvas.width = logicalWidth * dpr;
+    canvas.height = logicalHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    initRainColumns(logicalWidth, logicalHeight);
+
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    if (reducedMotion && !userOverrideReducedMotion) {
+      drawStaticFrame();
+      if (motionToggle) motionToggle.classList.add('visible');
+    } else if (!isPaused) {
+      render();
+      if (motionToggle) motionToggle.classList.remove('visible');
+    }
+  }
+  
+  function resizeHandler() {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = window.setTimeout(resizeCanvas, 150);
+  }
+  
+  function teardown() {
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    window.removeEventListener('resize', resizeHandler);
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
+    if (motionToggle) {
+      motionToggle.removeEventListener('click', enableMotion);
+      motionToggle = null;
+    }
+    if (ctx) ctx.clearRect(0, 0, logicalWidth, logicalHeight);
+    canvas = null;
+    ctx = null;
+  }
+  
+  
+  function init() {
+    canvas = document.querySelector('canvas[role="img"]') as HTMLCanvasElement;
+    ctx = canvas?.getContext('2d') ?? null;
+    motionToggle = document.querySelector('.motion-toggle') as HTMLButtonElement;
+
+    if (!canvas || !ctx) {
+      console.error('Canvas or context not found');
+      return;
+    }
+
+    reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    try {
+      userOverrideReducedMotion = localStorage.getItem('mandorla-motion') === 'enabled';
+    } catch {}
+
+    console.info(`[MandorlaCanvas] prefers-reduced-motion: ${reducedMotion}, override: ${userOverrideReducedMotion}, path: ${reducedMotion && !userOverrideReducedMotion ? 'drawStaticFrame' : 'render'}`);
+    isPaused = false;
+
+    if (motionToggle && reducedMotion && !userOverrideReducedMotion) {
+      motionToggle.addEventListener('click', enableMotion);
+    }
+
+    window.addEventListener('resize', resizeHandler);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    resizeCanvas();
+  }
+
+  document.addEventListener('astro:page-load', init);
+  document.addEventListener('astro:before-swap', teardown);
+</script>

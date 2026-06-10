@@ -1,0 +1,39 @@
+---
+interface Section {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  sections: Section[];
+}
+
+const { sections } = Astro.props;
+---
+
+<nav
+  id="sticky-nav"
+  class="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-gray-200 opacity-0 pointer-events-none transition-opacity duration-300"
+  aria-label="Section navigation"
+>
+  <div class="overflow-x-auto whitespace-nowrap flex gap-2 p-3 md:justify-center">
+    <button
+      type="button"
+      data-target="#hero"
+      class="nav-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400 transition-colors shrink-0"
+      aria-current="false"
+    >
+      ↑
+    </button>
+    {sections.map((section) => (
+      <button
+        type="button"
+        data-target={`#${section.id}`}
+        class="nav-pill inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400 transition-colors shrink-0"
+        aria-current="false"
+      >
+        {section.label}
+      </button>
+    ))}
+  </div>
+</nav>
