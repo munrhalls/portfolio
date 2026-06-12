@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Selected Work | Munrhalls</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        @theme {
+            --color-surface: #18120c;
+            --color-surface-dim: #18120c;
+            --color-tertiary: #cac6bd;
+            --color-primary-fixed-dim: #ffb95d;
+            --color-on-primary-fixed: #2a1700;
+            --color-error: #ffb4ab;
+            --color-on-surface-variant: #d6c3b1;
+            --color-outline: #9e8e7d;
+            --color-surface-container-high: #302922;
+            --color-secondary-container: #474743;
+            --color-secondary-fixed-dim: #c8c6c2;
+            --color-on-tertiary-fixed: #1c1c16;
+            --color-outline-variant: #514536;
+            --color-background: #18120c;
+            --color-secondary: #c8c6c2;
+            --color-surface-variant: #3b342c;
+            --color-inverse-primary: #855400;
+            --color-on-secondary-fixed-variant: #474743;
+            --color-on-error-container: #ffdad6;
+            --color-tertiary-fixed-dim: #cac6bd;
+            --color-error-container: #93000a;
+            --color-surface-tint: #ffb95d;
+            --color-primary-fixed: #ffddb7;
+            --color-surface-container-lowest: #130d07;
+            --color-tertiary-fixed: #e6e2d9;
+            --color-tertiary-container: #98958d;
+            --color-surface-bright: #3f3830;
+            --color-surface-container-low: #211b14;
+            --color-surface-container-highest: #3b342c;
+            --color-primary-container: #c9882a;
+            --color-on-secondary: #30312d;
+            --color-primary: #ffb95d;
+            --color-inverse-on-surface: #362f28;
+            --color-on-background: #ede0d5;
+            --color-on-primary-container: #432800;
+            --color-on-secondary-container: #b6b5b0;
+            --color-inverse-surface: #ede0d5;
+            --color-on-tertiary-container: #2f2e28;
+            --color-secondary-fixed: #e4e2dd;
+            --color-on-secondary-fixed: #1b1c19;
+            --color-on-tertiary-fixed-variant: #484740;
+            --color-on-tertiary: #31312a;
+            --color-on-surface: #ede0d5;
+            --color-surface-container: #251f18;
+            --color-on-error: #690005;
+            --color-on-primary: #462a00;
+            --color-on-primary-fixed-variant: #653e00;
+
+            --radius-DEFAULT: 0.125rem;
+            --radius-lg: 0.25rem;
+            --radius-xl: 0.5rem;
+            --radius-full: 0.75rem;
+
+            --spacing-unit: 8px;
+            --spacing-margin-desktop: 64px;
+            --spacing-gutter: 40px;
+            --spacing-margin-mobile: 24px;
+
+            --font-headline-lg: Plus Jakarta Sans;
+            --font-body-lg: Inter;
+            --font-label-caps: JetBrains Mono;
+            --font-headline-sm: Plus Jakarta Sans;
+            --font-headline-md: Plus Jakarta Sans;
+            --font-body-md: Inter;
+            --font-metadata: JetBrains Mono;
+
+            --text-headline-lg: 48px;
+            --text-headline-lg-line-height: 1.1;
+            --text-headline-lg-letter-spacing: -0.04em;
+            --text-headline-lg-font-weight: 700;
+
+            --text-body-lg: 18px;
+            --text-body-lg-line-height: 1.7;
+            --text-body-lg-letter-spacing: 0em;
+            --text-body-lg-font-weight: 400;
+
+            --text-label-caps: 12px;
+            --text-label-caps-line-height: 1.0;
+            --text-label-caps-letter-spacing: 0.1em;
+            --text-label-caps-font-weight: 500;
+
+            --text-headline-sm: 24px;
+            --text-headline-sm-line-height: 1.2;
+            --text-headline-sm-letter-spacing: -0.02em;
+            --text-headline-sm-font-weight: 600;
+
+            --text-headline-md: 32px;
+            --text-headline-md-line-height: 1.2;
+            --text-headline-md-letter-spacing: -0.03em;
+            --text-headline-md-font-weight: 600;
+
+            --text-body-md: 16px;
+            --text-body-md-line-height: 1.6;
+            --text-body-md-letter-spacing: 0em;
+            --text-body-md-font-weight: 400;
+
+            --text-metadata: 11px;
+            --text-metadata-line-height: 1.4;
+            --text-metadata-letter-spacing: 0em;
+            --text-metadata-font-weight: 400;
+        }
+
+        body {
+            background-color: #111010; /* Override with specific background requested */
+            color: var(--color-on-surface);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .row-hover-target {
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+        
+        .row-hover-target::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--color-primary-container);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .row-hover-target:hover {
+            background-color: var(--color-surface-container-low);
+        }
+
+        .row-hover-target:hover::before {
+            opacity: 1;
+        }
+
+        .row-hover-target:hover .row-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .row-hover-target:hover .row-title {
+            color: var(--color-primary-fixed);
+        }
+
+        .row-arrow {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--color-primary-container);
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--color-primary-container);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 rgba(201, 136, 42, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(201, 136, 42, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 6px rgba(201, 136, 42, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(201, 136, 42, 0);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary font-body-md text-body-md uppercase tracking-widest docked full-width top-0 border-b border-outline-variant/10 flat no shadows flex justify-between items-center w-full px-margin-desktop max-w-[1280px] mx-auto h-16 sticky z-50">
+<div class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant">
+            MUNRHALLS
+        </div>
+<nav class="hidden md:flex gap-gutter">
+<a class="text-primary dark:text-primary font-bold hover:text-primary dark:hover:text-primary transition-colors duration-300 opacity-80" href="#">Work</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-300" href="#">About</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors duration-300" href="#">Contact</a>
+</nav>
+<div class="flex items-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined">code</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop pt-24 pb-32">
+<!-- Page Header -->
+<div class="mb-20">
+<h1 class="font-headline-lg font-bold text-on-surface mb-4" style="font-size: 52px; line-height: 1.1; letter-spacing: -0.04em;">Selected work</h1>
+<p class="font-body-md text-on-surface-variant" style="font-size: 15px;">Production systems built to last.</p>
+</div>
+<!-- Project List Layout -->
+<div class="border-t border-outline-variant/10">
+<!-- Row 1 -->
+<a class="row-hover-target block w-full h-[80px] flex items-center px-4 md:px-8 border-b border-outline-variant/10 group cursor-pointer" href="#">
+<div class="flex items-center w-full justify-between">
+<div class="flex items-center gap-gutter w-1/2">
+<span class="font-metadata text-metadata text-outline-variant">01</span>
+<span class="row-title font-headline-sm text-headline-sm text-on-surface transition-colors duration-300" style="font-size: 20px;">SANG LOGIUM</span>
+</div>
+<div class="flex items-center gap-gutter w-1/2 justify-end">
+<span class="font-label-caps text-label-caps px-2 py-1 border border-outline-variant/30 rounded-full text-on-surface-variant">e-commerce</span>
+<span class="font-metadata text-metadata text-outline-variant hidden md:inline-block w-12 text-right">2024</span>
+<span class="material-symbols-outlined row-arrow">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Row 2 -->
+<a class="row-hover-target block w-full h-[80px] flex items-center px-4 md:px-8 border-b border-outline-variant/10 group cursor-pointer" href="#">
+<div class="flex items-center w-full justify-between">
+<div class="flex items-center gap-gutter w-1/2">
+<span class="font-metadata text-metadata text-outline-variant">02</span>
+<span class="row-title font-headline-sm text-headline-sm text-on-surface transition-colors duration-300" style="font-size: 20px;">HELIOS CORE</span>
+</div>
+<div class="flex items-center gap-gutter w-1/2 justify-end">
+<span class="font-label-caps text-label-caps px-2 py-1 border border-outline-variant/30 rounded-full text-on-surface-variant">SaaS</span>
+<span class="font-metadata text-metadata text-outline-variant hidden md:inline-block w-12 text-right">2024</span>
+<span class="material-symbols-outlined row-arrow">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Row 3 -->
+<a class="row-hover-target block w-full h-[80px] flex items-center px-4 md:px-8 border-b border-outline-variant/10 group cursor-pointer" href="#">
+<div class="flex items-center w-full justify-between">
+<div class="flex items-center gap-gutter w-1/2">
+<span class="font-metadata text-metadata text-outline-variant">03</span>
+<span class="row-title font-headline-sm text-headline-sm text-on-surface transition-colors duration-300" style="font-size: 20px;">AXIOM INTERFACE</span>
+</div>
+<div class="flex items-center gap-gutter w-1/2 justify-end">
+<span class="font-label-caps text-label-caps px-2 py-1 border border-outline-variant/30 rounded-full text-on-surface-variant">marketing</span>
+<span class="font-metadata text-metadata text-outline-variant hidden md:inline-block w-12 text-right">2024</span>
+<span class="material-symbols-outlined row-arrow">arrow_forward</span>
+</div>
+</div>
+</a>
+</div>
+<!-- Currently building -->
+<div class="mt-32 pt-8 border-t border-outline-variant/10">
+<h2 class="font-label-caps text-label-caps text-outline-variant mb-6">Currently building</h2>
+<div class="flex items-center gap-4 bg-surface-container-low p-6 border border-outline-variant/10 max-w-2xl">
+<span class="pulse-dot"></span>
+<p class="font-body-md text-body-md text-on-surface-variant">Developing next-generation headless CMS architecture for high-frequency trading platforms.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface text-tertiary dark:text-tertiary font-metadata text-metadata uppercase tracking-tighter full-width bottom-0 border-t border-outline-variant/10 flat no shadows flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop max-w-[1280px] mx-auto py-8 gap-4 mt-auto">
+<div class="font-label-caps text-label-caps text-on-surface-variant">
+            © 2024 MUNRHALLS. ALL RIGHTS RESERVED.
+        </div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors" href="#">SYSTEM STATUS</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors" href="#">API</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors" href="#">CHANGELOG</a>
+</div>
+</footer>
+</body></html>

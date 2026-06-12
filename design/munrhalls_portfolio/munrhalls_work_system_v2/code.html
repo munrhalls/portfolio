@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Selected Work | Munrhalls</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;family=Syne:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-bright": "#393936",
+                "on-tertiary-fixed": "#1c1b1b",
+                "surface": "#131411",
+                "primary-container": "#111010",
+                "surface-variant": "#353532",
+                "outline-variant": "#4d4546",
+                "on-surface-variant": "#cfc4c5",
+                "surface-container-highest": "#353532",
+                "surface-container": "#1f201d",
+                "on-error": "#690005",
+                "on-primary-fixed": "#1c1b1b",
+                "tertiary-container": "#101010",
+                "inverse-on-surface": "#30312d",
+                "on-tertiary-container": "#7d7c7b",
+                "error": "#ffb4ab",
+                "on-primary-container": "#7f7c7b",
+                "on-background": "#e4e2dd",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "surface-container-lowest": "#0e0e0c",
+                "tertiary": "#c8c6c5",
+                "on-primary-fixed-variant": "#484646",
+                "on-surface": "#e4e2dd",
+                "secondary-container": "#9f6500",
+                "primary-fixed-dim": "#cac5c5",
+                "outline": "#988e8f",
+                "surface-container-high": "#2a2a27",
+                "on-secondary-fixed-variant": "#653e00",
+                "on-tertiary-fixed-variant": "#474646",
+                "primary": "#cac5c5",
+                "secondary": "#ffb95d",
+                "on-tertiary": "#313030",
+                "error-container": "#93000a",
+                "tertiary-fixed": "#e5e2e1",
+                "inverse-surface": "#e4e2dd",
+                "secondary-fixed": "#ffddb7",
+                "on-secondary-container": "#fff7f1",
+                "on-secondary-fixed": "#2a1700",
+                "surface-dim": "#131411",
+                "primary-fixed": "#e6e1e1",
+                "on-secondary": "#462a00",
+                "inverse-primary": "#605e5e",
+                "surface-container-low": "#1b1c19",
+                "on-error-container": "#ffdad6",
+                "secondary-fixed-dim": "#ffb95d",
+                "surface-tint": "#cac5c5",
+                "background": "#111010",
+                "on-primary": "#323030"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "max-width": "1140px",
+                "section-v": "120px",
+                "gutter": "24px",
+                "margin-sm": "16px"
+        },
+        "fontFamily": {
+                "label-mono": [
+                        "JetBrains Mono"
+                ],
+                "display-xl-mobile": [
+                        "Syne"
+                ],
+                "headline-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "display-xl": [
+                        "Syne"
+                ]
+        },
+        "fontSize": {
+                "label-mono": [
+                        "12px",
+                        {
+                                "lineHeight": "1",
+                                "letterSpacing": "0.08em",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-xl-mobile": [
+                        "48px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.4",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.7",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-xl": [
+                        "80px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.03em",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .project-row {
+            transition: all 0.2s ease-in-out;
+            border-left: 3px solid transparent;
+        }
+        .project-row:hover {
+            border-left: 3px solid #ffb95d; /* secondary */
+            background-color: #1a1918; 
+        }
+        .project-row:hover .project-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .project-arrow {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.2s ease-in-out;
+            color: #ffb95d;
+        }
+        .project-row:hover h2 {
+            color: #E8E6E1;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+        .animate-pulse-dot {
+            animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md antialiased selection:bg-secondary selection:text-on-secondary">
+<!-- TopNavBar Component -->
+<nav class="bg-surface dark:bg-surface w-full top-0 sticky border-b-[0.5px] border-outline-variant flat no shadows z-50">
+<div class="max-w-[1140px] mx-auto flex justify-between items-center px-gutter h-16">
+<!-- Brand -->
+<a class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest" href="#">MUNRHALLS</a>
+<!-- Navigation Links (Desktop) -->
+<div class="md:flex items-center gap-8 h-full"><a class="text-primary border-b-2 border-secondary pb-1 font-label-mono text-label-mono h-full flex items-center" href="#">Work</a><a class="text-on-surface-variant font-label-mono text-label-mono hover:bg-surface-variant transition-colors duration-200 cursor-pointer active:opacity-80 h-full flex items-center px-3" href="#">About</a><a class="text-on-surface-variant font-label-mono text-label-mono hover:bg-surface-variant transition-colors duration-200 cursor-pointer active:opacity-80 h-full flex items-center px-3" href="#">Contact</a></div>
+<!-- Trailing Action -->
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-variant transition-colors duration-200 p-2 rounded-full active:opacity-80">terminal</span>
+<!-- Mobile Menu Toggle (Icon only for structural necessity) -->
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-[1140px] mx-auto px-gutter py-16 md:py-32">
+<!-- Header -->
+<header class="mb-16 md:mb-24 text-left">
+<h1 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-on-surface mb-4 tracking-tighter">
+                Selected work
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Production systems built to last.
+            </p>
+</header>
+<!-- Project List -->
+<section class="border-t border-outline-variant/30 mb-24">
+<!-- Row 1 -->
+<article class="project-row group border-b border-outline-variant/30 py-6 md:py-8 px-4 -ml-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer">
+<div class="flex items-center gap-6 md:gap-12 w-full md:w-1/2">
+<span class="font-label-mono text-label-mono text-outline w-6">01</span>
+<h2 class="font-headline-md text-headline-md text-on-surface-variant transition-colors duration-200 tracking-tighter">
+                        Sang Logium
+                    </h2>
+</div>
+<div class="flex items-center justify-between w-full md:w-1/2 pl-12 md:pl-0">
+<span class="font-label-mono text-label-mono text-on-surface-variant bg-surface-container px-3 py-1 rounded-DEFAULT border border-outline-variant">
+                        e-commerce
+                    </span>
+<div class="flex items-center gap-8">
+<span class="font-label-mono text-label-mono text-outline">2024</span>
+<span class="material-symbols-outlined project-arrow font-light" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Row 2 -->
+<article class="project-row group border-b border-outline-variant/30 py-6 md:py-8 px-4 -ml-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer">
+<div class="flex items-center gap-6 md:gap-12 w-full md:w-1/2">
+<span class="font-label-mono text-label-mono text-outline w-6">02</span>
+<h2 class="font-headline-md text-headline-md text-on-surface-variant transition-colors duration-200 tracking-tighter">
+                        Helios Core
+                    </h2>
+</div>
+<div class="flex items-center justify-between w-full md:w-1/2 pl-12 md:pl-0">
+<span class="font-label-mono text-label-mono text-on-surface-variant bg-surface-container px-3 py-1 rounded-DEFAULT border border-outline-variant">
+                        SaaS
+                    </span>
+<div class="flex items-center gap-8">
+<span class="font-label-mono text-label-mono text-outline">2024</span>
+<span class="material-symbols-outlined project-arrow font-light" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Row 3 -->
+<article class="project-row group border-b border-outline-variant/30 py-6 md:py-8 px-4 -ml-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer">
+<div class="flex items-center gap-6 md:gap-12 w-full md:w-1/2">
+<span class="font-label-mono text-label-mono text-outline w-6">03</span>
+<h2 class="font-headline-md text-headline-md text-on-surface-variant transition-colors duration-200 tracking-tighter">
+                        Axiom Interface
+                    </h2>
+</div>
+<div class="flex items-center justify-between w-full md:w-1/2 pl-12 md:pl-0">
+<span class="font-label-mono text-label-mono text-on-surface-variant bg-surface-container px-3 py-1 rounded-DEFAULT border border-outline-variant">
+                        marketing
+                    </span>
+<div class="flex items-center gap-8">
+<span class="font-label-mono text-label-mono text-outline">2023</span>
+<span class="material-symbols-outlined project-arrow font-light" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</article>
+</section>
+<!-- Currently Building -->
+<section class="max-w-2xl text-left">
+<h3 class="font-label-mono text-label-mono text-outline uppercase tracking-wider mb-4 flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse-dot inline-block"></span>
+                Currently building
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant border-l border-outline-variant/30 pl-4 py-1">Developing next-generation headless CMS architecture for high-frequency trading platforms.</p>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface dark:bg-surface w-full bottom-0 border-t-[0.5px] border-outline-variant flat no shadows mt-auto">
+<div class="max-w-[1140px] mx-auto flex flex-col md:flex-row justify-between items-center px-gutter py-margin-sm gap-4">
+<!-- Brand/Copyright -->
+<div class="font-label-mono text-label-mono text-on-surface-variant">
+                © 2024 MUNRHALLS. ALL RIGHTS RESERVED.
+            </div>
+<!-- Links -->
+<div class="flex gap-6 items-center">
+<a class="text-on-tertiary-container font-label-mono text-label-mono hover:text-primary transition-colors opacity-100" href="#">LATENCY: 24MS</a>
+<a class="text-on-tertiary-container font-label-mono text-label-mono hover:text-primary transition-colors opacity-100" href="#">STATUS: OPERATIONAL</a>
+<a class="text-on-tertiary-container font-label-mono text-label-mono hover:text-primary transition-colors opacity-100" href="#">github</a>
+</div>
+</div>
+</footer>
+</body></html>
