@@ -77,7 +77,7 @@
   let ctx: CanvasRenderingContext2D | null = null;
 
   let rafId: number | null = null;
-  let ringAngle = 0;
+  let pathOffset = 0;
   let isPaused = false;
   let resizeTimeout: number | null = null;
   let logicalWidth = 400;
@@ -89,6 +89,7 @@
   const cjkChars = '日月星辰風雷水火山林木鳥獸虫魚金銀銅鉄青赤白黒天地人神鬼龍虎鳳凰心意情感智慧力勇仁義礼信忠孝悌慈愛和平自由真理正義美善光陰春夏秋冬東西南北上下左右前後内外遠近大小多少高低長短';
   const katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
   const latinMix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
+  const mathString = "iℏ∂ψ/∂t=Ĥψ    ∇·E=ρ/ε₀    eⁱπ+1=0    ";
 
   function randomMatrixChar(): string {
     const r = Math.random();
@@ -123,7 +124,7 @@
     for (let i = 0; i < numColumns; i++) {
       const x = startX + i * fontSize;
       const y = cy - innerSize - Math.random() * innerSize * 2;
-      const speed = (0.05 + Math.random() * 0.1) * fontSize;
+      const speed = (0.02 + Math.random() * 0.04) * fontSize;
       const delay = Math.floor(Math.random() * 90);
       rainColumns.push({
         x,
@@ -150,22 +151,48 @@
     ctx.stroke();
   }
   
-  function drawRing(cx: number, cy: number, radius: number) {
+  function drawMathRing(cx: number, cy: number, outerSize: number, innerSize: number) {
     if (!ctx) return;
-    ctx.font = '16px serif';
-    ctx.fillStyle = 'rgba(160,170,200,0.5)';
+    const midSize = (outerSize + innerSize) / 2;
+    const midW = midSize * 0.65;
+
+    const v0 = { x: cx, y: cy - midSize };
+    const v1 = { x: cx + midW, y: cy };
+    const v2 = { x: cx, y: cy + midSize };
+    const v3 = { x: cx - midW, y: cy };
+
+    const edges = [
+      { start: v0, dx: v1.x - v0.x, dy: v1.y - v0.y, length: Math.hypot(v1.x - v0.x, v1.y - v0.y), angle: Math.atan2(v1.y - v0.y, v1.x - v0.x) },
+      { start: v1, dx: v2.x - v1.x, dy: v2.y - v1.y, length: Math.hypot(v2.x - v1.x, v2.y - v1.y), angle: Math.atan2(v2.y - v1.y, v2.x - v1.x) },
+      { start: v2, dx: v3.x - v2.x, dy: v3.y - v2.y, length: Math.hypot(v3.x - v2.x, v3.y - v2.y), angle: Math.atan2(v3.y - v2.y, v3.x - v2.x) },
+      { start: v3, dx: v0.x - v3.x, dy: v0.y - v3.y, length: Math.hypot(v0.x - v3.x, v0.y - v3.y), angle: Math.atan2(v0.y - v3.y, v0.x - v3.x) },
+    ];
+
+    const length = edges[0].length;
+    const totalPerimeter = length * 4;
+    const charWidth = 10;
+    const totalChars = Math.floor(totalPerimeter / charWidth);
+
+    ctx.font = '14px serif';
+    ctx.fillStyle = 'rgba(160,170,200,0.6)';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    
-    const numChars = 25;
-    const angleStep = (Math.PI * 2) / numChars;
-    
-    for (let i = 0; i < numChars; i++) {
-      const angle = ringAngle + i * angleStep;
-      const x = Math.round(cx + Math.cos(angle) * radius);
-      const y = Math.round(cy + Math.sin(angle) * radius);
-      const char = cjkChars[i % cjkChars.length];
-      ctx.fillText(char, x, y);
+
+    for (let i = 0; i < totalChars; i++) {
+      let d = (pathOffset + i * charWidth) % totalPerimeter;
+      const edgeIndex = Math.floor(d / length);
+      const localD = d % length;
+      const edge = edges[edgeIndex];
+      const t = localD / length;
+      const x = edge.start.x + edge.dx * t;
+      const y = edge.start.y + edge.dy * t;
+      const char = mathString[i % mathString.length];
+
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(edge.angle);
+      ctx.fillText(char, 0, 0);
+      ctx.restore();
     }
   }
   
@@ -234,8 +261,6 @@
     
     const outerSize = minDim * 0.4;
     const innerSize = outerSize * 0.84;
-    const ringRadius = outerSize * 0.92;
-    
     // Global trail fade
     ctx.fillStyle = 'rgba(8,8,8,0.06)';
     ctx.fillRect(0, 0, width, height);
@@ -257,10 +282,10 @@
     drawRain(cx, cy, innerSize);
     ctx.restore();
     
-    // Draw ring (rotated)
-    drawRing(cx, cy, ringRadius);
+    // Draw math ring
+    drawMathRing(cx, cy, outerSize, innerSize);
     
-    ringAngle -= 0.003;
+    pathOffset = (pathOffset + 0.4) % 10000;
     
     rafId = requestAnimationFrame(render);
   }
@@ -281,6 +306,9 @@
     
     drawDiamond(cx, cy, outerSize, 'rgba(255,255,255,0.75)');
     drawDiamond(cx, cy, innerSize, 'rgba(255,255,255,0.45)');
+    
+    pathOffset = 0;
+    drawMathRing(cx, cy, outerSize, innerSize);
   }
   
   function handleVisibilityChange() {
