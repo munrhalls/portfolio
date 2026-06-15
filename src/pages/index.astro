@@ -1,61 +1,136 @@
 ---
 import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import MandorlaCanvas from '../components/MandorlaCanvas.astro';
-import HomeBlock from '../components/HomeBlock.astro';
+import { Image } from 'astro:assets';
+import sanglogiumImg from '../assets/images/sanglogium/sanglogium-01.png';
 ---
 
-<Base title="Home">
-  <!-- Mobile: hero canvas + stacked links -->
-  <div class="flex-1 flex flex-col lg:hidden">
-    <div class="flex justify-center py-8">
-      <div class="h-[30vh] w-[30vh]">
-        <MandorlaCanvas />
+<Base title="MUNRHALLS -- Full-Stack Developer">
+  <Header slot="nav" />
+
+  <!-- Hero section -->
+  <section class="relative overflow-hidden px-5 lg:px-8 pt-10 pb-20 lg:pt-0 lg:pb-0 grid grid-cols-1 lg:grid-cols-[55%_45%] gap-8 lg:gap-12 items-center h-[100dvh] max-w-container mx-auto">
+
+    <!-- Hero content -->
+    <div class="relative z-10 flex flex-col justify-center gap-6 h-full py-12">
+
+      <p class="font-mono text-label-mono font-medium text-on-surface-variant uppercase">
+        FULL-STACK DEVELOPER · WARSAW
+      </p>
+
+      <h1 class="font-sans text-display-hero font-extrabold text-on-surface">
+        I build full&#8209;stack systems end to end &mdash; architecture, design, backend, frontend, performance.
+      </h1>
+
+      <p class="font-sans text-body-md font-normal text-on-surface-variant">
+        Production-grade systems, from architecture to deployment.
+      </p>
+
+      <div class="flex flex-col gap-4">
+        <a
+          href="/projects/"
+          class="bg-primary text-on-primary hover:bg-primary/90 font-mono text-label-mono font-medium uppercase py-4 text-center"
+        >
+          VIEW MY WORK &rarr;
+        </a>
+        <a
+          href="/resume.pdf"
+          download
+          class="border border-outline text-on-surface font-mono text-label-mono font-medium uppercase py-4 text-center"
+        >
+          DOWNLOAD CV
+        </a>
+      </div>
+
+      <p class="font-mono text-label-mono text-on-surface-variant">
+        Or reach out directly —
+        <a href="mailto:jpilik52@gmail.com" class="text-primary underline underline-offset-4 hover:text-primary/80">
+          jpilik52@gmail.com
+        </a>
+      </p>
+
+      <div class="flex flex-wrap gap-2">
+        {['Next.js 15', 'React 19', 'TypeScript', 'Stripe', 'Sanity v3'].map((tag) => (
+          <span class="border border-outline-variant text-on-surface-variant font-mono text-label-mono font-medium uppercase px-2 py-2">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+    </div>
+
+    <!-- Diamond image: right column on desktop, behind on mobile -->
+    <div
+      class="flex items-center justify-center"
+      aria-hidden="true"
+    >
+      <div class="relative w-full">
+        <img src="/images/code-diamond.png" alt="" class="w-full h-auto mx-auto relative z-10" />
+        <span class="absolute top-0 left-0 w-6 h-6 border-t border-l border-outline"></span>
+        <span class="absolute top-0 right-0 w-6 h-6 border-t border-r border-outline"></span>
+        <span class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-outline"></span>
+        <span class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-outline"></span>
       </div>
     </div>
+  </section>
 
-    <div class="flex-1 flex flex-col">
-      <HomeBlock href="/about/" title="About" description="Full-stack developer" class="p-4 border-t border-b border-gray-300" />
-      <HomeBlock href="/projects/sanglogium/" title="Sanglogium" description="E-commerce case study" class="p-4 border-b border-gray-300" />
-      <HomeBlock href="/skills/" title="Skills" description="Technologies & tools" class="p-4 border-b border-gray-300" />
-      <HomeBlock href="/contact/" title="Contact" description="Get in touch" class="p-4 flex-1 border-b border-gray-300" />
-    </div>
+  <div class="flex justify-center pt-12 pb-4">
+    <a href="#work" aria-label="Scroll to work" class="text-on-surface-variant animate-bounce">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </a>
   </div>
 
-  <!-- Desktop: 3×2 bento grid -->
-  <div class="flex-1 hidden lg:grid lg:grid-cols-[1fr_1fr_1fr] lg:grid-rows-2">
-    <HomeBlock
-      href="/about/"
-      title="About"
-      description="Full-stack developer"
-      class="lg:col-start-1 lg:row-start-1 lg:border-r lg:border-b border-gray-300"
-    />
+  <!-- Selected Work section -->
+  <section id="work" class="px-5 lg:px-16 py-16 max-w-container mx-auto">
+    <h2 class="font-sans text-headline-lg font-bold text-on-surface mb-8">
+      Selected Work
+    </h2>
+    <div class="border-t border-outline-variant pt-8 pb-6">
+      <!-- Project image -->
+      <div class="relative overflow-hidden border border-outline-variant mb-6">
+        <Image src={sanglogiumImg} alt="Sang Logium storefront preview" class="w-full h-auto object-cover" loading="lazy" />
+      </div>
 
-    <div class="lg:col-start-2 lg:row-span-2 lg:h-full">
-      <MandorlaCanvas />
+      <!-- Header row -->
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        <h3 class="font-sans text-headline-sm font-semibold text-on-surface">
+          01 Sang Logium &mdash; E-Commerce Platform
+        </h3>
+        <span class="font-mono text-label-mono font-medium text-on-surface-variant uppercase border border-outline-variant px-2 py-1 self-start lg:self-auto">
+          E-Commerce &middot; Full Stack
+        </span>
+      </div>
+
+      <!-- Description -->
+      <p class="font-sans text-body-md font-normal text-on-surface-variant mt-4 max-w-2xl">
+        A production e-commerce platform for audiophile equipment. Next.js 15, Stripe payments, Sanity CMS, full auth and order management.
+      </p>
+
+      <!-- Tech stack pills -->
+      <div class="flex flex-wrap gap-2 mt-4">
+        {['Next.js 15', 'React 19', 'TypeScript', 'Stripe', 'Sanity'].map((tag) => (
+          <span class="border border-outline-variant text-on-surface-variant font-mono text-label-mono font-medium uppercase px-2 py-1">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <!-- Status + link -->
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-6">
+        <span class="font-mono text-label-mono font-medium text-tertiary uppercase flex items-center gap-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+          IN PROGRESS
+        </span>
+        <span class="font-mono text-label-mono font-medium text-on-surface-variant uppercase cursor-not-allowed" aria-disabled="true">
+          View project &rarr;
+        </span>
+      </div>
     </div>
-
-    <HomeBlock
-      href="/projects/sanglogium/"
-      title="Sanglogium"
-      description="E-commerce case study"
-      class="lg:col-start-3 lg:row-start-1 lg:border-l lg:border-b border-gray-300"
-    />
-
-    <HomeBlock
-      href="/skills/"
-      title="Skills"
-      description="Technologies & tools"
-      class="lg:col-start-1 lg:row-start-2 lg:border-r border-gray-300"
-    />
-
-    <HomeBlock
-      href="/contact/"
-      title="Contact"
-      description="Get in touch"
-      class="lg:col-start-3 lg:row-start-2 lg:border-l border-gray-300"
-    />
-  </div>
+  </section>
 
   <Footer slot="footer" />
 </Base>
+

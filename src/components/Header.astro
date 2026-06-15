@@ -1,36 +1,39 @@
 ---
 ---
 
-<header class="bg-[#0A0A0A] border-b border-gray-800">
-  <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
-    <a href="/" class="text-lg font-semibold text-white tracking-tight">Munrhalls</a>
+<header class="bg-surface border-b border-outline-variant">
+  <div class="max-w-container mx-auto px-5 lg:px-16 h-14 grid grid-cols-3 items-center w-full">
+    <a href="/" class="justify-self-start text-lg font-semibold text-on-surface tracking-widest uppercase">MUNRHALLS</a>
 
-    <nav class="hidden md:flex items-center gap-6" aria-label="Main navigation">
-      <a href="/about/" class="text-sm text-gray-300 hover:text-white transition-colors">About</a>
-      <a href="/projects/" class="text-sm text-gray-300 hover:text-white transition-colors">Projects</a>
-      <a href="/skills/" class="text-sm text-gray-300 hover:text-white transition-colors">Skills</a>
-      <a href="/contact/" class="text-sm text-gray-300 hover:text-white transition-colors">Contact</a>
+    <nav class="hidden md:flex justify-self-center gap-6 lg:gap-8" aria-label="Main navigation">
+      <a href="/projects/" class="text-label-mono font-light text-on-surface-variant hover:text-on-surface transition-colors uppercase">Work</a>
+      <a href="/skills/" class="text-label-mono font-light text-on-surface-variant hover:text-on-surface transition-colors uppercase">Tech</a>
+      <a href="/contact/" class="text-label-mono font-light text-on-surface-variant hover:text-on-surface transition-colors uppercase">Contact</a>
     </nav>
 
-    <button
-      type="button"
-      id="mobile-menu-toggle"
-      class="md:hidden p-2 text-gray-300 hover:text-white"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-    >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    <div class="justify-self-end flex items-center gap-4">
+      <svg class="w-5 h-5 text-on-surface-variant" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
       </svg>
-    </button>
+      <button
+        type="button"
+        id="mobile-menu-toggle"
+        class="md:hidden p-2 text-on-surface-variant hover:text-on-surface"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-[#0A0A0A]">
+  <div id="mobile-menu" class="hidden md:hidden border-t border-outline-variant bg-surface">
     <nav class="flex flex-col px-4 py-2" aria-label="Mobile navigation">
-      <a href="/about/" class="py-3 text-sm text-gray-300 hover:text-white transition-colors border-b border-gray-800">About</a>
-      <a href="/projects/" class="py-3 text-sm text-gray-300 hover:text-white transition-colors border-b border-gray-800">Projects</a>
-      <a href="/skills/" class="py-3 text-sm text-gray-300 hover:text-white transition-colors border-b border-gray-800">Skills</a>
-      <a href="/contact/" class="py-3 text-sm text-gray-300 hover:text-white transition-colors">Contact</a>
+      <a href="/projects/" class="py-3 text-sm font-light text-on-surface-variant hover:text-on-surface transition-colors border-b border-outline-variant">Work</a>
+      <a href="/skills/" class="py-3 text-sm font-light text-on-surface-variant hover:text-on-surface transition-colors border-b border-outline-variant">Tech</a>
+      <a href="/contact/" class="py-3 text-sm font-light text-on-surface-variant hover:text-on-surface transition-colors">Contact</a>
     </nav>
   </div>
 </header>

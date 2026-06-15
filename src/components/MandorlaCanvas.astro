@@ -5,7 +5,7 @@
   <canvas
     role="img"
     aria-label="Animated diamond mandorla with flowing calligraphic symbols and matrix code rain"
-    style="width: 100%; height: 100%; background-color: #080808;"
+    style="width: 100%; height: 100%; background-color: transparent;"
   ></canvas>
   <button class="motion-toggle" type="button" aria-label="Enable animation">
     <span class="motion-toggle-glow" aria-hidden="true"></span>
@@ -62,8 +62,8 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #b2ff59;
-    box-shadow: 0 0 6px 1px rgba(178, 255, 89, 0.5);
+    background: #adc6ff;
+    box-shadow: 0 0 6px 1px rgba(173, 198, 255, 0.5);
     animation: pulse-dot 2.5s ease-in-out infinite;
   }
   @keyframes pulse-dot {
@@ -98,6 +98,11 @@
     return latinMix[Math.floor(Math.random() * latinMix.length)];
   }
 
+  interface TailChar {
+    y: number;
+    char: string;
+  }
+
   interface RainColumn {
     x: number;
     y: number;
@@ -105,6 +110,8 @@
     delay: number;
     char: string;
     changeTimer: number;
+    color: string;
+    tail: TailChar[];
   }
 
   let rainColumns: RainColumn[] = [];
@@ -124,7 +131,7 @@
     for (let i = 0; i < numColumns; i++) {
       const x = startX + i * fontSize;
       const y = cy - innerSize - Math.random() * innerSize * 2;
-      const speed = (0.02 + Math.random() * 0.04) * fontSize;
+      const speed = (0.01 + Math.random() * 0.02) * fontSize;
       const delay = Math.floor(Math.random() * 90);
       rainColumns.push({
         x,
@@ -132,23 +139,53 @@
         speed,
         delay,
         char: randomMatrixChar(),
-        changeTimer: Math.floor(Math.random() * 10)
+        changeTimer: Math.floor(Math.random() * 10),
+        color: Math.random() < 0.5 ? '#5c6bc0' : '#7986cb',
+        tail: []
       });
     }
   }
   
-  function drawDiamond(cx: number, cy: number, size: number, color: string) {
+  function drawDiamondFrame(cx: number, cy: number, outerSize: number, innerSize: number) {
     if (!ctx) return;
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 2;
+    const ow = outerSize * 0.65;
+    const iw = innerSize * 0.65;
+
+    // Volumetric gradient fill for the band
+    const grad = ctx.createLinearGradient(cx - ow, cy - outerSize, cx + ow, cy + outerSize);
+    grad.addColorStop(0, 'rgba(70, 85, 160, 0.90)');
+    grad.addColorStop(0.5, 'rgba(55, 65, 130, 0.88)');
+    grad.addColorStop(1, 'rgba(40, 50, 110, 0.92)');
+
+    // Filled band: outer diamond path + inner diamond path, evenodd fill rule
     ctx.beginPath();
-    const w = size * 0.65;
-    ctx.moveTo(cx, cy - size);
-    ctx.lineTo(cx + w, cy);
-    ctx.lineTo(cx, cy + size);
-    ctx.lineTo(cx - w, cy);
+    ctx.moveTo(cx, cy - outerSize);
+    ctx.lineTo(cx + ow, cy);
+    ctx.lineTo(cx, cy + outerSize);
+    ctx.lineTo(cx - ow, cy);
     ctx.closePath();
+    ctx.moveTo(cx, cy - innerSize);
+    ctx.lineTo(cx - iw, cy);
+    ctx.lineTo(cx, cy + innerSize);
+    ctx.lineTo(cx + iw, cy);
+    ctx.closePath();
+
+    ctx.fillStyle = grad;
+    ctx.fill('evenodd');
+
+    // Inner diamond stroke with glow
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - innerSize);
+    ctx.lineTo(cx + iw, cy);
+    ctx.lineTo(cx, cy + innerSize);
+    ctx.lineTo(cx - iw, cy);
+    ctx.closePath();
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = 'rgba(130, 150, 255, 0.6)';
+    ctx.strokeStyle = 'rgba(130, 150, 255, 0.7)';
+    ctx.lineWidth = 1;
     ctx.stroke();
+    ctx.shadowBlur = 0;
   }
   
   function drawMathRing(cx: number, cy: number, outerSize: number, innerSize: number) {
@@ -173,8 +210,10 @@
     const charWidth = 10;
     const totalChars = Math.floor(totalPerimeter / charWidth);
 
-    ctx.font = '14px serif';
-    ctx.fillStyle = 'rgba(160,170,200,0.6)';
+    ctx.font = 'italic 15px "Times New Roman", Times, serif';
+    ctx.fillStyle = 'rgba(173, 198, 255, 0.85)';
+    ctx.shadowBlur = 6;
+    ctx.shadowColor = 'rgba(173, 198, 255, 0.9)';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
@@ -189,13 +228,14 @@
       const char = mathString[i % mathString.length];
 
       ctx.save();
-      ctx.translate(x, y);
+      ctx.translate(Math.round(x), Math.round(y));
       ctx.rotate(edge.angle);
       ctx.fillText(char, 0, 0);
       ctx.restore();
     }
+    ctx.shadowBlur = 0;
   }
-  
+
   function drawRain(cx: number, cy: number, innerSize: number) {
     if (!ctx) return;
     const fontSize = 14;
@@ -205,6 +245,7 @@
 
     const diamondTop = cy - innerSize;
     const diamondBottom = cy + innerSize;
+    const maxTail = 8;
 
     for (const col of rainColumns) {
       if (col.delay > 0) {
@@ -222,8 +263,25 @@
       const x = Math.round(col.x);
       const y = Math.round(col.y);
 
+      // Update tail: push current, keep last N
+      col.tail.push({ y, char: col.char });
+      if (col.tail.length > maxTail) col.tail.shift();
+
+      // Draw tail with decreasing opacity
+      for (let i = 0; i < col.tail.length - 1; i++) {
+        const alpha = 0.1 + (i / (col.tail.length - 1)) * 0.5;
+        ctx.fillStyle = col.color;
+        ctx.globalAlpha = alpha;
+        ctx.fillText(col.tail[i].char, x, Math.round(col.tail[i].y));
+      }
+      ctx.globalAlpha = 1;
+
+      // Draw glowing white head
+      ctx.shadowBlur = 4;
+      ctx.shadowColor = '#adc6ff';
       ctx.fillStyle = '#ffffff';
       ctx.fillText(col.char, x, y);
+      ctx.shadowBlur = 0;
 
       col.y += col.speed;
 
@@ -231,6 +289,7 @@
         col.y = diamondTop - fontSize * (2 + Math.random() * 8);
         col.delay = Math.floor(Math.random() * 90);
         col.char = randomMatrixChar();
+        col.tail = [];
       }
     }
   }
@@ -261,29 +320,33 @@
     
     const outerSize = minDim * 0.4;
     const innerSize = outerSize * 0.84;
-    // Global trail fade
-    ctx.fillStyle = 'rgba(8,8,8,0.06)';
-    ctx.fillRect(0, 0, width, height);
-    
-    // Redraw diamond borders
-    drawDiamond(cx, cy, outerSize, 'rgba(255,255,255,0.75)');
-    drawDiamond(cx, cy, innerSize, 'rgba(255,255,255,0.45)');
+    // Clear frame for transparent background
+    ctx.clearRect(0, 0, width, height);
+
+    // Integer snap for crisp geometry
+    const rcx = Math.round(cx);
+    const rcy = Math.round(cy);
+    const ros = Math.round(outerSize);
+    const ris = Math.round(innerSize);
+
+    // Redraw diamond frame
+    drawDiamondFrame(rcx, rcy, ros, ris);
     
     // Draw rain clipped to inner diamond
     ctx.save();
     ctx.beginPath();
-    const iw = innerSize * 0.65;
-    ctx.moveTo(cx, cy - innerSize);
-    ctx.lineTo(cx + iw, cy);
-    ctx.lineTo(cx, cy + innerSize);
-    ctx.lineTo(cx - iw, cy);
+    const iw = Math.round(innerSize * 0.65);
+    ctx.moveTo(rcx, rcy - ris);
+    ctx.lineTo(rcx + iw, rcy);
+    ctx.lineTo(rcx, rcy + ris);
+    ctx.lineTo(rcx - iw, rcy);
     ctx.closePath();
     ctx.clip();
-    drawRain(cx, cy, innerSize);
+    drawRain(rcx, rcy, ris);
     ctx.restore();
-    
+
     // Draw math ring
-    drawMathRing(cx, cy, outerSize, innerSize);
+    drawMathRing(rcx, rcy, ros, ris);
     
     pathOffset = (pathOffset + 0.4) % 10000;
     
@@ -298,17 +361,20 @@
     const cy = height / 2;
     const minDim = Math.min(width, height);
     
-    ctx.fillStyle = '#080808';
-    ctx.fillRect(0, 0, width, height);
+    ctx.clearRect(0, 0, width, height);
     
     const outerSize = minDim * 0.4;
     const innerSize = outerSize * 0.84;
-    
-    drawDiamond(cx, cy, outerSize, 'rgba(255,255,255,0.75)');
-    drawDiamond(cx, cy, innerSize, 'rgba(255,255,255,0.45)');
-    
+
+    const rcx = Math.round(cx);
+    const rcy = Math.round(cy);
+    const ros = Math.round(outerSize);
+    const ris = Math.round(innerSize);
+
+    drawDiamondFrame(rcx, rcy, ros, ris);
+
     pathOffset = 0;
-    drawMathRing(cx, cy, outerSize, innerSize);
+    drawMathRing(rcx, rcy, ros, ris);
   }
   
   function handleVisibilityChange() {
@@ -370,9 +436,10 @@
   
   
   function init() {
-    canvas = document.querySelector('canvas[role="img"]') as HTMLCanvasElement;
+    const wrap = document.querySelector('.mandorla-wrap') as HTMLElement;
+    canvas = wrap?.querySelector('canvas') as HTMLCanvasElement ?? null;
     ctx = canvas?.getContext('2d') ?? null;
-    motionToggle = document.querySelector('.motion-toggle') as HTMLButtonElement;
+    motionToggle = wrap?.querySelector('.motion-toggle') as HTMLButtonElement ?? null;
 
     if (!canvas || !ctx) {
       console.error('Canvas or context not found');
