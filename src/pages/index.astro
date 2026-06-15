@@ -62,17 +62,18 @@ import sanglogiumImg from '../assets/images/sanglogium/sanglogium-01.png';
 
     <!-- Diamond image: right column on desktop, behind on mobile -->
     <div
-      class="flex items-center justify-center"
+      class="hidden items-center justify-center"
       aria-hidden="true"
     >
       <div class="relative w-full">
-        <img src="/images/code-diamond.png" alt="" class="w-full h-auto mx-auto relative z-10" />
         <span class="absolute top-0 left-0 w-6 h-6 border-t border-l border-outline"></span>
         <span class="absolute top-0 right-0 w-6 h-6 border-t border-r border-outline"></span>
         <span class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-outline"></span>
         <span class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-outline"></span>
       </div>
     </div>
+
+    <img src="/images/code-diamond.png" alt="" class="absolute z-0 pointer-events-none opacity-[0.2] w-[90vw] max-w-none right-[-15vw] top-1/2 -translate-y-1/2" />
   </section>
 
   <div class="flex justify-center pt-12 pb-4">
