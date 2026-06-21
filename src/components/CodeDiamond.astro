@@ -6,12 +6,71 @@
   class="absolute z-0 pointer-events-none opacity-[0.2] aspect-square w-[90vw] max-w-none right-[-15vw] top-1/2 -translate-y-1/2"
   aria-hidden="true"
 >
-  <!-- Animated scroll layer, clipped to outermost diamond boundary -->
   <div class="cd-clip">
-    <div class="cd-scroll"></div>
+    <div class="cd-bg">
+
+      <!--
+        Three depth tiers create a parallax / 3-D illusion.
+        DOM order: FAR first (behind), NEAR last (in front).
+
+        Seamless loop: each string S is repeated twice.
+        Animation translateY(-50% → 0%) = one S-length of travel → invisible reset.
+
+        FAR  needs S > 90vw: 105 chars × 0.896vw = 94.1vw ✓
+        MID  needs S > 90vw:  64 chars × 1.586vw = 101.5vw ✓
+        NEAR needs S > 90vw:  64 chars × 2.470vw = 158.1vw ✓
+      -->
+
+      <!--
+        Column layout — 13 columns, ~9–10% spacing across diamond interior.
+        Density doubled from 7 → 13 columns; tier ratios preserved for 3-D depth.
+
+        FAR:  10% · 20% · 79% · 89%
+        MID:  27% · 36% · 46% · 56% · 66% · 75%
+        NEAR: 41% · 52% · 63%
+
+        Speed calibration: ambient scroll ≈ 20–30px/s at 1440px.
+        FAR 147–165s · MID 82–96s · NEAR 56–64s
+      -->
+
+      <!-- ═══ FAR — small · subtle · very slow · cool blue ══════════ -->
+
+      <div class="cd-col cd-far" style="left:10%;--dur:163s;--delay:-38s">アクセスデータコードシステムマトリクスネットフローラインメモリスタックバッファポインタアルゴリズムプログラムストリームシグナルベクターモジュールインデックスコンパイラデバッグランタイムカーネルプロセスソケット　アクセスデータコードシステムマトリクスネットフローラインメモリスタックバッファポインタアルゴリズムプログラムストリームシグナルベクターモジュールインデックスコンパイラデバッグランタイムカーネルプロセスソケット</div>
+
+      <div class="cd-col cd-far" style="left:20%;--dur:155s;--delay:-72s">ソケットプロセスカーネルランタイムデバッグコンパイラインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス　ソケットプロセスカーネルランタイムデバッグコンパイラインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス</div>
+
+      <div class="cd-col cd-far" style="left:79%;--dur:158s;--delay:-20s">フローデータメモリシステムアクセスプログラムバッファポインタコードネットマトリクスストリームアルゴリズムモジュールベクターシグナルインデックスコンパイラデバッグランタイムカーネルプロセスソケットスタックライン　フローデータメモリシステムアクセスプログラムバッファポインタコードネットマトリクスストリームアルゴリズムモジュールベクターシグナルインデックスコンパイラデバッグランタイムカーネルプロセスソケットスタックライン</div>
+
+      <div class="cd-col cd-far" style="left:89%;--dur:147s;--delay:-55s">デバッグランタイムカーネルプロセスソケットコンパイラインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス　デバッグランタイムカーネルプロセスソケットコンパイラインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス</div>
+
+      <!-- ═══ MID — medium · clear · medium speed ══════════════════ -->
+
+      <div class="cd-col cd-mid" style="left:27%;--dur:92s;--delay:-14s">マトリクスフローラインバッファポインタデータコードネットシステムアクセスプログラムメモリストリームモジュールベクター　マトリクスフローラインバッファポインタデータコードネットシステムアクセスプログラムメモリストリームモジュールベクター</div>
+
+      <div class="cd-col cd-mid" style="left:36%;--dur:86s;--delay:-58s">インデックスバッファポインタシステムコードデータネットフロースタックメモリアルゴリズムランタイムカーネルモジュールベクターシグナルストリームプログラム　インデックスバッファポインタシステムコードデータネットフロースタックメモリアルゴリズムランタイムカーネルモジュールベクターシグナルストリームプログラム</div>
+
+      <div class="cd-col cd-mid" style="left:46%;--dur:94s;--delay:-32s">ストリームシグナルベクタープログラムアクセスマトリクスデータコードラインネットシステムポインタバッファメモリスタックフロー　ストリームシグナルベクタープログラムアクセスマトリクスデータコードラインネットシステムポインタバッファメモリスタックフロー</div>
+
+      <div class="cd-col cd-mid" style="left:56%;--dur:88s;--delay:-72s">ランタイムカーネルプロセスソケットコンパイラデバッグインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス　ランタイムカーネルプロセスソケットコンパイラデバッグインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス</div>
+
+      <div class="cd-col cd-mid" style="left:66%;--dur:96s;--delay:-44s">コードネットメモリフローシステムアクセスデータバッファマトリクスポインタストリームプログラムアルゴリズムモジュールベクター　コードネットメモリフローシステムアクセスデータバッファマトリクスポインタストリームプログラムアルゴリズムモジュールベクター</div>
+
+      <div class="cd-col cd-mid" style="left:75%;--dur:82s;--delay:-28s">ネットメモリラインマトリクスコードシステムアクセスデータバッファポインタストリームアルゴリズムモジュール　ネットメモリラインマトリクスコードシステムアクセスデータバッファポインタストリームアルゴリズムモジュール</div>
+
+      <!-- ═══ NEAR — large · vivid · still slow · bright blue-white ═ -->
+
+      <div class="cd-col cd-near" style="left:41%;--dur:60s;--delay:-8s">システムネットワークプログラムアルゴリズムメモリスタックデータコードマトリクスフローインデックスシグナルベクターポインタ　システムネットワークプログラムアルゴリズムメモリスタックデータコードマトリクスフローインデックスシグナルベクターポインタ</div>
+
+      <div class="cd-col cd-near" style="left:52%;--dur:56s;--delay:-38s">バッファメモリシステムコードアクセスネットマトリクスフローポインタストリームアルゴリズムインデックスモジュールベクター　バッファメモリシステムコードアクセスネットマトリクスフローポインタストリームアルゴリズムインデックスモジュールベクター</div>
+
+      <div class="cd-col cd-near" style="left:63%;--dur:64s;--delay:-22s">コードアルゴリズムスタックバッファインデックスアクセスデータシステムマトリクスネットフローポインタモジュールストリーム　コードアルゴリズムスタックバッファインデックスアクセスデータシステムマトリクスネットフローポインタモジュールストリーム</div>
+
+      <!-- Atmospheric overlay: dark at top → transparent at 80% (matches original) -->
+      <div class="cd-overlay"></div>
+    </div>
   </div>
 
-  <!-- Static outer ring on top. Transparent center exposes the scroll layer beneath. -->
+  <!-- Static outer ring on top -->
   <img
     src="/images/code-diamond-outer-ring.png"
     alt=""
@@ -20,26 +79,91 @@
 </div>
 
 <style>
+  /* ── Container & clip ──────────────────────────────────────────── */
   .cd-clip {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: polygon(50% 1.4%, 98.5% 50%, 50% 98.5%, 1.4% 50%);
   }
 
-  .cd-scroll {
+  .cd-bg {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 200%;
-    background-image: url('/images/code-diamond-scroll-sprite.png');
-    background-size: 100% 50%;
-    background-repeat: repeat-y;
-    animation: code-rain 50s linear infinite;
+    background: rgb(10, 12, 28);
+    overflow: hidden;
   }
 
-  @keyframes code-rain {
+  /* ── Base column (shared by all tiers) ────────────────────────── */
+  .cd-col {
+    position: absolute;
+    top: 0;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    white-space: nowrap;
+    font-family: 'Noto Sans JP', 'Hiragino Kana', 'Yu Gothic', sans-serif;
+    animation: cd-scroll var(--dur, 22s) linear infinite;
+    animation-delay: var(--delay, 0s);
+    will-change: transform;
+  }
+
+  @keyframes cd-scroll {
     from { transform: translateY(-50%); }
-    to   { transform: translateY(0); }
+    to   { transform: translateY(0%); }
+  }
+
+  /* ── Tier 3: FAR — distant, small, cool, very slow ───────────── */
+  /*    0.55 × parent 0.2 = 11% effective — subtle but perceptible  */
+  .cd-far {
+    font-size: 0.8vw;
+    letter-spacing: 0.12em;
+    opacity: 0.55;
+    color: rgb(100, 115, 188);
+    text-shadow:
+      0 0 5px rgba(100, 115, 188, 0.7);
+  }
+
+  /* ── Tier 2: MID — middle distance ────────────────────────────── */
+  /*    Effect: clearly present but not dominant                     */
+  .cd-mid {
+    font-size: 1.3vw;
+    letter-spacing: 0.22em;
+    opacity: 0.65;
+    color: rgb(150, 165, 230);
+    text-shadow:
+      0 0 9px  rgba(150, 165, 230, 0.90),
+      0 0 20px rgba(115, 138, 215, 0.42);
+  }
+
+  /* ── Tier 1: NEAR — foreground, large, vivid, fast ────────────── */
+  /*    Effect: streams passing close, eye-catching                  */
+  .cd-near {
+    font-size: 1.9vw;
+    letter-spacing: 0.30em;
+    opacity: 1.0;
+    color: rgb(200, 212, 255);
+    text-shadow:
+      0 0 10px rgba(200, 212, 255, 1.00),
+      0 0 24px rgba(162, 183, 255, 0.68),
+      0 0 46px rgba(102, 132, 245, 0.28);
+  }
+
+  /* ── Gradient overlay ──────────────────────────────────────────── */
+  /*    Solid dark at top → fully transparent at ~80%                */
+  /*    Replicates the original's atmospheric fade from dark to vivid */
+  .cd-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgb(10, 12, 28)        0%,
+      rgba(10, 12, 28, 0.88) 12%,
+      rgba(10, 12, 28, 0.65) 28%,
+      rgba(10, 12, 28, 0.30) 48%,
+      rgba(10, 12, 28, 0.05) 65%,
+      transparent            80%
+    );
+    pointer-events: none;
+    z-index: 10;
   }
 </style>
