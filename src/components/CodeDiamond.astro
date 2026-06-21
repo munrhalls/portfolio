@@ -1,0 +1,45 @@
+---
+// src/components/CodeDiamond.astro
+---
+
+<div
+  class="absolute z-0 pointer-events-none opacity-[0.2] aspect-square w-[90vw] max-w-none right-[-15vw] top-1/2 -translate-y-1/2"
+  aria-hidden="true"
+>
+  <!-- Animated scroll layer, clipped to outermost diamond boundary -->
+  <div class="cd-clip">
+    <div class="cd-scroll"></div>
+  </div>
+
+  <!-- Static outer ring on top. Transparent center exposes the scroll layer beneath. -->
+  <img
+    src="/images/code-diamond-outer-ring.png"
+    alt=""
+    class="absolute inset-0 w-full h-full object-contain"
+  />
+</div>
+
+<style>
+  .cd-clip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+
+  .cd-scroll {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 200%;
+    background-image: url('/images/code-diamond-scroll-sprite.png');
+    background-size: 100% 50%;
+    background-repeat: repeat-y;
+    animation: code-rain 50s linear infinite;
+  }
+
+  @keyframes code-rain {
+    from { transform: translateY(-50%); }
+    to   { transform: translateY(0); }
+  }
+</style>
