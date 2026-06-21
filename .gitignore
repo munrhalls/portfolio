@@ -9,3 +9,6 @@ dist
 
 # Design mockups
 # design/
+
+.vercel
+.env*
