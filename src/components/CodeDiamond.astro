@@ -7,65 +7,7 @@
   aria-hidden="true"
 >
   <div class="cd-clip">
-    <div class="cd-bg">
-
-      <!--
-        Three depth tiers create a parallax / 3-D illusion.
-        DOM order: FAR first (behind), NEAR last (in front).
-
-        Seamless loop: each string S is repeated twice.
-        Animation translateY(-50% → 0%) = one S-length of travel → invisible reset.
-
-        FAR  needs S > 90vw: 105 chars × 0.896vw = 94.1vw ✓
-        MID  needs S > 90vw:  64 chars × 1.586vw = 101.5vw ✓
-        NEAR needs S > 90vw:  64 chars × 2.470vw = 158.1vw ✓
-      -->
-
-      <!--
-        Column layout — 13 columns, ~9–10% spacing across diamond interior.
-        Density doubled from 7 → 13 columns; tier ratios preserved for 3-D depth.
-
-        FAR:  10% · 20% · 79% · 89%
-        MID:  27% · 36% · 46% · 56% · 66% · 75%
-        NEAR: 41% · 52% · 63%
-
-        Speed calibration: ambient scroll ≈ 20–30px/s at 1440px.
-        FAR 147–165s · MID 82–96s · NEAR 56–64s
-      -->
-
-      <!-- ═══ FAR — small · subtle · very slow · cool blue ══════════ -->
-
-      <div class="cd-col cd-far" style="left:10%;--dur:163s;--delay:-38s">アクセスデータコードシステムマトリクスネットフローラインメモリスタックバッファポインタアルゴリズムプログラムストリームシグナルベクターモジュールインデックスコンパイラデバッグランタイムカーネルプロセスソケット　アクセスデータコードシステムマトリクスネットフローラインメモリスタックバッファポインタアルゴリズムプログラムストリームシグナルベクターモジュールインデックスコンパイラデバッグランタイムカーネルプロセスソケット</div>
-
-      <div class="cd-col cd-far" style="left:20%;--dur:155s;--delay:-72s">ソケットプロセスカーネルランタイムデバッグコンパイラインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス　ソケットプロセスカーネルランタイムデバッグコンパイラインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス</div>
-
-      <div class="cd-col cd-far" style="left:79%;--dur:158s;--delay:-20s">フローデータメモリシステムアクセスプログラムバッファポインタコードネットマトリクスストリームアルゴリズムモジュールベクターシグナルインデックスコンパイラデバッグランタイムカーネルプロセスソケットスタックライン　フローデータメモリシステムアクセスプログラムバッファポインタコードネットマトリクスストリームアルゴリズムモジュールベクターシグナルインデックスコンパイラデバッグランタイムカーネルプロセスソケットスタックライン</div>
-
-      <div class="cd-col cd-far" style="left:89%;--dur:147s;--delay:-55s">デバッグランタイムカーネルプロセスソケットコンパイラインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス　デバッグランタイムカーネルプロセスソケットコンパイラインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス</div>
-
-      <!-- ═══ MID — medium · clear · medium speed ══════════════════ -->
-
-      <div class="cd-col cd-mid" style="left:27%;--dur:92s;--delay:-14s">マトリクスフローラインバッファポインタデータコードネットシステムアクセスプログラムメモリストリームモジュールベクター　マトリクスフローラインバッファポインタデータコードネットシステムアクセスプログラムメモリストリームモジュールベクター</div>
-
-      <div class="cd-col cd-mid" style="left:36%;--dur:86s;--delay:-58s">インデックスバッファポインタシステムコードデータネットフロースタックメモリアルゴリズムランタイムカーネルモジュールベクターシグナルストリームプログラム　インデックスバッファポインタシステムコードデータネットフロースタックメモリアルゴリズムランタイムカーネルモジュールベクターシグナルストリームプログラム</div>
-
-      <div class="cd-col cd-mid" style="left:46%;--dur:94s;--delay:-32s">ストリームシグナルベクタープログラムアクセスマトリクスデータコードラインネットシステムポインタバッファメモリスタックフロー　ストリームシグナルベクタープログラムアクセスマトリクスデータコードラインネットシステムポインタバッファメモリスタックフロー</div>
-
-      <div class="cd-col cd-mid" style="left:56%;--dur:88s;--delay:-72s">ランタイムカーネルプロセスソケットコンパイラデバッグインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス　ランタイムカーネルプロセスソケットコンパイラデバッグインデックスモジュールベクターシグナルストリームプログラムアルゴリズムポインタバッファスタックメモリラインフローネットマトリクスシステムコードデータアクセス</div>
-
-      <div class="cd-col cd-mid" style="left:66%;--dur:96s;--delay:-44s">コードネットメモリフローシステムアクセスデータバッファマトリクスポインタストリームプログラムアルゴリズムモジュールベクター　コードネットメモリフローシステムアクセスデータバッファマトリクスポインタストリームプログラムアルゴリズムモジュールベクター</div>
-
-      <div class="cd-col cd-mid" style="left:75%;--dur:82s;--delay:-28s">ネットメモリラインマトリクスコードシステムアクセスデータバッファポインタストリームアルゴリズムモジュール　ネットメモリラインマトリクスコードシステムアクセスデータバッファポインタストリームアルゴリズムモジュール</div>
-
-      <!-- ═══ NEAR — large · vivid · still slow · bright blue-white ═ -->
-
-      <div class="cd-col cd-near" style="left:41%;--dur:60s;--delay:-8s">システムネットワークプログラムアルゴリズムメモリスタックデータコードマトリクスフローインデックスシグナルベクターポインタ　システムネットワークプログラムアルゴリズムメモリスタックデータコードマトリクスフローインデックスシグナルベクターポインタ</div>
-
-      <div class="cd-col cd-near" style="left:52%;--dur:56s;--delay:-38s">バッファメモリシステムコードアクセスネットマトリクスフローポインタストリームアルゴリズムインデックスモジュールベクター　バッファメモリシステムコードアクセスネットマトリクスフローポインタストリームアルゴリズムインデックスモジュールベクター</div>
-
-      <div class="cd-col cd-near" style="left:63%;--dur:64s;--delay:-22s">コードアルゴリズムスタックバッファインデックスアクセスデータシステムマトリクスネットフローポインタモジュールストリーム　コードアルゴリズムスタックバッファインデックスアクセスデータシステムマトリクスネットフローポインタモジュールストリーム</div>
-
-      <!-- Atmospheric overlay: dark at top → transparent at 80% (matches original) -->
+    <div class="cd-bg" id="cd-bg">
       <div class="cd-overlay"></div>
     </div>
   </div>
@@ -78,7 +20,7 @@
   />
 </div>
 
-<style>
+<style is:global>
   /* ── Container & clip ──────────────────────────────────────────── */
   .cd-clip {
     position: absolute;
@@ -102,8 +44,8 @@
     text-orientation: mixed;
     white-space: nowrap;
     font-family: 'Noto Sans JP', 'Hiragino Kana', 'Yu Gothic', sans-serif;
-    animation: cd-scroll var(--dur, 22s) linear infinite;
-    animation-delay: var(--delay, 0s);
+    animation: cd-scroll var(--dur) linear infinite;
+    animation-delay: var(--delay);
     will-change: transform;
   }
 
@@ -112,45 +54,62 @@
     to   { transform: translateY(0%); }
   }
 
+  /* ── Variable-length streams ──────────────────────────────────── */
+  .cd-fade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .cd-fade-s {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 54%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 54%);
+  }
+  .cd-fade-m {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 65%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 65%);
+  }
+  .cd-fade-l {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 77%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 60%, transparent 77%);
+  }
+  .cd-fade-band {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 40%, #000 56%, #000 74%, transparent 90%);
+            mask-image: linear-gradient(to bottom, transparent 40%, #000 56%, #000 74%, transparent 90%);
+  }
+
   /* ── Tier 3: FAR — distant, small, cool, very slow ───────────── */
-  /*    0.55 × parent 0.2 = 11% effective — subtle but perceptible  */
   .cd-far {
-    font-size: 0.8vw;
+    font-size: max(2.65px, 0.573vw); /* 11px @1920; px floor only nudges small phones larger */
     letter-spacing: 0.12em;
-    opacity: 0.55;
+    opacity: .70;
     color: rgb(100, 115, 188);
-    text-shadow:
-      0 0 5px rgba(100, 115, 188, 0.7);
+    text-shadow: 0 0 5px rgba(100, 115, 188, .7);
   }
 
   /* ── Tier 2: MID — middle distance ────────────────────────────── */
-  /*    Effect: clearly present but not dominant                     */
   .cd-mid {
-    font-size: 1.3vw;
+    font-size: max(3.85px, 0.833vw); /* 16px @1920; px floor only nudges small phones larger */
     letter-spacing: 0.22em;
-    opacity: 0.65;
+    opacity: .65;
     color: rgb(150, 165, 230);
     text-shadow:
-      0 0 9px  rgba(150, 165, 230, 0.90),
-      0 0 20px rgba(115, 138, 215, 0.42);
+      0 0 9px  rgba(150, 165, 230, .9),
+      0 0 20px rgba(115, 138, 215, .42);
   }
 
   /* ── Tier 1: NEAR — foreground, large, vivid, fast ────────────── */
-  /*    Effect: streams passing close, eye-catching                  */
   .cd-near {
-    font-size: 1.9vw;
+    font-size: max(5.5px, 1.198vw); /* 23px @1920; px floor only nudges small phones larger */
     letter-spacing: 0.30em;
-    opacity: 1.0;
+    opacity: 1;
     color: rgb(200, 212, 255);
     text-shadow:
-      0 0 10px rgba(200, 212, 255, 1.00),
-      0 0 24px rgba(162, 183, 255, 0.68),
-      0 0 46px rgba(102, 132, 245, 0.28);
+      0 0 10px rgba(200, 212, 255, 1),
+      0 0 24px rgba(162, 183, 255, .68),
+      0 0 46px rgba(102, 132, 245, .28);
   }
 
   /* ── Gradient overlay ──────────────────────────────────────────── */
-  /*    Solid dark at top → fully transparent at ~80%                */
-  /*    Replicates the original's atmospheric fade from dark to vivid */
   .cd-overlay {
     position: absolute;
     inset: 0;
@@ -167,3 +126,27 @@
     z-index: 10;
   }
 </style>
+
+<script is:inline>
+(function(){
+  var pool="アクセスデータコードシステムマトリクスネットフローラインメモリスタックバッファポインタアルゴリズムプログラムストリームシグナルベクターモジュールインデックスコンパイラデバッグランタイムカーネルプロセスソケット";
+  function span(start){var s=pool.slice(start)+pool.slice(0,start);var one=s.repeat(2).slice(0,30);return one+"　"+one+"　";}
+  var cfg=[
+    ['far',14,160,-50,'l'],['far',17,165,-42,''],['far',23,150,-95,'s'],['far',29,152,-68,'m'],['far',33,158,-15,'band'],['far',46,156,-22,'m'],['far',59,147,-88,'s'],['far',67,163,-77,''],['far',71,161,-35,''],['far',78,154,-57,''],
+    ['mid',27,92,-14,''],['mid',31,90,-40,'l'],['mid',36,86,-58,''],['mid',46,94,-32,'l'],['mid',56,88,-72,''],['mid',66,96,-44,'band'],['mid',70,84,-66,''],['mid',75,82,-28,''],
+    ['near',41,60,-8,''],['near',52,56,-38,''],['near',63,64,-22,'']
+  ];
+  var bg=document.getElementById('cd-bg');
+  cfg.forEach(function(c,i){
+    var tier=c[0],left=c[1],dur=c[2],delay=c[3],fade=c[4];
+    var col=document.createElement('div');
+    col.className='cd-col cd-'+tier;
+    col.style.left=left+'%';
+    col.style.setProperty('--dur',(dur/3).toFixed(0)+'s');
+    col.style.setProperty('--delay',(delay/3).toFixed(0)+'s');
+    col.textContent=span((i*7)%pool.length);
+    if(fade){var w=document.createElement('div');w.className='cd-fade cd-fade-'+fade;w.appendChild(col);bg.appendChild(w);}
+    else{bg.appendChild(col);}
+  });
+})();
+</script>
