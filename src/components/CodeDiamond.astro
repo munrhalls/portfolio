@@ -76,6 +76,11 @@
     -webkit-mask-image: linear-gradient(to bottom, transparent 40%, #000 56%, #000 74%, transparent 90%);
             mask-image: linear-gradient(to bottom, transparent 40%, #000 56%, #000 74%, transparent 90%);
   }
+  /* Default for long streams: gentle, slow fade-in/out at both ends (no hard pop) */
+  .cd-fade-full {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 72%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 72%, transparent 100%);
+  }
 
   /* ── Tier 3: FAR — distant, small, cool, very slow ───────────── */
   .cd-far {
@@ -131,22 +136,22 @@
 (function(){
   var pool="アクセスデータコードシステムマトリクスネットフローラインメモリスタックバッファポインタアルゴリズムプログラムストリームシグナルベクターモジュールインデックスコンパイラデバッグランタイムカーネルプロセスソケット";
   function span(start){var s=pool.slice(start)+pool.slice(0,start);var one=s.repeat(2).slice(0,30);return one+"　"+one+"　";}
+  var SLOW=1; // lower = slower / more cloud-like (was 3); duration = dur/SLOW seconds
   var cfg=[
-    ['far',14,160,-50,'l'],['far',17,165,-42,''],['far',23,150,-95,'s'],['far',29,152,-68,'m'],['far',33,158,-15,'band'],['far',46,156,-22,'m'],['far',59,147,-88,'s'],['far',67,163,-77,''],['far',71,161,-35,''],['far',78,154,-57,''],
-    ['mid',27,92,-14,''],['mid',31,90,-40,'l'],['mid',36,86,-58,''],['mid',46,94,-32,'l'],['mid',56,88,-72,''],['mid',66,96,-44,'band'],['mid',70,84,-66,''],['mid',75,82,-28,''],
-    ['near',41,60,-8,''],['near',52,56,-38,''],['near',63,64,-22,'']
+    ['far',14,160,-50,'l'],['far',17,165,-42,''],['far',23,150,-95,'s'],['far',29,152,-68,'m'],['far',33,158,-15,'band'],['far',39,156,-30,'s'],['far',46,156,-22,'m'],['far',52,150,-63,'m'],['far',59,147,-88,'s'],['far',64,160,-48,''],['far',67,163,-77,''],['far',71,161,-35,''],['far',78,154,-57,''],
+    ['mid',27,92,-14,''],['mid',31,90,-40,'l'],['mid',36,86,-58,''],['mid',41,90,-52,''],['mid',46,94,-32,'l'],['mid',56,88,-72,''],['mid',61,88,-36,'l'],['mid',66,96,-44,'band'],['mid',70,84,-66,''],['mid',75,82,-28,''],
+    ['near',41,60,-8,''],['near',52,56,-38,''],['near',63,64,-22,''],['near',72,58,-30,'']
   ];
   var bg=document.getElementById('cd-bg');
   cfg.forEach(function(c,i){
-    var tier=c[0],left=c[1],dur=c[2],delay=c[3],fade=c[4];
+    var tier=c[0],left=c[1],dur=c[2],delay=c[3],fade=c[4]||'full';
     var col=document.createElement('div');
     col.className='cd-col cd-'+tier;
     col.style.left=left+'%';
-    col.style.setProperty('--dur',(dur/3).toFixed(0)+'s');
-    col.style.setProperty('--delay',(delay/3).toFixed(0)+'s');
+    col.style.setProperty('--dur',(dur/SLOW).toFixed(0)+'s');
+    col.style.setProperty('--delay',(delay/SLOW).toFixed(0)+'s');
     col.textContent=span((i*7)%pool.length);
-    if(fade){var w=document.createElement('div');w.className='cd-fade cd-fade-'+fade;w.appendChild(col);bg.appendChild(w);}
-    else{bg.appendChild(col);}
+    var w=document.createElement('div');w.className='cd-fade cd-fade-'+fade;w.appendChild(col);bg.appendChild(w);
   });
 })();
 </script>
