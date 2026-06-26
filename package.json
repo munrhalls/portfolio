@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource/geist": "^5.2.9",
     "@fontsource/geist-mono": "^5.2.8",
+    "@fontsource/noto-sans-jp": "^5.2.9",
     "astro": "^5.0.0"
   },
   "devDependencies": {
