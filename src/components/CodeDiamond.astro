@@ -3,7 +3,7 @@
 ---
 
 <div
-  class="absolute z-0 pointer-events-none opacity-[0.2] aspect-square w-[90vw] max-w-none right-[-15vw] top-1/2 -translate-y-1/2"
+  class="cd-wrapper hidden lg:block absolute z-0 pointer-events-none lg:opacity-[0.68] aspect-square lg:w-[72vw] max-w-none lg:right-[-5vw] top-1/2 -translate-y-1/2"
   aria-hidden="true"
 >
   <div class="cd-clip">
@@ -129,6 +129,24 @@
     );
     pointer-events: none;
     z-index: 10;
+  }
+
+  /* ── Desktop: fade left edge of diamond so text zone stays clean ─── */
+  @media (min-width: 1024px) {
+    .cd-wrapper {
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent  0%,
+        transparent 18%,
+        black       42%
+      );
+              mask-image: linear-gradient(
+        to right,
+        transparent  0%,
+        transparent 18%,
+        black       42%
+      );
+    }
   }
 </style>
 

@@ -4,85 +4,593 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import sanglogiumImg from '../assets/images/sanglogium/sanglogium-01.png';
+import MetricsStrip from '../components/MetricsStrip.astro';
+import SectionBreak from '../components/SectionBreak.astro';
+import SystemPresentation from '../components/SystemPresentation.astro';
 import CodeDiamond from '../components/CodeDiamond.astro';
+
+import img05 from '../assets/images/sanglogium/sanglogium-05.png';
+import img06 from '../assets/images/sanglogium/sanglogium-06.png';
+import img07 from '../assets/images/sanglogium/sanglogium-07.png';
+import img08 from '../assets/images/sanglogium/sanglogium-08.png';
+import img09 from '../assets/images/sanglogium/sanglogium-09.png';
+
+import basketPage from '../../assets/checkout-system/slices/basket-page.png';
+import address from '../../assets/checkout-system/slices/address.png';
+import shipping from '../../assets/checkout-system/slices/shipping.png';
+import payment from '../../assets/checkout-system/slices/payment.png';
+import returnPage from '../../assets/checkout-system/slices/return-page.png';
+
+// Code snippets — stored as consts to avoid Astro parsing { } inside <pre><code>
+const codePaymentRederive = `// Server re-derives grand total from live Sanity data — client total is untrusted
+const products = await getBackendClient().fetch(
+  groq\`*[_type == "product" && _id in $ids]{ _id, price_data { unit_amount } }\`,
+  { ids }
+)
+let subtotal = 0
+for (const item of session.basket) {
+  const product = products.find(p => p._id === item.productId)
+  const unitPrice = product?.price_data?.unit_amount
+  if (!unitPrice || !Number.isFinite(unitPrice)) {
+    return NextResponse.json({ error: 'Invalid price' }, { status: 400 })
+  }
+  subtotal += unitPrice * item.quantity
+}
+const computedGrandTotal = Math.round(subtotal + session.shippingCost)`;
+
+const codePaymentGuards = `if (!session.basket?.length) redirect("/basket")
+if (session.basket.some(i => !Number.isInteger(i.quantity) || i.quantity < 1))
+  redirect("/basket?error=invalid_basket")
+if (!session.address) redirect("/checkout/address")
+if (session.shippingCost === undefined || session.shippingCost === null)
+  redirect("/checkout/shipping")
+for (const item of session.basket) {
+  if (item.quantity > MAX_QUANTITY_PER_ITEM)
+    redirect(\`/basket?error=excessive_quantity&id=\${item.productId}\`)
+}`;
+
+const codeParcelCalc = `const MAX_WEIGHT_G = 25000    // 25kg max per package
+const MAX_VOLUME_CM3 = 99000  // 99,000 cm³ max per package
+
+const parcelsByWeight = Math.ceil(totalWeight / MAX_WEIGHT_G)
+const parcelsByVolume = Math.ceil(totalVolume / MAX_VOLUME_CM3)
+const numParcels = Math.max(parcelsByWeight, parcelsByVolume, 1)
+// auto-splits into multiple parcels when basket exceeds courier limits`;
+
+const codeAddressValidation = `const ALLOWED_GRANULARITY = new Set(["PREMISE", "SUB_PREMISE"])
+// Google verdict: inputGranularity, validationGranularity, geocodeGranularity
+// addressComplete, hasReplacedComponents, hasSpellCorrectedComponents
+// → ACCEPT: save to session, redirect to shipping
+// → FIX:    return validation errors to client
+// → CONFIRM: show corrected address for user confirmation`;
+
+const codeADR = `Pattern 1 — Standard items: Pure OCC at payment
+  No inventory held during checkout. At payment: atomic Sanity transaction
+  checks stock > 0 and decrements in a single operation (OCC).
+  If check fails (race): "Another customer just purchased the last unit."
+  Rationale: ~81% cart abandonment in luxury/audio means pessimistic locking
+  starves real buyers. Collision probability negligible vs starvation risk.
+
+Pattern 2 — Rare/flagship ($3k+, qty=1): Soft Reservation via Redis TTL
+  Redis key: soft-reserve:{productId}:{sessionId}  TTL = 10 minutes
+  On completion: promote to hard Sanity decrement, delete Redis key.
+  On TTL expiry: auto-delete, item becomes available again.
+  Industry pattern: Fluent Commerce, Broadleaf, Microsoft Dynamics 365.`;
 ---
 
 <Base title="MUNRHALLS -- Full-Stack Developer">
   <Header slot="nav" />
 
-  <!-- Hero section -->
-  <section class="relative overflow-hidden px-5 lg:px-8 pt-10 pb-20 lg:pt-0 lg:pb-0 grid grid-cols-1 lg:grid-cols-[55%_45%] gap-8 lg:gap-12 items-center h-[100dvh] max-w-container mx-auto">
+  <section class="hero-section">
+    <CodeDiamond />
+    <div class="hero-inner">
 
-    <!-- Hero content -->
-    <div class="relative z-10 flex flex-col justify-center gap-6 h-full py-12">
+      <!-- C1 — person identity label -->
+      <p class="t-c1 t-c1-gold anim-1">Jan Pilik &middot; Full-Stack Developer</p>
 
-      <p class="font-mono text-label-mono font-medium text-on-surface-variant uppercase">
-        FULL-STACK DEVELOPER · WROCLAW
-      </p>
-
-      <h1 class="font-sans text-display-hero font-extrabold text-on-surface">
-        I build full&#8209;stack systems end to end &mdash; architecture, design, backend, frontend, performance.
+      <!-- D1 — display headline -->
+      <h1 class="t-d1 anim-2">
+        3,641 commits.<br>18 months. Solo.
       </h1>
 
-      <p class="font-sans text-body-md font-normal text-on-surface-variant">
-        Specializing in resilient e-commerce architectures, strict state synchronization, and custom payment infrastructures.
+      <!-- B1 — specificity subhead -->
+      <p class="t-b1 hero-sub anim-3">
+        I designed and built Sanglogium — a production
+        e-commerce platform covering every layer: design system,
+        Stripe checkout, multi-carrier shipping, and Sanity CMS.
       </p>
 
-      <div class="flex flex-col gap-4">
-        <a
-          href="/projects/"
-          class="bg-primary text-on-primary hover:bg-primary/90 font-mono text-label-mono font-medium uppercase py-4 text-center"
-        >
-          VIEW MY WORK &rarr;
-        </a>
-        <a
-          href="/resume.pdf"
-          download
-          class="border border-outline text-on-surface font-mono text-label-mono font-medium uppercase py-4 text-center"
-        >
-          DOWNLOAD CV
-        </a>
-      </div>
+      <!-- Sanglogium visual proof strip -->
+      <figure class="hero-proof anim-4">
+        <img
+          src={sanglogiumImg.src}
+          alt="Sanglogium e-commerce platform — storefront view"
+          loading="eager"
+        />
+      </figure>
 
-      <p class="font-mono text-label-mono text-on-surface-variant">
-        Or reach out directly —
-        <a href="mailto:jpilik52@gmail.com" class="text-primary underline underline-offset-4 hover:text-primary/80">
-          jpilik52@gmail.com
+      <!-- CTA row -->
+      <div class="hero-ctas anim-5">
+        <a href="https://sanglogium.com" target="_blank" rel="noopener" class="btn-tier1">
+          View Sanglogium
         </a>
-      </p>
-
-      <div class="flex flex-wrap gap-2">
-        {['Next.js 15', 'React 19', 'TypeScript', 'Stripe', 'Sanity v3'].map((tag) => (
-          <span class="border border-outline-variant text-on-surface-variant font-mono text-label-mono font-medium uppercase px-2 py-2">
-            {tag}
-          </span>
-        ))}
+        <a href="https://github.com/munrhalls/sang-logium" target="_blank" rel="noopener" class="btn-tier2">
+          View GitHub
+        </a>
+        <a href="/resume.pdf" download class="btn-tier3">
+          Download CV
+        </a>
       </div>
 
     </div>
-
-    <!-- Diamond image: right column on desktop, behind on mobile -->
-    <div
-      class="hidden items-center justify-center"
-      aria-hidden="true"
-    >
-      <div class="relative w-full">
-        <span class="absolute top-0 left-0 w-6 h-6 border-t border-l border-outline"></span>
-        <span class="absolute top-0 right-0 w-6 h-6 border-t border-r border-outline"></span>
-        <span class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-outline"></span>
-        <span class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-outline"></span>
-      </div>
-    </div>
-
-    <CodeDiamond />
-
-    <!-- Gradient scrim — improves text readability in lower third of hero -->
-    <div
-      class="absolute bottom-0 left-0 w-full h-3/5 z-[1] pointer-events-none"
-      style="background: linear-gradient(to top, #10131a 0%, transparent 100%);"
-      aria-hidden="true"
-    ></div>
   </section>
+
+  <style>
+    /* ── Hero layout ─────────────────────────────────── */
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+      padding: 160px 80px 80px;
+    }
+    .hero-inner {
+      max-width: 998px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Spacing between hero elements (8px base unit) */
+    .hero-section .t-c1 { margin-bottom: 24px; }
+    .hero-section .t-d1 { margin-bottom: 24px; }
+    .hero-sub            { margin-bottom: 40px; max-width: 620px; }
+
+    /* ── Sanglogium proof strip ──────────────────────────────── */
+    .hero-proof {
+      margin: 0 0 40px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      width: 100%;
+      height: 130px;
+    }
+    .hero-proof img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    /* CTA row — desktop: inline row */
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Mobile overrides ────────────────────────────── */
+    @media (max-width: 767px) {
+      .hero-section {
+        padding: 80px 24px 64px;
+      }
+      /* CTAs stack full-width on mobile */
+      .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .hero-ctas .btn-tier1 {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero-ctas .btn-tier2 {
+        align-self: center;
+        padding-top: 4px;
+      }
+      .hero-ctas .btn-tier3 {
+        align-self: center;
+        padding-top: 8px;
+      }
+    }
+  </style>
+
+  <MetricsStrip metrics={[
+    { value: '4,000+', label: 'Commits' },
+    { value: '18', label: 'Months' },
+    { value: '1,000+', label: 'Products' },
+    { value: '5,000+', label: 'Images' },
+    { value: 'Stripe', label: 'Payment Intents' },
+    { value: 'Next.js 15' },
+    { value: 'Custom', label: 'Design System' },
+  ]} />
+
+  <SectionBreak index="01 / 01" title="Professional Checkout System" />
+
+  <SystemPresentation
+    title="PROFESSIONAL CHECKOUT SYSTEM"
+    screenshots={[
+      { src: basketPage.src, alt: 'Basket / cart' },
+      { src: address.src, alt: 'Address validation step' },
+      { src: shipping.src, alt: 'Shipping carrier selection' },
+      { src: payment.src, alt: 'Payment — Stripe Elements' },
+      { src: returnPage.src, alt: 'Success / confirmation page' },
+    ]}
+    steps={[
+      { key: 'basket',   icon: '🛒', label: 'Basket step' },
+      { key: 'address',  icon: '📍', label: 'Address step' },
+      { key: 'shipping', icon: '📦', label: 'Shipping step' },
+      { key: 'payment',  icon: '💳', label: 'Payment step' },
+      { key: 'success',  icon: '📋', label: 'Success / order' },
+    ]}
+    defaultStep="success"
+    liveHref="https://sanglogium.com"
+    codeHref="https://github.com/munrhalls/sang-logium"
+    summary={{
+      title: 'CHECKOUT SYSTEM — SUMMARY',
+      points: [
+        {
+          text: 'Secure payments — server re-derives price, client total untrusted',
+          subpoints: [
+            '5 funnel guards before any Stripe call',
+            'Stripe-Signature verified on every webhook',
+          ],
+        },
+        {
+          text: 'Idempotent order creation',
+          subpoints: [
+            'Sync + webhook, whichever arrives first wins',
+            'Dual verification gate: session OR Sanity fallback',
+          ],
+        },
+        {
+          text: 'Multi-carrier shipping from real product dimensions',
+          subpoints: [
+            'AlleKurier API: DPD, DHL, InPost',
+            'Parcel calculator auto-splits at 25kg / 99,000cm³',
+          ],
+        },
+        {
+          text: 'Inventory concurrency (ADR-002)',
+          subpoints: [
+            'OCC for standard items',
+            'Redis TTL soft reservation for flagship ($3k+, qty=1)',
+          ],
+        },
+        {
+          text: 'Address validation via Google Maps API',
+          subpoints: [
+            '3-outcome: ACCEPT / FIX / CONFIRM',
+            'PREMISE/SUB_PREMISE granularity required',
+          ],
+        },
+      ],
+    }}
+  >
+
+    <!-- BASKET step panels -->
+    <div id="panel-basket-ux" role="tabpanel" hidden>
+      <h3>Basket — End User Experience</h3>
+      <figure>
+        <img src={basketPage.src} alt="Basket / cart" />
+        <figcaption>Basket: items, quantities, subtotal, proceed to checkout</figcaption>
+      </figure>
+      <p>User reviews items and adjusts quantities. Real-time stock checks on each item. Quantities must be integers ≥ 1 and ≤ MAX_QUANTITY_PER_ITEM. Proceeds to address step.</p>
+    </div>
+
+    <div id="panel-basket-arch" role="tabpanel" hidden>
+      <h3>Basket — Architecture</h3>
+      <h4>State: iron-session</h4>
+      <p>Basket is stored in an encrypted, httpOnly iron-session cookie. Changing the basket invalidates all downstream checkout state (address, shippingCost, completedPaymentIntentId).</p>
+      <h4>Cascade invalidation</h4>
+      <pre>
+basket changed
+  → clear session.address
+  → clear session.shippingCost
+  → clear session.shippingCarrier
+  → clear session.completedPaymentIntentId
+      </pre>
+      <p>This prevents stale shipping or payment data from reaching checkout after a basket change.</p>
+    </div>
+
+    <div id="panel-basket-code" role="tabpanel" hidden>
+      <h3>Basket — Code Quality</h3>
+      <h4>Funnel guard: basket validation</h4>
+      <p><code>app/checkout/payment/page.tsx</code></p>
+      <pre><code set:text={codePaymentGuards} /></pre>
+      <p>Guards run server-side on the payment page. Empty basket, invalid quantities, missing address/shipping → immediate redirect. No Stripe call is made.</p>
+    </div>
+
+    <div id="panel-basket-diag" role="tabpanel" hidden>
+      <h3>Basket — Diagrams</h3>
+      <pre>
+BASKET → CHECKOUT FLOW
+───────────────────────
+basket items (iron-session)
+  │
+  ├─ basket changed?
+  │    → cascade: clear address,
+  │      shippingCost, paymentData
+  │
+  ├─ validation (server):
+  │    ✓ items exist
+  │    ✓ qty: integer ≥ 1
+  │    ✓ qty ≤ MAX_QUANTITY_PER_ITEM
+  │    ✓ stock available (Sanity)
+  │
+  └─► /checkout/address
+      </pre>
+    </div>
+
+    <!-- ADDRESS step panels -->
+    <div id="panel-address-ux" role="tabpanel" hidden>
+      <h3>Address — End User Experience</h3>
+      <figure>
+        <img src={address.src} alt="Address validation step" />
+        <figcaption>Address entry with Google Maps validation feedback</figcaption>
+      </figure>
+      <p>User enters a shipping address. Server calls Google Maps Address Validation API. Three outcomes:</p>
+      <ul>
+        <li><strong>ACCEPT</strong> — address is valid. Saved to session, redirects to shipping.</li>
+        <li><strong>FIX</strong> — address has errors. Inline validation messages shown per field. User corrects without leaving the page.</li>
+        <li><strong>CONFIRM</strong> — Google corrected the address. User sees the corrected version and can accept or re-enter.</li>
+      </ul>
+      <p>Not a regex check — Google validates at PREMISE / SUB_PREMISE granularity level.</p>
+    </div>
+
+    <div id="panel-address-arch" role="tabpanel" hidden>
+      <h3>Address — Architecture</h3>
+      <h4>Google Maps Address Validation API</h4>
+      <p>Called server-side on form submit. The API returns a verdict with inputGranularity, validationGranularity, geocodeGranularity, addressComplete, hasReplacedComponents, hasSpellCorrectedComponents.</p>
+      <h4>3-outcome classification</h4>
+      <p>ACCEPT: all components valid, granularity PREMISE/SUB_PREMISE, no spell corrections → save to iron-session.</p>
+      <p>FIX: invalid components or coarse granularity → return field-level errors to client.</p>
+      <p>CONFIRM: Google replaced/corrected components → return corrected address to client for user review.</p>
+    </div>
+
+    <div id="panel-address-code" role="tabpanel" hidden>
+      <h3>Address — Code Quality</h3>
+      <h4>3-outcome classification logic</h4>
+      <p><code>app/actions/address/address.ts</code></p>
+      <pre><code set:text={codeAddressValidation} /></pre>
+      <a href="https://github.com/munrhalls/sang-logium/blob/main/app/actions/address/address.ts">View on GitHub →</a>
+    </div>
+
+    <div id="panel-address-diag" role="tabpanel" hidden>
+      <h3>Address — Diagrams</h3>
+      <pre>
+ADDRESS VALIDATION FLOW
+────────────────────────
+user submits address
+        │
+  Google Maps API (server)
+        │
+  ┌─────┴──────────────────┐
+  │                        │
+ FIX                  CONFIRM / ACCEPT
+  │                        │
+inline errors          ACCEPT:
+shown per field        → save to iron-session
+user corrects          → /checkout/shipping
+  │
+  └─► re-submit          CONFIRM:
+                         → show corrected address
+                         → user accepts → ACCEPT path
+                         → user rejects → re-enter
+      </pre>
+    </div>
+
+    <!-- SHIPPING step panels -->
+    <div id="panel-shipping-ux" role="tabpanel" hidden>
+      <h3>Shipping — End User Experience</h3>
+      <figure>
+        <img src={shipping.src} alt="Shipping carrier selection" />
+        <figcaption>Real-time carrier rates: DPD, DHL, InPost</figcaption>
+      </figure>
+      <p>Shipping rates are fetched live from the AlleKurier API based on the actual product dimensions (weight, length, width, height) stored in Sanity. The parcel calculator enforces per-parcel limits and auto-splits into multiple parcels when needed. User selects carrier. Selection is server-verified at save.</p>
+    </div>
+
+    <div id="panel-shipping-arch" role="tabpanel" hidden>
+      <h3>Shipping — Architecture</h3>
+      <h4>AlleKurier API integration</h4>
+      <p>Real-time rates fetched server-side. Product dimensions (weight_g, length_cm, width_cm, height_cm) stored per product in Sanity. Parcel calculator aggregates basket to determine number of parcels needed.</p>
+      <h4>Parcel limits (per courier)</h4>
+      <ul>
+        <li>Max weight: 25,000g per parcel</li>
+        <li>Max volume: 99,000 cm³ per parcel</li>
+        <li>Auto-splits basket into multiple parcels if either limit is exceeded</li>
+      </ul>
+      <h4>Server re-verification</h4>
+      <p>When the user saves their carrier selection, the server re-fetches the rate from AlleKurier. The shippingCost written to iron-session comes from a fresh API call, not from the client.</p>
+    </div>
+
+    <div id="panel-shipping-code" role="tabpanel" hidden>
+      <h3>Shipping — Code Quality</h3>
+      <h4>Parcel calculator — enforces courier limits, auto-splits</h4>
+      <p><code>lib/shipping/parcel-calculator.ts</code></p>
+      <pre><code set:text={codeParcelCalc} /></pre>
+      <a href="https://github.com/munrhalls/sang-logium/blob/main/lib/shipping/parcel-calculator.ts">View on GitHub →</a>
+    </div>
+
+    <div id="panel-shipping-diag" role="tabpanel" hidden>
+      <h3>Shipping — Diagrams</h3>
+      <pre>
+PARCEL CALCULATION
+──────────────────
+basket items (from Sanity):
+  weight_g, length_cm, width_cm, height_cm
+
+totalWeight = sum(qty x weight_g)
+totalVolume = sum(qty x l x w x h)
+
+parcelsByWeight = ceil(totalWeight / 25000)
+parcelsByVolume = ceil(totalVolume / 99000)
+numParcels = max(byWeight, byVolume, 1)
+  │
+  └─► AlleKurier API (per-parcel rates)
+       DPD | DHL | InPost | others
+              │
+        user selects carrier
+              │
+        server re-verifies rate at save
+              │
+        stored in iron-session
+      </pre>
+    </div>
+
+    <!-- PAYMENT step panels -->
+    <div id="panel-payment-ux" role="tabpanel" hidden>
+      <h3>Payment — End User Experience</h3>
+      <figure>
+        <img src={payment.src} alt="Payment — Stripe Elements" />
+        <figcaption>Stripe Embedded Elements: 6 payment methods</figcaption>
+      </figure>
+      <p>Six payment methods: BLIK, P24, Klarna, Apple Pay, Google Pay, card. User selects and pays. If payment fails (requires_payment_method), a clear error is shown and the user can retry — session is preserved. Successful payment redirects to /success.</p>
+    </div>
+
+    <div id="panel-payment-arch" role="tabpanel" hidden>
+      <h3>Payment — Architecture</h3>
+      <h4>5 funnel guards (server, before any Stripe call)</h4>
+      <ol>
+        <li>Basket not empty</li>
+        <li>All quantities are valid integers &gt;= 1</li>
+        <li>Address present in session</li>
+        <li>shippingCost present in session</li>
+        <li>No item quantity exceeds MAX_QUANTITY_PER_ITEM</li>
+      </ol>
+      <h4>Server-side price re-derivation</h4>
+      <p>At payment time, the server fetches every product price fresh from Sanity and recomputes the grand total. The client's reported amount is ignored. The Stripe charge is based on the server-computed total only.</p>
+      <h4>Inventory concurrency (ADR-002)</h4>
+      <ul>
+        <li><strong>Standard items</strong> — OCC: atomic Sanity check+decrement at payment. Collision gives clear message.</li>
+        <li><strong>Flagship ($3k+, qty=1)</strong> — Redis TTL soft reservation (10 min). Promotes on payment, auto-expires on abandon.</li>
+      </ul>
+    </div>
+
+    <div id="panel-payment-code" role="tabpanel" hidden>
+      <h3>Payment — Code Quality</h3>
+      <h4>Server re-derives grand total — client total untrusted</h4>
+      <p><code>app/api/checkout/payment-intent-session/route.ts</code></p>
+      <pre><code set:text={codePaymentRederive} /></pre>
+      <a href="https://github.com/munrhalls/sang-logium/blob/main/app/api/checkout/payment-intent-session/route.ts">View on GitHub</a>
+      <h4>Five funnel guards before any Stripe call</h4>
+      <p><code>app/checkout/payment/page.tsx</code></p>
+      <pre><code set:text={codePaymentGuards} /></pre>
+    </div>
+
+    <div id="panel-payment-diag" role="tabpanel" hidden>
+      <h3>Payment — Diagrams</h3>
+      <pre>
+PAYMENT SECURITY FLOW
+----------------------
+/checkout/payment (server):
+  5 FUNNEL GUARDS
+  1. basket not empty
+  2. valid integer quantities
+  3. address in session
+  4. shippingCost in session
+  5. qty &lt;= MAX_QUANTITY_PER_ITEM
+        |
+  createPaymentIntent (Stripe API)
+  * amount = server-recomputed total
+    (fresh Sanity prices; client ignored)
+        |
+  Stripe Embedded Elements mount
+  (BLIK / P24 / Klarna / Apple Pay
+   Google Pay / card)
+        |
+  stripe.confirmPayment()
+        |
+   +----+-------------+
+  FAIL              SUCCESS
+   |                    |
+  retry UI          sync order create
+  session           redirect /success
+  preserved         + Stripe webhook (async)
+      </pre>
+    </div>
+
+    <!-- SUCCESS step panels -->
+    <div id="panel-success-ux" role="tabpanel" hidden>
+      <h3>Success Page — End User Experience</h3>
+      <figure>
+        <img src={returnPage.src} alt="Checkout success / confirmation page" />
+        <figcaption>Full order receipt with carrier, delivery estimate, VAT, payment method</figcaption>
+      </figure>
+      <p>The success page renders a full order receipt: line items, subtotal, shipping carrier and estimated delivery date, VAT breakdown, total, and payment method hint.</p>
+      <h4>Payment status branches (5 Stripe states)</h4>
+      <ul>
+        <li><strong>succeeded</strong> — show full receipt.</li>
+        <li><strong>requires_payment_method</strong> — payment failed, link to retry.</li>
+        <li><strong>canceled</strong> — order canceled.</li>
+        <li><strong>processing</strong> — show processing state, auto-refresh.</li>
+        <li><strong>unexpected</strong> — graceful error, never throws on a paid user.</li>
+      </ul>
+      <h4>Cross-device access</h4>
+      <p>Dual verification: session.completedPaymentIntentId OR Sanity order fallback by userId. Receipt always accessible across devices.</p>
+    </div>
+
+    <div id="panel-success-arch" role="tabpanel" hidden>
+      <h3>Success Page — Architecture</h3>
+      <h4>Idempotent order creation</h4>
+      <p>Order is created twice: synchronously before the redirect, and via Stripe webhook. Both use idempotency key = paymentIntentId. First write creates the Sanity document; second is a no-op. Handles webhook delays, mid-redirect crashes, duplicate deliveries.</p>
+      <h4>Dual verification gate</h4>
+      <p>Checks session.completedPaymentIntentId first. If absent (cross-device), falls back to Sanity query by userId + paymentIntentId. Receipt always accessible.</p>
+      <h4>Security: no sensitive data in client</h4>
+      <p>All order data fetched server-side. iron-session cookie is httpOnly and encrypted. No order details pass through the client bundle at any point.</p>
+      <h4>Stripe webhook</h4>
+      <p>Stripe-Signature header verified on every delivery. Replay-safe: idempotent creation means duplicates are no-ops.</p>
+    </div>
+
+    <div id="panel-success-code" role="tabpanel" hidden>
+      <h3>Success Page — Code Quality</h3>
+      <h4>Inventory concurrency — ADR-002</h4>
+      <p><code>docs/checkout/ADR-002-checkout-inventory-concurrency.md</code></p>
+      <pre><code set:text={codeADR} /></pre>
+      <a href="https://github.com/munrhalls/sang-logium/blob/main/docs/checkout/ADR-002-checkout-inventory-concurrency.md">Full ADR-002 on GitHub</a>
+      <h4>Server re-derives grand total (payment route)</h4>
+      <p><code>app/api/checkout/payment-intent-session/route.ts</code></p>
+      <pre><code set:text={codePaymentRederive} /></pre>
+      <a href="https://github.com/munrhalls/sang-logium/blob/main/app/api/checkout/payment-intent-session/route.ts">View on GitHub</a>
+    </div>
+
+    <div id="panel-success-diag" role="tabpanel" hidden>
+      <h3>Success Page — Diagrams</h3>
+      <pre>
+IDEMPOTENT ORDER CREATION
+--------------------------
+payment confirmed (Stripe)
+        |
+  +-----+-----------------+
+  |                       |
+sync create           Stripe webhook
+(before redirect)     (async delivery)
+  |                       |
+  +----------+------------+
+             | key = paymentIntentId
+             v
+      Sanity order doc
+      (first write wins;
+       second = no-op)
+
+CROSS-DEVICE ACCESS
+--------------------
+/success page load
+  |
+  session.completedPaymentIntentId?
+  |
+  YES --> render full receipt
+  |
+  NO --> Sanity: query by
+         userId + paymentIntentId
+           |
+           found --> render receipt
+           |
+           not found --> pending state
+      </pre>
+    </div>
+
+  </SystemPresentation>
 
   <div class="flex justify-center pt-12 pb-4">
     <a href="#work" aria-label="Scroll to work" class="text-on-surface-variant animate-bounce">
