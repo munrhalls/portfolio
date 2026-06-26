@@ -1,0 +1,490 @@
+---
+// src/components/SystemPresentation.astro
+// Portfolio presentation block for any project system.
+//
+// Usage in consumer:
+//   <SystemPresentation title="..." screenshots={[...]} steps={[...]} summary={...}>
+//     <!-- slot: one div per panel, id="panel-{stepKey}-{tabKey}" role="tabpanel" hidden -->
+//     <div id="panel-basket-ux" role="tabpanel" hidden>...</div>
+//   </SystemPresentation>
+//
+// Fixed tab keys: ux | arch | code | diag
+
+interface SummaryPoint {
+  text: string;
+  subpoints?: string[];
+}
+
+interface Props {
+  title:        string;
+  screenshots:  Array<{ src: string; alt: string }>;
+  videoSrc?:    string;
+  steps:        Array<{ key: string; icon: string; label: string }>;
+  defaultStep?: string;   // defaults to last step in array
+  summary: {
+    title:  string;
+    points: Array<SummaryPoint>;
+  };
+  liveHref?: string;
+  codeHref?: string;
+}
+
+const { title, screenshots, videoSrc, steps, defaultStep, summary, liveHref, codeHref } = Astro.props;
+
+// Resolve default step — last in array if not specified
+const initialStep = defaultStep ?? steps[steps.length - 1]?.key ?? '';
+---
+
+<section class="sp">
+
+  <!-- ── Title ─────────────────────────────── -->
+  <header class="sp-header">
+    <h2 class="sp-title">{title}</h2>
+    <p class="sp-subheading">screenshots from live product</p>
+  </header>
+
+  <!-- ── Screenshot strip ──────────────────── -->
+  <div class="sp-screenshots" aria-label={`${title} screenshots`}>
+    {screenshots.map(s => (
+      <figure class="sp-shot-fig">
+        <img src={s.src} alt={s.alt} />
+      </figure>
+    ))}
+  </div>
+
+  <!-- ── Video ─────────────────────────────── -->
+  <div class="sp-video">
+    {videoSrc && (
+      <video autoplay muted loop playsinline>
+        <source src={videoSrc} type="video/mp4" />
+      </video>
+    )}
+    {!videoSrc && <p class="sp-video-label">video playing user journey, infinite loop</p>}
+    {!videoSrc && <span class="sp-play-btn" aria-hidden="true">&#9654;</span>}
+  </div>
+
+  <!-- ── Deep dive: steps × tabs ───────────── -->
+  <div class="sp-panel">
+
+    <div class="sp-steps">
+      {steps.map(step => (
+        <button
+          class="sp-step"
+          data-step={step.key}
+          data-active={step.key === initialStep ? 'true' : 'false'}
+          aria-label={step.label}
+        >
+          {step.icon}
+        </button>
+      ))}
+    </div>
+
+    <!-- Consumer provides panel divs here -->
+    <div class="sp-content">
+      <slot />
+    </div>
+
+    <nav class="sp-tabs" aria-label="Evidence view">
+      <button class="sp-tab" data-tab="ux"   aria-selected="true" >end user<br/>experience</button>
+      <button class="sp-tab" data-tab="arch" aria-selected="false">architecture</button>
+      <button class="sp-tab" data-tab="code" aria-selected="false">code quality</button>
+      <button class="sp-tab" data-tab="diag" aria-selected="false">diagrams</button>
+    </nav>
+
+  </div>
+
+  <!-- ── Summary ───────────────────────────── -->
+  <div class="sp-summary">
+    <h3 class="sp-sum-title">{summary.title}</h3>
+    <ul class="sp-sum-list">
+      {summary.points.map(pt => (
+        <li class="sp-sum-point">
+          {pt.text}
+          {pt.subpoints && pt.subpoints.length > 0 && (
+            <ul class="sp-sum-sublist">
+              {pt.subpoints.map(sub => <li>{sub}</li>)}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="sp-section-ctas">
+    <a href={liveHref ?? '#'} class="btn-tier1">Open Live Product</a>
+    <a href={codeHref ?? '#'} class="btn-tier2">See the Code</a>
+  </div>
+
+</section>
+
+<script>
+  // Runs once per page; iterates all .sp instances (multi-system support).
+  document.querySelectorAll('.sp').forEach(function(sp) {
+    var steps   = sp.querySelectorAll('.sp-step');
+    var tabs    = sp.querySelectorAll('.sp-tab');
+    var content = sp.querySelector('.sp-content');
+    if (!content) return;
+    var panels  = content.querySelectorAll('[role="tabpanel"]');
+
+    var activeStep = '';
+    var activeTab  = 'ux';
+
+    // Read initial step from server-rendered data-active attribute
+    steps.forEach(function(btn) {
+      if (btn.getAttribute('data-active') === 'true') {
+        activeStep = btn.getAttribute('data-step') || '';
+      }
+    });
+
+    function showPanel() {
+      var id = 'panel-' + activeStep + '-' + activeTab;
+      panels.forEach(function(p) { p.hidden = true; });
+      var target = document.getElementById(id);
+      if (target) target.hidden = false;
+    }
+
+    steps.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        activeStep = btn.getAttribute('data-step') || activeStep;
+        steps.forEach(function(s) { s.setAttribute('data-active', 'false'); });
+        btn.setAttribute('data-active', 'true');
+        showPanel();
+      });
+    });
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        activeTab = tab.getAttribute('data-tab') || activeTab;
+        tabs.forEach(function(t) { t.setAttribute('aria-selected', 'false'); });
+        tab.setAttribute('aria-selected', 'true');
+        showPanel();
+      });
+    });
+
+    showPanel();
+  });
+</script>
+
+<style>
+  /* ── Title header ────────────────────────────── */
+  .sp-header {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border, #2a2820);
+  }
+  .sp-title {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    color: var(--text, #e8e8e8);
+  }
+  .sp-subheading {
+    font-size: 11px;
+    color: var(--text-muted, #888);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Screenshot strip ────────────────────────── */
+  .sp-screenshots {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    margin-top: 10px;
+    background: var(--surface, #161410);
+    border: 1px solid var(--border, #2a2820);
+    border-radius: var(--radius, 6px);
+    padding: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold, #c8940a) transparent;
+  }
+  .sp-shot-fig {
+    flex-shrink: 0;
+  }
+  .sp-screenshots img {
+    width: 58px;
+    height: 52px;
+    object-fit: cover;
+    border: 1px solid var(--border, #333);
+    border-radius: 4px;
+    display: block;
+  }
+
+  /* ── Video ───────────────────────────────────── */
+  .sp-video {
+    margin-top: 8px;
+    border: 1px solid var(--border, #2a2820);
+    border-top: 2px solid var(--gold, #c8940a);
+    border-radius: var(--radius, 6px);
+    min-height: 130px;
+    background: var(--surface, #161410);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+  }
+  .sp-video video {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+  }
+  .sp-video-label {
+    font-size: 13px;
+    color: var(--text-muted, #888);
+    text-align: center;
+    padding: 0 20px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+  }
+  .sp-play-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--gold, #c8940a);
+    font-size: 22px;
+    color: var(--gold, #c8940a);
+    line-height: 1;
+    opacity: 0.85;
+    padding-left: 3px; /* optical centering for play triangle */
+  }
+
+  /* ── Deep dive panel ─────────────────────────── */
+  .sp-panel {
+    margin-top: 8px;
+    border: 1px solid var(--border, #2a2820);
+    border-radius: var(--radius, 6px);
+    overflow: hidden;
+    background: var(--surface, #161410);
+  }
+
+  /* Step icon pills */
+  .sp-steps {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 8px;
+    background: var(--surface-2, #1e1e1e);
+    border-bottom: 1px solid var(--border, #2a2820);
+  }
+  .sp-step {
+    min-width: 44px;
+    width: auto;
+    padding: 0 8px;
+    height: 28px;
+    border-radius: 14px;
+    background: var(--surface-2, #252525);
+    color: var(--text, #fff);
+    border: 1px solid var(--border, #333);
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .sp-step[data-active="true"] {
+    background: var(--gold, #c8940a);
+    border-color: var(--gold, #c8940a);
+  }
+
+  /* Scrollable content area */
+  .sp-content {
+    height: 210px;
+    overflow-y: auto;
+    padding: 12px;
+    background: var(--surface, #161410);
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+  }
+
+  /* Tab bar */
+  .sp-tabs {
+    display: flex;
+    width: 100%;
+    background: var(--surface-2, #111);
+    border-top: 1px solid var(--border, #2a2820);
+  }
+  .sp-tab {
+    flex: 1;
+    font-size: 10px;
+    padding: 8px 2px;
+    border: none;
+    border-right: 1px solid var(--border, #222);
+    border-top: 2px solid transparent;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted, #555);
+    text-align: center;
+    line-height: 1.3;
+    font-family: inherit;
+    transition: color 0.15s;
+  }
+  .sp-tab:last-child {
+    border-right: none;
+  }
+  .sp-tab[aria-selected="true"] {
+    border-top-color: var(--gold, #c8940a);
+    color: var(--text, #e8e8e8);
+    font-weight: 600;
+  }
+
+  /* ── Summary ─────────────────────────────────── */
+  .sp-summary {
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid var(--border, #2a2820);
+    border-radius: var(--radius, 6px);
+    background: var(--surface, #161410);
+  }
+  .sp-sum-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold, #c8940a);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border, #2a2820);
+  }
+  .sp-sum-list {
+    padding-left: 0;
+    list-style: none;
+    grid-template-columns: 1fr;
+  }
+  .sp-sum-point {
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: var(--text, #e8e8e8);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .sp-sum-point::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--gold, #c8940a);
+    font-size: 9px;
+  }
+  .sp-sum-sublist {
+    padding-left: 0;
+    margin-top: 5px;
+    list-style: none;
+  }
+  .sp-sum-sublist li {
+    font-size: 11px;
+    color: var(--text-muted, #888);
+    margin-bottom: 3px;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .sp-sum-sublist li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: #555;
+  }
+
+  /* Section-end CTAs — below summary on all viewports */
+  .sp-section-ctas {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .sp-section-ctas .btn-tier1,
+  .sp-section-ctas .btn-tier2 {
+    flex: 1;
+    font-size: 10px;
+  }
+  @media (max-width: 767px) {
+    .sp-section-ctas {
+      flex-direction: column;
+    }
+  }
+
+  /* ── DESKTOP — 768px+ ───────────────────────── */
+  @media (min-width: 768px) {
+
+    /* Two-column grid: media left, panel right */
+    .sp {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      grid-template-rows: auto auto 1fr auto;
+      column-gap: 20px;
+    }
+    .sp-header {
+      grid-column: 1 / -1;
+      margin-top: 28px;
+      padding-top: 18px;
+    }
+    .sp-title   { font-size: 20px; }
+    .sp-subheading { font-size: 12px; }
+
+    /* Left col: screenshots */
+    .sp-screenshots {
+      grid-column: 1;
+      grid-row: 2;
+      margin-top: 14px;
+    }
+    .sp-screenshots img { width: 75px; height: 64px; }
+
+    /* Left col: video */
+    .sp-video {
+      grid-column: 1;
+      grid-row: 3;
+      margin-top: 10px;
+      min-height: 210px;
+      align-self: stretch;
+    }
+    .sp-video video { height: 210px; }
+    .sp-video-label { font-size: 13px; }
+    .sp-play-btn { width: 64px; height: 64px; font-size: 26px; }
+
+    /* Right col: panel spans both rows */
+    .sp-panel {
+      grid-column: 2;
+      grid-row: 2 / 4;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      align-self: stretch;
+    }
+    .sp-steps { padding: 12px 10px; }
+    .sp-step { min-width: 44px; width: auto; padding: 0 8px; height: 32px; font-size: 16px; }
+
+    /* Content fills remaining panel height */
+    .sp-content {
+      flex: 1;
+      height: auto;
+      min-height: 200px;
+      padding: 14px 16px;
+    }
+    .sp-tab { font-size: 11px; padding: 9px 3px; }
+
+    /* Full-width summary with 2-col points */
+    .sp-summary {
+      grid-column: 1 / -1;
+      grid-row: 4;
+      margin-top: 12px;
+      padding: 16px 18px;
+    }
+    .sp-sum-title { font-size: 12px; margin-bottom: 12px; }
+    .sp-sum-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+    .sp-sum-point { font-size: 13px; margin-bottom: 4px; }
+    .sp-sum-sublist li { font-size: 12px; }
+  }
+</style>

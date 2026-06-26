@@ -1,0 +1,94 @@
+---
+// src/components/MetricsStrip.astro
+// Metrics strip: 7 verifiable data points displayed as scannable numbers.
+// Desktop: full-width flex row. Mobile: horizontal scroll, fade-right signal.
+
+interface Metric {
+  value: string;
+  label?: string;
+}
+
+interface Props {
+  metrics: Metric[];
+}
+
+const { metrics } = Astro.props;
+---
+
+<div class="ms-outer anim-5">
+  <div class="ms-scroll">
+    {metrics.map((m) => (
+      <div class="ms-item">
+        <span class="ms-val">{m.value}</span>
+        {m.label && <span class="ms-label">{m.label}</span>}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .ms-outer {
+    position: relative;
+    overflow: hidden;
+    background: var(--surface);
+    border-top: 1px solid var(--border-gold);
+    border-bottom: 1px solid var(--border-gold);
+  }
+  /* Fade-right: communicates horizontal scrollability on mobile */
+  .ms-outer::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 48px;
+    background: linear-gradient(to right, transparent, var(--surface));
+    pointer-events: none;
+    z-index: 1;
+  }
+  /* Desktop: fade is cosmetic only since full row is visible */
+  @media (min-width: 768px) {
+    .ms-outer::after { display: none; }
+  }
+
+  .ms-scroll {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 24px 80px;
+    gap: 0;
+  }
+  .ms-scroll::-webkit-scrollbar { display: none; }
+
+  @media (max-width: 767px) {
+    .ms-scroll { padding: 16px 24px; }
+  }
+
+  .ms-item {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .ms-item + .ms-item::before {
+    content: '·';
+    color: var(--border);
+    font-size: 18px;
+    margin: 0 14px;
+  }
+
+  .ms-val {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .ms-label {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--t-muted);
+  }
+</style>
