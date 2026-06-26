@@ -138,7 +138,7 @@ const initialStep = defaultStep ?? steps[steps.length - 1]?.key ?? '';
 
     function showPanel() {
       var id = 'panel-' + activeStep + '-' + activeTab;
-      panels.forEach(function(p) { p.hidden = true; });
+      panels.forEach(function(p) { (p as HTMLElement).hidden = true; });
       var target = document.getElementById(id);
       if (target) target.hidden = false;
     }
