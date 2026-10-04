@@ -2,13 +2,8 @@ node_modules
 .astro
 dist
 
-# Beads / Dolt files (added by bd init)
-.dolt/
-*.db
-.beads-credential-key
-
-# Design mockups
-# design/
-
 .vercel
 .env*
+
+# Transient architect/executor phase files — never commit
+_project/working-memory/
