@@ -1,0 +1,40 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "bash .claude/hooks/feedback-gate.sh",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Edit",
+      "Write",
+      "MultiEdit",
+      "NotebookEdit",
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(git status)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(rm -rf /home/jan/work/portfolio/_project/working-memory)",
+      "Bash(rm -rf /home/jan/work/portfolio/_project/working-memory/:*)",
+      "Bash(rm -r /home/jan/work/portfolio/_project/working-memory/:*)",
+      "Bash(rm /home/jan/work/portfolio/_project/working-memory/:*)"
+    ],
+    "deny": []
+  }
+}
