@@ -32,7 +32,7 @@
   .cd-bg {
     position: absolute;
     inset: 0;
-    background: rgb(10, 12, 28);
+    background: rgb(13, 13, 13);
     overflow: hidden;
   }
 
@@ -87,8 +87,8 @@
     font-size: max(2.65px, 0.573vw); /* 11px @1920; px floor only nudges small phones larger */
     letter-spacing: 0.12em;
     opacity: .70;
-    color: rgb(100, 115, 188);
-    text-shadow: 0 0 5px rgba(100, 115, 188, .7);
+    color: rgb(150, 105, 40);
+    text-shadow: 0 0 5px rgba(150, 105, 40, .7);
   }
 
   /* ── Tier 2: MID — middle distance ────────────────────────────── */
@@ -96,10 +96,10 @@
     font-size: max(3.85px, 0.833vw); /* 16px @1920; px floor only nudges small phones larger */
     letter-spacing: 0.22em;
     opacity: .65;
-    color: rgb(150, 165, 230);
+    color: rgb(200, 150, 60);
     text-shadow:
-      0 0 9px  rgba(150, 165, 230, .9),
-      0 0 20px rgba(115, 138, 215, .42);
+      0 0 9px  rgba(200, 150, 60, .9),
+      0 0 20px rgba(175, 125, 45, .42);
   }
 
   /* ── Tier 1: NEAR — foreground, large, vivid, fast ────────────── */
@@ -107,11 +107,11 @@
     font-size: max(5.5px, 1.198vw); /* 23px @1920; px floor only nudges small phones larger */
     letter-spacing: 0.30em;
     opacity: 1;
-    color: rgb(200, 212, 255);
+    color: rgb(255, 196, 90);
     text-shadow:
-      0 0 10px rgba(200, 212, 255, 1),
-      0 0 24px rgba(162, 183, 255, .68),
-      0 0 46px rgba(102, 132, 245, .28);
+      0 0 10px rgba(255, 196, 90, 1),
+      0 0 24px rgba(230, 165, 60, .68),
+      0 0 46px rgba(200, 140, 40, .28);
   }
 
   /* ── Gradient overlay ──────────────────────────────────────────── */
@@ -120,15 +120,20 @@
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgb(10, 12, 28)        0%,
-      rgba(10, 12, 28, 0.88) 12%,
-      rgba(10, 12, 28, 0.65) 28%,
-      rgba(10, 12, 28, 0.30) 48%,
-      rgba(10, 12, 28, 0.05) 65%,
+      rgb(13, 13, 13)        0%,
+      rgba(13, 13, 13, 0.88) 12%,
+      rgba(13, 13, 13, 0.65) 28%,
+      rgba(13, 13, 13, 0.30) 48%,
+      rgba(13, 13, 13, 0.05) 65%,
       transparent            80%
     );
     pointer-events: none;
     z-index: 10;
+  }
+
+  /* ── Warm the static outer-ring PNG (blue-tinted darks) ────────── */
+  .cd-wrapper > img {
+    filter: sepia(0.55) saturate(2.2) hue-rotate(-15deg);
   }
 
   /* ── Desktop: fade left edge of diamond so text zone stays clean ─── */
