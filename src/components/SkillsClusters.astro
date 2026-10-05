@@ -1,6 +1,43 @@
 <section id="skills" class="py-16">
   <div class="max-w-container mx-auto px-5 lg:px-16">
     <h2 class="font-sans text-headline-lg font-bold text-on-surface mb-8">Skills</h2>
-    <p class="t-b1">Skill clusters land in a later phase.</p>
+    <div class="space-y-8">
+      <div>
+        <h3 class="font-mono text-label-mono text-primary uppercase tracking-widest mb-3">Frontend</h3>
+        <!-- TODO:USER verify -->
+        <div class="flex flex-wrap gap-2">
+          {['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Astro'].map((chip) => (
+            <span class="border border-outline-variant rounded px-3 py-1 font-mono text-label-mono text-on-surface-variant uppercase bg-surface-container-low">{chip}</span>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="font-mono text-label-mono text-primary uppercase tracking-widest mb-3">Backend</h3>
+        <!-- TODO:USER verify -->
+        <div class="flex flex-wrap gap-2">
+          {['Node.js', 'Redis', 'Sanity CMS', 'Stripe', 'REST APIs'].map((chip) => (
+            <span class="border border-outline-variant rounded px-3 py-1 font-mono text-label-mono text-on-surface-variant uppercase bg-surface-container-low">{chip}</span>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="font-mono text-label-mono text-primary uppercase tracking-widest mb-3">AI Engineering</h3>
+        <!-- TODO:USER verify -->
+        <div class="flex flex-wrap gap-2">
+          {['LLM Integration', 'AI Agents', 'RAG'].map((chip) => (
+            <span class="border border-outline-variant rounded px-3 py-1 font-mono text-label-mono text-on-surface-variant uppercase bg-surface-container-low">{chip}</span>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="font-mono text-label-mono text-primary uppercase tracking-widest mb-3">Other</h3>
+        <!-- TODO:USER verify -->
+        <div class="flex flex-wrap gap-2">
+          {['Git', 'CI/CD', 'Testing'].map((chip) => (
+            <span class="border border-outline-variant rounded px-3 py-1 font-mono text-label-mono text-on-surface-variant uppercase bg-surface-container-low">{chip}</span>
+          ))}
+        </div>
+      </div>
+    </div>
   </div>
 </section>
