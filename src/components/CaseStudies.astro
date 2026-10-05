@@ -1,0 +1,19 @@
+---
+import MetricsStrip from './MetricsStrip.astro';
+---
+
+<section id="case-studies" class="py-16">
+  <div class="max-w-container mx-auto px-5 lg:px-16">
+    <h2 class="font-sans text-headline-lg font-bold text-on-surface mb-8">Case Studies</h2>
+    <MetricsStrip metrics={[
+      { value: '4,000+', label: 'Commits' },
+      { value: '18', label: 'Months' },
+      { value: '1,000+', label: 'Products' },
+      { value: '5,000+', label: 'Images' },
+      { value: 'Stripe', label: 'Payment Intents' },
+      { value: 'Next.js 15' },
+      { value: 'Custom', label: 'Design System' },
+    ]} />
+    <p class="t-b1">7-beat stepper lands in phase 1.2.</p>
+  </div>
+</section>
