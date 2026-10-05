@@ -14,11 +14,11 @@ const { href, title, description, image } = Astro.props;
 
 <a
   href={href}
-  class="block rounded-lg border overflow-hidden hover:shadow-lg hover:border-gray-600 transition-all"
+  class="block rounded-lg border border-outline-variant overflow-hidden hover:shadow-lg hover:border-outline transition-all"
 >
   <Image src={image} alt={`${title} project preview`} class="w-full h-48 object-cover" />
   <div class="p-4">
-    <h2 class="text-xl font-semibold mb-2">{title}</h2>
-    <p class="text-sm text-gray-600">{description}</p>
+    <h2 class="text-xl font-semibold mb-2 text-on-surface">{title}</h2>
+    <p class="text-sm text-on-surface-variant">{description}</p>
   </div>
 </a>
