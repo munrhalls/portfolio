@@ -19,3 +19,111 @@ html {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(4px); }
 }
+
+:root {
+  --surface: #0d0d0d;  --surface-2: #1c1915;
+  --border: #403b31;   --border-gold: #c8940a;
+  --gold: #c8940a;     --t-amber: #e6b84f;
+  --t-muted: #a89f92;  --text: #e8e8e8;
+  --radius: 4px;
+}
+
+[data-theme="light"] {
+  --surface: #ffffff;  --surface-2: #edeae4;
+  --border: #d8d4ce;   --border-gold: #9a6700;
+  --gold: #9a6700;     --t-amber: #9a6700;
+  --t-muted: #6b6560;  --text: #1a1917;
+  --radius: 4px;
+}
+
+.t-c1 {
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--t-muted);
+}
+
+.t-c1-gold {
+  color: var(--gold);
+}
+
+.t-d1 {
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(38px, 4vw, 56px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.t-b1 {
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(14px, calc(0.9vw + 0.25rem), 18px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--t-muted);
+}
+
+.btn-tier1 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  background: transparent;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-tier1:hover {
+  background: rgba(200, 148, 10, 0.12);
+  color: var(--t-amber);
+}
+
+.btn-tier2 {
+  display: inline-flex;
+  padding: 4px 0;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+  background: transparent;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-tier2:hover {
+  color: var(--gold);
+}
+
+.btn-tier3 {
+  display: inline-flex;
+  padding: 4px 0;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.btn-tier3:hover {
+  opacity: 1;
+  color: var(--gold);
+}
