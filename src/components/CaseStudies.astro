@@ -1,5 +1,16 @@
 ---
 import MetricsStrip from './MetricsStrip.astro';
+
+const beats = [
+  { n: '01', title: 'The System' },
+  { n: '02', title: 'Basket' },
+  { n: '03', title: 'Address' },
+  { n: '04', title: 'Shipping' },
+  { n: '05', title: 'Payment' },
+  { n: '06', title: 'Success' },
+  { n: '07', title: 'Proof & Links' },
+];
+
 ---
 
 <section id="case-studies" class="py-16">
@@ -14,6 +25,120 @@ import MetricsStrip from './MetricsStrip.astro';
       { value: 'Next.js 15' },
       { value: 'Custom', label: 'Design System' },
     ]} />
-    <p class="t-b1">7-beat stepper lands in phase 1.2.</p>
+  </div>
+
+  <div class="relative">
+    <div id="beats-strip" class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 lg:px-16 pb-6">
+      {beats.slice(0, 4).map((b) => (
+        <article class="beat-card min-w-[85vw] sm:min-w-[420px] snap-center shrink-0 border border-outline-variant rounded bg-surface-container-low p-5 flex flex-col gap-3">
+          <p class="font-mono text-label-mono text-primary uppercase">BEAT {b.n} / 07</p>
+          <h3 class="font-sans text-headline-sm font-semibold text-on-surface">{b.title}</h3>
+          <p class="text-body-md text-on-surface-variant">Beat content lands in the next turn.</p>
+          <div class="aspect-video w-full border border-outline-variant rounded bg-surface flex items-center justify-center">
+            <span class="font-mono text-label-mono text-on-surface-variant">[screenshot slot]</span>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="flex items-center justify-between px-5 lg:px-16">
+      <button type="button" id="beats-toggle" class="btn-tier2">See more (3)</button>
+      <div class="flex items-center gap-2">
+        <button type="button" id="beats-prev" class="border border-outline-variant rounded p-2 text-on-surface-variant" aria-label="Previous beat">&larr;</button>
+        <span id="beats-pos" class="font-mono text-label-mono text-on-surface-variant">01 / 07</span>
+        <button type="button" id="beats-next" class="border border-outline-variant rounded p-2 text-on-surface-variant" aria-label="Next beat">&rarr;</button>
+      </div>
+    </div>
+
+    <div id="beats-more" class="hidden">
+      <div id="beats-strip-more" class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 lg:px-16 pb-6 pt-6">
+        {beats.slice(4).map((b) => (
+          <article class="beat-card min-w-[85vw] sm:min-w-[420px] snap-center shrink-0 border border-outline-variant rounded bg-surface-container-low p-5 flex flex-col gap-3">
+            <p class="font-mono text-label-mono text-primary uppercase">BEAT {b.n} / 07</p>
+            <h3 class="font-sans text-headline-sm font-semibold text-on-surface">{b.title}</h3>
+            <p class="text-body-md text-on-surface-variant">Beat content lands in the next turn.</p>
+            <div class="aspect-video w-full border border-outline-variant rounded bg-surface flex items-center justify-center">
+              <span class="font-mono text-label-mono text-on-surface-variant">[screenshot slot]</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  #beats-strip,
+  #beats-strip-more {
+    scrollbar-width: none;
+  }
+  #beats-strip::-webkit-scrollbar,
+  #beats-strip-more::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    function setupBeats() {
+      var strip = document.getElementById('beats-strip');
+      var moreWrap = document.getElementById('beats-more');
+      var stripMore = document.getElementById('beats-strip-more');
+      var toggle = document.getElementById('beats-toggle');
+      var prev = document.getElementById('beats-prev');
+      var next = document.getElementById('beats-next');
+      var pos = document.getElementById('beats-pos');
+      if (!strip || !moreWrap || !stripMore || !toggle || !prev || !next || !pos) return;
+      if (strip.dataset.beatsInit === 'true') return;
+      strip.dataset.beatsInit = 'true';
+
+      function cardWidth(s) {
+        var card = s.querySelector('.beat-card');
+        if (!card) return 0;
+        var gap = parseFloat(getComputedStyle(s).columnGap) || 16;
+        return card.offsetWidth + gap;
+      }
+
+      function updatePos() {
+        var s = moreWrap.classList.contains('hidden') ? strip
+              : (stripMore.scrollLeft > 0 ? stripMore : strip);
+        var w = cardWidth(s);
+        if (!w) return;
+        var n = Math.round(s.scrollLeft / w) + 1 + (s === stripMore ? 4 : 0);
+        n = Math.max(1, Math.min(7, n));
+        pos.textContent = String(n).padStart(2, '0') + ' / 07';
+      }
+
+      strip.addEventListener('scroll', updatePos, { passive: true });
+      stripMore.addEventListener('scroll', updatePos, { passive: true });
+
+      prev.addEventListener('click', function () {
+        var s = moreWrap.classList.contains('hidden') ? strip : stripMore;
+        s.scrollBy({ left: -cardWidth(s), behavior: 'smooth' });
+      });
+      next.addEventListener('click', function () {
+        var s = moreWrap.classList.contains('hidden') ? strip : stripMore;
+        s.scrollBy({ left: cardWidth(s), behavior: 'smooth' });
+      });
+
+      var newToggle = toggle.cloneNode(true);
+      toggle.parentNode.replaceChild(newToggle, toggle);
+      newToggle.addEventListener('click', function () {
+        var opening = moreWrap.classList.contains('hidden');
+        moreWrap.classList.toggle('hidden');
+        newToggle.textContent = opening ? 'See less' : 'See more (3)';
+        if (opening) {
+          requestAnimationFrame(function () {
+            stripMore.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          });
+        }
+        updatePos();
+      });
+
+      updatePos();
+    }
+
+    document.addEventListener('astro:page-load', setupBeats);
+    setupBeats();
+  })();
+</script>
