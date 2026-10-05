@@ -1,30 +1,30 @@
 ---
 name: Technical Precision
 colors:
-  surface: '#10131a'
-  surface-dim: '#10131a'
-  surface-bright: '#363941'
-  surface-container-lowest: '#0b0e15'
-  surface-container-low: '#191b23'
-  surface-container: '#1d2027'
-  surface-container-high: '#272a31'
-  surface-container-highest: '#32353c'
-  on-surface: '#e1e2ec'
-  on-surface-variant: '#c2c6d6'
-  inverse-surface: '#e1e2ec'
-  inverse-on-surface: '#2e3038'
-  outline: '#8c909f'
-  outline-variant: '#424754'
-  surface-tint: '#adc6ff'
-  primary: '#adc6ff'
-  on-primary: '#002e6a'
-  primary-container: '#4d8eff'
-  on-primary-container: '#00285d'
-  inverse-primary: '#005ac2'
-  secondary: '#c6c6c7'
-  on-secondary: '#2f3131'
-  secondary-container: '#454747'
-  on-secondary-container: '#b4b5b5'
+  surface: '#0d0d0d'
+  surface-dim: '#0d0d0d'
+  surface-bright: '#37312a'
+  surface-container-lowest: '#12100e'
+  surface-container-low: '#171512'
+  surface-container: '#1c1915'
+  surface-container-high: '#242018'
+  surface-container-highest: '#2c271e'
+  on-surface: '#e8e8e8'
+  on-surface-variant: '#a89f92'
+  inverse-surface: '#e8e8e8'
+  inverse-on-surface: '#262219'
+  outline: '#8a8278'
+  outline-variant: '#403b31'
+  surface-tint: '#e6b84f'
+  primary: '#e6b84f'
+  on-primary: '#3a2a00'
+  primary-container: '#c8940a'
+  on-primary-container: '#241700'
+  inverse-primary: '#c8940a'
+  secondary: '#c9c4ba'
+  on-secondary: '#2e2b26'
+  secondary-container: '#454037'
+  on-secondary-container: '#b8b2a6'
   tertiary: '#ffb786'
   on-tertiary: '#502400'
   tertiary-container: '#df7412'
@@ -45,9 +45,9 @@ colors:
   tertiary-fixed-dim: '#ffb786'
   on-tertiary-fixed: '#311400'
   on-tertiary-fixed-variant: '#723600'
-  background: '#10131a'
-  on-background: '#e1e2ec'
-  surface-variant: '#32353c'
+  background: '#0d0d0d'
+  on-background: '#e8e8e8'
+  surface-variant: '#2e2a22'
 typography:
   display-hero:
     fontFamily: Geist
@@ -106,10 +106,10 @@ The aesthetic leans heavily into **Minimalism** with a **Technical** edge. By st
 ## Colors
 This design system utilizes a high-contrast, dark-mode-first palette to emphasize legibility and technical rigor. 
 
-- **Background:** A deep, near-black (#0a0a0a) provides a solid foundation that eliminates visual bleed.
-- **Primary Text:** Off-white (#f0f0f0) ensures high readability without the harshness of pure #ffffff.
+- **Background:** A deep, warm near-black (#0d0d0d) provides a solid foundation that eliminates visual bleed.
+- **Primary Text:** Off-white (#e8e8e8) ensures high readability without the harshness of pure #ffffff.
 - **Muted Text:** At 45% opacity, this is used for non-essential metadata and secondary descriptions to establish a clear content hierarchy.
-- **Accent:** Electric Blue (#3b82f6) is the surgical tool of the palette. It is reserved exclusively for interactive states (hovers, focus) and hairline borders of active elements. 
+- **Accent:** Amber is the surgical tool of the palette. Signature gold (#c8940a) is reserved exclusively for interactive states (hovers, focus), hairline borders of active elements, and brand accents; bright amber (#e6b84f) carries emphasis and hover states. 
 
 No gradients or glows are permitted; color is applied with flat, mathematical precision.
 
@@ -141,9 +141,9 @@ Shapes are intentionally sharp to reflect technical precision. We use the **Soft
 Larger containers (cards, code blocks) may use 0px (sharp) corners to reinforce the architectural grid.
 
 ## Components
-- **Buttons:** Rectangular with 4px radius. Primary buttons use a 1px Electric Blue border with no fill; hover states trigger a subtle #f0f0f0 text color change. Secondary buttons use the muted text color.
+- **Buttons:** Rectangular with 4px radius. Primary buttons use a 1px amber gold (#c8940a) border with no fill; hover states trigger a subtle #f0f0f0 text color change. Secondary buttons use the muted text color.
 - **Cards:** Defined by 1px hairline borders (#ffffff at 10% opacity). No background change unless hovered.
 - **Code Blocks:** Use a slightly different background tint (#111111) with a 1px border. Use the label-mono typography for the code and metadata headers.
 - **Chips/Tags:** Small, monospace labels enclosed in a 1px border. They should look like terminal metadata.
-- **Input Fields:** Bottom-border only (1px hairline) to maintain a minimal, blueprint-like aesthetic. The border changes to Electric Blue on focus.
+- **Input Fields:** Bottom-border only (1px hairline) to maintain a minimal, blueprint-like aesthetic. The border changes to amber gold on focus.
 - **Project Lists:** Simple horizontal rows separated by 1px dividers, utilizing the display-hero-mobile font size for project titles to create a bold, editorial feel.

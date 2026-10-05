@@ -5,40 +5,38 @@ export default {
     extend: {
       colors: {
         // Surfaces
-        'surface':                   '#10131a',
-        'surface-dim':               '#10131a',
-        'surface-bright':            '#363941',
-        'surface-container-lowest':  '#0b0e15',
-        'surface-container-low':     '#191b23',
-        'surface-container':         '#1d2027',
-        'surface-container-high':    '#272a31',
-        'surface-container-highest': '#32353c',
+        'surface':                   '#0d0d0d',
+        'surface-dim':               '#0d0d0d',
+        'surface-bright':            '#37312a',
+        'surface-container-lowest':  '#12100e',
+        'surface-container-low':     '#171512',
+        'surface-container':         '#1c1915',
+        'surface-container-high':    '#242018',
+        'surface-container-highest': '#2c271e',
         // On-surface
-        // WCAG AA contrast ratios on #10131a (surface):
-        // on-surface (#e1e2ec)         → 14.42:1 ✓
-        // on-surface-variant (#c2c6d6) → 10.92:1 ✓
-        // primary (#adc6ff)            → 10.88:1 ✓
-        // tertiary (#ffb786)           → 10.95:1 ✓
-        // outline (#8c909f)            →  5.84:1 ✓
-        'on-surface':         '#e1e2ec',
-        'on-surface-variant': '#c2c6d6',
-        'inverse-surface':    '#e1e2ec',
-        'inverse-on-surface': '#2e3038',
+        // WCAG AA contrast ratios on #0d0d0d (surface):
+        // primary / bright amber (#e6b84f)  → ~10:1 ✓
+        // primary-container / gold (#c8940a) →  ~7:1 ✓
+        // on-surface-variant (#a89f92)      →  ~7:1 ✓
+        'on-surface':         '#e8e8e8',
+        'on-surface-variant': '#a89f92',
+        'inverse-surface':    '#e8e8e8',
+        'inverse-on-surface': '#262219',
         // Outline
-        'outline':         '#8c909f',
-        'outline-variant': '#424754',
+        'outline':         '#8a8278',
+        'outline-variant': '#403b31',
         // Primary
-        'surface-tint':         '#adc6ff',
-        'primary':              '#adc6ff',
-        'on-primary':           '#002e6a',
-        'primary-container':    '#4d8eff',
-        'on-primary-container': '#00285d',
-        'inverse-primary':      '#005ac2',
+        'surface-tint':         '#e6b84f',
+        'primary':              '#e6b84f',
+        'on-primary':           '#3a2a00',
+        'primary-container':    '#c8940a',
+        'on-primary-container': '#241700',
+        'inverse-primary':      '#c8940a',
         // Secondary
-        'secondary':              '#c6c6c7',
-        'on-secondary':           '#2f3131',
-        'secondary-container':    '#454747',
-        'on-secondary-container': '#b4b5b5',
+        'secondary':              '#c9c4ba',
+        'on-secondary':           '#2e2b26',
+        'secondary-container':    '#454037',
+        'on-secondary-container': '#b8b2a6',
         // Tertiary
         'tertiary':              '#ffb786',
         'on-tertiary':           '#502400',
@@ -50,9 +48,9 @@ export default {
         'error-container':    '#93000a',
         'on-error-container': '#ffdad6',
         // Background
-        'background':    '#10131a',
-        'on-background': '#e1e2ec',
-        'surface-variant': '#32353c',
+        'background':    '#0d0d0d',
+        'on-background': '#e8e8e8',
+        'surface-variant': '#2e2a22',
       },
       fontFamily: {
         sans: ['Geist', 'system-ui', 'sans-serif'],
