@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Munrhalls — landing 300×400</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14120f; --text:#ece6da; --muted:#a89f92; --amber:#e6b84f; --ambient:#8a91f2; --sink:#0a0908; --raise:#1c1915;
+    --line:#2c271e; --line2:#403b31; --rule:#6a6252;
+    --sans:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:'Geist Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:#0a0908;display:grid;place-items:center;font-family:var(--sans);color:var(--text)}
+
+  /* Frame: 300×400 design size. --u = 1px at 300 wide; every dimension below is N×u,
+     so the whole screen scales with the frame width. */
+  .frame{width:300px;height:400px;position:relative;overflow:hidden;background:var(--bg);
+         container-type:size;isolation:isolate}
+  .stage{position:absolute;inset:0;--u:calc(100cqw / 300)}
+  a{color:inherit;text-decoration:none}
+
+  /* ── Main code diamond: ambient, top-right, bleeds off the edge, not clickable ── */
+  .dm{position:absolute;z-index:0;pointer-events:none;
+      left:calc(66*var(--u));top:calc(100*var(--u));width:calc(380*var(--u));height:calc(380*var(--u));
+      mix-blend-mode:screen;               /* black pixels add no light → box disappears */
+      -webkit-mask-image:linear-gradient(to bottom left,#000 35%,rgba(0,0,0,.45) 85%),linear-gradient(to right,rgba(0,0,0,.2) 56.5%,#000 63%),linear-gradient(#000,#000);
+      -webkit-mask-size:100% 100%,100% 53.5%,100% 46.5%;-webkit-mask-position:0 0,0 0,0 100%;-webkit-mask-repeat:no-repeat;
+      -webkit-mask-composite:source-in,source-over;
+              mask-image:linear-gradient(to bottom left,#000 35%,rgba(0,0,0,.45) 85%),linear-gradient(to right,rgba(0,0,0,.2) 56.5%,#000 63%),linear-gradient(#000,#000);
+              mask-size:100% 100%,100% 53.5%,100% 46.5%;mask-position:0 0,0 0,0 100%;mask-repeat:no-repeat;
+              mask-composite:intersect,add}
+  .dm img{display:block;width:100%;height:100%;animation:drift 16s ease-in-out infinite alternate}
+  @keyframes drift{
+    from{transform:translate(0,0) scale(1);opacity:.45}
+    to  {transform:translate(calc(-3*var(--u)),calc(4*var(--u))) scale(1.02);opacity:.55}
+  }
+
+  /* ── 2 Intro ── */
+  .intro{position:absolute;z-index:2;left:calc(18*var(--u));top:calc(16*var(--u));width:calc(240*var(--u))}
+  .contact{position:absolute;z-index:3;right:calc(18*var(--u));top:calc(12*var(--u));height:calc(24*var(--u));
+           display:flex;align-items:center;gap:0;color:var(--text);
+           font:600 calc(8*var(--u))/1 var(--mono);letter-spacing:.14em}
+  .contact .t{position:relative;z-index:1}
+  .contact svg{width:calc(24*var(--u));height:calc(24*var(--u));overflow:visible;flex:none;margin-left:calc(-14.5*var(--u))}
+  .contact svg polyline{fill:none;stroke:var(--text);stroke-width:1;stroke-linejoin:miter;vector-effect:non-scaling-stroke;transition:stroke .15s}
+  .contact:hover svg polyline,.contact:focus-visible svg polyline{stroke:var(--amber)}
+  .contact:focus-visible{outline:none}
+  .intro .hi{display:block;font:500 calc(12*var(--u))/1.3 var(--sans);color:var(--text);margin-bottom:calc(4*var(--u))}
+  .intro .skills{display:block;margin-top:calc(8*var(--u));width:calc(264*var(--u));white-space:nowrap;font:500 calc(8*var(--u))/1 var(--mono);letter-spacing:.02em;color:var(--muted)}
+  .intro .skills i{font-style:normal;color:var(--muted);opacity:.55;padding:0 calc(2*var(--u))}
+  .intro h1{margin:0;font:700 calc(15*var(--u))/1.18 var(--sans);letter-spacing:-.01em;text-wrap:balance}
+
+  /* ── 3 Black title strip ── */
+  .strip{position:absolute;z-index:2;left:0;right:0;top:calc(96*var(--u));height:calc(48*var(--u));
+         background:rgba(10,9,8,.8);padding:calc(4*var(--u)) calc(18*var(--u));
+         display:flex;flex-direction:column;justify-content:center;gap:calc(4*var(--u));font-family:var(--mono)}
+  .strip .top{display:flex;justify-content:space-between;align-items:baseline}
+  .strip .site{font-size:calc(10*var(--u));line-height:1.3;font-weight:500;letter-spacing:.1em;color:rgba(230,184,79,.8)}
+  .strip .kind{font-size:calc(8*var(--u));letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .strip .stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between}
+  .strip .stats div{padding-left:calc(7*var(--u));border-left:1px solid var(--rule)}
+  .strip .stats div:first-child{padding-left:0;border-left:0}
+  .strip .stats b{display:block;font-weight:600;font-size:calc(12*var(--u));line-height:1.1;color:var(--text)}
+  .strip .stats span{display:block;margin-top:calc(1.5*var(--u));font-size:calc(8*var(--u));letter-spacing:.03em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+
+  /* ── 5 Movie: 16:9 autoplaying muted inline video (simulated) ── */
+  .movie{position:absolute;z-index:2;left:calc(18*var(--u));top:calc(150*var(--u));
+         width:calc(264*var(--u));aspect-ratio:16/9;border-radius:calc(3*var(--u));overflow:hidden;
+         background:var(--sink);border:1px solid var(--rule)}
+  .screen{position:absolute;inset:0}
+  .m-top{position:absolute;left:0;right:0;top:0;height:13%;background:var(--raise);border-bottom:1px solid var(--line);
+         display:flex;align-items:center;justify-content:space-between;padding:0 4%}
+  .m-top i{display:block;height:28%;background:var(--muted);width:20%}
+  .m-top span{display:flex;gap:calc(5*var(--u))}
+  .m-top span s{display:block;width:calc(14*var(--u));height:calc(2*var(--u));background:var(--line2)}
+  .grid{position:absolute;left:4%;right:4%;top:17%;bottom:19%;display:grid;
+        grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:4% 3%}
+  .card{background:var(--raise);border:1px solid var(--line);border-radius:calc(2*var(--u));padding:6%;
+        display:flex;flex-direction:column;gap:6%}
+  .card u{display:block;flex:1;background:var(--line);border-radius:1px}
+  .card s{display:block;height:calc(2.2*var(--u));background:var(--line2);width:80%}
+  .card s+s{width:45%;background:var(--line)}
+  .card:nth-child(2){animation:pick1 14s infinite}
+  .card:nth-child(7){animation:pick2 14s infinite}
+  @keyframes pick1{0%,9%{border-color:var(--line)}12%,36%{border-color:var(--muted)}40%,100%{border-color:var(--line)}}
+  @keyframes pick2{0%,47%{border-color:var(--line)}50%,72%{border-color:var(--muted)}76%,100%{border-color:var(--line)}}
+  .cur{position:absolute;width:calc(7*var(--u));left:92%;top:18%;animation:cur 14s ease-in-out infinite}
+  .cur svg{display:block;width:100%;height:auto}
+  @keyframes cur{
+    0%{left:92%;top:18%} 12%,36%{left:36%;top:33%}
+    50%,72%{left:60%;top:69%} 90%,100%{left:92%;top:18%}
+  }
+  /* player chrome — progress is the “this is playing” signal; no play button */
+  .ctl{position:absolute;left:0;right:0;bottom:0;height:calc(15*var(--u));background:rgba(10,9,8,.85);
+       display:flex;align-items:center;justify-content:space-between;padding:0 calc(7*var(--u))}
+  .time{font:500 calc(8*var(--u))/1 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+  .ctl svg{width:calc(9*var(--u));height:calc(9*var(--u));stroke:var(--muted);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+  .bar{position:absolute;left:0;right:0;bottom:calc(15*var(--u));height:calc(2.5*var(--u));background:var(--line2)}
+  .bar i{display:block;height:100%;width:0;background:var(--text);animation:prog 14s linear infinite}
+  @keyframes prog{to{width:100%}}
+
+  /* ── 6 Secondary diamond + diagonal navigation ── */
+  .nav{position:absolute;left:calc(24*var(--u));top:calc(304*var(--u));
+       width:calc(84*var(--u));height:calc(84*var(--u))}
+  .nav .d2{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
+  .nav .d2 img{display:block;width:100%;height:100%}
+  .nav svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .hit{fill:rgba(0,0,0,0)}                         /* whole quadrant = tap target */
+  .st{fill:rgba(20,18,15,.82);stroke:var(--line2);stroke-width:.5;transition:fill .15s}
+  .nav text{font:500 9.4px var(--mono);fill:var(--text);text-anchor:middle;dominant-baseline:central;
+            transition:fill .15s;pointer-events:none}
+  .seg{cursor:pointer;outline:none}
+  .seg:hover .st,.seg:focus-visible .st{fill:var(--amber);stroke:var(--amber)}
+  .seg:hover text,.seg:focus-visible text{fill:var(--bg)}
+
+  /* ── 7 CTA ── */
+  .cta{position:absolute;z-index:3;left:calc(150*var(--u));top:calc(329*var(--u));
+       width:calc(132*var(--u));height:calc(34*var(--u));color:var(--amber);
+       display:flex;align-items:center;padding-left:calc(10*var(--u));
+       font:600 calc(10*var(--u))/1 var(--mono);letter-spacing:.14em;transition:color .15s}
+  .cta svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;z-index:0}
+  .cta .lbl{position:relative;z-index:1}
+  .cta .shape{fill:none;stroke:var(--amber);stroke-opacity:.55;stroke-width:1;stroke-linejoin:miter;vector-effect:non-scaling-stroke}
+  .cta .rail{stroke:url(#rl);stroke-width:1;vector-effect:non-scaling-stroke}
+  .cta .rfill{fill:var(--amber);opacity:0;transition:opacity .15s}
+  .cta .kg{fill:var(--amber);opacity:.55;transition:fill .15s}
+  .cta .arrow{fill:none;stroke:var(--amber);stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;vector-effect:non-scaling-stroke;transition:stroke .15s}
+  .cta:hover,.cta:focus-visible{outline:none}
+  .cta:hover .rfill,.cta:focus-visible .rfill{opacity:1}
+  .cta:hover .kg,.cta:focus-visible .kg{fill:var(--bg)}
+  .cta:hover .arrow,.cta:focus-visible .arrow{stroke:var(--bg)}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .bar i{width:38%}
+  }
+</style>
+</head>
+<body>
+<main class="frame">
+  <div class="stage">
+
+    <!-- 4 Main diamond (decorative, not clickable) -->
+    <div class="dm" aria-hidden="true"><img src="../code-diamond-black-bg.png" alt=""></div>
+
+    <!-- 2 Intro -->
+    <a class="contact" href="#contact"><span class="t">CONTACT</span><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="rg" gradientUnits="userSpaceOnUse" x1="7" y1="0" x2="16" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="rm" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="url(#rg)"/></mask><clipPath id="rc"><polygon points="5.8,6.7 12,0.5 23.5,12 12,23.5 5.8,17.3"/></clipPath></defs><g clip-path="url(#rc)" mask="url(#rm)" font-size="2.6" style="fill:var(--ambient)" font-family="'Geist Mono',monospace" text-anchor="middle"><text y="1.8" opacity="0.55"><tspan x="5.2" dy="0">ナ</tspan><tspan x="5.2" dy="2.9">コ</tspan><tspan x="5.2" dy="2.9">ハ</tspan><tspan x="5.2" dy="2.9">レ</tspan><tspan x="5.2" dy="2.9">エ</tspan><tspan x="5.2" dy="2.9">オ</tspan><tspan x="5.2" dy="2.9">モ</tspan><tspan x="5.2" dy="2.9">キ</tspan></text><text y="1.8" opacity="0.3"><tspan x="7.9" dy="0">ネ</tspan><tspan x="7.9" dy="2.9">ヨ</tspan><tspan x="7.9" dy="2.9">エ</tspan><tspan x="7.9" dy="2.9">ム</tspan><tspan x="7.9" dy="2.9">セ</tspan><tspan x="7.9" dy="2.9">ウ</tspan><tspan x="7.9" dy="2.9">カ</tspan><tspan x="7.9" dy="2.9">フ</tspan></text><text y="1.8" opacity="0.7"><tspan x="10.6" dy="0">ヒ</tspan><tspan x="10.6" dy="2.9">オ</tspan><tspan x="10.6" dy="2.9">タ</tspan><tspan x="10.6" dy="2.9">カ</tspan><tspan x="10.6" dy="2.9">ヤ</tspan><tspan x="10.6" dy="2.9">フ</tspan><tspan x="10.6" dy="2.9">エ</tspan><tspan x="10.6" dy="2.9">ユ</tspan></text><text y="1.8" opacity="0.4"><tspan x="13.3" dy="0">ク</tspan><tspan x="13.3" dy="2.9">ソ</tspan><tspan x="13.3" dy="2.9">ル</tspan><tspan x="13.3" dy="2.9">ル</tspan><tspan x="13.3" dy="2.9">ヨ</tspan><tspan x="13.3" dy="2.9">エ</tspan><tspan x="13.3" dy="2.9">ユ</tspan><tspan x="13.3" dy="2.9">ヨ</tspan></text><text y="1.8" opacity="0.55"><tspan x="16.0" dy="0">ハ</tspan><tspan x="16.0" dy="2.9">エ</tspan><tspan x="16.0" dy="2.9">ソ</tspan><tspan x="16.0" dy="2.9">ウ</tspan><tspan x="16.0" dy="2.9">ヤ</tspan><tspan x="16.0" dy="2.9">ケ</tspan><tspan x="16.0" dy="2.9">テ</tspan><tspan x="16.0" dy="2.9">ヒ</tspan></text><text y="1.8" opacity="0.3"><tspan x="18.7" dy="0">コ</tspan><tspan x="18.7" dy="2.9">モ</tspan><tspan x="18.7" dy="2.9">ク</tspan><tspan x="18.7" dy="2.9">ユ</tspan><tspan x="18.7" dy="2.9">ト</tspan><tspan x="18.7" dy="2.9">ヤ</tspan><tspan x="18.7" dy="2.9">ワ</tspan><tspan x="18.7" dy="2.9">シ</tspan></text><text y="1.8" opacity="0.7"><tspan x="21.4" dy="0">キ</tspan><tspan x="21.4" dy="2.9">ヨ</tspan><tspan x="21.4" dy="2.9">ユ</tspan><tspan x="21.4" dy="2.9">ル</tspan><tspan x="21.4" dy="2.9">ス</tspan><tspan x="21.4" dy="2.9">ネ</tspan><tspan x="21.4" dy="2.9">キ</tspan><tspan x="21.4" dy="2.9">ヤ</tspan></text></g><polyline points="5.8,6.7 12,0.5 23.5,12 12,23.5 5.8,17.3"/></svg></a>
+    <div class="intro"><span class="hi">Hi, I’m Jan Pilik.</span><h1>I build large&#8209;scale software products end to end</h1><span class="skills">Design<i>·</i>Architecture<i>·</i>Full stack<i>·</i>Tests &amp; CI/CD</span></div>
+
+    <!-- 3 Title strip -->
+    <div class="strip">
+      <div class="top"><div class="site">SANGLOGIUM.COM</div><div class="kind">e-commerce store</div></div>
+      <div class="stats">
+        <div><b>20+</b><span>months</span></div>
+        <div><b>4,000+</b><span>commits</span></div>
+        <div><b>500+</b><span>products</span></div>
+        <div><b>17</b><span>professional features</span></div>
+      </div>
+    </div>
+
+    <!-- 5 Movie -->
+    <div class="movie" role="img" aria-label="Autoplaying muted showcase video of sanglogium.com">
+      <div class="screen">
+        <div class="m-top"><i></i><span><s></s><s></s><s></s></span></div>
+        <div class="grid">
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+        </div>
+        <div class="cur"><svg viewBox="0 0 10 14"><path d="M0 0V11L3 8.3L5 13L6.8 12.2L4.9 7.6H8.5Z" fill="#e8e8e8" stroke="#000" stroke-width=".6"/></svg></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <div class="ctl">
+        <span class="time">0:00 / 0:14</span>
+        <svg viewBox="0 0 12 12" aria-label="Muted"><path d="M1.5 4.5H3.5L6 2.5V9.5L3.5 7.5H1.5Z"/><path d="M8 4.5L11 7.5M11 4.5L8 7.5"/></svg>
+      </div>
+    </div>
+
+    <!-- 6 Secondary diamond: four diagonal strips, one per edge -->
+    <div class="nav">
+      <div class="d2" aria-hidden="true"><img src="../code-diamond-black-bg.png" alt=""></div>
+      <svg viewBox="0 0 118 118" aria-label="Sections">
+        <!-- top-left edge -->
+        <a class="seg" href="#features" aria-label="Features">
+          <polygon class="hit" points="59,59 1.8,59 59,1.8"/>
+          <polygon class="st" points="2.6,58.2 58.2,2.6 58.2,18.16 18.16,58.2"/>
+          <text transform="translate(34.3 34.3) rotate(-45)">FEATURES</text>
+        </a>
+        <!-- top-right edge -->
+        <a class="seg" href="#case-studies" aria-label="Case studies">
+          <polygon class="hit" points="59,59 116.2,59 59,1.8"/>
+          <polygon class="st" points="115.4,58.2 59.8,2.6 59.8,18.16 99.84,58.2"/>
+          <text transform="translate(83.7 34.3) rotate(45)">CASE STUDIES</text>
+        </a>
+        <!-- bottom-left edge -->
+        <a class="seg" href="#lessons" aria-label="Lessons">
+          <polygon class="hit" points="59,59 1.8,59 59,116.2"/>
+          <polygon class="st" points="2.6,59.8 58.2,115.4 58.2,99.84 18.16,59.8"/>
+          <text transform="translate(34.3 83.7) rotate(45)">LESSONS</text>
+        </a>
+        <!-- bottom-right edge -->
+        <a class="seg" href="#story" aria-label="Story">
+          <polygon class="hit" points="59,59 116.2,59 59,116.2"/>
+          <polygon class="st" points="115.4,59.8 59.8,115.4 59.8,99.84 99.84,59.8"/>
+          <text transform="translate(83.7 83.7) rotate(-45)">STORY</text>
+        </a>
+      </svg>
+    </div>
+
+    <!-- 7 CTA -->
+    <a class="cta" href="#live"><svg viewBox="0 0 132 34" aria-hidden="true"><defs><radialGradient id="cgl" gradientUnits="userSpaceOnUse" cx="115" cy="25" r="30"><stop offset="0" stop-color="#e6b84f" stop-opacity=".28"/><stop offset=".45" stop-color="#e6b84f" stop-opacity=".12"/><stop offset="1" stop-color="#e6b84f" stop-opacity="0"/></radialGradient><linearGradient id="rl" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="70" y2="0"><stop offset="0" stop-color="#e6b84f" stop-opacity="0"/><stop offset="1" stop-color="#e6b84f"/></linearGradient><clipPath id="rc2"><polygon points="5.8,6.7 12,0.5 23.5,12 12,23.5 5.8,17.3"/></clipPath></defs><rect x="80" y="-5" width="70" height="60" fill="url(#cgl)"/><line class="rail" x1="0" y1="25" x2="109.6" y2="25"/><svg x="98" y="8" width="34" height="34" viewBox="0 0 24 24" overflow="visible"><polygon class="rfill" points="5.8,6.7 12,0.5 23.5,12 12,23.5 5.8,17.3"/><g class="kg" clip-path="url(#rc2)" font-size="2.6" font-family="'Geist Mono',monospace" text-anchor="middle"><text y="1.8" opacity="0.55"><tspan x="5.2" dy="0">ナ</tspan><tspan x="5.2" dy="2.9">コ</tspan><tspan x="5.2" dy="2.9">ハ</tspan><tspan x="5.2" dy="2.9">レ</tspan><tspan x="5.2" dy="2.9">エ</tspan><tspan x="5.2" dy="2.9">オ</tspan><tspan x="5.2" dy="2.9">モ</tspan><tspan x="5.2" dy="2.9">キ</tspan></text><text y="1.8" opacity="0.3"><tspan x="7.9" dy="0">ネ</tspan><tspan x="7.9" dy="2.9">ヨ</tspan><tspan x="7.9" dy="2.9">エ</tspan><tspan x="7.9" dy="2.9">ム</tspan><tspan x="7.9" dy="2.9">セ</tspan><tspan x="7.9" dy="2.9">ウ</tspan><tspan x="7.9" dy="2.9">カ</tspan><tspan x="7.9" dy="2.9">フ</tspan></text><text y="1.8" opacity="0.7"><tspan x="10.6" dy="0">ヒ</tspan><tspan x="10.6" dy="2.9">オ</tspan><tspan x="10.6" dy="2.9">タ</tspan><tspan x="10.6" dy="2.9">カ</tspan><tspan x="10.6" dy="2.9">ヤ</tspan><tspan x="10.6" dy="2.9">フ</tspan><tspan x="10.6" dy="2.9">エ</tspan><tspan x="10.6" dy="2.9">ユ</tspan></text><text y="1.8" opacity="0.4"><tspan x="13.3" dy="0">ク</tspan><tspan x="13.3" dy="2.9">ソ</tspan><tspan x="13.3" dy="2.9">ル</tspan><tspan x="13.3" dy="2.9">ル</tspan><tspan x="13.3" dy="2.9">ヨ</tspan><tspan x="13.3" dy="2.9">エ</tspan><tspan x="13.3" dy="2.9">ユ</tspan><tspan x="13.3" dy="2.9">ヨ</tspan></text><text y="1.8" opacity="0.55"><tspan x="16.0" dy="0">ハ</tspan><tspan x="16.0" dy="2.9">エ</tspan><tspan x="16.0" dy="2.9">ソ</tspan><tspan x="16.0" dy="2.9">ウ</tspan><tspan x="16.0" dy="2.9">ヤ</tspan><tspan x="16.0" dy="2.9">ケ</tspan><tspan x="16.0" dy="2.9">テ</tspan><tspan x="16.0" dy="2.9">ヒ</tspan></text><text y="1.8" opacity="0.3"><tspan x="18.7" dy="0">コ</tspan><tspan x="18.7" dy="2.9">モ</tspan><tspan x="18.7" dy="2.9">ク</tspan><tspan x="18.7" dy="2.9">ユ</tspan><tspan x="18.7" dy="2.9">ト</tspan><tspan x="18.7" dy="2.9">ヤ</tspan><tspan x="18.7" dy="2.9">ワ</tspan><tspan x="18.7" dy="2.9">シ</tspan></text><text y="1.8" opacity="0.7"><tspan x="21.4" dy="0">キ</tspan><tspan x="21.4" dy="2.9">ヨ</tspan><tspan x="21.4" dy="2.9">ユ</tspan><tspan x="21.4" dy="2.9">ル</tspan><tspan x="21.4" dy="2.9">ス</tspan><tspan x="21.4" dy="2.9">ネ</tspan><tspan x="21.4" dy="2.9">キ</tspan><tspan x="21.4" dy="2.9">ヤ</tspan></text></g><polyline class="shape" points="8,4.5 12,0.5 17.9,6.4"/><polyline class="shape" points="20.3,8.8 23.5,12 17.2,18.3"/><polyline class="shape" points="15.7,19.8 12,23.5 5.8,17.3"/><path class="arrow" d="M8.2 12H16M13.4 9.6L16 12L13.4 14.4"/></svg></svg><span class="lbl">SEE IT LIVE</span></a>
+
+  </div>
+</main>
+
+<script>
+  // Keep the time readout locked to the CSS progress animation.
+  (function () {
+    var fill = document.querySelector('.bar i'), t = document.querySelector('.time');
+    var anim = fill && fill.getAnimations && fill.getAnimations()[0];
+    if (!anim) return;
+    setInterval(function () {
+      var s = Math.floor((Number(anim.currentTime) % 14000) / 1000);
+      t.textContent = '0:' + String(s).padStart(2, '0') + ' / 0:14';
+    }, 250);
+  })();
+</script>
+</body>
+</html>
