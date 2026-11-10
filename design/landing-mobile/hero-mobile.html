@@ -1,0 +1,187 @@
+<!doctype html>
+<!-- Low-fi hero mock — mobile portrait. Ratio pass only: gray boxes, real assets.
+     Tune with the sliders bottom-right; read winning values off the readout. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hero · mobile · ratio pass</title>
+<style>
+  :root {
+    /* tunables — driven by sliders */
+    --diamond-w: 62;        /* % of frame width */
+    --diamond-top: 56;      /* px below header */
+    --diamond-right: -8;    /* px, negative pushes off-screen */
+    --fade: 70;             /* % toward top-right where diamond hits full opacity */
+    --diamond-op: 0.85;
+    --hero-gap: 24;         /* px between movie box and headline */
+
+    /* tokens (DESIGN.md) */
+    --bg: #141210;          /* dark-not-heavy, theme value still open */
+    --ink: #e8e8e8;
+    --muted: #a89f92;
+    --amber: #e6b84f;
+    --hairline: rgba(255,255,255,.10);
+  }
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    background: #000; color: var(--ink);
+    font: 16px/1.6 system-ui, sans-serif;
+    display: flex; justify-content: center;
+  }
+  .frame {
+    width: min(390px, 100vw);
+    min-height: 100vh;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    border-inline: 1px solid var(--hairline);
+  }
+
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--hairline);
+    font: 600 14px/1 monospace; letter-spacing: .12em;
+  }
+  header .logo::before { content: "◆ "; color: var(--amber); }
+
+  .hero { position: relative; padding: 0 20px 32px; }
+
+  .diamond {
+    position: absolute;
+    top: calc(var(--diamond-top) * 1px);
+    right: calc(var(--diamond-right) * 1px);
+    width: calc(var(--diamond-w) * 1%);
+    opacity: var(--diamond-op);
+    -webkit-mask-image: linear-gradient(315deg, #000 calc(var(--fade) * 1%), transparent 98%);
+            mask-image: linear-gradient(315deg, #000 calc(var(--fade) * 1%), transparent 98%);
+    pointer-events: none;
+  }
+  .diamond img { width: 100%; display: block; }
+
+  .label {
+    position: relative;
+    padding-top: 24px;
+    font: 500 11px/1 monospace; letter-spacing: .14em;
+    color: var(--amber);
+  }
+  .movie {
+    position: relative;
+    margin-top: 16px;
+    aspect-ratio: 16 / 10;
+    border: 1px dashed var(--hairline);
+    border-radius: 4px;
+    display: grid; place-items: center;
+    color: var(--muted);
+    font: 500 11px/1.4 monospace; text-align: center;
+    background: rgba(0,0,0,.35);
+  }
+  h1 {
+    position: relative;
+    margin-top: calc(var(--hero-gap) * 1px);
+    font-size: 40px; line-height: 1.1; font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .sub { position: relative; margin-top: 12px; color: var(--muted); font-size: 15px; }
+  .cta {
+    position: relative;
+    display: inline-block; margin-top: 24px;
+    padding: 10px 18px;
+    border: 1px solid var(--amber); border-radius: 4px;
+    color: var(--amber);
+    font: 500 12px/1 monospace; letter-spacing: .1em;
+  }
+
+  nav {
+    border-top: 1px solid var(--hairline);
+    font: 500 12px/1 monospace;
+  }
+  nav a {
+    display: flex; justify-content: space-between;
+    padding: 14px 20px;
+    color: var(--muted); text-decoration: none;
+    border-bottom: 1px solid var(--hairline);
+  }
+  nav a span { color: var(--ink); }
+
+  /* tuning panel */
+  .panel {
+    position: fixed; right: 12px; bottom: 12px; z-index: 9;
+    background: rgba(20,18,16,.92);
+    border: 1px solid var(--hairline); border-radius: 6px;
+    padding: 10px 12px; width: 220px;
+    font: 10px/1.6 monospace; color: var(--muted);
+  }
+  .panel label { display: flex; justify-content: space-between; }
+  .panel input { width: 100%; accent-color: var(--amber); }
+  .panel b { color: var(--amber); font-weight: 500; }
+  .readout { margin-top: 8px; white-space: pre; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <header><span class="logo">MUNRHALLS</span><span>≡</span></header>
+
+  <section class="hero">
+    <div class="diamond"><img src="../code-diamond-black-bg.png" alt=""></div>
+
+    <p class="label">LOREM IPSUM · DOLOR SIT</p>
+
+    <div class="movie">MOVIE PLACEHOLDER<br>loom · 15–30s</div>
+
+    <h1>Lorem ipsum<br>dolor sit amet<br>consectetur.</h1>
+    <p class="sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.</p>
+    <a class="cta">◆ LOREM</a>
+  </section>
+
+  <nav>
+    <a href="#"><span>01</span> checkout →</a>
+    <a href="#"><span>02</span> filters &amp; sorting →</a>
+    <a href="#"><span>03</span> catalogue →</a>
+    <a href="#"><span>04</span> search performance →</a>
+    <a href="#"><span>05</span> admin panel →</a>
+    <a href="#"><span>06</span> auth &amp; accounts →</a>
+    <a href="#"><span>07</span> architecture &amp; security →</a>
+  </nav>
+</div>
+
+<div class="panel">
+  <label>diamond width <b id="v-w"></b></label>
+  <input type="range" min="20" max="110" value="62" data-var="--diamond-w" data-unit="%" id="v-w">
+  <label>diamond top <b id="v-t"></b></label>
+  <input type="range" min="0" max="400" value="56" data-var="--diamond-top" data-unit="px">
+  <label>diamond right <b id="v-r"></b></label>
+  <input type="range" min="-160" max="40" value="-8" data-var="--diamond-right" data-unit="px">
+  <label>fade reach <b id="v-f"></b></label>
+  <input type="range" min="10" max="100" value="70" data-var="--fade" data-unit="%">
+  <label>opacity <b id="v-o"></b></label>
+  <input type="range" min="20" max="100" value="85" data-var="--diamond-op" data-unit="/100">
+  <div class="readout" id="readout"></div>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const readout = document.getElementById('readout');
+  const sliders = [...document.querySelectorAll('.panel input')];
+
+  function apply(input) {
+    const v = input.value;
+    const unit = input.dataset.unit;
+    if (input.dataset.var === '--diamond-op') root.style.setProperty(input.dataset.var, v / 100);
+    else root.style.setProperty(input.dataset.var, v);
+    const label = input.previousElementSibling.querySelector('b');
+    label.textContent = v + (unit === '/100' ? '' : unit);
+    readout.textContent =
+      `--diamond-w:      ${sliders[0].value}%\n` +
+      `--diamond-top:    ${sliders[1].value}px\n` +
+      `--diamond-right:  ${sliders[2].value}px\n` +
+      `--fade:           ${sliders[3].value}%\n` +
+      `--diamond-op:     ${sliders[4].value / 100}`;
+  }
+  sliders.forEach(s => { s.addEventListener('input', () => apply(s)); apply(s); });
+</script>
+
+</body>
+</html>

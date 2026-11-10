@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jan Pilik — v4 design</title>
+<style>
+  @font-face{font-family:'Geist';font-weight:400;src:url(../../node_modules/@fontsource/geist/files/geist-latin-400-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist';font-weight:600;src:url(../../node_modules/@fontsource/geist/files/geist-latin-600-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist';font-weight:700;src:url(../../node_modules/@fontsource/geist/files/geist-latin-700-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist Mono';font-weight:500;src:url(../../node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist Mono';font-weight:600;src:url(../../node_modules/@fontsource/geist-mono/files/geist-mono-latin-600-normal.woff2) format('woff2')}
+
+  :root{
+    --bg:#0d0d0d; --s1:#12100e; --s3:#1c1915; --s4:#242018;
+    --line:#2c271e; --line2:#403b31;
+    --text:#e8e8e8; --muted:#a89f92;
+    --amber:#e6b84f;                 /* the person: CTA, diamond, end-to-end */
+    --cu:#df7412; --cu2:#ffb786;     /* the proof: tree + root — a different colour, on purpose */
+    --sans:'Geist',system-ui,sans-serif; --mono:'Geist Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#070706;color:var(--text);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+
+  /* The phone from the sketch: one rounded screen. On a real phone it goes edge to edge. */
+  .page{position:relative;width:min(100%,390px);margin:24px auto;background:var(--bg);border:1px solid var(--line2);
+        border-radius:28px;overflow:hidden}
+  @media (max-width:430px){.page{margin:0;border:0;border-radius:0}}
+  .in{position:relative;z-index:1}
+
+  /* Big background diamond: bleeds off the right edge, sits behind sections 1–3 */
+  .dm{position:absolute;z-index:0;top:-8px;left:96px;width:420px;height:420px;opacity:.5;pointer-events:none}
+
+  /* rules between sections, each with a small diamond mark */
+  .rule{position:relative;height:1px;background:var(--line)}
+  .rule::before{content:"";position:absolute;left:20px;top:-3px;width:5px;height:5px;background:var(--bg);
+                border:1px solid var(--line2);transform:rotate(45deg)}
+
+  /* ── 1 · Intro ── */
+  .hero{padding:0 20px 40px}
+  .top{height:64px;display:flex;align-items:center;justify-content:space-between}
+  .hi{font:400 15px/1 var(--sans);color:var(--text)}
+  .contact{position:relative;display:flex;align-items:center;gap:12px;height:48px;padding:0 2px 0 16px;
+           font:600 13px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+  .contact::before,.contact::after{content:"";position:absolute;left:0;width:7px;height:7px;border-left:1px solid var(--amber)}
+  .contact::before{top:11px;border-top:1px solid var(--amber)}
+  .contact::after{bottom:11px;border-bottom:1px solid var(--amber)}
+  .gem{width:7px;height:7px;background:var(--amber);transform:rotate(45deg)}
+  h1{margin-top:32px;font:700 35px/1.1 var(--sans);letter-spacing:-.04em}
+
+  /* ── 2 · end ◇ to ◇ end ── */
+  .e2e{display:grid;grid-template-columns:1fr 208px 1fr;grid-template-rows:repeat(3,26px) 20px;
+       padding:12px 20px 10px;font:400 11px/14px var(--sans);color:var(--muted)}
+  .e2e ul{list-style:none;display:flex;flex-direction:column;grid-row:1/4}
+  .e2e .l{grid-column:1}
+  .e2e .r{grid-column:3}
+  .e2e li{height:26px;display:flex;align-items:center;white-space:nowrap}
+  .e2e .l li{justify-content:flex-end;padding-right:5px}
+  .e2e .r li{justify-content:flex-start;padding-left:5px}
+  /* lozenge bottom tips solder onto the bus line — the ends stand on the system rail */
+  .loz{grid-column:2;grid-row:1/4;align-self:start;justify-self:center;margin-top:-4px;width:208px;display:block;overflow:visible}
+  .bus{grid-column:1/-1;grid-row:4;display:flex;align-items:center;gap:8px}
+  .bus em{width:6px;height:6px;border:1px solid #8a8072;transform:rotate(45deg);flex:none}
+  .bus i{position:relative;flex:1;height:1px;background:#8a8072}
+  .bus i::after{content:"";position:absolute;right:0;top:-2px;width:5px;height:5px;border-radius:50%;background:var(--amber)}
+
+  /* ── 3 · See my work ── */
+  .work{padding:40px 20px 48px}
+  .seg{display:flex;align-items:center;gap:12px;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .seg i{width:32px;height:1px;background:var(--amber)}
+  .ttl{margin-top:24px;display:flex;flex-direction:column;gap:4px}
+  .ttl span{font:400 14px/1.2 var(--sans);color:var(--muted)}
+  .ttl a{display:flex;align-items:center;gap:8px;font:700 31px/1.1 var(--sans);letter-spacing:-.035em}
+  .ttl svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .vid{position:relative;margin-top:24px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--s1);border:1px solid var(--line2)}
+  .shot{position:absolute;inset:0;padding:14px;display:flex;flex-direction:column;gap:10px}
+  .tb{display:flex;align-items:center;justify-content:space-between;height:8px}
+  .tb i{width:56px;height:6px;background:var(--amber)}
+  .tb span{display:flex;gap:8px}
+  .tb s{width:24px;height:4px;background:var(--line2)}
+  .bd{flex:1;min-height:0;display:grid;grid-template-columns:72px 1fr;gap:10px}
+  .sd{display:flex;flex-direction:column;gap:8px}
+  .ln{display:block;height:6px;background:var(--line2)}
+  .ln.d{width:60%;background:var(--line)}
+  .ch{height:16px;border:1px solid var(--line2)}
+  .ch.on{border-color:var(--amber);background:rgba(230,184,79,.12)}
+  .gr{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:8px}
+  .cd{display:flex;flex-direction:column;gap:4px;padding:4px;background:var(--s3);border:1px solid var(--line)}
+  .cd u{flex:1;background:var(--s4)}
+  .cd .ln{height:4px}
+  .scrim{position:absolute;inset:0;background:rgba(13,13,13,.36)}
+  .play{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;
+        border:1.5px solid var(--amber);background:rgba(13,13,13,.7);display:grid;place-items:center}
+  .play svg{width:24px;height:24px;margin-left:4px;fill:var(--amber)}
+  .dur{position:absolute;right:12px;bottom:12px;padding:6px 8px;background:rgba(13,13,13,.88);
+       font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--text)}
+
+  /* ── 4 · Conclusive proofs: a tree, drawn in a different colour ── */
+  .proof{padding:40px 20px 40px}
+  .tree{position:relative;width:350px;max-width:100%;height:478px;margin:0 auto}
+  .tree svg{position:absolute;left:0;top:0;width:350px;height:478px;overflow:visible}
+  .br{fill:none;stroke:var(--cu);stroke-opacity:.5;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:round}
+  .tree circle{fill:var(--cu2)}
+  .ring{fill:none;stroke:var(--cu);vector-effect:non-scaling-stroke}
+  .n{position:absolute;padding:4px 0}
+  .n.L{font:600 17px/21px var(--sans);letter-spacing:-.015em;color:var(--text)}
+  .n.M{font:400 15px/19px var(--sans);color:#d2ccc2}
+  .n.S{font:400 13px/17px var(--sans);color:var(--muted)}
+  .n small{display:block;margin-top:2px;font:500 12px/16px var(--mono);letter-spacing:.04em;color:var(--muted)}
+  .n:hover{color:var(--cu2)}
+  .root{position:absolute;top:446px;left:50.00%;transform:translateX(-50%);white-space:nowrap;
+        font:600 12px/16px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--cu2)}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="dm" src="../code-diamond-amber-fade.webp" alt="" width="420" height="420">
+
+  <div class="in">
+    <!-- 1 · intro -->
+    <section class="hero">
+      <div class="top">
+        <p class="hi">Hi, I'm Jan Pilik.</p>
+        <a class="contact" href="#contact">Contact<span class="gem"></span></a>
+      </div>
+      <h1>I build large-scale<br>software products</h1>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- 2 · end to end -->
+    <section class="e2e" aria-label="End to end">
+      <ul class="l"><li>design</li><li>visual identity</li><li>ui/ux</li></ul>
+      <svg class="loz" viewBox="0 0 208 96" aria-hidden="true">
+        <g fill="none" stroke="#e6b84f" stroke-width="1">
+          <path d="M31.4 21.9L52 4L96.9 43.9 M111.1 52.1L156 92L176.6 74.1"/>
+          <path d="M183.9 67.4L204 48L156 4L111.1 43.9 M96.9 52.1L52 92L4 48L24.1 28.6"/>
+        </g>
+        <g fill="#e8e8e8" font-family="Geist,sans-serif" font-weight="700" font-size="35" letter-spacing="-0.04em" text-anchor="middle" dominant-baseline="central">
+          <text x="52" y="48">end</text><text x="156" y="48">end</text>
+        </g>
+        <text x="104" y="48" fill="#a89f92" font-family="'Geist Mono',monospace" font-size="10" text-anchor="middle" dominant-baseline="central">to</text>
+      </svg>
+      <ul class="r"><li>frontend</li><li>backend</li><li>architecture</li></ul>
+      <div class="bus"><span>rwd</span><em></em><i></i><span>system</span></div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- 3 · work -->
+    <section class="work">
+      <p class="seg"><i></i>See my work</p>
+      <h2 class="ttl"><span>E-commerce store:</span>
+        <a href="#sanglogium">sanglogium.com<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      </h2>
+      <div class="vid" aria-label="Sanglogium video">
+        <div class="shot" aria-hidden="true">
+          <div class="tb"><i></i><span><s></s><s></s><s></s></span></div>
+          <div class="bd">
+            <div class="sd"><span class="ln"></span><span class="ch on"></span><span class="ch"></span><span class="ch"></span><span class="ln d"></span></div>
+            <div class="gr">
+              <div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div><div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div>
+              <div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div><div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div>
+              <div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div><div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div>
+              <div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div><div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scrim"></div>
+        <a class="play" href="#play" aria-label="Play video"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></a>
+        <span class="dur">0:18</span>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- 4 · conclusive proofs -->
+    <section class="proof" aria-labelledby="cp">
+      <div class="tree">
+        <svg viewBox="0 0 350 478" aria-hidden="true">
+      <path class="br" d="M175 424 C175.0 209.5 237.5 166.6 237.5 34"/>
+      <path class="br" d="M175 424 C175.0 229.3 116.3 190.4 116.3 70"/>
+      <path class="br" d="M175 424 C175.0 246.9 230.4 211.5 230.4 102"/>
+      <path class="br" d="M175 424 C175.0 274.4 124.8 244.5 124.8 152"/>
+      <path class="br" d="M175 424 C175.0 316.2 217.3 294.6 217.3 228"/>
+      <path class="br" d="M175 424 C175.0 308.5 131.2 285.4 131.2 214"/>
+      <path class="br" d="M175 424 C175.0 343.7 212.2 327.6 212.2 278"/>
+      <path class="br" d="M175 424 C175.0 351.4 139.3 336.9 139.3 292"/>
+      <path class="br" d="M175 424 C175.0 371.2 207.0 360.6 207.0 328"/>
+      <path class="br" d="M175 424 C175.0 384.4 145.5 376.5 145.5 352"/>
+      <path class="br" d="M175 424 C175.0 400.9 201.4 396.3 201.4 382"/>
+      <circle cx="237.5" cy="34" r="2.4"/>
+      <circle cx="116.3" cy="70" r="2.4"/>
+      <circle cx="230.4" cy="102" r="2.4"/>
+      <circle cx="124.8" cy="152" r="2.4"/>
+      <circle cx="217.3" cy="228" r="2.4"/>
+      <circle cx="131.2" cy="214" r="2.4"/>
+      <circle cx="212.2" cy="278" r="2.4"/>
+      <circle cx="139.3" cy="292" r="2.4"/>
+      <circle cx="207.0" cy="328" r="2.4"/>
+      <circle cx="145.5" cy="352" r="2.4"/>
+      <circle cx="201.4" cy="382" r="2.4"/>
+          <path class="ring" d="M175 394L205 424L175 454L145 424Z" stroke-opacity=".18"/>
+          <path class="ring" d="M175 407L192 424L175 441L158 424Z" stroke-opacity=".38"/>
+          <path d="M175 418L181 424L175 430L169 424Z" fill="#ffb786"/>
+        </svg>
+    <a class="n L" href="#performance" style="top:20px;left:248px;width:102px;text-align:left">Performance</a>
+    <a class="n S" href="#unique" style="top:58px;left:0;width:105px;text-align:right">Unique design system</a>
+    <a class="n L" href="#virtual" style="top:88px;left:241px;width:109px;text-align:left">Virtual file system catalogue<small>instant navigation</small></a>
+    <a class="n M" href="#responsive" style="top:138px;left:0;width:114px;text-align:right">Responsive web design</a>
+    <a class="n M" href="#authentication" style="top:214px;left:228px;width:122px;text-align:left">Authentication</a>
+    <a class="n L" href="#filters" style="top:200px;left:0;width:120px;text-align:right">Filters &amp; sorting</a>
+    <a class="n M" href="#search" style="top:264px;left:223px;width:127px;text-align:left">Search</a>
+    <a class="n L" href="#secure" style="top:278px;left:0;width:128px;text-align:right">Secure checkout</a>
+    <a class="n M" href="#user" style="top:314px;left:218px;width:132px;text-align:left">User accounts</a>
+    <a class="n S" href="#basket" style="top:340px;left:0;width:135px;text-align:right">Basket</a>
+    <a class="n S" href="#newsletter" style="top:370px;left:212px;width:138px;text-align:left">Newsletter</a>
+        <h2 class="root" id="cp">Conclusive proofs</h2>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>
