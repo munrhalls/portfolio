@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design audit — mobile landing</title>
+<style>
+  :root{
+    --bg:#0d0d0d; --s1:#14120f; --s2:#1c1915; --line:#2c271e; --line2:#403b31;
+    --text:#e8e4dc; --muted:#a89f92; --dim:#6a6252;
+    --amber:#e6b84f; --indigo:#8a91f2; --red:#e06c5c; --orange:#e09a4c; --green:#8fb86a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);
+       font:400 15px/1.55 ui-sans-serif,system-ui,'Segoe UI',sans-serif;
+       -webkit-font-smoothing:antialiased;padding:40px 20px}
+  .wrap{max-width:1080px;margin:0 auto;min-width:0}
+  .mono{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+  h1{font-size:28px;font-weight:700;letter-spacing:-.025em}
+  h2{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);
+     margin:52px 0 16px;display:flex;align-items:baseline;gap:10px}
+  h2 .n{color:var(--dim)}
+  h2 .hint{margin-left:auto;letter-spacing:0;text-transform:none;font-weight:400;color:var(--dim);font-size:12px}
+  .sub{color:var(--muted);margin-top:8px;font-size:14.5px;max-width:76ch}
+
+  /* ── headline verdict ── */
+  .top{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:24px;align-items:center;
+       background:linear-gradient(120deg,rgba(230,184,79,.08),rgba(138,145,242,.05));
+       border:1px solid var(--line2);border-radius:14px;padding:22px 26px;margin-top:26px}
+  .top .claim{font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.35}
+  .top p{color:var(--muted);margin-top:9px;font-size:14px;max-width:70ch}
+  .ring{justify-self:end;text-align:center}
+  .ring .big{font-size:52px;font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--orange)}
+  .ring .big em{font-style:normal;font-size:20px;color:var(--dim);font-weight:400}
+  .ring .cap{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-top:8px}
+
+  /* ── annotated screenshot ── */
+  .shotgrid{display:grid;grid-template-columns:400px minmax(0,1fr);gap:28px;align-items:start}
+  .shotbox{position:relative;border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:#000}
+  .shotbox img{display:block;width:100%;height:auto}
+  .pin{position:absolute;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;
+       background:rgba(10,9,8,.9);border:1.5px solid var(--amber);color:var(--amber);
+       font:600 12px/21px ui-monospace,Menlo,monospace;text-align:center;
+       box-shadow:0 0 0 3px rgba(10,9,8,.5),0 0 14px rgba(230,184,79,.35)}
+  .pin.r{border-color:var(--red);color:var(--red);box-shadow:0 0 0 3px rgba(10,9,8,.5),0 0 14px rgba(224,108,92,.35)}
+  .keys{display:grid;gap:0;min-width:0}
+  .key{display:grid;grid-template-columns:26px minmax(0,1fr);gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+  .key:first-child{border-top:0;padding-top:0}
+  .key .k{font:600 12px/20px ui-monospace,Menlo,monospace;color:var(--amber);
+          border:1px solid var(--line2);border-radius:50%;width:22px;height:22px;text-align:center}
+  .key.r .k{color:var(--red)}
+  .key b{display:block;font-weight:600;font-size:14.5px}
+  .key span{display:block;color:var(--muted);font-size:13.5px;margin-top:2px}
+
+  /* ── metric bars ── */
+  .metrics{background:var(--s1);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .m{display:grid;grid-template-columns:200px 220px 56px minmax(0,1fr);gap:16px;align-items:center;
+     padding:11px 18px;border-top:1px solid var(--line);font-size:14px}
+  .m:first-child{border-top:0}
+  .m .name{color:var(--text);min-width:0}
+  .m .name i{display:block;font-style:normal;font-size:11.5px;color:var(--dim);margin-top:1px}
+  .track{height:6px;background:var(--s2);border-radius:3px;overflow:hidden}
+  .track i{display:block;height:100%;border-radius:3px}
+  .m .v{text-align:right;font:600 15px/1 ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .m .note{color:var(--muted);font-size:13px;min-width:0}
+  .f-red i{background:var(--red)} .f-red .v{color:var(--red)}
+  .f-org i{background:var(--orange)} .f-org .v{color:var(--orange)}
+  .f-amb i{background:var(--amber)} .f-amb .v{color:var(--amber)}
+  .f-grn i{background:var(--green)} .f-grn .v{color:var(--green)}
+  .mavg{display:flex;justify-content:space-between;padding:12px 18px;background:var(--s2);
+        border-top:1px solid var(--line2);font-size:13px;color:var(--muted)}
+  .mavg b{color:var(--text)}
+
+  /* ── strengths ── */
+  .str{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .scard{background:var(--s1);border:1px solid var(--line);border-left:2px solid var(--green);
+         border-radius:10px;padding:16px 18px;min-width:0}
+  .scard b{display:block;font-size:15px;font-weight:600}
+  .scard p{color:var(--muted);font-size:13.5px;margin-top:7px}
+
+  /* ── gaps ── */
+  .gaps{display:grid;gap:14px}
+  .g{background:var(--s1);border:1px solid var(--line);border-radius:11px;overflow:hidden;min-width:0}
+  .g .gh{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;
+         padding:13px 16px;border-bottom:1px solid var(--line)}
+  .g .id{font:600 12px/22px ui-monospace,Menlo,monospace;color:var(--dim);
+         border:1px solid var(--line2);border-radius:5px;text-align:center}
+  .g .ttl{font-weight:600;font-size:15.5px;letter-spacing:-.01em;min-width:0}
+  .g .ttl em{font-style:normal;display:block;font-weight:400;font-size:12px;color:var(--dim);
+             margin-top:2px;font-family:ui-monospace,Menlo,monospace}
+  .badges{display:flex;gap:7px;flex:none}
+  .b{font:600 10.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;
+     padding:5px 8px;border-radius:5px;border:1px solid var(--line2);color:var(--dim);white-space:nowrap}
+  .b.i-hi{color:var(--red);border-color:rgba(224,108,92,.45);background:rgba(224,108,92,.08)}
+  .b.i-md{color:var(--amber);border-color:rgba(230,184,79,.4);background:rgba(230,184,79,.07)}
+  .b.i-lo{color:var(--green);border-color:rgba(143,184,106,.4);background:rgba(143,184,106,.07)}
+  .gb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
+  .gb>div{padding:14px 16px;min-width:0}
+  .gb .prob{border-right:1px solid var(--line)}
+  .lbl{font:600 10px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;
+       color:var(--dim);margin-bottom:7px}
+  .gb p{font-size:13.5px;color:var(--muted)}
+  .gb p+p{margin-top:7px}
+  .gb .fix p{color:var(--text)}
+  .gb .fix .lbl{color:var(--amber)}
+  .hurt{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line2);
+        font-size:13px;color:var(--dim)}
+  .hurt b{color:var(--muted);font-weight:600}
+
+  /* ── matrix ── */
+  .mx{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:10px}
+  .mx svg{display:block;width:100%;height:auto}
+
+  .foot{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+  @media (max-width:860px){
+    .shotgrid,.gb{grid-template-columns:minmax(0,1fr)}
+    .gb .prob{border-right:0;border-bottom:1px solid var(--line)}
+    .str{grid-template-columns:minmax(0,1fr)}
+    .top{grid-template-columns:minmax(0,1fr)}
+    .ring{justify-self:start}
+    .m{grid-template-columns:minmax(0,1fr) 48px;gap:8px}
+    .m .track,.m .note{grid-column:1 / -1}
+  }
+</style>
+<style id="lavish-cursor-style">:root{--lavish-accent:#f4c95d;--lavish-annotate-outline:2px solid var(--lavish-accent);--lavish-annotate-offset:2px}*{cursor:default!important}[data-lavish-action],[data-lavish-action] *{cursor:pointer!important}input,textarea,[contenteditable]:not([contenteditable='false']){cursor:text!important}button,select,label,option,input[type='button'],input[type='submit'],input[type='reset'],input[type='checkbox'],input[type='radio'],input[type='file'],input[type='color'],input[type='range'],input[type='image']{cursor:pointer!important}</style></head>
+<body class="vsc-initialized" style="outline-offset: var(--lavish-annotate-offset,2px);">
+<div class="wrap" style="outline-offset: var(--lavish-annotate-offset,2px); outline: var(--lavish-annotate-outline,2px solid #f4c95d);">
+
+  <h1 style="outline-offset: var(--lavish-annotate-offset,2px);">Design audit — mobile landing</h1>
+  <p class="sub" style="outline-offset: var(--lavish-annotate-offset,2px);">Single frame, judged on its own. Everything below comes from what is visible in the
+  screenshot — no code, no live site, no other mockups.</p>
+
+  <div class="top" style="outline-offset: var(--lavish-annotate-offset,2px);">
+    <div style="outline-offset: var(--lavish-annotate-offset,2px);">
+      <div class="claim" style="outline-offset: var(--lavish-annotate-offset,2px);">High craft, low effectiveness. This screen wins respect from developers and
+      loses the decision to a plainer portfolio.</div>
+      <p style="outline-offset: var(--lavish-annotate-offset,2px);">The execution is genuinely above average for a dev portfolio — real restraint, a real signature.
+      But the largest element is empty, the proof numbers measure effort instead of outcomes, and the
+      loudest button on the page sends the visitor away. Four of the ten metrics are failing, and they
+      are the four that decide whether you get an email.</p>
+    </div>
+    <div class="ring" style="outline-offset: var(--lavish-annotate-offset,2px);">
+      <div class="big">4.6<em>/10</em></div>
+      <div class="cap" style="outline-offset: var(--lavish-annotate-offset,2px);">overall</div>
+    </div>
+  </div>
+
+  <h2><span class="n">01</span> What I see <span class="hint" style="outline-offset: var(--lavish-annotate-offset,2px);">pins = problems, red = critical</span></h2>
+  <div class="shotgrid">
+    <div class="shotbox">
+      <img src="index_data/audit-shot_zJ8t.png" alt="Mobile landing screen">
+      <div class="pin" style="left:88%;top:5%">1</div>
+      <div class="pin" style="left:30%;top:11%">2</div>
+      <div class="pin" style="left:6%;top:23.5%">3</div>
+      <div class="pin r" style="left:74%;top:31%">4</div>
+      <div class="pin r" style="left:50%;top:53%">5</div>
+      <div class="pin r" style="left:10%;top:77%">6</div>
+      <div class="pin r" style="left:71%;top:84.5%">7</div>
+      <div class="pin" style="left:90%;top:93%">8</div>
+    </div>
+    <div class="keys">
+      <div class="key"><div class="k">1</div><div><b>Collision at the top-right corner</b>
+        <span>The diamond's left vertex crosses the final <span class="mono">T</span> of CONTACT, and its
+        right vertex is clipped by the screen edge. Reads as a rendering bug, in the first 40px of a
+        design whose whole pitch is precision.</span></div></div>
+      <div class="key" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="k">2</div><div><b>Headline only 1.4× the greeting</b>
+        <span>"Hi, I'm Jan Pilik." competes with the value proposition. The eye weighs a salutation
+        before it weighs what you do.</span></div></div>
+      <div class="key"><div class="k">3</div><div><b>Hard horizontal seam, three background zones</b>
+        <span>Warm wash on top, a darker band behind the stats, cold indigo at the bottom. The seam under
+        the stats reads as two stacked screenshots rather than one composed screen.</span></div></div>
+      <div class="key r"><div class="k">4</div><div><b>Proof numbers measure effort, not outcomes</b>
+        <span style="outline-offset: var(--lavish-annotate-offset,2px);">Commits count keystrokes. Months can read as slow. Only "500+ Products" has buyer value.
+        The columns are also visibly uneven — the gap before <span class="mono">17</span> is wider than
+        the gap after <span class="mono">20+</span>.</span></div></div>
+      <div class="key r"><div class="k">5</div><div><b>Biggest element, least information</b>
+        <span style="outline-offset: var(--lavish-annotate-offset,2px);">~40% of the screen is a grey wireframe. Even with real footage, a full desktop catalogue
+        at this width puts every label below legibility on a phone.</span></div></div>
+      <div class="key r" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="k">6</div><div><b>Navigation is rotated and clipped</b>
+        <span>Four labels at ±45°, two reading downhill, sitting on their own katakana texture, with the
+        diamond's left vertex cut off by the edge. Triangle tap targets are an interaction nobody has
+        learned.</span></div></div>
+      <div class="key r"><div class="k">7</div><div><b>Primary CTA has no shape — and it's an exit</b>
+        <span>A faint rail and a floating word: no enclosed hit area, no way to tell what's tappable. It
+        is also the single loudest element on the page, and it sends the visitor off-site.</span></div></div>
+      <div class="key" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="k">8</div><div><b>Semi-legible ornament next to the CTA</b>
+        <span style="outline-offset: var(--lavish-annotate-offset,2px);">Fragments like <span class="mono">pri = impact</span> and <span class="mono">acc α scope</span>
+        are readable enough that the eye tries to parse them, right where the primary action lives.</span></div></div>
+    </div>
+  </div>
+
+  <h2><span class="n">02</span> Scores</h2>
+  <div class="metrics">
+    <div class="m f-org"><div class="name">Visual hierarchy</div><div class="track"><i style="width:50%"></i></div><div class="v">5</div><div class="note">Largest surface is empty; greeting rivals the headline.</div></div>
+    <div class="m f-amb"><div class="name">Typography</div><div class="track"><i style="width:60%"></i></div><div class="v">6</div><div class="note">Sans/mono pairing is good. Hero scale is too small.</div></div>
+    <div class="m f-amb"><div class="name">Color</div><div class="track"><i style="width:60%"></i></div><div class="v">6</div><div class="note">One accent — disciplined. Spent on the wrong action; warm/cold clash.</div></div>
+    <div class="m f-red"><div class="name">Spacing &amp; rhythm</div><div class="track"><i style="width:40%"></i></div><div class="v">4</div><div class="note">No visible base unit. Every gap is a different number.</div></div>
+    <div class="m f-org"><div class="name">Layout &amp; composition</div><div class="track"><i style="width:50%"></i></div><div class="v">5</div><div class="note">Strong diagonal axis, but three elements bleed off three edges.</div></div>
+    <div class="m f-red" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="name">Accessibility</div><div class="track"><i style="width:30%"></i></div><div class="v">3</div><div class="note">Rotated ~13px nav labels, sub-44px tap targets, hover-only states.</div></div>
+    <div class="m f-org"><div class="name">Content clarity</div><div class="track"><i style="width:50%"></i></div><div class="v">5</div><div class="note">"large-scale" outruns the evidence shown directly beneath it.</div></div>
+    <div class="m f-red"><div class="name">Conversion</div><div class="track"><i style="width:30%"></i></div><div class="v">3</div><div class="note">Loudest CTA exits the site. Contact is the weakest element on screen.</div></div>
+    <div class="m f-red"><div class="name">Responsiveness <i>low confidence — one static frame</i></div><div class="track"><i style="width:30%"></i></div><div class="v">3</div><div class="note">Composition is tuned to one exact aspect ratio; three edge bleeds imply no reflow.</div></div>
+    <div class="m f-amb"><div class="name">Performance <i>low confidence — one static frame</i></div><div class="track"><i style="width:60%"></i></div><div class="v">6</div><div class="note">Looping video sim plus layered, blended ornament = steady compositing cost.</div></div>
+    <div class="mavg"><span>Mean of the 8 metrics judgeable from a static frame</span><span><b>4.6 / 10</b></span></div>
+  </div>
+
+  <h2 style="outline-offset: var(--lavish-annotate-offset,2px);"><span class="n">03</span> Top 3 strengths</h2>
+  <div class="str">
+    <div class="scard"><b>Accent discipline</b>
+      <p>Exactly one amber element on the whole screen. Almost every dev portfolio sprays its accent
+      across six things. This one didn't — that restraint is the hardest part to teach.</p></div>
+    <div class="scard"><b style="outline-offset: var(--lavish-annotate-offset,2px);">The browser-mock device</b>
+      <p style="outline-offset: var(--lavish-annotate-offset,2px);">Chrome bar, progress fill, tabular <span class="mono">0:02 / 0:14</span>, moving cursor. It reads
+      as a real product in use without needing a real screenshot. Tasteful and convincing.</p></div>
+    <div class="scard"><b>It has a silhouette</b>
+      <p>The diagonal diamond axis gives the screen a memorable shape. Most developer portfolios are
+      stacked rectangles you forget on close. This one you'd recognise again.</p></div>
+  </div>
+
+  <h2><span class="n">04</span> Impact vs effort <span class="hint">fix the top-left first</span></h2>
+  <div class="mx">
+    <svg viewBox="0 0 600 370" role="img" aria-label="Impact versus effort scatter plot of the 15 gaps" style="outline-offset: var(--lavish-annotate-offset,2px);">
+      <defs>
+        <linearGradient id="q1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#e06c5c" stop-opacity=".12"></stop>
+          <stop offset="1" stop-color="#e06c5c" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+      <rect x="60" y="30" width="240" height="145" fill="url(#q1)"></rect>
+      <line x1="60" y1="320" x2="560" y2="320" stroke="#403b31"></line>
+      <line x1="60" y1="30" x2="60" y2="320" stroke="#403b31"></line>
+      <line x1="300" y1="30" x2="300" y2="320" stroke="#2c271e" stroke-dasharray="3 4"></line>
+      <line x1="60" y1="175" x2="560" y2="175" stroke="#2c271e" stroke-dasharray="3 4"></line>
+
+      <text x="70" y="46" fill="#e06c5c" font-size="10.5" font-family="ui-monospace,Menlo,monospace" letter-spacing="1.4">DO NOW</text>
+      <text x="310" y="46" fill="#6a6252" font-size="10.5" font-family="ui-monospace,Menlo,monospace" letter-spacing="1.4">PLAN PROPERLY</text>
+      <text x="70" y="312" fill="#6a6252" font-size="10.5" font-family="ui-monospace,Menlo,monospace" letter-spacing="1.4">TIDY-UP</text>
+      <text x="310" y="312" fill="#403b31" font-size="10.5" font-family="ui-monospace,Menlo,monospace" letter-spacing="1.4">NOT WORTH IT</text>
+
+      <text x="310" y="350" fill="#a89f92" font-size="11" text-anchor="middle" font-family="ui-sans-serif,system-ui">EFFORT →</text>
+      <text x="26" y="175" fill="#a89f92" font-size="11" text-anchor="middle" font-family="ui-sans-serif,system-ui" transform="rotate(-90 26 175)">IMPACT →</text>
+
+      <g font-family="ui-monospace,Menlo,monospace" font-size="9.5" text-anchor="middle" font-weight="600">
+        <g fill="#e06c5c">
+          <circle cx="156" cy="53" r="12" fill="rgba(224,108,92,.14)" stroke="#e06c5c"></circle><text x="156" y="56.5" fill="#e06c5c">1</text>
+          <circle cx="188" cy="74" r="12" fill="rgba(224,108,92,.14)" stroke="#e06c5c"></circle><text x="188" y="77.5" fill="#e06c5c">2</text>
+          <circle cx="108" cy="88" r="12" fill="rgba(224,108,92,.14)" stroke="#e06c5c"></circle><text x="108" y="91.5" fill="#e06c5c">5</text>
+          <circle cx="152" cy="92" r="12" fill="rgba(224,108,92,.14)" stroke="#e06c5c"></circle><text x="152" y="95.5" fill="#e06c5c">6</text>
+          <circle cx="396" cy="59" r="12" fill="rgba(224,108,92,.14)" stroke="#e06c5c"></circle><text x="396" y="62.5" fill="#e06c5c">4</text>
+          <circle cx="348" cy="88" r="12" fill="rgba(224,108,92,.14)" stroke="#e06c5c"></circle><text x="348" y="91.5" fill="#e06c5c">3</text>
+        </g>
+        <g fill="#e6b84f">
+          <circle cx="204" cy="117" r="12" fill="rgba(230,184,79,.12)" stroke="#e6b84f"></circle><text x="204" y="120.5" fill="#e6b84f">12</text>
+          <circle cx="156" cy="146" r="12" fill="rgba(230,184,79,.12)" stroke="#e6b84f"></circle><text x="156" y="149.5" fill="#e6b84f">11</text>
+          <circle cx="108" cy="150" r="12" fill="rgba(230,184,79,.12)" stroke="#e6b84f"></circle><text x="108" y="153.5" fill="#e6b84f">7</text>
+          <circle cx="348" cy="146" r="12" fill="rgba(230,184,79,.12)" stroke="#e6b84f"></circle><text x="348" y="149.5" fill="#e6b84f">9</text>
+          <circle cx="207" cy="180" r="12" fill="rgba(230,184,79,.12)" stroke="#e6b84f"></circle><text x="207" y="183.5" fill="#e6b84f">8</text>
+          <circle cx="156" cy="202" r="12" fill="rgba(230,184,79,.12)" stroke="#e6b84f"></circle><text x="156" y="205.5" fill="#e6b84f">10</text>
+        </g>
+        <g fill="#8fb86a">
+          <circle cx="252" cy="230" r="12" fill="rgba(143,184,106,.12)" stroke="#8fb86a"></circle><text x="252" y="233.5" fill="#8fb86a">15</text>
+          <circle cx="108" cy="235" r="12" fill="rgba(143,184,106,.12)" stroke="#8fb86a"></circle><text x="108" y="238.5" fill="#8fb86a">13</text>
+          <circle cx="166" cy="258" r="12" fill="rgba(143,184,106,.12)" stroke="#8fb86a"></circle><text x="166" y="261.5" fill="#8fb86a">14</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <h2><span class="n">05</span> Gaps, ranked</h2>
+  <div class="gaps" style="outline-offset: var(--lavish-annotate-offset,2px);">
+
+    <div class="g">
+      <div class="gh"><div class="id">01</div>
+        <div class="ttl">Your loudest element is the exit door<em>SEE IT LIVE / CONTACT</em></div>
+        <div class="badges"><span class="b i-hi">impact high</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>The only amber element on the screen is a link that sends the visitor off to a store, with no
+          return path. CONTACT — the action that actually wins work — is plain white text with no container,
+          no color, no weight.</p>
+          <span class="hurt"><b>Why it hurts:</b> you spent your entire accent budget on the one action
+          that ends the session on your site.</span></div>
+        <div class="fix"><div class="lbl">Fix</div>
+          <p>Flip the emphasis. Give CONTACT the amber treatment (the filled diamond already exists as a
+          state — just make it the resting state) and demote SEE IT LIVE to a quiet text-plus-arrow.</p>
+          <p>Better: add a third, dominant action with a verb and a stake — <span class="mono">Hire me</span>
+          or <span class="mono">Book a 20-min call</span> — and let both current links be secondary.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh"><div class="id">02</div>
+        <div class="ttl">The primary CTA has no shape<em>SEE IT LIVE</em></div>
+        <div class="badges"><span class="b i-hi">impact high</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>A faint hairline rail and a floating word. No enclosed hit area, so there is no way to tell
+          whether the word, the arrow, or the end diamond is the target. The satisfying amber-fill state is
+          bound to hover, which does not exist on the device this screen is designed for.</p>
+          <span class="hurt"><b>Why it hurts:</b> an ambiguous affordance on the primary action is a
+          direct, measurable drop-off — and the best interaction in the design is invisible to every
+          mobile visitor.</span></div>
+        <div class="fix"><div class="lbl">Fix</div>
+          <p>Bound it: 4px-radius rect, 1px amber at full opacity, minimum 44px tall, with the diamond as
+          an end cap <em>inside</em> the shape rather than floating past it.</p>
+          <p>Mirror every hover rule with <span class="mono">:active</span> and
+          <span class="mono">:focus-visible</span> so touch gets the same feedback.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="id">03</div>
+        <div class="ttl">The biggest element carries the least information<em>video panel, ~40% of the screen</em></div>
+        <div class="badges"><span class="b i-hi">impact high</span><span class="b">effort med</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>Right now it is a grey wireframe of a product grid. Filled with real footage it barely improves:
+          a full desktop catalogue squeezed into this width makes every product card roughly a thumbnail,
+          and every label inside it sub-pixel. It can only ever say "a website exists."</p>
+          <span class="hurt"><b>Why it hurts:</b> hierarchy inversion. Largest area, lowest signal — and
+          a buyer scanning for five seconds spends most of them on it.</span></div>
+        <div class="fix"><div class="lbl">Fix</div>
+          <p>Change the footage, not just the fill. Drop the whole-page view; shoot tight 1-up crops of one
+          interaction at 2–3× zoom — a filter applying, a checkout step completing, an admin save — so
+          something is actually readable at thumb size.</p>
+          <p>If the footage can't be made legible, shrink the panel and give the space back to the headline
+          and the proof row.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="id">04</div>
+        <div class="ttl" style="outline-offset: var(--lavish-annotate-offset,2px);">Navigation is rotated, clipped, and unlearnable<em>FEATURES · CASE STUDIES · LESSONS · STORY</em></div>
+        <div class="badges"><span class="b i-hi">impact high</span><span class="b">effort med</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>Four labels at ±45°, two of them reading downhill, set on top of the diamond's own katakana
+          texture, at roughly 13px on a real phone. The diamond's left vertex is cut off by the screen edge,
+          so FEATURES and LESSONS start in the margin. The tap targets are triangles with no affordance cue.</p>
+          <span class="hurt"><b>Why it hurts:</b> rotated text costs real reading speed. On the one screen
+          that decides whether someone scrolls, you are charging cognitive rent for ornament.</span></div>
+        <div class="fix"><div class="lbl">Fix</div>
+          <p style="outline-offset: var(--lavish-annotate-offset,2px);">Separate the ornament from the menu. Keep the diamond as a graphic, pull it fully on-canvas,
+          and move the four labels out into an upright mono list beside it.</p>
+          <p>If the diagonals are non-negotiable, keep only the two uphill ones, raise the type to 14px+,
+          and put them on a solid untextured fill.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="id">05</div>
+        <div class="ttl">The headline doesn't dominate<em>H1 vs "Hi, I'm Jan Pilik."</em></div>
+        <div class="badges"><span class="b i-hi">impact high</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>The H1 is about 1.4× the size of the greeting above it, and lands around 19–20px on a real
+          phone. Strong portfolios run hero type at 32–40px on mobile — a 2.5–3× ratio over any label.</p>
+          <span class="hurt"><b>Why it hurts:</b> the first thing the eye weighs is a salutation, not
+          what you do.</span></div>
+        <div class="fix"><div class="lbl">Fix</div>
+          <p>Push the H1 to 2.5–3× the greeting. Demote "Hi, I'm Jan Pilik." to a small mono eyebrow — or
+          cut it entirely and put the name in a wordmark where it belongs.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh"><div class="id">06</div>
+        <div class="ttl">The proof numbers measure effort, not outcomes<em>20+ Months · 4,000+ Commits · 500+ Products · 17 Professional features</em></div>
+        <div class="badges"><span class="b i-hi">impact high</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>Commits count keystrokes. Months count duration — which can just as easily read as slow.
+          "17 Professional features" uses a filler adjective and an arbitrary number. Only "500+ Products"
+          tells a buyer anything they care about. The row is also visibly uneven: the gap before
+          <span class="mono">17</span> is wider than the gap after <span class="mono">20+</span>.</p>
+          <span class="hurt"><b>Why it hurts:</b> a technical buyer discounts vanity metrics instantly —
+          and once they discount the numbers, they discount the claim above them too.</span></div>
+        <div class="fix"><div class="lbl">Fix</div>
+          <p style="outline-offset: var(--lavish-annotate-offset,2px);">Three strong numbers beat four weak ones. Use things someone pays for: orders processed,
+          p95 load / LCP, uptime, payment and shipping integrations shipped, Lighthouse score.</p>
+          <p>Equalise the columns and cut every label to one word so they can stay equal.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh"><div class="id">07</div>
+        <div class="ttl">Hover-only states and micro-type<em>nav segments · CTA · CONTACT</em></div>
+        <div class="badges"><span class="b i-md">impact med</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>The amber fills and inverted labels only fire on hover — which no phone has. CONTACT's tap
+          area is roughly 36px tall, under the 44px minimum. Nav labels sit near 13px, rotated, on textured
+          ground. The dot separators in the skills line are far below any contrast floor.</p>
+          <span class="hurt"><b>Why it hurts:</b> the most polished moments in the design never happen
+          for the audience this layout was built for.</span></div>
+        <div class="fix" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="lbl">Fix</div>
+          <p style="outline-offset: var(--lavish-annotate-offset,2px);">Mirror hover with <span class="mono">:active</span> and <span class="mono">:focus-visible</span>.
+          Floor every tap target at 44px. Raise the nav labels. Lift the separator dots or drop them.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh"><div class="id">08</div>
+        <div class="ttl">"Large-scale" outruns the evidence beneath it<em>H1 vs the stat row</em></div>
+        <div class="badges"><span class="b i-md">impact med</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>"Large-scale" sets an enterprise expectation, and the proof directly below it is one solo
+          e-commerce store. The reader resolves the mismatch against you.</p>
+          <span class="hurt"><b>Why it hurts:</b> claim-versus-evidence gaps are the fastest way to lose
+          a careful reader — and careful readers are the ones with budget.</span></div>
+        <div class="fix"><div class="lbl">Fix</div>
+          <p>Claim exactly what you can prove and let it be impressive on its own terms:
+          "I design, build and ship production systems end to end — solo." Shipping a real store alone is
+          already a strong story. Don't inflate it.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh"><div class="id">09</div>
+        <div class="ttl">No spacing rhythm<em>whole screen</em></div>
+        <div class="badges"><span class="b i-md">impact med</span><span class="b">effort med</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>The side margin, the headline-to-strip gap, the strip-to-video gap and the video-to-nav gap are
+          all different numbers with no relationship. The stat columns are hand-tuned to uneven widths. The
+          layout is painted, not gridded.</p>
+          <span class="hurt"><b>Why it hurts:</b> this is the one flaw that specifically contradicts the
+          design's own claim of technical precision — and it is the first thing another designer notices.</span></div>
+        <div class="fix" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="lbl">Fix</div>
+          <p>Pick one base unit and snap every gap, margin and column to a multiple of it. No exceptions,
+          no "just 3px here." The rhythm is the whole point of this aesthetic.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh"><div class="id">10</div>
+        <div class="ttl">Nothing says the page scrolls<em>bottom edge</em></div>
+        <div class="badges"><span class="b i-md">impact med</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>The screen presents as a sealed card. Worse, the four-way nav diamond implies the sections are
+          reachable by tap, which actively suggests there is nothing below.</p>
+          <span class="hurt"><b>Why it hurts:</b> if there is more page, a real share of visitors will
+          never find out.</span></div>
+        <div class="fix"><div class="lbl">Fix</div>
+          <p style="outline-offset: var(--lavish-annotate-offset,2px);">Let something cross the bottom edge — the top sliver of the next section is the strongest
+          cue. A single mono <span class="mono">↓</span> marker is the cheap version.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh"><div class="id">11</div>
+        <div class="ttl" style="outline-offset: var(--lavish-annotate-offset,2px);">Three unrelated background zones<em>warm top · banded middle · indigo bottom</em></div>
+        <div class="badges"><span class="b i-md">impact med</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>A warm wash up top, a darker band behind the stats with a hard full-width seam, then a cold
+          indigo gradient bottom-right. The indigo is the only cool temperature on the page and has no
+          reason to be there.</p>
+          <span class="hurt"><b>Why it hurts:</b> it breaks the "one object" illusion that makes a
+          single-viewport composition feel designed rather than assembled.</span></div>
+        <div class="fix" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="lbl">Fix</div>
+          <p style="outline-offset: var(--lavish-annotate-offset,2px);">One surface temperature. Kill the indigo or pull it toward the amber family. Soften the seam
+          under the stats so the strip sits on the same ground as everything else.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="id">12</div>
+        <div class="ttl">No wordmark, nothing to remember<em>top of screen</em></div>
+        <div class="badges"><span class="b i-md">impact med</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>The only identity on the page is a name inside a sentence. No mark, no monogram, no anchor.</p>
+          <span class="hurt"><b>Why it hurts:</b> part of a portfolio's job is being nameable after the
+          tab closes.</span></div>
+        <div class="fix"><div class="lbl">Fix</div>
+          <p>The diamond already <em>is</em> a monogram. Put a small one top-left as the mark and let the
+          name live there instead of in the copy.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh"><div class="id">13</div>
+        <div class="ttl">The motif is used four times<em>CONTACT · ambient · nav · CTA end cap</em></div>
+        <div class="badges"><span class="b i-lo">impact low</span><span class="b">effort med</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>Four diamonds in one viewport. Past about three, a signature shape stops being a signature and
+          becomes wallpaper.</p>
+          <span class="hurt"><b>Why it hurts:</b> it dilutes the one element that makes this design
+          memorable.</span></div>
+        <div class="fix" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="lbl">Fix</div>
+          <p>Cut to two: one ambient/structural, one interactive. Scarcity is what made the amber work —
+          apply the same rule to the shape.</p></div>
+      </div>
+    </div>
+
+    <div class="g">
+      <div class="gh"><div class="id">14</div>
+        <div class="ttl">Semi-legible ornament beside the CTA<em>math and katakana fragments</em></div>
+        <div class="badges"><span class="b i-lo">impact low</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>Fragments like <span class="mono">pri = impact</span> and <span class="mono">acc α scope</span>
+          are legible enough that the eye tries to read them — directly around the primary action.</p>
+          <span class="hurt"><b>Why it hurts:</b> half-readable ornament is the worst kind. It costs
+          attention and returns nothing.</span></div>
+        <div class="fix" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="lbl">Fix</div>
+          <p style="outline-offset: var(--lavish-annotate-offset,2px);">Push ornament clearly below the legibility threshold, or keep an exclusion zone around the CTA.
+          Texture or content — never in between.</p></div>
+      </div>
+    </div>
+
+    <div class="g" style="outline-offset: var(--lavish-annotate-offset,2px);">
+      <div class="gh" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="id">15</div>
+        <div class="ttl" style="outline-offset: var(--lavish-annotate-offset,2px);">Collision and clipping at CONTACT<em style="outline-offset: var(--lavish-annotate-offset,2px);">top-right corner</em></div>
+        <div class="badges"><span class="b i-lo">impact low</span><span class="b">effort low</span></div></div>
+      <div class="gb">
+        <div class="prob"><div class="lbl">Problem</div>
+          <p>The diamond's left vertex crosses the final letter of CONTACT; its right vertex is clipped by
+          the screen edge. The blue-purple glow behind it is also the only cool light in the upper half.</p>
+          <span class="hurt"><b>Why it hurts:</b> a visible collision in the first 40px undercuts the
+          precision claim before a single word of the pitch is read.</span></div>
+        <div class="fix" style="outline-offset: var(--lavish-annotate-offset,2px);"><div class="lbl" style="outline-offset: var(--lavish-annotate-offset,2px);">Fix</div>
+          <p style="outline-offset: var(--lavish-annotate-offset,2px);">Pull the diamond fully on-canvas and clear the label off the vertex — or set the label inside
+          the diamond and let the shape be the button.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2><span class="n">06</span> Verdict</h2>
+  <div class="top" style="margin-top:0">
+    <div>
+      <div class="claim">Loses work today. Two hours of edits and it starts winning some.</div>
+      <p><b style="color:var(--text)">What it signals about you:</b> genuine craft obsession, unusual
+      restraint, deep comfort with low-level layout. It also signals someone more invested in the frame
+      than the contents — the largest surface is empty and the proof is four soft numbers. A buyer reads
+      that as "beautiful shell, now show me the work."</p>
+      <p><b style="color:var(--text)">Against the top tier:</b> strong portfolios win on one of two axes —
+      maximum proof density that reads in two seconds, or one unforgettable interaction. This sits between
+      them: ornate enough to slow comprehension, not ornate enough to be the thing people remember. Pick
+      a side and commit.</p>
+      <p><b style="color:var(--text)">The good news:</b> five of the six highest-impact fixes are low
+      effort — enlarge the headline, swap the metrics, bound the CTA, flip which action gets the amber,
+      and soften the claim. None of them touch the parts that are actually good.</p>
+    </div>
+    <div class="ring">
+      <div class="big" style="color:var(--green);font-size:40px">~7.5</div>
+      <div class="cap">reachable<br>with gaps 1–6</div>
+    </div>
+  </div>
+
+  <p class="foot">Scored from a single static frame. Responsiveness and performance are inferred and
+  flagged low-confidence; the overall 4.6 is the mean of the eight metrics a still image can honestly
+  support.</p>
+
+</div>
+<script src="index_data/sdk_zJ8t.js"></script>
+
+</body></html>
