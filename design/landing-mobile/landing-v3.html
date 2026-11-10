@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d0d0d">
+<title>Jan Pilik — Full-stack engineer</title>
+<style>
+  /* Self-hosted: no third-party request, no layout shift from a late font swap. */
+  @font-face{font-family:'Geist';font-weight:400;font-display:swap;src:url(../../node_modules/@fontsource/geist/files/geist-latin-400-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist';font-weight:600;font-display:swap;src:url(../../node_modules/@fontsource/geist/files/geist-latin-600-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist';font-weight:700;font-display:swap;src:url(../../node_modules/@fontsource/geist/files/geist-latin-700-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist Mono';font-weight:500;font-display:swap;src:url(../../node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist Mono';font-weight:600;font-display:swap;src:url(../../node_modules/@fontsource/geist-mono/files/geist-mono-latin-600-normal.woff2) format('woff2')}
+
+  /* Tokens = DESIGN.md. Spacing = 8px multiples; the one exception is the 20px mobile margin the spec itself defines. */
+  :root{
+    --bg:#0d0d0d; --s1:#12100e; --s2:#171512; --s3:#1c1915; --s4:#242018;
+    --line:#2c271e; --line2:#403b31;
+    --text:#e8e8e8; --muted:#a89f92;
+    --amber:#e6b84f; --gold:#c8940a; --on-amber:#3a2a00;
+    --sans:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:'Geist Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --m:20px;                      /* page margin */
+    --tap:48px;                    /* minimum touch target (>= 44px) */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{background:#080807;color:var(--text);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .skip{position:absolute;left:var(--m);top:-64px;z-index:10;background:var(--amber);color:var(--on-amber);
+        font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:16px}
+  .skip:focus{top:8px}
+
+  /* Phone is the design. On larger screens it stays one centered column — never stretched. */
+  .page{position:relative;max-width:430px;min-height:100dvh;margin:0 auto;background:var(--bg);
+        overflow-x:clip;border-inline:1px solid var(--s3)}
+
+  /* ── Header ── */
+  .hd{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 var(--m);
+      border-bottom:1px solid var(--line)}
+  .name{font:600 16px/1 var(--sans);letter-spacing:-.01em;display:flex;align-items:center;min-height:var(--tap)}
+  .links{display:flex;margin-right:-8px}
+  .links a{display:flex;align-items:center;min-height:var(--tap);padding:0 8px;
+           font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .15s}
+  .links a:hover{color:var(--amber)}
+
+  /* ── Hero ── */
+  .hero{position:relative;padding:32px var(--m) 40px}
+  .dm{position:absolute;z-index:0;top:0;right:-96px;width:216px;height:216px;opacity:.45;pointer-events:none}
+  .hero>:not(.dm){position:relative;z-index:1}
+  .eyebrow{text-wrap:balance;font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+  h1{margin:16px 0 32px;font:700 clamp(32px,8.8vw,40px)/1.1 var(--sans);letter-spacing:-.035em;text-wrap:balance}
+  .cta{display:flex;gap:8px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;height:56px;padding:0 16px;
+       font:600 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
+       transition:background .15s,border-color .15s,color .15s}
+  .btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .btn.primary{flex:1.5;background:var(--amber);color:var(--on-amber)}
+  .btn.primary:hover{background:#f2cb74}
+  .btn.secondary{flex:1;border:1px solid var(--gold);color:var(--amber)}
+  .btn.secondary:hover{background:var(--s3);border-color:var(--amber)}
+
+  /* ── Movie: full-bleed 16:9, muted loop. Captions carry the meaning because there is no sound. ── */
+  .movie{position:relative;aspect-ratio:16/9;background:var(--s1);border-block:1px solid var(--line2);overflow:hidden}
+  .scene{position:absolute;inset:0 0 48px 0;padding:12px var(--m);display:flex;flex-direction:column;gap:8px;opacity:0}
+  .scene.s1{opacity:1}
+  .top{flex:none;height:8px;display:flex;align-items:center;justify-content:space-between}
+  .top i{width:56px;height:6px;background:var(--amber)}
+  .top span{display:flex;gap:8px}
+  .top s{width:24px;height:4px;background:var(--line2)}
+  .body{flex:1;min-height:0;display:grid;gap:8px}
+  .ln{display:block;height:6px;background:var(--line2)}
+  .ln.dim{background:var(--line);width:60%}
+  .ln.w80{width:80%}
+  /* scene 1 · browse & filter */
+  .s1 .body{grid-template-columns:76px 1fr}
+  .side{display:flex;flex-direction:column;gap:8px}
+  .chip{height:16px;border:1px solid var(--line2)}
+  .chip.on{border-color:var(--amber);background:rgba(230,184,79,.12)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:8px}
+  .card{display:flex;flex-direction:column;gap:4px;padding:4px;background:var(--s3);border:1px solid var(--line)}
+  .card u{flex:1;background:var(--s4)}
+  .card .ln{height:4px}
+  .card.hit{border-color:var(--amber)}
+  /* scene 2 · cart */
+  .s2 .body{grid-template-columns:1fr 104px}
+  .rows{display:flex;flex-direction:column;gap:8px}
+  .row{flex:1;display:grid;grid-template-columns:32px 1fr 32px;gap:8px;align-items:center;padding:4px 8px 4px 4px;background:var(--s3);border:1px solid var(--line)}
+  .row u{height:100%;background:var(--s4)}
+  .row div{display:flex;flex-direction:column;gap:6px}
+  .box{display:flex;flex-direction:column;justify-content:space-between;gap:8px;padding:8px;border:1px solid var(--line2)}
+  .go{height:20px;background:var(--amber)}
+  /* scene 3 · checkout */
+  .s3 .body{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto 1fr}
+  .steps{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .steps i{height:3px;background:var(--line2)}
+  .steps i.on{background:var(--amber)}
+  .field{height:24px;border:1px solid var(--line2);background:var(--s3)}
+  .field.wide{grid-column:1/-1}
+  .s3 .go{grid-column:1/-1;height:28px;align-self:end}
+  /* caption bar + segmented progress + pause (WCAG 2.2.2) */
+  .cb{position:absolute;left:0;right:0;bottom:0;height:48px;display:flex;align-items:center;justify-content:space-between;
+      background:rgba(13,13,13,.94);border-top:1px solid var(--line2);padding-left:var(--m)}
+  .caps{position:relative;flex:1;height:16px;font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  .caps span{position:absolute;left:0;top:0;white-space:nowrap;opacity:0}
+  .caps span:first-child{opacity:1}
+  .caps b{color:var(--amber);font-weight:600;margin-right:8px}
+  .prog{position:absolute;left:var(--m);right:var(--m);top:-1px;height:2px;display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+  .prog i{position:relative;background:var(--line2)}
+  .prog i::after{content:"";position:absolute;inset:0;background:var(--amber);transform-origin:left;transform:scaleX(0)}
+  .prog i:first-child::after{transform:scaleX(1)}
+  .pp{display:grid;place-items:center;width:var(--tap);height:47px;background:none;border:0;color:var(--muted);cursor:pointer}
+  .pp:hover{color:var(--amber)}
+  .pp svg{width:16px;height:16px;fill:currentColor}
+  .pp .play{display:none}
+  .pp[aria-pressed="true"] .pause{display:none}
+  .pp[aria-pressed="true"] .play{display:block}
+
+  /* ── Proof: the caption of the movie ── */
+  .proof{padding:24px var(--m);background:var(--s2);border-bottom:1px solid var(--line)}
+  .site{display:flex;flex-direction:column;gap:4px}
+  .site b{font:600 12px/1 var(--mono);letter-spacing:.1em;color:var(--amber)}
+  .site span{font-size:16px;line-height:1.4;text-wrap:balance}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:24px 0}
+  .stats dt{font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);order:2}
+  .stats div{display:flex;flex-direction:column;gap:4px;padding-left:12px;border-left:1px solid var(--line2)}
+  .stats dd{font:700 24px/1 var(--sans);letter-spacing:-.02em;font-variant-numeric:tabular-nums;order:1}
+  .chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .chips li{font:500 12px/1 var(--mono);letter-spacing:.04em;color:var(--muted);padding:8px 12px;border:1px solid var(--line2)}
+
+  /* ── Map: the diamond is the menu; every edge is a labelled link ── */
+  .map{padding:48px var(--m) 72px;text-align:center}
+  .map h2{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+  .map p{margin:8px 0 24px;font-size:14px;line-height:1.5;color:var(--muted)}
+  .dia{position:relative;width:min(100%,280px);aspect-ratio:1;margin:0 auto}
+  .dia img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .dia svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .hitarea{fill:rgba(0,0,0,0)}
+  .st{fill:rgba(13,13,13,.86);stroke:var(--line2);stroke-width:.4;transition:fill .15s,stroke .15s}
+  .dia text{font:500 5.2px var(--mono);letter-spacing:.06px;fill:var(--text);text-anchor:middle;dominant-baseline:central;
+            text-transform:uppercase;pointer-events:none;transition:fill .15s}
+  .seg{outline:none;cursor:pointer}
+  .seg:hover .st,.seg:focus-visible .st{fill:var(--amber);stroke:var(--amber)}
+  .seg:hover text,.seg:focus-visible text{fill:var(--on-amber)}
+
+  /* ── Motion only when the user hasn't asked for less. Default state above is the static poster. ── */
+  @media (prefers-reduced-motion:no-preference){
+    .dm{animation:drift 16s ease-in-out infinite alternate}
+    .scene.s1{animation:show1 18s infinite}
+    .scene.s2{animation:show2 18s infinite}
+    .scene.s3{animation:show3 18s infinite}
+    .caps span:nth-child(1){animation:show1 18s infinite}
+    .caps span:nth-child(2){animation:show2 18s infinite}
+    .caps span:nth-child(3){animation:show3 18s infinite}
+    .prog i:nth-child(1)::after{animation:f1 18s linear infinite}
+    .prog i:nth-child(2)::after{animation:f2 18s linear infinite}
+    .prog i:nth-child(3)::after{animation:f3 18s linear infinite}
+    .movie.paused *,.movie.paused *::after{animation-play-state:paused!important}
+  }
+  @media (prefers-reduced-motion:reduce){.pp{display:none}}
+  @keyframes drift{from{transform:translate(0,0)}to{transform:translate(-8px,10px)}}
+  @keyframes show1{0%,30%{opacity:1}34%,93%{opacity:0}97%,100%{opacity:1}}
+  @keyframes show2{0%,30%{opacity:0}34%,63%{opacity:1}67%,100%{opacity:0}}
+  @keyframes show3{0%,63%{opacity:0}67%,93%{opacity:1}97%,100%{opacity:0}}
+  @keyframes f1{0%{transform:scaleX(0)}33%,99%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+  @keyframes f2{0%,33%{transform:scaleX(0)}66%,99%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+  @keyframes f3{0%,66%{transform:scaleX(0)}99%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#map">Skip to sections</a>
+<div class="page" id="top">
+
+  <header class="hd">
+    <a class="name" href="#top">Jan Pilik</a>
+    <nav class="links" aria-label="Profiles">
+      <a href="#github">GitHub</a>
+      <a href="#linkedin">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img class="dm" src="../code-diamond-amber-fade.webp" alt="" width="216" height="216" decoding="async">
+      <p class="eyebrow">Full-stack engineer · Open to roles</p>
+      <h1>I build large-scale software products end-to-end.</h1>
+      <div class="cta">
+        <a class="btn primary" href="#cv">Download CV
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v13M6 13l6 6 6-6"/></svg></a>
+        <a class="btn secondary" href="#email">Email me</a>
+      </div>
+    </section>
+
+    <div class="movie" id="movie" role="group" aria-label="Sanglogium walkthrough: browse and filter, cart, checkout. Muted looping preview with captions.">
+      <div aria-hidden="true">
+        <div class="scene s1">
+          <div class="top"><i></i><span><s></s><s></s><s></s></span></div>
+          <div class="body">
+            <div class="side"><span class="ln"></span><span class="chip on"></span><span class="chip"></span><span class="chip"></span><span class="ln dim"></span></div>
+            <div class="grid">
+              <div class="card"><u></u><span class="ln"></span><span class="ln dim"></span></div>
+              <div class="card hit"><u></u><span class="ln"></span><span class="ln dim"></span></div>
+              <div class="card"><u></u><span class="ln"></span><span class="ln dim"></span></div>
+              <div class="card"><u></u><span class="ln"></span><span class="ln dim"></span></div>
+              <div class="card"><u></u><span class="ln"></span><span class="ln dim"></span></div>
+              <div class="card"><u></u><span class="ln"></span><span class="ln dim"></span></div>
+              <div class="card"><u></u><span class="ln"></span><span class="ln dim"></span></div>
+              <div class="card"><u></u><span class="ln"></span><span class="ln dim"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scene s2">
+          <div class="top"><i></i><span><s></s><s></s><s></s></span></div>
+          <div class="body">
+            <div class="rows">
+              <div class="row"><u></u><div><span class="ln"></span><span class="ln dim"></span></div><span class="ln"></span></div>
+              <div class="row"><u></u><div><span class="ln w80"></span><span class="ln dim"></span></div><span class="ln"></span></div>
+              <div class="row"><u></u><div><span class="ln"></span><span class="ln dim"></span></div><span class="ln"></span></div>
+            </div>
+            <div class="box"><div><span class="ln"></span></div><span class="ln dim"></span><span class="go"></span></div>
+          </div>
+        </div>
+        <div class="scene s3">
+          <div class="top"><i></i><span><s></s><s></s><s></s></span></div>
+          <div class="body">
+            <div class="steps"><i class="on"></i><i class="on"></i><i></i></div>
+            <span class="field wide"></span>
+            <span class="field"></span><span class="field"></span>
+            <span class="go"></span>
+          </div>
+        </div>
+      </div>
+      <div class="cb">
+        <div class="prog" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="caps">
+          <span><b>01</b>Browse &amp; filter</span>
+          <span><b>02</b>Cart</span>
+          <span><b>03</b>Secure checkout</span>
+        </div>
+        <button class="pp" type="button" aria-pressed="false" aria-label="Pause walkthrough">
+          <svg class="pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/></svg>
+          <svg class="play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <section class="proof" aria-labelledby="proof-h">
+      <h2 class="sr" id="proof-h">Flagship project</h2>
+      <p class="site"><b>SANGLOGIUM.COM</b><span>A full e-commerce store, built end-to-end.</span></p>
+      <dl class="stats">
+        <div><dt>Products</dt><dd>500+</dd></div>
+        <div><dt>Months</dt><dd>20+</dd></div>
+        <div><dt>Commits</dt><dd>4,000+</dd></div>
+      </dl>
+      <ul class="chips" aria-label="Covers">
+        <li>Design system</li><li>Architecture</li><li>Testing</li><li>Security</li><li>Performance</li><li>Responsive</li>
+      </ul>
+    </section>
+
+    <nav class="map" id="map" aria-labelledby="map-h">
+      <h2 id="map-h">Explore</h2>
+      <p>Tap an edge to jump to a section.</p>
+      <div class="dia">
+        <img src="../code-diamond-amber.webp" alt="" width="280" height="280" loading="lazy" decoding="async">
+        <svg viewBox="0 0 118 118">
+          <a class="seg" href="#features" aria-label="Features">
+            <polygon class="hitarea" points="59,59 1.8,59 59,1.8"/>
+            <polygon class="st" points="2.6,58.2 58.2,2.6 58.2,18.16 18.16,58.2"/>
+            <text transform="translate(34.3 34.3) rotate(-45)">Features</text>
+          </a>
+          <a class="seg" href="#case-studies" aria-label="Case studies">
+            <polygon class="hitarea" points="59,59 116.2,59 59,1.8"/>
+            <polygon class="st" points="115.4,58.2 59.8,2.6 59.8,18.16 99.84,58.2"/>
+            <text transform="translate(83.7 34.3) rotate(45)">Case studies</text>
+          </a>
+          <a class="seg" href="#architecture" aria-label="Architecture">
+            <polygon class="hitarea" points="59,59 1.8,59 59,116.2"/>
+            <polygon class="st" points="2.6,59.8 58.2,115.4 58.2,99.84 18.16,59.8"/>
+            <text transform="translate(34.3 83.7) rotate(45)">Architecture</text>
+          </a>
+          <a class="seg" href="#about" aria-label="About">
+            <polygon class="hitarea" points="59,59 116.2,59 59,116.2"/>
+            <polygon class="st" points="115.4,59.8 59.8,115.4 59.8,99.84 99.84,59.8"/>
+            <text transform="translate(83.7 83.7) rotate(-45)">About</text>
+          </a>
+        </svg>
+      </div>
+    </nav>
+  </main>
+</div>
+
+<script>
+  // Pause/play for the looping walkthrough (WCAG 2.2.2: auto-moving content > 5s must be pausable).
+  (function () {
+    var btn = document.querySelector('.pp'), movie = document.getElementById('movie');
+    btn.addEventListener('click', function () {
+      var paused = movie.classList.toggle('paused');
+      btn.setAttribute('aria-pressed', paused);
+      btn.setAttribute('aria-label', paused ? 'Play walkthrough' : 'Pause walkthrough');
+    });
+  })();
+</script>
+</body>
+</html>

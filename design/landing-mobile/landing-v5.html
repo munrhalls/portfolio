@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jan Pilik — v5 design</title>
+<!-- v5 log — r1: e2e section killed, Contact→button, greeting→lead-in, work compressed. r2: play button + scrim deleted (video autoplays), proofs tree deleted. -->
+<style>
+  @font-face{font-family:'Geist';font-weight:400;src:url(../../node_modules/@fontsource/geist/files/geist-latin-400-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist';font-weight:600;src:url(../../node_modules/@fontsource/geist/files/geist-latin-600-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist';font-weight:700;src:url(../../node_modules/@fontsource/geist/files/geist-latin-700-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist Mono';font-weight:500;src:url(../../node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2) format('woff2')}
+  @font-face{font-family:'Geist Mono';font-weight:600;src:url(../../node_modules/@fontsource/geist-mono/files/geist-mono-latin-600-normal.woff2) format('woff2')}
+
+  :root{
+    --bg:#0d0d0d; --s1:#12100e; --s3:#1c1915; --s4:#242018;
+    --line:#2c271e; --line2:#403b31;
+    --text:#e8e8e8; --muted:#a89f92;
+    --amber:#e6b84f;                 /* the person: CTA, diamond, end-to-end */
+    --cu:#df7412; --cu2:#ffb786;     /* the proof: tree + root — a different colour, on purpose */
+    --sans:'Geist',system-ui,sans-serif; --mono:'Geist Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#070706;color:var(--text);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+
+  /* The phone from the sketch: one rounded screen. On a real phone it goes edge to edge. */
+  .page{position:relative;width:min(100%,390px);margin:24px auto;background:var(--bg);border:1px solid var(--line2);
+        border-radius:28px;overflow:hidden}
+  @media (max-width:430px){.page{margin:0;border:0;border-radius:0}}
+  .in{position:relative;z-index:1}
+
+  /* Big background diamond: bleeds off the right edge, sits behind the top sections */
+  .dm{position:absolute;z-index:0;top:110px;left:96px;width:420px;height:420px;opacity:.5;pointer-events:none}
+
+  /* rules between sections, each with a small diamond mark */
+  .rule{position:relative;height:1px;background:var(--line)}
+  .rule::before{content:"";position:absolute;left:20px;top:-3px;width:5px;height:5px;background:var(--bg);
+                border:1px solid var(--line2);transform:rotate(45deg)}
+
+  /* ── 1 · Intro ── */
+  .hero{padding:0 20px 30px}
+  .top{height:44px;display:flex;align-items:center;justify-content:flex-end}
+  .contact{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:4px;
+           border:1px solid var(--amber);
+           font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+           color:var(--amber)}
+  .hi{margin-top:16px;font:600 21px/1.3 var(--sans);color:var(--text)}
+  h1{margin-top:10px;font:700 35px/1.12 var(--sans);letter-spacing:-.04em}
+
+  /* ── 2 · The work: one project, titled, video right after ── */
+  .work{padding:26px 20px 34px}
+  .ttl{display:flex;flex-direction:column;gap:2px}
+  .ttl span{font:400 13px/1.3 var(--sans);color:var(--muted)}
+  .ttl a{display:flex;align-items:center;gap:8px;font:700 30px/1.1 var(--sans);letter-spacing:-.035em}
+  .ttl svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .stats{margin-top:12px;font:500 12px/1.4 var(--mono);letter-spacing:.05em;color:var(--muted)}
+  .vid{position:relative;margin-top:18px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:var(--s1);border:1px solid var(--line2)}
+  .shot{position:absolute;inset:0;padding:14px;display:flex;flex-direction:column;gap:10px}
+  .tb{display:flex;align-items:center;justify-content:space-between;height:8px}
+  .tb i{width:56px;height:6px;background:var(--amber)}
+  .tb span{display:flex;gap:8px}
+  .tb s{width:24px;height:4px;background:var(--line2)}
+  .bd{flex:1;min-height:0;display:grid;grid-template-columns:72px 1fr;gap:10px}
+  .sd{display:flex;flex-direction:column;gap:8px}
+  .ln{display:block;height:6px;background:var(--line2)}
+  .ln.d{width:60%;background:var(--line)}
+  .ch{height:16px;border:1px solid var(--line2)}
+  .ch.on{border-color:var(--amber);background:rgba(230,184,79,.12)}
+  .gr{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:8px}
+  .cd{display:flex;flex-direction:column;gap:4px;padding:4px;background:var(--s3);border:1px solid var(--line)}
+  .cd u{flex:1;background:var(--s4)}
+  .cd .ln{height:4px}
+  .dur{position:absolute;right:12px;bottom:12px;padding:6px 8px;background:rgba(13,13,13,.88);
+       font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--text)}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="dm" src="../code-diamond-amber-fade.webp" alt="" width="420" height="420">
+
+  <div class="in">
+    <!-- 1 · intro -->
+    <section class="hero">
+      <div class="top">
+        <a class="contact" href="#contact">Contact</a>
+      </div>
+      <p class="hi">Hi, I'm Jan Pilik.</p>
+      <h1>I build large-scale<br>software products<br>end to end</h1>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- 2 · work -->
+    <section class="work">
+      <h2 class="ttl"><span>E-commerce store:</span>
+        <a href="#sanglogium">sanglogium.com<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      </h2>
+      <p class="stats">1 project · 20+ months · 4,000+ commits</p>
+      <div class="vid" aria-label="Sanglogium video">
+        <div class="shot" aria-hidden="true">
+          <div class="tb"><i></i><span><s></s><s></s><s></s></div></div>
+          <div class="bd">
+            <div class="sd"><span class="ln"></span><span class="ch on"></span><span class="ch"></span><span class="ch"></span><span class="ln d"></span></div>
+            <div class="gr">
+              <div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div><div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div>
+              <div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div><div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div>
+              <div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div><div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div>
+              <div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div><div class="cd"><u></u><span class="ln"></span><span class="ln d"></span></div>
+            </div>
+          </div>
+        </div>
+        <span class="dur">0:18</span>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>
