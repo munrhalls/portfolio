@@ -11,8 +11,6 @@ what Claude Code needs on top.
 - Dev server: `npm run dev` → **http://localhost:4321** (sanglogium owns :3000).
 - `tailwind.config.mjs` holds the entire custom color/design-token system — never
   regenerate or "clean" it; every component depends on those tokens.
-- `.claude/hooks/feedback-gate.sh` is wired as a PostToolUse hook — when it fires,
-  emit one checkpoint line (done / next / blocker).
 
 ## Layout
 

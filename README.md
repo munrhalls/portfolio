@@ -13,4 +13,4 @@ npm run preview   # serve the build
 - `public/` — static files served as-is
 - `design/` — design mockups and spec (`DESIGN.md`)
 - `assets/` — raw image assets (design sources, project screenshots)
-- `_project/` — agent campaign docs (see `AGENTS.md`)
+- `_project/working-memory/` — transient task files, gitignored (see `AGENTS.md`)
