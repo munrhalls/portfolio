@@ -21,13 +21,15 @@ Personal portfolio site. Astro 5 + Tailwind 3, static output, deploys to munrhal
    never regenerate or "clean up" config files; components depend on those tokens.
 4. **File references**: print paths as `file://` URIs.
 
-## Campaign process (architect → executor)
+## Process
 
-- Methodology: `_project/00-MOST-IMPORTANT-lean-tracer-bullet-methodology.md`.
-- The Architect produces phase files under `_project/working-memory/<axis>/turn-<n>/phase-<n.m>.md`
-  (transient, gitignored, deleted before commit — never let them land in a PR).
-- One git branch per thematic axis; the Executor pastes in phases one at a time and ends each turn
-  with a PR. Never merge your own PR — the human validates and merges.
+PR checkboxes -> `/architect` -> runner -> human verify, all on the PR's own branch. The owner pastes a PR's unchecked
+boxes to the architect, which writes one task file per executor into `_project/working-memory/` (gitignored, never
+committed), named `<wave><letter>-<name>.md`: tasks of the same wave run in parallel, waves run in order. From a checkout
+of the PR's branch the owner runs `node ~/work/global/workflow/run.mjs <PR>` (add `--dry` first to check the plan). For each
+task the runner cuts a branch from the PR branch, runs a fresh executor on it (executors never commit, push or branch),
+merges it back into the PR branch when there is no conflict, pushes, and adds a `human verify` checkbox under the matching
+box in the PR body. The owner verifies, then merges the PR into `main`.
 
 ## Git policy (conservative)
 
