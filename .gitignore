@@ -7,3 +7,6 @@ dist
 
 # Transient architect/executor phase files — never commit
 _project/working-memory/
+*.swp
+*.swo
+.lavish/
