@@ -23,6 +23,17 @@ Annotated screenshot or one line of direction in → file edited → one short r
 - If a round changes a spec'd pattern (token, button style, type size), update `design/DESIGN.md` in the same pass.
 - Keep the one-line-per-round comment at the top of the file.
 
+## The annotation canvas (replaces the screenshot → tldraw → paste cycle)
+
+Tool lives outside the repo: `~/work/global/annotate/` (local tldraw, offline, port 4400).
+
+1. After finishing a round, run `~/work/global/annotate/annotate.sh <html-file>`. It renders the file, starts the server if needed, and prints `http://localhost:4400`.
+2. Reply with that link as the one link. The user clicks it, finds the render already on the canvas, draws and dictates on it, presses Ctrl+S, and says "Done".
+3. On "Done", the spec for the round is `~/work/global/annotate/data/annotated.png` (drawing over the render) plus `data/notes.txt` (exact text of every note, with x,y in page px). Read both. Prefer `notes.txt` for wording and the PNG for what each mark points at.
+4. If `annotated.png` is missing, the user didn't save: say so and re-print the link. Never act on an older image.
+
+If the tool or server is broken, fall back to printing the file link and expecting a pasted screenshot as before.
+
 ## The eyes
 
 ```bash
