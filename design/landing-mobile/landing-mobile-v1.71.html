@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Munrhalls — landing 300×400</title>
+<!-- v1.52: strip copy — "store"→"platform", "Professional features"→"Shipped features" -->
+<!-- v1.53: CTA diamond — glyphs knocked out behind the arrow so the arrowhead reads -->
+<!-- v1.54: CONTACT hover/focus — text, outline and glyphs go amber + soft amber halo (was a 1px cream→amber stroke swap, near-invisible) -->
+<!-- v1.55: skills line — full --muted (was .8 opacity, 4.95:1 → 7.2:1); intro+CONTACT up 3u so the gap above the strip goes 5.5u → ~10.5u -->
+<!-- v1.56: nav diamond glyphs .68 → .42 so the amber CTA owns the bottom half -->
+<!-- v1.57: stats from the repo — 1 Engineer · 24 Months · 17 Features · 650+ Products; strip spread edge to edge, links to the public repo -->
+<!-- v1.58: smallest text (skills line, strip kind, stat labels) 9–9.5u → 10u so it clears 12px on 360-wide phones -->
+<!-- v1.59: H1 15u → 17u (still two lines); intro + CONTACT up 3u to pay for it -->
+<!-- v1.60: code diamonds + katakana indigo → amber, luminance-matched so the brightness hierarchy is unchanged (asset: code-diamond-black-bg.amber.png; --ambient #8a91f2 → #ba943e; CONTACT glow likewise) -->
+<!-- v1.61: bottom gradient navy → warm black (same brightness). 40% of the nav-diamond pixels were blue-tinted: the navy showed through the diamond's dark areas under the screen blend, so the amber read as repainted over blue. Now 0% -->
+<!-- v1.62: nav diamond → four full-width bands (Features · Case studies · Learning · Story), 30u tall, bottom-anchored; SEE IT LIVE shrinks to 0.82× and moves up under the video; video gives up the height (flat bands only — texture and hand come in later rounds) -->
+<!-- v1.63: bands out; open-palm hand outline in (traced from a real photo silhouette, stroke only, transparent, arm bleeds off the right edge). Veins/labels next -->
+<!-- v1.64: hand mirrored horizontally — arm now enters from the left edge, fingers reach right (fingertips end on the video's right edge) -->
+<!-- v1.65: hand drops to the bottom edge (arm bleeds off left + bottom, fingers reach up toward the buttons); four buttons (2×2) take the freed space under SEE IT LIVE -->
+<!-- v1.66: buttons → pure text (no box/border/fill), loosely staggered, floating above the hand; hand shifted 100u left so only the fingers enter the frame -->
+<!-- v1.67: all four texts gathered into the left cluster above the hand (2 cascading rows), clear of SEE IT LIVE -->
+<!-- v1.68: outline hand → engraved hand (ink-on-white PNG inverted to warm light ink on transparent, design/hand-engraving.webp); arm bleeds off the left, fingers reach right under the text. PLACEHOLDER ART — source looks like a Shutterstock preview, license before shipping -->
+<!-- v1.69: hand → bottom-left corner (320u→290u wide, 62u off the left edge, 75u above the bottom) to free the band between palm and labels for the code streams -->
+<!-- v1.70: katakana code streams fan out of the palm to the four texts (as in the sketch: Story far left, Case studies up-left, Features up-right, Learning far right); the texts spread into an arc so each stream has clear air; depth = glyph size + brightness; static pass -->
+<!-- v1.71: streams lift steeply off the palm before bending out (no flat runs across the hand), 5 per text, soft amber glow at the palm, slow brightness pulses travel palm→text (reduced-motion: static) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14120f; --text:#ece6da; --muted:#a89f92; --amber:#e6b84f; --ambient:#ba943e; --sink:#0a0908; --raise:#1c1915;
+    --line:#2c271e; --line2:#403b31; --rule:#6a6252;
+    /* tall phones: --hu = frame height in u (400 = design size). Extra height: 25% breathing room above, 75% to the video; nav+CTA ride the video's bottom edge. */
+    --hu:400; --e:calc(min(max(var(--hu),400),650) - 400); --s:calc(var(--e)*.25); --v:calc(var(--e)*.75);
+    --sans:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:'Geist Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:#0a0908;display:grid;place-items:center;font-family:var(--sans);color:var(--text)}
+
+  /* Frame: 300×400 design size. --u = 1px at 300 wide; every dimension below is N×u,
+     so the whole screen scales with the frame width. */
+  .frame{width:300px;height:calc(var(--hu)*1px);position:relative;overflow:hidden;background:var(--bg);
+         container-type:size;isolation:isolate}
+  .stage{position:absolute;inset:0;--u:calc(100cqw / 300)}
+  a{color:inherit;text-decoration:none}
+
+  /* ── Background gradients: top light→dark (L→R), bottom dark→light (L→R) ── */
+  .bg{position:absolute;left:0;right:0;z-index:0;pointer-events:none}
+  .bg.t{top:0;height:calc((150 + var(--s))*var(--u));background:linear-gradient(to right,#27231c,#0a0908);
+        -webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+  .bg.b{top:calc((250 + var(--s) + var(--v))*var(--u));bottom:0;background:linear-gradient(to right,#030302,#130f0a);
+        -webkit-mask-image:linear-gradient(transparent,#000 30%);mask-image:linear-gradient(transparent,#000 30%)}
+  /* ── Main code diamond: ambient, top-right, bleeds off the edge, not clickable ── */
+  .dm{position:absolute;z-index:0;pointer-events:none;
+      left:calc(77*var(--u));top:calc((84 + var(--s) + var(--v)*.5)*var(--u));width:calc(380*var(--u));height:calc(380*var(--u));
+      mix-blend-mode:screen;               /* black pixels add no light → box disappears */
+      -webkit-mask-image:linear-gradient(to bottom left,#000 35%,rgba(0,0,0,.45) 85%),linear-gradient(to right,rgba(0,0,0,.2) 54.2%,#000 59.2%),linear-gradient(#000,#000);
+      -webkit-mask-size:100% 100%,100% 51.6%,100% 48.4%;-webkit-mask-position:0 0,0 0,0 100%;-webkit-mask-repeat:no-repeat;
+      -webkit-mask-composite:source-in,source-over;
+              mask-image:linear-gradient(to bottom left,#000 35%,rgba(0,0,0,.45) 85%),linear-gradient(to right,rgba(0,0,0,.2) 54.2%,#000 59.2%),linear-gradient(#000,#000);
+              mask-size:100% 100%,100% 51.6%,100% 48.4%;mask-position:0 0,0 0,0 100%;mask-repeat:no-repeat;
+              mask-composite:intersect,add}
+  .dm img{display:block;width:100%;height:100%;opacity:.5}
+  @keyframes drift{
+    from{transform:translate(0,0) scale(1);opacity:.45}
+    to  {transform:translate(calc(-3*var(--u)),calc(4*var(--u))) scale(1.02);opacity:.55}
+  }
+
+  .cglow{position:absolute;z-index:1;pointer-events:none;left:calc(233*var(--u));top:calc((-17 + var(--s))*var(--u));
+         width:calc(70*var(--u));height:calc(70*var(--u));
+         background:radial-gradient(circle,rgba(186,148,62,.38) 0,rgba(186,148,62,.15) 42%,transparent 70%)}
+  /* ── 2 Intro ── */
+  .intro{position:absolute;z-index:2;left:calc(18*var(--u));top:calc((10 + var(--s))*var(--u));width:calc(240*var(--u))}
+  .contact{position:absolute;z-index:3;right:calc(18*var(--u));top:calc((4 + var(--s))*var(--u));height:calc(28*var(--u));
+           display:flex;align-items:center;gap:0;color:var(--text);
+           font:600 calc(9*var(--u))/1 var(--mono);letter-spacing:.14em}
+  .contact .t{position:relative;z-index:1;transition:color .15s}
+  .contact svg{width:calc(28*var(--u));height:calc(28*var(--u));overflow:visible;flex:none;margin-left:calc(-16.9*var(--u));transition:filter .15s}
+  .contact .cg{fill:var(--ambient);transition:fill .15s}
+  .contact svg polyline{fill:none;stroke:var(--text);stroke-width:1;stroke-linejoin:miter;vector-effect:non-scaling-stroke;transition:stroke .15s}
+  .contact:hover svg polyline,.contact:focus-visible svg polyline{stroke:var(--amber)}
+  .contact:hover .t,.contact:focus-visible .t{color:var(--amber)}
+  .contact:hover .cg,.contact:focus-visible .cg{fill:var(--amber)}
+  .contact:hover svg,.contact:focus-visible svg{filter:drop-shadow(0 0 calc(2.5*var(--u)) rgba(230,184,79,.95))}
+  .contact:focus-visible{outline:none}
+  .intro .hi{display:block;font:500 calc(12*var(--u))/1.3 var(--sans);color:var(--text);margin-bottom:calc(4*var(--u))}
+  .intro .skills{display:block;margin-top:calc(6*var(--u));width:calc(264*var(--u));white-space:nowrap;font:400 calc(10*var(--u))/1 var(--sans);letter-spacing:.01em;color:var(--muted)}
+  .intro .skills i{font-style:normal;color:var(--muted);opacity:.55;padding:0 calc(2*var(--u))}
+  .intro h1{margin:0;font:700 calc(17*var(--u))/1.18 var(--sans);letter-spacing:-.01em;text-wrap:balance}
+
+  /* ── 3 Black title strip ── */
+  .strip{position:absolute;z-index:2;left:0;right:0;top:calc((94 + var(--s))*var(--u));height:calc(48*var(--u));
+         background:rgba(10,9,8,.8);padding:0 calc(18*var(--u));
+         display:flex;flex-direction:column;justify-content:center;gap:calc(3*var(--u));font-family:var(--mono)}
+  .strip .top{display:flex;justify-content:flex-start;align-items:baseline;gap:calc(7*var(--u))}
+  .strip .site{font-size:calc(11*var(--u));line-height:1.1;font-weight:600;letter-spacing:.04em;color:var(--text)}
+  .strip .kind{font-size:calc(10*var(--u));letter-spacing:0;color:var(--muted)}
+  .strip .stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between}
+    .strip .stats b{display:block;font-weight:600;font-size:calc(11*var(--u));line-height:1.1;color:#c9c1b2}
+  .strip .stats span{display:block;margin-top:calc(1.5*var(--u));font-size:calc(10*var(--u));letter-spacing:0;color:var(--muted);white-space:nowrap}
+
+  /* ── 5 Movie: 16:9 autoplaying muted inline video (simulated) ── */
+  .movie{position:absolute;z-index:2;left:calc(18*var(--u));top:calc((148 + var(--s))*var(--u));
+         width:calc(264*var(--u));height:calc((88 + var(--v))*var(--u));border-radius:calc(3*var(--u));overflow:hidden;
+         background:var(--sink);border:1px solid var(--rule)}
+  .screen{position:absolute;inset:0}
+  .m-top{position:absolute;left:0;right:0;top:0;height:13%;background:var(--raise);border-bottom:1px solid var(--line);
+         display:flex;align-items:center;justify-content:space-between;padding:0 4%}
+  .m-top i{display:block;height:28%;background:var(--muted);width:20%}
+  .m-top span{display:flex;gap:calc(5*var(--u))}
+  .m-top span s{display:block;width:calc(14*var(--u));height:calc(2*var(--u));background:var(--line2)}
+  .grid{position:absolute;left:4%;right:4%;top:17%;bottom:19%;display:grid;
+        grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:4% 3%}
+  .card{background:var(--raise);border:1px solid var(--line);border-radius:calc(2*var(--u));padding:6%;
+        display:flex;flex-direction:column;gap:6%}
+  .card u{display:block;flex:1;background:var(--line);border-radius:1px}
+  .card s{display:block;height:calc(2.2*var(--u));background:var(--line2);width:80%}
+  .card s+s{width:45%;background:var(--line)}
+  .card:nth-child(2){animation:pick1 14s infinite}
+  .card:nth-child(7){animation:pick2 14s infinite}
+  @keyframes pick1{0%,9%{border-color:var(--line)}12%,36%{border-color:var(--muted)}40%,100%{border-color:var(--line)}}
+  @keyframes pick2{0%,47%{border-color:var(--line)}50%,72%{border-color:var(--muted)}76%,100%{border-color:var(--line)}}
+  .cur{position:absolute;width:calc(7*var(--u));left:92%;top:18%;animation:cur 14s ease-in-out infinite}
+  .cur svg{display:block;width:100%;height:auto}
+  @keyframes cur{
+    0%{left:92%;top:18%} 12%,36%{left:36%;top:33%}
+    50%,72%{left:60%;top:69%} 90%,100%{left:92%;top:18%}
+  }
+  /* player chrome — progress is the “this is playing” signal; no play button */
+  .ctl{position:absolute;left:0;right:0;bottom:0;height:calc(15*var(--u));background:rgba(10,9,8,.85);
+       display:flex;align-items:center;justify-content:space-between;padding:0 calc(7*var(--u))}
+  .time{font:500 calc(8*var(--u))/1 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+  .ctl svg{width:calc(9*var(--u));height:calc(9*var(--u));stroke:var(--muted);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+  .bar{position:absolute;left:0;right:0;bottom:calc(15*var(--u));height:calc(2.5*var(--u));background:var(--line2)}
+  .bar i{display:block;height:100%;width:0;background:var(--text);animation:prog 14s linear infinite}
+  @keyframes prog{to{width:100%}}
+
+  /* ── 6a Buttons: 2×2, between SEE IT LIVE and the hand ── */
+  .btns{position:absolute;z-index:3;left:0;width:calc(300*var(--u));height:calc(74*var(--u));top:calc((400 + var(--e) - 150)*var(--u))}
+  .btn{position:absolute;height:calc(32*var(--u));display:flex;align-items:center;padding:0 calc(10*var(--u));
+       color:var(--text);font:500 calc(10*var(--u))/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;transition:color .15s}
+  .btn:nth-child(1){left:calc(154*var(--u));top:calc(18*var(--u))}   /* Features  */
+  .btn:nth-child(2){left:calc(56*var(--u));top:calc(4*var(--u))}     /* Case studies */
+  .btn:nth-child(3){left:calc(218*var(--u));top:calc(24*var(--u))}   /* Learning  */
+  .btn:nth-child(4){left:calc(10*var(--u));top:calc(18*var(--u))}    /* Story     */
+  .btn:hover,.btn:focus-visible{outline:none;color:var(--amber)}
+
+  /* ── 6c Code streams (behind the hand and the labels) ── */
+  .streams{position:absolute;z-index:1;left:0;width:calc(300*var(--u));height:calc(170*var(--u));top:calc((400 + var(--e) - 170)*var(--u));overflow:visible;pointer-events:none}
+  .streams .g{fill:var(--muted);opacity:var(--o);text-anchor:middle;dominant-baseline:central;font-family:var(--mono),'Noto Sans CJK JP','Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+  @keyframes pulse{0%{opacity:var(--o)}10%{opacity:min(1,calc(var(--o)*2.1))}38%,100%{opacity:calc(var(--o)*.55)}}
+  .streams .g{animation:pulse var(--p) linear infinite;animation-delay:var(--d)}
+  .pglow{position:absolute;z-index:1;pointer-events:none;left:calc(98*var(--u));top:calc((400 + var(--e) - 90)*var(--u));width:calc(84*var(--u));height:calc(70*var(--u));
+         background:radial-gradient(ellipse at 50% 55%,rgba(186,148,62,.20),rgba(186,148,62,.07) 45%,transparent 70%)}
+
+  /* ── 6b Hand: engraved art, light ink on transparent; arm bleeds off the left edge (H' = 400 + e) ── */
+  .hand{position:absolute;z-index:2;left:calc(-62*var(--u));width:calc(290*var(--u));top:calc((400 + var(--e) - 75)*var(--u));
+        display:block;height:auto;pointer-events:none;opacity:.92}
+
+  /* ── 7 CTA ── */
+  .cta{position:absolute;z-index:3;left:calc(174*var(--u));top:calc((400 + var(--e) - 161)*var(--u));
+       width:calc(108*var(--u));height:calc(28*var(--u));color:var(--amber);
+       display:flex;align-items:center;padding-left:calc(8*var(--u));
+       font:600 calc(9.2*var(--u))/1 var(--mono);letter-spacing:.08em;transition:color .15s}
+  .cta svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;z-index:0}
+  .cta .lbl{position:relative;z-index:1}
+  .cta .shape{fill:none;stroke:var(--amber);stroke-opacity:.55;stroke-width:1;stroke-linejoin:miter;vector-effect:non-scaling-stroke}
+  .cta .rail{stroke:url(#rl);stroke-width:1;vector-effect:non-scaling-stroke}
+  .cta .rfill{fill:var(--amber);opacity:0;transition:opacity .15s}
+  .cta .kg{fill:var(--amber);opacity:.55;transition:fill .15s}
+  .cta .arrow{fill:none;stroke:var(--amber);stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;vector-effect:non-scaling-stroke;transition:stroke .15s}
+  .cta:hover,.cta:focus-visible{outline:none}
+  .cta:hover .rfill,.cta:focus-visible .rfill{opacity:1}
+  .cta:hover .kg,.cta:focus-visible .kg{fill:var(--bg)}
+  .cta:hover .arrow,.cta:focus-visible .arrow{stroke:var(--bg)}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .bar i{width:38%}
+  }
+</style>
+</head>
+<body>
+<main class="frame">
+  <div class="stage">
+
+    <div class="bg t" aria-hidden="true"></div><div class="bg b" aria-hidden="true"></div>
+    <!-- 4 Main diamond (decorative, not clickable) -->
+    <div class="dm" aria-hidden="true"><img src="../code-diamond-black-bg.amber.png" alt=""></div>
+
+    <!-- 2 Intro -->
+    <div class="cglow" aria-hidden="true"></div>
+    <a class="contact" href="#contact"><span class="t">CONTACT</span><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="rg" gradientUnits="userSpaceOnUse" x1="7" y1="0" x2="16" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="rm" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="url(#rg)"/></mask><clipPath id="rc"><polygon points="5.8,6.7 12,0.5 23.5,12 12,23.5 5.8,17.3"/></clipPath></defs><g clip-path="url(#rc)" mask="url(#rm)" font-size="2.6" class="cg" font-family="'Geist Mono',monospace" text-anchor="middle"><text y="1.8" opacity="0.55"><tspan x="5.2" dy="0">ナ</tspan><tspan x="5.2" dy="2.9">コ</tspan><tspan x="5.2" dy="2.9">ハ</tspan><tspan x="5.2" dy="2.9">レ</tspan><tspan x="5.2" dy="2.9">エ</tspan><tspan x="5.2" dy="2.9">オ</tspan><tspan x="5.2" dy="2.9">モ</tspan><tspan x="5.2" dy="2.9">キ</tspan></text><text y="1.8" opacity="0.3"><tspan x="7.9" dy="0">ネ</tspan><tspan x="7.9" dy="2.9">ヨ</tspan><tspan x="7.9" dy="2.9">エ</tspan><tspan x="7.9" dy="2.9">ム</tspan><tspan x="7.9" dy="2.9">セ</tspan><tspan x="7.9" dy="2.9">ウ</tspan><tspan x="7.9" dy="2.9">カ</tspan><tspan x="7.9" dy="2.9">フ</tspan></text><text y="1.8" opacity="0.7"><tspan x="10.6" dy="0">ヒ</tspan><tspan x="10.6" dy="2.9">オ</tspan><tspan x="10.6" dy="2.9">タ</tspan><tspan x="10.6" dy="2.9">カ</tspan><tspan x="10.6" dy="2.9">ヤ</tspan><tspan x="10.6" dy="2.9">フ</tspan><tspan x="10.6" dy="2.9">エ</tspan><tspan x="10.6" dy="2.9">ユ</tspan></text><text y="1.8" opacity="0.4"><tspan x="13.3" dy="0">ク</tspan><tspan x="13.3" dy="2.9">ソ</tspan><tspan x="13.3" dy="2.9">ル</tspan><tspan x="13.3" dy="2.9">ル</tspan><tspan x="13.3" dy="2.9">ヨ</tspan><tspan x="13.3" dy="2.9">エ</tspan><tspan x="13.3" dy="2.9">ユ</tspan><tspan x="13.3" dy="2.9">ヨ</tspan></text><text y="1.8" opacity="0.55"><tspan x="16.0" dy="0">ハ</tspan><tspan x="16.0" dy="2.9">エ</tspan><tspan x="16.0" dy="2.9">ソ</tspan><tspan x="16.0" dy="2.9">ウ</tspan><tspan x="16.0" dy="2.9">ヤ</tspan><tspan x="16.0" dy="2.9">ケ</tspan><tspan x="16.0" dy="2.9">テ</tspan><tspan x="16.0" dy="2.9">ヒ</tspan></text><text y="1.8" opacity="0.3"><tspan x="18.7" dy="0">コ</tspan><tspan x="18.7" dy="2.9">モ</tspan><tspan x="18.7" dy="2.9">ク</tspan><tspan x="18.7" dy="2.9">ユ</tspan><tspan x="18.7" dy="2.9">ト</tspan><tspan x="18.7" dy="2.9">ヤ</tspan><tspan x="18.7" dy="2.9">ワ</tspan><tspan x="18.7" dy="2.9">シ</tspan></text><text y="1.8" opacity="0.7"><tspan x="21.4" dy="0">キ</tspan><tspan x="21.4" dy="2.9">ヨ</tspan><tspan x="21.4" dy="2.9">ユ</tspan><tspan x="21.4" dy="2.9">ル</tspan><tspan x="21.4" dy="2.9">ス</tspan><tspan x="21.4" dy="2.9">ネ</tspan><tspan x="21.4" dy="2.9">キ</tspan><tspan x="21.4" dy="2.9">ヤ</tspan></text></g><polyline points="5.8,6.7 12,0.5 23.5,12 12,23.5 5.8,17.3"/></svg></a>
+    <div class="intro"><span class="hi">Hi, I’m Jan Pilik.</span><h1>I build large&#8209;scale software products end to end</h1><span class="skills">Design<i>·</i>Architecture<i>·</i>Full stack<i>·</i>Tests &amp; CI/CD</span></div>
+
+    <!-- 3 Title strip -->
+    <div class="strip">
+      <div class="top"><div class="site">SANGLOGIUM.COM</div><div class="kind">E-commerce platform</div></div>
+      <a class="stats" href="https://github.com/munrhalls/sanglogium">
+        <div><b>1</b><span>Engineer</span></div>
+        <div><b>24</b><span>Months</span></div>
+        <div><b>17</b><span>Features</span></div>
+        <div><b>650+</b><span>Products</span></div>
+      </a>
+    </div>
+
+    <!-- 5 Movie -->
+    <div class="movie" role="img" aria-label="Autoplaying muted showcase video of sanglogium.com">
+      <div class="screen">
+        <div class="m-top"><i></i><span><s></s><s></s><s></s></span></div>
+        <div class="grid">
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+          <div class="card"><u></u><s></s><s></s></div>
+        </div>
+        <div class="cur"><svg viewBox="0 0 10 14"><path d="M0 0V11L3 8.3L5 13L6.8 12.2L4.9 7.6H8.5Z" fill="#e8e8e8" stroke="#000" stroke-width=".6"/></svg></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <div class="ctl">
+        <span class="time">0:00 / 0:14</span>
+        <svg viewBox="0 0 12 12" aria-label="Muted"><path d="M1.5 4.5H3.5L6 2.5V9.5L3.5 7.5H1.5Z"/><path d="M8 4.5L11 7.5M11 4.5L8 7.5"/></svg>
+      </div>
+    </div>
+
+    <!-- 6 Buttons -->
+    <nav class="btns" aria-label="Sections">
+      <a class="btn" href="#features">Features</a><a class="btn" href="#case-studies">Case studies</a>
+      <a class="btn" href="#lessons">Learning</a><a class="btn" href="#story">Story</a>
+    </nav>
+
+    <!-- 6 Code streams -->
+    <div class="pglow" aria-hidden="true"></div>
+    <svg class="streams" viewBox="0 0 300 170" aria-hidden="true"><text class="g" x="94.6" y="118.6" font-size="6.1" style="--o:0.360;--d:-0.37s;--p:3.70s">ソ</text><text class="g" x="91.3" y="109.2" font-size="6.1" style="--o:0.527;--d:-0.28s;--p:3.70s">カ</text><text class="g" x="85.2" y="101.2" font-size="6.1" style="--o:0.527;--d:-0.47s;--p:3.70s">ヒ</text><text class="g" x="77.1" y="95.7" font-size="6.1" style="--o:0.527;--d:-0.74s;--p:3.70s">ワ</text><text class="g" x="67.8" y="92.2" font-size="6.1" style="--o:0.527;--d:-0.80s;--p:3.70s">ワ</text><text class="g" x="58.0" y="89.9" font-size="6.1" style="--o:0.527;--d:-0.95s;--p:3.70s">ケ</text><text class="g" x="48.0" y="87.8" font-size="6.1" style="--o:0.527;--d:-1.12s;--p:3.70s">ム</text><text class="g" x="38.6" y="85.0" font-size="6.1" style="--o:0.527;--d:-1.18s;--p:3.70s">ル</text><text class="g" x="30.5" y="79.5" font-size="6.1" style="--o:0.263;--d:-1.23s;--p:3.70s">テ</text><text class="g" x="98.7" y="117.8" font-size="4.8" style="--o:0.173;--d:-0.35s;--p:3.26s">ワ</text><text class="g" x="96.6" y="110.3" font-size="4.8" style="--o:0.325;--d:-0.35s;--p:3.26s">ソ</text><text class="g" x="93.0" y="103.7" font-size="4.8" style="--o:0.325;--d:-0.47s;--p:3.26s">キ</text><text class="g" x="87.5" y="98.1" font-size="4.8" style="--o:0.325;--d:-0.65s;--p:3.26s">ム</text><text class="g" x="80.6" y="94.0" font-size="4.8" style="--o:0.325;--d:-0.65s;--p:3.26s">タ</text><text class="g" x="73.3" y="91.5" font-size="4.8" style="--o:0.325;--d:-0.94s;--p:3.26s">ヤ</text><text class="g" x="65.7" y="89.8" font-size="4.8" style="--o:0.325;--d:-1.01s;--p:3.26s">オ</text><text class="g" x="58.1" y="88.5" font-size="4.8" style="--o:0.325;--d:-1.21s;--p:3.26s">コ</text><text class="g" x="50.4" y="86.9" font-size="4.8" style="--o:0.325;--d:-1.26s;--p:3.26s">ソ</text><text class="g" x="42.8" y="84.5" font-size="4.8" style="--o:0.301;--d:-1.49s;--p:3.26s">ヤ</text><text class="g" x="36.4" y="80.0" font-size="4.8" style="--o:0.122;--d:-1.64s;--p:3.26s">ハ</text><text class="g" x="102.5" y="115.2" font-size="5.0" style="--o:0.221;--d:-0.20s;--p:3.35s">モ</text><text class="g" x="100.1" y="107.3" font-size="5.0" style="--o:0.367;--d:-0.48s;--p:3.35s">ル</text><text class="g" x="95.7" y="100.2" font-size="5.0" style="--o:0.367;--d:-0.55s;--p:3.35s">フ</text><text class="g" x="89.7" y="94.8" font-size="5.0" style="--o:0.367;--d:-0.67s;--p:3.35s">ス</text><text class="g" x="82.1" y="91.2" font-size="5.0" style="--o:0.367;--d:-0.74s;--p:3.35s">ヤ</text><text class="g" x="74.2" y="89.0" font-size="5.0" style="--o:0.367;--d:-0.89s;--p:3.35s">テ</text><text class="g" x="66.2" y="87.5" font-size="5.0" style="--o:0.367;--d:-0.99s;--p:3.35s">ハ</text><text class="g" x="57.9" y="86.2" font-size="5.0" style="--o:0.367;--d:-1.04s;--p:3.35s">ウ</text><text class="g" x="49.9" y="84.4" font-size="5.0" style="--o:0.358;--d:-1.26s;--p:3.35s">シ</text><text class="g" x="42.4" y="80.8" font-size="5.0" style="--o:0.159;--d:-1.39s;--p:3.35s">ル</text><text class="g" x="104.7" y="116.4" font-size="7.2" style="--o:0.608;--d:-0.21s;--p:4.07s">ケ</text><text class="g" x="100.4" y="105.7" font-size="7.2" style="--o:0.693;--d:-0.44s;--p:4.07s">オ</text><text class="g" x="92.3" y="97.0" font-size="7.2" style="--o:0.693;--d:-0.62s;--p:4.07s">ワ</text><text class="g" x="81.8" y="91.9" font-size="7.2" style="--o:0.693;--d:-0.67s;--p:4.07s">コ</text><text class="g" x="70.5" y="88.8" font-size="7.2" style="--o:0.693;--d:-0.82s;--p:4.07s">ク</text><text class="g" x="59.0" y="85.7" font-size="7.2" style="--o:0.693;--d:-1.01s;--p:4.07s">ヨ</text><text class="g" x="48.9" y="80.0" font-size="7.2" style="--o:0.474;--d:-1.03s;--p:4.07s">カ</text><text class="g" x="108.8" y="117.6" font-size="7.4" style="--o:0.637;--d:-0.32s;--p:4.15s">ウ</text><text class="g" x="103.9" y="106.3" font-size="7.4" style="--o:0.726;--d:-0.27s;--p:4.15s">ウ</text><text class="g" x="95.4" y="97.9" font-size="7.4" style="--o:0.726;--d:-0.47s;--p:4.15s">ム</text><text class="g" x="84.6" y="92.8" font-size="7.4" style="--o:0.726;--d:-0.56s;--p:4.15s">オ</text><text class="g" x="72.9" y="89.4" font-size="7.4" style="--o:0.726;--d:-0.88s;--p:4.15s">ム</text><text class="g" x="61.4" y="85.4" font-size="7.4" style="--o:0.726;--d:-0.94s;--p:4.15s">ヨ</text><text class="g" x="52.5" y="77.6" font-size="7.4" style="--o:0.496;--d:-1.14s;--p:4.15s">オ</text><text class="g" x="119.0" y="118.1" font-size="7.2" style="--o:0.599;--d:-0.15s;--p:4.05s">ネ</text><text class="g" x="116.6" y="106.9" font-size="7.2" style="--o:0.683;--d:-0.47s;--p:4.05s">ハ</text><text class="g" x="111.9" y="96.2" font-size="7.2" style="--o:0.683;--d:-0.53s;--p:4.05s">モ</text><text class="g" x="104.6" y="87.2" font-size="7.2" style="--o:0.683;--d:-0.74s;--p:4.05s">モ</text><text class="g" x="95.5" y="79.9" font-size="7.2" style="--o:0.683;--d:-0.89s;--p:4.05s">ハ</text><text class="g" x="86.6" y="72.6" font-size="7.2" style="--o:0.683;--d:-0.80s;--p:4.05s">ル</text><text class="g" x="80.4" y="62.8" font-size="7.2" style="--o:0.467;--d:-1.10s;--p:4.05s">ユ</text><text class="g" x="122.9" y="116.9" font-size="5.9" style="--o:0.435;--d:-0.17s;--p:3.63s">ナ</text><text class="g" x="121.4" y="107.4" font-size="5.9" style="--o:0.496;--d:-0.49s;--p:3.63s">ケ</text><text class="g" x="118.6" y="98.1" font-size="5.9" style="--o:0.496;--d:-0.60s;--p:3.63s">フ</text><text class="g" x="113.6" y="89.9" font-size="5.9" style="--o:0.496;--d:-0.53s;--p:3.63s">ナ</text><text class="g" x="106.7" y="83.1" font-size="5.9" style="--o:0.496;--d:-0.80s;--p:3.63s">モ</text><text class="g" x="99.9" y="76.3" font-size="5.9" style="--o:0.496;--d:-0.98s;--p:3.63s">キ</text><text class="g" x="95.6" y="67.7" font-size="5.9" style="--o:0.339;--d:-1.08s;--p:3.63s">ム</text><text class="g" x="126.1" y="117.3" font-size="5.7" style="--o:0.408;--d:-0.37s;--p:3.57s">シ</text><text class="g" x="125.4" y="108.2" font-size="5.7" style="--o:0.465;--d:-0.43s;--p:3.57s">ナ</text><text class="g" x="124.0" y="98.8" font-size="5.7" style="--o:0.465;--d:-0.59s;--p:3.57s">ヒ</text><text class="g" x="121.2" y="90.0" font-size="5.7" style="--o:0.465;--d:-0.74s;--p:3.57s">ク</text><text class="g" x="116.4" y="82.1" font-size="5.7" style="--o:0.465;--d:-0.73s;--p:3.57s">タ</text><text class="g" x="111.6" y="74.3" font-size="5.7" style="--o:0.465;--d:-0.81s;--p:3.57s">ム</text><text class="g" x="109.3" y="65.2" font-size="5.7" style="--o:0.318;--d:-0.93s;--p:3.57s">ウ</text><text class="g" x="129.0" y="116.7" font-size="6.1" style="--o:0.506;--d:-0.18s;--p:3.70s">エ</text><text class="g" x="128.7" y="106.8" font-size="6.1" style="--o:0.523;--d:-0.32s;--p:3.70s">オ</text><text class="g" x="128.0" y="97.1" font-size="6.1" style="--o:0.523;--d:-0.49s;--p:3.70s">エ</text><text class="g" x="126.9" y="87.3" font-size="6.1" style="--o:0.523;--d:-0.55s;--p:3.70s">ヒ</text><text class="g" x="125.1" y="77.7" font-size="6.1" style="--o:0.523;--d:-0.79s;--p:3.70s">フ</text><text class="g" x="123.7" y="68.0" font-size="6.1" style="--o:0.419;--d:-0.86s;--p:3.70s">ワ</text><text class="g" x="132.9" y="115.1" font-size="5.3" style="--o:0.356;--d:-0.22s;--p:3.43s">ネ</text><text class="g" x="133.1" y="106.3" font-size="5.3" style="--o:0.406;--d:-0.32s;--p:3.43s">ク</text><text class="g" x="133.6" y="97.8" font-size="5.3" style="--o:0.406;--d:-0.60s;--p:3.43s">ナ</text><text class="g" x="134.5" y="89.2" font-size="5.3" style="--o:0.406;--d:-0.64s;--p:3.43s">ク</text><text class="g" x="136.0" y="80.8" font-size="5.3" style="--o:0.406;--d:-0.75s;--p:3.43s">ヨ</text><text class="g" x="137.4" y="72.4" font-size="5.3" style="--o:0.406;--d:-1.02s;--p:3.43s">ネ</text><text class="g" x="138.1" y="63.8" font-size="5.3" style="--o:0.277;--d:-0.97s;--p:3.43s">コ</text><text class="g" x="149.9" y="118.4" font-size="7.2" style="--o:0.683;--d:-0.36s;--p:4.05s">ク</text><text class="g" x="151.6" y="107.0" font-size="7.2" style="--o:0.683;--d:-0.48s;--p:4.05s">ハ</text><text class="g" x="155.7" y="96.4" font-size="7.2" style="--o:0.683;--d:-0.60s;--p:4.05s">ヒ</text><text class="g" x="163.3" y="87.7" font-size="7.2" style="--o:0.683;--d:-0.57s;--p:4.05s">モ</text><text class="g" x="168.6" y="77.5" font-size="7.2" style="--o:0.633;--d:-0.87s;--p:4.05s">ケ</text><text class="g" x="153.2" y="118.0" font-size="5.9" style="--o:0.478;--d:-0.36s;--p:3.63s">ソ</text><text class="g" x="154.8" y="108.7" font-size="5.9" style="--o:0.494;--d:-0.37s;--p:3.63s">ユ</text><text class="g" x="158.4" y="99.7" font-size="5.9" style="--o:0.494;--d:-0.56s;--p:3.63s">ウ</text><text class="g" x="165.2" y="93.2" font-size="5.9" style="--o:0.494;--d:-0.72s;--p:3.63s">フ</text><text class="g" x="173.7" y="89.1" font-size="5.9" style="--o:0.494;--d:-0.81s;--p:3.63s">レ</text><text class="g" x="180.1" y="82.2" font-size="5.9" style="--o:0.396;--d:-0.87s;--p:3.63s">フ</text><text class="g" x="156.0" y="115.3" font-size="5.1" style="--o:0.326;--d:-0.23s;--p:3.36s">ヒ</text><text class="g" x="157.5" y="107.1" font-size="5.1" style="--o:0.371;--d:-0.49s;--p:3.36s">ケ</text><text class="g" x="160.6" y="99.4" font-size="5.1" style="--o:0.371;--d:-0.50s;--p:3.36s">シ</text><text class="g" x="165.9" y="93.3" font-size="5.1" style="--o:0.371;--d:-0.58s;--p:3.36s">ス</text><text class="g" x="173.3" y="89.6" font-size="5.1" style="--o:0.371;--d:-0.68s;--p:3.36s">タ</text><text class="g" x="181.0" y="86.7" font-size="5.1" style="--o:0.371;--d:-0.88s;--p:3.36s">エ</text><text class="g" x="187.2" y="81.6" font-size="5.1" style="--o:0.254;--d:-1.14s;--p:3.36s">ユ</text><text class="g" x="159.5" y="117.6" font-size="6.1" style="--o:0.461;--d:-0.27s;--p:3.70s">フ</text><text class="g" x="161.7" y="108.0" font-size="6.1" style="--o:0.525;--d:-0.36s;--p:3.70s">ユ</text><text class="g" x="166.3" y="99.1" font-size="6.1" style="--o:0.525;--d:-0.41s;--p:3.70s">フ</text><text class="g" x="173.6" y="92.5" font-size="6.1" style="--o:0.525;--d:-0.64s;--p:3.70s">タ</text><text class="g" x="182.7" y="88.4" font-size="6.1" style="--o:0.525;--d:-0.86s;--p:3.70s">オ</text><text class="g" x="191.6" y="84.5" font-size="6.1" style="--o:0.525;--d:-0.92s;--p:3.70s">ヤ</text><text class="g" x="197.9" y="77.2" font-size="6.1" style="--o:0.359;--d:-1.02s;--p:3.70s">ク</text><text class="g" x="163.8" y="118.0" font-size="6.0" style="--o:0.444;--d:-0.21s;--p:3.66s">テ</text><text class="g" x="166.3" y="108.7" font-size="6.0" style="--o:0.506;--d:-0.38s;--p:3.66s">ケ</text><text class="g" x="171.3" y="100.3" font-size="6.0" style="--o:0.506;--d:-0.39s;--p:3.66s">ヨ</text><text class="g" x="178.9" y="94.3" font-size="6.0" style="--o:0.506;--d:-0.74s;--p:3.66s">ス</text><text class="g" x="187.7" y="90.6" font-size="6.0" style="--o:0.506;--d:-0.83s;--p:3.66s">ヨ</text><text class="g" x="197.0" y="87.3" font-size="6.0" style="--o:0.506;--d:-0.89s;--p:3.66s">ケ</text><text class="g" x="205.1" y="82.2" font-size="6.0" style="--o:0.346;--d:-1.15s;--p:3.66s">ネ</text><text class="g" x="175.4" y="117.4" font-size="6.6" style="--o:0.520;--d:-0.29s;--p:3.85s">セ</text><text class="g" x="178.7" y="107.1" font-size="6.6" style="--o:0.593;--d:-0.27s;--p:3.85s">シ</text><text class="g" x="185.3" y="98.6" font-size="6.6" style="--o:0.593;--d:-0.42s;--p:3.85s">ス</text><text class="g" x="194.8" y="93.7" font-size="6.6" style="--o:0.593;--d:-0.65s;--p:3.85s">モ</text><text class="g" x="205.3" y="91.5" font-size="6.6" style="--o:0.593;--d:-0.66s;--p:3.85s">ト</text><text class="g" x="216.0" y="90.1" font-size="6.6" style="--o:0.593;--d:-0.85s;--p:3.85s">ケ</text><text class="g" x="225.9" y="86.9" font-size="6.6" style="--o:0.405;--d:-1.01s;--p:3.85s">ム</text><text class="g" x="179.5" y="115.6" font-size="5.6" style="--o:0.304;--d:-0.33s;--p:3.52s">セ</text><text class="g" x="182.1" y="106.9" font-size="5.6" style="--o:0.444;--d:-0.32s;--p:3.52s">コ</text><text class="g" x="187.0" y="99.2" font-size="5.6" style="--o:0.444;--d:-0.54s;--p:3.52s">ヤ</text><text class="g" x="194.7" y="94.1" font-size="5.6" style="--o:0.444;--d:-0.66s;--p:3.52s">ワ</text><text class="g" x="203.7" y="91.8" font-size="5.6" style="--o:0.444;--d:-0.86s;--p:3.52s">ハ</text><text class="g" x="212.9" y="91.2" font-size="5.6" style="--o:0.444;--d:-0.84s;--p:3.52s">ヨ</text><text class="g" x="221.9" y="91.0" font-size="5.6" style="--o:0.444;--d:-0.93s;--p:3.52s">カ</text><text class="g" x="230.9" y="90.1" font-size="5.6" style="--o:0.444;--d:-1.19s;--p:3.52s">ワ</text><text class="g" x="239.0" y="86.6" font-size="5.6" style="--o:0.222;--d:-1.21s;--p:3.52s">エ</text><text class="g" x="184.5" y="116.5" font-size="6.7" style="--o:0.483;--d:-0.22s;--p:3.92s">ヨ</text><text class="g" x="189.5" y="107.0" font-size="6.7" style="--o:0.622;--d:-0.45s;--p:3.92s">ヨ</text><text class="g" x="198.0" y="100.3" font-size="6.7" style="--o:0.622;--d:-0.47s;--p:3.92s">ユ</text><text class="g" x="208.5" y="96.7" font-size="6.7" style="--o:0.622;--d:-0.52s;--p:3.92s">オ</text><text class="g" x="219.5" y="95.0" font-size="6.7" style="--o:0.622;--d:-0.80s;--p:3.92s">ハ</text><text class="g" x="230.5" y="93.6" font-size="6.7" style="--o:0.622;--d:-0.88s;--p:3.92s">ワ</text><text class="g" x="241.3" y="91.3" font-size="6.7" style="--o:0.622;--d:-1.06s;--p:3.92s">ム</text><text class="g" x="250.5" y="85.6" font-size="6.7" style="--o:0.363;--d:-1.09s;--p:3.92s">エ</text><text class="g" x="187.9" y="118.4" font-size="7.4" style="--o:0.558;--d:-0.29s;--p:4.13s">ヨ</text><text class="g" x="193.7" y="107.8" font-size="7.4" style="--o:0.718;--d:-0.41s;--p:4.13s">カ</text><text class="g" x="203.2" y="100.2" font-size="7.4" style="--o:0.718;--d:-0.52s;--p:4.13s">モ</text><text class="g" x="214.2" y="95.9" font-size="7.4" style="--o:0.718;--d:-0.69s;--p:4.13s">ヒ</text><text class="g" x="226.1" y="93.3" font-size="7.4" style="--o:0.718;--d:-0.84s;--p:4.13s">ナ</text><text class="g" x="237.9" y="91.3" font-size="7.4" style="--o:0.718;--d:-0.93s;--p:4.13s">ク</text><text class="g" x="249.5" y="88.5" font-size="7.4" style="--o:0.718;--d:-0.96s;--p:4.13s">ム</text><text class="g" x="259.8" y="82.5" font-size="7.4" style="--o:0.418;--d:-1.18s;--p:4.13s">ネ</text><text class="g" x="191.6" y="117.6" font-size="7.5" style="--o:0.571;--d:-0.37s;--p:4.17s">オ</text><text class="g" x="197.5" y="106.7" font-size="7.5" style="--o:0.734;--d:-0.44s;--p:4.17s">テ</text><text class="g" x="207.2" y="99.1" font-size="7.5" style="--o:0.734;--d:-0.41s;--p:4.17s">ヤ</text><text class="g" x="218.7" y="94.8" font-size="7.5" style="--o:0.734;--d:-0.54s;--p:4.17s">ナ</text><text class="g" x="230.7" y="92.6" font-size="7.5" style="--o:0.734;--d:-0.88s;--p:4.17s">シ</text><text class="g" x="242.8" y="91.1" font-size="7.5" style="--o:0.734;--d:-0.82s;--p:4.17s">ル</text><text class="g" x="254.7" y="89.5" font-size="7.5" style="--o:0.734;--d:-1.01s;--p:4.17s">ソ</text><text class="g" x="266.5" y="86.1" font-size="7.5" style="--o:0.428;--d:-1.07s;--p:4.17s">ヒ</text></svg>
+
+    <!-- 6 Hand -->
+    <img class="hand" src="../hand-engraving.webp" alt="" aria-hidden="true" width="1200" height="544">
+
+    <!-- 7 CTA -->
+    <a class="cta" href="#live"><svg viewBox="0 0 132 34" aria-hidden="true"><defs><radialGradient id="cgl" gradientUnits="userSpaceOnUse" cx="115" cy="25" r="30"><stop offset="0" stop-color="#e6b84f" stop-opacity=".28"/><stop offset=".45" stop-color="#e6b84f" stop-opacity=".12"/><stop offset="1" stop-color="#e6b84f" stop-opacity="0"/></radialGradient><linearGradient id="rl" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="70" y2="0"><stop offset="0" stop-color="#e6b84f" stop-opacity="0"/><stop offset="1" stop-color="#e6b84f"/></linearGradient><clipPath id="rc2"><polygon points="5.8,6.7 12,0.5 23.5,12 12,23.5 5.8,17.3"/></clipPath><filter id="cmb" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation=".7"/></filter><mask id="cm" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff"/><rect x="6.8" y="9" width="10.6" height="6" rx="3" fill="#000" filter="url(#cmb)"/></mask></defs><rect x="80" y="-5" width="70" height="60" fill="url(#cgl)"/><line class="rail" x1="0" y1="25" x2="109.6" y2="25"/><svg x="98" y="8" width="34" height="34" viewBox="0 0 24 24" overflow="visible"><polygon class="rfill" points="5.8,6.7 12,0.5 23.5,12 12,23.5 5.8,17.3"/><g class="kg" clip-path="url(#rc2)" mask="url(#cm)" font-size="2.6" font-family="'Geist Mono',monospace" text-anchor="middle"><text y="1.8" opacity="0.55"><tspan x="5.2" dy="0">ナ</tspan><tspan x="5.2" dy="2.9">コ</tspan><tspan x="5.2" dy="2.9">ハ</tspan><tspan x="5.2" dy="2.9">レ</tspan><tspan x="5.2" dy="2.9">エ</tspan><tspan x="5.2" dy="2.9">オ</tspan><tspan x="5.2" dy="2.9">モ</tspan><tspan x="5.2" dy="2.9">キ</tspan></text><text y="1.8" opacity="0.3"><tspan x="7.9" dy="0">ネ</tspan><tspan x="7.9" dy="2.9">ヨ</tspan><tspan x="7.9" dy="2.9">エ</tspan><tspan x="7.9" dy="2.9">ム</tspan><tspan x="7.9" dy="2.9">セ</tspan><tspan x="7.9" dy="2.9">ウ</tspan><tspan x="7.9" dy="2.9">カ</tspan><tspan x="7.9" dy="2.9">フ</tspan></text><text y="1.8" opacity="0.7"><tspan x="10.6" dy="0">ヒ</tspan><tspan x="10.6" dy="2.9">オ</tspan><tspan x="10.6" dy="2.9">タ</tspan><tspan x="10.6" dy="2.9">カ</tspan><tspan x="10.6" dy="2.9">ヤ</tspan><tspan x="10.6" dy="2.9">フ</tspan><tspan x="10.6" dy="2.9">エ</tspan><tspan x="10.6" dy="2.9">ユ</tspan></text><text y="1.8" opacity="0.4"><tspan x="13.3" dy="0">ク</tspan><tspan x="13.3" dy="2.9">ソ</tspan><tspan x="13.3" dy="2.9">ル</tspan><tspan x="13.3" dy="2.9">ル</tspan><tspan x="13.3" dy="2.9">ヨ</tspan><tspan x="13.3" dy="2.9">エ</tspan><tspan x="13.3" dy="2.9">ユ</tspan><tspan x="13.3" dy="2.9">ヨ</tspan></text><text y="1.8" opacity="0.55"><tspan x="16.0" dy="0">ハ</tspan><tspan x="16.0" dy="2.9">エ</tspan><tspan x="16.0" dy="2.9">ソ</tspan><tspan x="16.0" dy="2.9">ウ</tspan><tspan x="16.0" dy="2.9">ヤ</tspan><tspan x="16.0" dy="2.9">ケ</tspan><tspan x="16.0" dy="2.9">テ</tspan><tspan x="16.0" dy="2.9">ヒ</tspan></text><text y="1.8" opacity="0.3"><tspan x="18.7" dy="0">コ</tspan><tspan x="18.7" dy="2.9">モ</tspan><tspan x="18.7" dy="2.9">ク</tspan><tspan x="18.7" dy="2.9">ユ</tspan><tspan x="18.7" dy="2.9">ト</tspan><tspan x="18.7" dy="2.9">ヤ</tspan><tspan x="18.7" dy="2.9">ワ</tspan><tspan x="18.7" dy="2.9">シ</tspan></text><text y="1.8" opacity="0.7"><tspan x="21.4" dy="0">キ</tspan><tspan x="21.4" dy="2.9">ヨ</tspan><tspan x="21.4" dy="2.9">ユ</tspan><tspan x="21.4" dy="2.9">ル</tspan><tspan x="21.4" dy="2.9">ス</tspan><tspan x="21.4" dy="2.9">ネ</tspan><tspan x="21.4" dy="2.9">キ</tspan><tspan x="21.4" dy="2.9">ヤ</tspan></text></g><polyline class="shape" points="8,4.5 12,0.5 17.9,6.4"/><polyline class="shape" points="20.3,8.8 23.5,12 17.2,18.3"/><polyline class="shape" points="15.7,19.8 12,23.5 5.8,17.3"/><path class="arrow" d="M8.2 12H16M13.4 9.6L16 12L13.4 14.4"/></svg></svg><span class="lbl">SEE IT LIVE</span></a>
+
+  </div>
+</main>
+
+<script>
+  // Keep the time readout locked to the CSS progress animation.
+  (function () {
+    var fill = document.querySelector('.bar i'), t = document.querySelector('.time');
+    var anim = fill && fill.getAnimations && fill.getAnimations()[0];
+    if (!anim) return;
+    setInterval(function () {
+      var s = Math.floor((Number(anim.currentTime) % 14000) / 1000);
+      t.textContent = '0:' + String(s).padStart(2, '0') + ' / 0:14';
+    }, 250);
+  })();
+</script>
+</body>
+</html>
