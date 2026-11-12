@@ -1,12 +1,12 @@
 # AGENTS.md — portfolio
 
-Personal portfolio site. Astro 5 + Tailwind 3, static output, deploys to munrhalls.com.
+Personal portfolio site. Astro 5, static output, deploys to munrhalls.com.
 
 ## Commands
 
 - `npm ci` — install (lockfile is authoritative)
 - `npm run dev` — dev server on **http://localhost:4321** (sanglogium owns :3000; never collide)
-- `npm run build` — `astro check` + static build to `dist/`
+- `npm run build` — static build to `dist/`
 - `npm run preview` — serve the production build
 
 ## Non-negotiable
@@ -17,9 +17,7 @@ Personal portfolio site. Astro 5 + Tailwind 3, static output, deploys to munrhal
    **this repo declares none**.
 2. **Resource discipline.** No `npm install` without asking (`npm ci` only if approved). Never run
    two CPU-heavy tools concurrently. End sessions with no leftover watch processes or browsers.
-3. **Source of truth for styling**: `tailwind.config.mjs` holds the full custom color system —
-   never regenerate or "clean up" config files; components depend on those tokens.
-4. **File references**: print paths as `file://` URIs.
+3. **File references**: print paths as `file://` URIs.
 
 ## Process
 
