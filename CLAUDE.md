@@ -1,6 +1,10 @@
 # CLAUDE.md — portfolio
 
-Personal portfolio — Astro 5 + Tailwind 3, static output → munrhalls.com.
+# Cost minimization
+Topmost rule is to minimize any unnecessary calls, edits, reads - any unnecessary steps. Minimizing tokens cost is topmost priority. 
+
+
+# Personal portfolio — Astro 5 + Tailwind 3, static output → munrhalls.com.
 
 **Process rules live in `AGENTS.md` — read it first.** It is the single source of truth
 for commands, verification policy, campaign process, and git policy. This file only adds
