@@ -143,37 +143,14 @@ import '@fontsource/geist-mono/600.css';
   .movie{position:absolute;z-index:2;left:calc(18*var(--u));top:calc((158.2 + var(--s) + var(--g))*var(--u));
          width:calc(264*var(--u));height:calc(var(--M)*var(--u));border-radius:calc(3*var(--u));overflow:hidden;
          background:var(--sink);border:1px solid var(--rule)}
-  .screen{position:absolute;inset:0}
-  .m-top{position:absolute;left:0;right:0;top:0;height:13%;background:var(--raise);border-bottom:1px solid var(--line);
-         display:flex;align-items:center;justify-content:space-between;padding:0 4%}
-  .m-top i{display:block;height:28%;background:var(--muted);width:20%}
-  .m-top span{display:flex;gap:calc(5*var(--u))}
-  .m-top span s{display:block;width:calc(14*var(--u));height:calc(2*var(--u));background:var(--line2)}
-  .grid{position:absolute;left:4%;right:4%;top:17%;bottom:19%;display:grid;
-        grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:4% 3%}
-  .card{background:var(--raise);border:1px solid var(--line);border-radius:calc(2*var(--u));padding:6%;
-        display:flex;flex-direction:column;gap:6%}
-  .card u{display:block;flex:1;background:var(--line);border-radius:1px}
-  .card s{display:block;height:calc(2.2*var(--u));background:var(--line2);width:80%}
-  .card s+s{width:45%;background:var(--line)}
-  .card:nth-child(2){animation:pick1 14s infinite}
-  .card:nth-child(7){animation:pick2 14s infinite}
-  @keyframes pick1{0%,9%{border-color:var(--line)}12%,36%{border-color:var(--muted)}40%,100%{border-color:var(--line)}}
-  @keyframes pick2{0%,47%{border-color:var(--line)}50%,72%{border-color:var(--muted)}76%,100%{border-color:var(--line)}}
-  .cur{position:absolute;width:calc(7*var(--u));left:92%;top:18%;animation:cur 14s ease-in-out infinite}
-  .cur svg{display:block;width:100%;height:auto}
-  @keyframes cur{
-    0%{left:92%;top:18%} 12%,36%{left:36%;top:33%}
-    50%,72%{left:60%;top:69%} 90%,100%{left:92%;top:18%}
-  }
+  .movie video{position:absolute;left:0;top:0;width:100%;height:calc(100% - 17.5*var(--u));object-fit:cover;display:block}
   /* player chrome — progress is the “this is playing” signal; no play button */
   .ctl{position:absolute;left:0;right:0;bottom:0;height:calc(15*var(--u));background:rgba(10,9,8,.85);
        display:flex;align-items:center;justify-content:space-between;padding:0 calc(7*var(--u))}
   .time{font:500 calc(8*var(--u))/1 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
   .ctl svg{width:calc(9*var(--u));height:calc(9*var(--u));stroke:var(--muted);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
   .bar{position:absolute;left:0;right:0;bottom:calc(15*var(--u));height:calc(2.5*var(--u));background:var(--line2)}
-  .bar i{display:block;height:100%;width:0;background:var(--text);animation:prog 14s linear infinite}
-  @keyframes prog{to{width:100%}}
+  .bar i{display:block;height:100%;width:0;background:var(--text)}
 
   /* ── 6a Buttons: 2×2, between SEE IT LIVE and the hand ── */
   .btns{position:absolute;z-index:4;left:0;width:calc(300*var(--u));height:calc(74*var(--u));top:calc((400 + var(--e) - 150)*var(--u))}
@@ -244,23 +221,10 @@ import '@fontsource/geist-mono/600.css';
 
     <!-- 5 Movie -->
     <div class="movie" role="img" aria-label="Autoplaying muted showcase video of sanglogium.com">
-      <div class="screen">
-        <div class="m-top"><i></i><span><s></s><s></s><s></s></span></div>
-        <div class="grid">
-          <div class="card"><u></u><s></s><s></s></div>
-          <div class="card"><u></u><s></s><s></s></div>
-          <div class="card"><u></u><s></s><s></s></div>
-          <div class="card"><u></u><s></s><s></s></div>
-          <div class="card"><u></u><s></s><s></s></div>
-          <div class="card"><u></u><s></s><s></s></div>
-          <div class="card"><u></u><s></s><s></s></div>
-          <div class="card"><u></u><s></s><s></s></div>
-        </div>
-        <div class="cur"><svg viewBox="0 0 10 14"><path d="M0 0V11L3 8.3L5 13L6.8 12.2L4.9 7.6H8.5Z" fill="#e8e8e8" stroke="#000" stroke-width=".6"/></svg></div>
-      </div>
+      <video muted autoplay loop playsinline preload="metadata" src="/movie.webm"></video>
       <div class="bar"><i></i></div>
       <div class="ctl">
-        <span class="time">0:00 / 0:14</span>
+        <span class="time">0:00 / 0:00</span>
         <svg viewBox="0 0 12 12" aria-label="Muted"><path d="M1.5 4.5H3.5L6 2.5V9.5L3.5 7.5H1.5Z"/><path d="M8 4.5L11 7.5M11 4.5L8 7.5"/></svg>
       </div>
     </div>
@@ -283,15 +247,18 @@ import '@fontsource/geist-mono/600.css';
 </main>
 
 <script is:inline>
-  // Keep the time readout locked to the CSS progress animation.
+  // Progress bar + time readout follow the real video.
   (function () {
-    var fill = document.querySelector('.bar i'), t = document.querySelector('.time');
-    var anim = fill && fill.getAnimations && fill.getAnimations()[0];
-    if (!anim) return;
-    setInterval(function () {
-      var s = Math.floor((Number(anim.currentTime) % 14000) / 1000);
-      t.textContent = '0:' + String(s).padStart(2, '0') + ' / 0:14';
-    }, 250);
+    var v = document.querySelector('.movie video'), f = document.querySelector('.bar i'), t = document.querySelector('.time');
+    function m(n) { return Math.floor(n / 60) + ':' + String(Math.floor(n % 60)).padStart(2, '0'); }
+    function u() {
+      var d = v.duration;
+      if (!d || !isFinite(d)) return;
+      f.style.width = (v.currentTime / d * 100) + '%';
+      t.textContent = m(v.currentTime) + ' / ' + m(d);
+    }
+    v.addEventListener('timeupdate', u);
+    v.addEventListener('loadedmetadata', u);
   })();
 </script>
 </body>
