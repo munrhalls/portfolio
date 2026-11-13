@@ -19,13 +19,17 @@ One muted, looping ~30–40s webm of the live store, wired into `src/components/
 1. Script = a short text list in `/home/jan/work/movie/SCRIPT.md`: one line per beat (seconds, what is on screen, claim line, proof line). The user edits the text, then says "go".
 2. One montage script `/home/jan/work/movie/movie.mjs`, one section per beat. Reuse `shoot.mjs` INIT and `point()`. Captions: claim line + proof line. The two filtering callouts are reused verbatim.
 
+## Player size
+
+The player shows the movie at the real smallest-phone size: 282 px wide, 16:9 (264u of the 300u landing frame at a 320 px viewport). Never larger. Judge legibility at that size.
+
 ## The round
 
 1. Add the next beat (or apply the user's fixes). Re-record the **whole movie so far** to `out/review.webm`. No chunks, no freezing.
-2. Review build burns in a small timecode. The final take does not.
-3. Reply: what changed, plus a clickable link `[review](file:///home/jan/work/movie/out/review.webm)`. Nothing more.
-4. The user watches, pauses wherever, screenshots, annotates, repeats as often as they like, then says "Done".
-5. On "Done", read all the annotated screenshots they send (or `~/work/global/annotate/data/annotated.png` + `notes.txt` if they used the canvas). Trust marks over prose. Timecode in the shot, or the time they typed, says where. Fix everything in one pass.
+2. The movie is watched in the annotation player, which shows the exact timecode on the frame. No timecode is burned into the video.
+3. Run `/home/jan/work/movie/annotate/annotate-movie.sh` (own port 4401, never touches the design-loop canvas on 4400). Reply: what changed, plus the link it prints. Nothing more.
+4. The user watches in the player, pauses, screenshots the frame (timecode is in it), pastes it onto the canvas, draws, Ctrl+S, repeats as often as they like, then says "Done".
+5. On "Done", read `/home/jan/work/movie/annotate/data/annotated.png` + `notes.txt`. Trust marks over prose. The timecode in each pasted shot says where. Fix everything in one pass.
 6. Do not wait for "go" between beats unless the user asks for one.
 
 ## Hard rules
