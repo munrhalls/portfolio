@@ -27,6 +27,7 @@ The player shows the movie at the real smallest-phone size: 282 px wide, 16:9 (2
 
 1. Add the next beat (or apply the user's fixes). Re-record the **whole movie so far** to `out/review.webm`. No chunks, no freezing.
 2. The movie is watched in the annotation player, which shows the exact timecode on the frame. No timecode is burned into the video.
+   The player has a ⛶ button next to ▶ that enlarges it to ~47% of the window width (toggle). The Screenshot button copies the frame at the on-screen size (282 px normal, enlarged width when ⛶ is on), timecode strip scaled with it. Both are defaults in `annotate/index.html` + `src/main.jsx`: keep them, and rebuild with `npx vite build` in `annotate/` after any edit.
 3. Run `/home/jan/work/movie/annotate/annotate-movie.sh` (own port 4401, never touches the design-loop canvas on 4400). Reply: what changed, plus the link it prints. Nothing more.
 4. The user watches in the player, pauses, screenshots the frame (timecode is in it), pastes it onto the canvas, draws, Ctrl+S, repeats as often as they like, then says "Done".
 5. On "Done", read `/home/jan/work/movie/annotate/data/annotated.png` + `notes.txt`. Trust marks over prose. The timecode in each pasted shot says where. Fix everything in one pass.

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" style="outline-offset: var(--lavish-annotate-offset,2px); outline: var(--lavish-annotate-outline,2px solid #f4c95d);"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment opener — deletion audit</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --base: #232136;
+      --surface: #2a273f;
+      --overlay: #393552;
+      --muted: #908caa;
+      --subtle: #c4a7e7;
+      --text: #e0def4;
+      --love: #eb6f92;
+      --gold: #f6c177;
+      --foam: #9ccfd8;
+      --line: #524f67;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--base);
+      color: var(--text);
+      font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main { max-width: 1040px; margin: 0 auto; padding: 48px 28px 64px; }
+    header { border-bottom: 1px solid var(--line); padding-bottom: 24px; margin-bottom: 28px; }
+    h1 { margin: 0 0 10px; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; }
+    h2 { margin: 0 0 14px; font-size: 21px; color: var(--foam); }
+    h3 { margin: 0 0 8px; font-size: 16px; }
+    p { margin: 0 0 12px; }
+    ul { margin: 8px 0 0; padding-left: 21px; }
+    li + li { margin-top: 8px; }
+    section { margin-top: 30px; }
+    .context { color: var(--muted); max-width: 820px; }
+    .verdict {
+      border: 1px solid var(--love);
+      background: rgba(235, 111, 146, .08);
+      border-radius: 12px;
+      padding: 18px 20px;
+      font-size: 18px;
+    }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+    .card.forced { border-top: 3px solid var(--foam); }
+    .card.choice { border-top: 3px solid var(--gold); }
+    .tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .delete { color: var(--love); font-weight: 700; }
+    .supported { color: var(--foam); }
+    .line-audit { display: grid; gap: 12px; }
+    .line-audit article { background: var(--surface); border-left: 4px solid var(--love); border-radius: 8px; padding: 16px 18px; }
+    blockquote { margin: 0 0 10px; color: var(--text); font-weight: 650; }
+    .note { color: var(--muted); font-size: 14px; }
+    .deletions { border: 1px solid var(--gold); background: rgba(246, 193, 119, .06); border-radius: 12px; padding: 18px 20px; }
+    .deletions li::marker { color: var(--gold); }
+    .end { color: var(--subtle); border-top: 1px solid var(--line); padding-top: 20px; margin-top: 30px; }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } main { padding: 30px 18px 44px; } }
+  </style>
+<style id="lavish-cursor-style">:root{--lavish-accent:#f4c95d;--lavish-annotate-outline:2px solid var(--lavish-accent);--lavish-annotate-offset:2px}*{cursor:default!important}[data-lavish-action],[data-lavish-action] *{cursor:pointer!important}input,textarea,[contenteditable]:not([contenteditable='false']){cursor:text!important}button,select,label,option,input[type='button'],input[type='submit'],input[type='reset'],input[type='checkbox'],input[type='radio'],input[type='file'],input[type='color'],input[type='range'],input[type='image']{cursor:pointer!important}</style></head>
+<body class="vsc-initialized" style="outline-offset: var(--lavish-annotate-offset,2px);">
+<main style="outline-offset: var(--lavish-annotate-offset,2px);">
+  <header style="outline-offset: var(--lavish-annotate-offset,2px);">
+    <h1 style="outline-offset: var(--lavish-annotate-offset,2px);">Payment opener: deletion audit</h1>
+    <p class="context" style="outline-offset: var(--lavish-annotate-offset,2px);">Evidence boundary: the supplied software report only. Constraints: a 20-second video, first exposure, technical and nontechnical viewers, no code access, and lines readable at a glance.</p>
+  </header>
+
+  <div class="verdict" style="outline-offset: var(--lavish-annotate-offset,2px);">None of the three draft bullets survives unchanged. The aim is an aspiration, not an acceptance test. Several success rules are choices presented as necessities.</div>
+
+  <section style="outline-offset: var(--lavish-annotate-offset,2px);">
+    <h2 style="outline-offset: var(--lavish-annotate-offset,2px);">1. The aim</h2>
+    <ul style="outline-offset: var(--lavish-annotate-offset,2px);">
+      <li style="outline-offset: var(--lavish-annotate-offset,2px);"><strong>“Exceptional,” “high-level,” and “advanced”</strong> repeat the same desired verdict without defining observable evidence. They cannot decide whether a sentence belongs.</li>
+      <li><strong>“Large-scale” is unsupported here.</strong> Payment behavior does not establish scale. A sitemap containing 642 product pages establishes a page count, not traffic, throughput, operational scale, or engineering complexity.</li>
+      <li style="outline-offset: var(--lavish-annotate-offset,2px);"><strong>“Professional,” “robust,” and “sound”</strong> are not demonstrated merely by selected happy-path statements. The report also separates the card charge from the order/database step and includes a paid-order stock gap. Those facts may reflect deliberate design; they still prevent broad, unqualified claims.</li>
+      <li style="outline-offset: var(--lavish-annotate-offset,2px);">The desired viewer judgment cannot be forced by text. It is especially weak as a test when the viewer cannot inspect the evidence behind invisible backend claims.</li>
+    </ul>
+  </section>
+
+  <section style="outline-offset: var(--lavish-annotate-offset,2px);">
+    <h2 style="outline-offset: var(--lavish-annotate-offset,2px);">2. What is forced, and what is only chosen</h2>
+    <div class="grid" style="outline-offset: var(--lavish-annotate-offset,2px);">
+      <div class="card forced">
+        <span class="tag">Forced by the situation or software</span>
+        <ul>
+          <li>Very low reading load and immediately parsable language. This follows from the time and glance constraints, not from a preferred style.</li>
+          <li>Claims whose meaning and significance do not depend on code access or developer-only knowledge. Both viewer kinds must be able to understand them.</li>
+          <li>A general claim about paying on the store’s page must reckon with methods that redirect to a bank.</li>
+          <li>A claim about the charged amount must reckon with the shipping quote and must not conflate computing the amount with performing the card charge.</li>
+          <li>An exactly-once or atomicity claim must stay within the reported same-payment retry behavior and the stock-short exception.</li>
+        </ul>
+      </div>
+      <div class="card choice">
+        <span class="tag">Only a choice</span>
+        <ul>
+          <li>Opening with <strong>Payment</strong>, rather than any other theme.</li>
+          <li>Exactly one theme, a “few” sentences, and their particular order or wording. Time restricts the amount; it does not dictate these exact forms.</li>
+          <li>The strict division that footage carries everything visible and words carry only invisible things.</li>
+          <li>Blanket bans on adjectives and file paths. Empty adjectives prove nothing and paths help no viewer here, but neither ban is a law.</li>
+          <li>The seven-adjective target itself. It is a desired impression, not a consequence of the viewer’s situation.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:12px">The final instruction “delete anything not forced” is too broad if read literally. It would delete every creative choice, including the Payment label and the one-theme format. A choice can fit the constraints without being the only possible choice.</p>
+  </section>
+
+  <section>
+    <h2>3. The success picture’s internal tension</h2>
+    <p>It asks words to carry invisible engineering while the viewer cannot inspect the code. Those words may be true, but they are assertions in the video, not demonstrations. “The viewer can understand a sentence” is not the same as “the viewer has evidence for it.”</p>
+    <p>The requirement for understandable consequences is forced by the mixed audience. The current second bullet instead states a mechanism and leaves its significance to inference.</p>
+  </section>
+
+  <section>
+    <h2>4. Line-by-line audit</h2>
+    <div class="line-audit">
+      <article>
+        <span class="tag delete">Delete the whole bullet</span>
+        <blockquote>“You pay on the store's own page, in the store's colors and type.”</blockquote>
+        <p>As a general payment claim, the first clause is contradicted by BLIK and Przelewy24 redirects. The report supports it only for the embedded card/wallet case, a limitation the sentence does not state. The branding claim is supported for that embedded form, but it duplicates what the footage already shows and is excluded by the draft’s own success picture.</p>
+      </article>
+      <article>
+        <span class="tag delete">Delete the whole bullet as drafted</span>
+        <blockquote>“The server prices the cart from the catalog and charges that amount.”</blockquote>
+        <p style="outline-offset: var(--lavish-annotate-offset,2px);">The reported amount is catalog prices <strong>plus the shipping quote</strong>. Cart-only pricing followed by “that amount” is therefore at least materially ambiguous. The server computes the amount; the card charge is a separate step, so “the server … charges” conflates two actions. Finally, this is an implementation mechanism, not a consequence whose importance is self-evident to an HR viewer.</p>
+      </article>
+      <article>
+        <span class="tag delete">Delete the whole bullet</span>
+        <blockquote style="outline-offset: var(--lavish-annotate-offset,2px);">“One payment creates one order and cuts the stock once.”</blockquote>
+        <p>A repeated <em>same payment</em> finding an existing order supports a narrower retry claim. One database save supports atomic order creation and stock reduction when that save performs both. It does not make this universal sentence true: when stock is already gone, the paid order is still saved and the gap is logged, so there is no normal stock cut. The separate card charge also rules out any implied atomic payment–order–stock operation.</p>
+      </article>
+    </div>
+    <p class="note" style="margin-top: 12px; outline-offset: var(--lavish-annotate-offset,2px);">The redirects, shipping quote, separate charge, and stock-short path are reasons to reject the current wording. They are not instructions to add more exceptions or clauses to the video.</p>
+  </section>
+
+  <section style="outline-offset: var(--lavish-annotate-offset,2px);">
+    <h2 style="outline-offset: var(--lavish-annotate-offset,2px);">5. The title and omitted candidates</h2>
+    <ul style="outline-offset: var(--lavish-annotate-offset,2px);">
+      <li style="outline-offset: var(--lavish-annotate-offset,2px);"><strong>“Payment”</strong> is only a chosen theme label. It is neither forced nor evidence. There is no truth-based reason to delete the word itself, but the literal “only what is forced” rule would delete it too.</li>
+      <li style="outline-offset: var(--lavish-annotate-offset,2px);"><strong>642 product pages</strong> does not support the Payment theme and does not establish “large-scale.” Leave it out.</li>
+      <li style="outline-offset: var(--lavish-annotate-offset,2px);"><strong>The set-aside candidates</strong> remain out. None is forced by this chunk’s evidence or by the viewer’s situation.</li>
+    </ul>
+  </section>
+
+  <section class="deletions">
+    <h2>Delete</h2>
+    <ul>
+      <li>All three substantive bullets as drafted.</li>
+      <li>“Large-scale” as a judgment this chunk claims to establish.</li>
+      <li>“Exceptional,” “high-level,” and “advanced” as acceptance criteria; they can only be aspirations here.</li>
+      <li>The presentation of “one theme,” “words only for the invisible,” and blanket style bans as forced requirements.</li>
+      <li>Any implication that payment, order creation, and stock reduction are one atomic operation.</li>
+    </ul>
+  </section>
+
+  <p class="end">Without rewriting or adding, the optional theme label remains; the substantive draft does not. That is the result of applying the stated constraints to the supplied evidence.</p>
+</main>
+<script src="index_data/sdk_6QmY.js"></script>
+
+</body></html>
