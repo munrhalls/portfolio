@@ -22,7 +22,7 @@ import '@fontsource/geist-mono/600.css';
 
     <div class="bg t pointer-events-none absolute inset-x-0 top-0 z-0 h-anchor-wash-top bg-wash-top mask-fade-down" aria-hidden="true"></div><div class="bg b pointer-events-none absolute inset-x-0 bottom-0 top-anchor-wash-bottom z-0 bg-wash-bottom mask-fade-up" aria-hidden="true"></div>
     <!-- 4 Main diamond (decorative, not clickable) -->
-    <div class="dm pointer-events-none absolute left-77 top-anchor-diamond z-0 h-380 w-380 mix-blend-screen mask-diamond" aria-hidden="true"><img class="block h-full w-full opacity-50" src="/images/code-diamond-black-bg.amber.png" alt=""></div>
+    <div class="dm pointer-events-none absolute left-77 top-anchor-diamond z-0 h-380 w-380 mix-blend-screen mask-diamond" aria-hidden="true"><div class="relative h-full w-full opacity-50"><img class="block h-full w-full" src="/images/diamond-rain/frame.png" alt=""><canvas class="rain absolute inset-0 h-full w-full mix-blend-plus-lighter mask-diamond-window" width="1024" height="1024" aria-hidden="true"></canvas></div></div>
 
     <!-- 2 Intro -->
     <div class="cglow pointer-events-none absolute left-233 top-anchor-glow-contact z-1 h-70 w-70 bg-glow-contact" aria-hidden="true"></div>
@@ -81,6 +81,11 @@ import '@fontsource/geist-mono/600.css';
     v.addEventListener('timeupdate', u);
     v.addEventListener('loadedmetadata', u);
   })();
+</script>
+<script>
+  import { startDiamondRain } from '../scripts/diamond-rain';
+  const rain = document.querySelector<HTMLCanvasElement>('canvas.rain');
+  if (rain) startDiamondRain(rain);
 </script>
 </body>
 </html>

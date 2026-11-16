@@ -8,6 +8,7 @@ Personal portfolio site. Astro 5, static output, deploys to munrhalls.com.
 - `npm run dev` — dev server on **http://localhost:4321** (sanglogium owns :3000; never collide)
 - `npm run build` — static build to `dist/`
 - `npm run preview` — serve the production build
+- `npm run movie` — **update the landing movie to the latest take**: copies `/home/jan/work/movie/out/review.webm` over `public/movie.webm` (the one path the page uses). Run it, then commit `public/movie.webm`. Never re-record or edit the movie from this repo (that is the video-loop skill in `/home/jan/work/movie`). Manual on purpose, not a dev/build hook: Vercel has no `/home/jan/work/movie`.
 
 ## Non-negotiable
 

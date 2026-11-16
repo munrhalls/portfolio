@@ -110,6 +110,15 @@ const system = plugin(({ addBase, addUtilities }) => {
     '.container-size': { 'container-type': 'size' },
     '.mask-fade-down': { '-webkit-mask-image': MASK_FADE_DOWN, 'mask-image': MASK_FADE_DOWN },
     '.mask-fade-up': { '-webkit-mask-image': MASK_FADE_UP, 'mask-image': MASK_FADE_UP },
+    /* exact window of the diamond's katakana pane (alpha of the legacy inside.png layer) */
+    '.mask-diamond-window': {
+      '-webkit-mask-image': 'url(/images/diamond-rain/window.png)',
+      '-webkit-mask-size': '100% 100%',
+      '-webkit-mask-repeat': 'no-repeat',
+      'mask-image': 'url(/images/diamond-rain/window.png)',
+      'mask-size': '100% 100%',
+      'mask-repeat': 'no-repeat',
+    },
     '.mask-diamond': {
       '-webkit-mask-image': MASK_DIAMOND,
       '-webkit-mask-size': '100% 100%,100% 100%,100% 100%',
@@ -189,7 +198,10 @@ const config: Config = {
         '38%, 100%': { opacity: 'calc(var(--o) * .55)' },
       },
     },
-    animation: { none: 'none', 'glyph-pulse': 'glyph-pulse var(--p) linear var(--d) infinite' },
+    animation: {
+      none: 'none',
+      'glyph-pulse': 'glyph-pulse var(--p) linear var(--d) infinite',
+    },
     extend: {
       width: { frame: 'var(--frame-w)', 'progress-still': '38%' },
       height: { frame: 'var(--frame-h)' },

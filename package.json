@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "movie": "cp /home/jan/work/movie/out/review.webm public/movie.webm",
     "astro": "astro"
   },
   "dependencies": {

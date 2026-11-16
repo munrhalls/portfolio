@@ -39,6 +39,7 @@ import '@fontsource/geist-mono/600.css';
 <!-- v1.76: Case studies up 26u + left 26u, Features up 24u + left 17u; every stream group is now an ARRAY (5–7 strands) that starts wide at its source (palm / finger tips) and concentrates, thinning (spread, twist and glyph size all taper) toward the center point of its text -->
 <!-- v1.77: Case studies + Story streams now start at the CENTER of the palm and sweep up over the thumb (the thumb sits behind the streams in the 3D read); Features/Learning unchanged -->
 <!-- v1.78: Features text moved 31u left + 12u down (to the "here" mark); its three-finger stream array re-aimed at the new center point -->
+<!-- v1.79: diamond katakana now falls — 11 columns drawn on a canvas over a glyph-free frame (src/scripts/diamond-rain.ts), 45 s per 532-px period, straight down, reduced-motion = rest -->
 <!-- v1.78p: design height 400u → 481u (real phones are 440–570u; 400 had zero slack). Video = the one elastic element, capped at 16:9 (167u tall, was 88u); stat numbers 11u → 13u so type steps are equal ratios 17 : 13 : 10 (≈1.3 each); strip +2.2u; surplus above 481u → 50% over the intro, 25% per group gap. Gap series left as is (ink gaps 10 / 6 / 13 already group correctly) -->
 <!-- v1.78p: "E-commerce" → "E-commerce app" -->
 <!-- v1.78o: nav labels 9.4u → 10u (clears the 12px floor from v1.58) and weight 500 → 600; tracking .04em → 0 so every label keeps its exact width — rhombi, streams and left margin do not move -->
@@ -100,7 +101,12 @@ import '@fontsource/geist-mono/600.css';
               mask-image:linear-gradient(to bottom left,#000 35%,rgba(0,0,0,.45) 85%),linear-gradient(to right,rgba(0,0,0,.2) 54.2%,#000 59.2%),linear-gradient(to bottom,transparent 20%,rgba(0,0,0,.1) 28%,rgba(0,0,0,.35) 36%,rgba(0,0,0,.75) 44%,#000 51.6%);
               mask-size:100% 100%,100% 100%,100% 100%;mask-position:0 0,0 0,0 0;mask-repeat:no-repeat;
               mask-composite:intersect,add}
-  .dm img{display:block;width:100%;height:100%;opacity:.5}
+  .dm .dmi{position:relative;width:100%;height:100%;opacity:.5}
+  .dm img{display:block;width:100%;height:100%}
+  /* v1.79 rain canvas: glyph light drawn additively over the frame, clipped to the pane */
+  .dm .rain{position:absolute;inset:0;width:100%;height:100%;mix-blend-mode:plus-lighter;
+            -webkit-mask-image:url(/images/diamond-rain/window.png);mask-image:url(/images/diamond-rain/window.png);
+            -webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
   @keyframes drift{
     from{transform:translate(0,0) scale(1);opacity:.45}
     to  {transform:translate(calc(-3*var(--u)),calc(4*var(--u))) scale(1.02);opacity:.55}
@@ -201,7 +207,7 @@ import '@fontsource/geist-mono/600.css';
 
     <div class="bg t" aria-hidden="true"></div><div class="bg b" aria-hidden="true"></div>
     <!-- 4 Main diamond (decorative, not clickable) -->
-    <div class="dm" aria-hidden="true"><img src="/images/code-diamond-black-bg.amber.png" alt=""></div>
+    <div class="dm" aria-hidden="true"><div class="dmi"><img src="/images/diamond-rain/frame.png" alt=""><canvas class="rain" width="1024" height="1024"></canvas></div></div>
 
     <!-- 2 Intro -->
     <div class="cglow" aria-hidden="true"></div>
@@ -260,6 +266,11 @@ import '@fontsource/geist-mono/600.css';
     v.addEventListener('timeupdate', u);
     v.addEventListener('loadedmetadata', u);
   })();
+</script>
+<script>
+  import { startDiamondRain } from '../scripts/diamond-rain';
+  const rain = document.querySelector<HTMLCanvasElement>('canvas.rain');
+  if (rain) startDiamondRain(rain);
 </script>
 </body>
 </html>
