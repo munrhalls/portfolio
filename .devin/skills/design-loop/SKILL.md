@@ -20,7 +20,7 @@ Annotated screenshot or one line of direction in → file edited → one short r
 - One image per round = the whole spec. Older images and spec files are never the target.
 - Visual only. Hrefs, semantics, dead anchors, correctness — out of scope unless it changes how it looks. Never report them.
 - Humans recognize well and describe badly — trust the annotation over their prose.
-- If a round changes a spec'd pattern (token, button style, type size), update `design/DESIGN.md` in the same pass.
+- If a round changes a spec'd pattern (token, button style, type size), update `design/landing-mobile/landing-mobile-v1.78.html` in the same pass.
 - Keep the one-line-per-round comment at the top of the file.
 
 ## The eyes
