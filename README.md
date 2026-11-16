@@ -11,7 +11,6 @@ npm run preview   # serve the build
 
 - `src/pages/index.astro` — the one page
 - `public/images/` — page images
-- `archived/` — old site source (not built)
-- `design/` — design mockups and spec (`DESIGN.md`)
-- `assets/` — raw image assets (design sources, project screenshots)
+- `archived/` — old site source + `design-legacy/` (old mockups, unused assets; not built)
+- `design/` — `landing-mobile-v1.78.html`, the design source of truth, and its two images
 - `_project/working-memory/` — transient task files, gitignored (see `AGENTS.md`)

@@ -19,7 +19,6 @@ what Claude Code needs on top.
 
 - `src/pages/index.astro` — the one page (route `/`)
 - `public/images/` — the two images the page uses
-- `archived/` — old site source, untouched, not built
-- `design/` — mockups + `DESIGN.md` (spec for UI work)
-- `assets/` — raw image sources (`code-diamond/`, `checkout-system/slices/`)
+- `archived/` — old site source + `design-legacy/` (old mockups v0.x–v1.77, unused assets, raw sources); untouched, not built, reuse parts from here
+- `design/` — only `landing-mobile/landing-mobile-v1.78.html` (source of truth for the design system) + the two images it uses in `design/assets/`. `DESIGN.md` was deleted; to be rewritten from v1.78
 - `_project/` — campaign docs; `working-memory/` is transient and gitignored
