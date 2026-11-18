@@ -12,10 +12,10 @@ CHARS = "ウエオカキクケコシスセソタテトナネハヒフムモヤ�
 
 # (tip x, tip y, chip anchor x, chip anchor y, gap above tip)
 STREAMS = {   # anchors = bottom tip of each chip's rhombus
-    "story":    (98.4, 101.0, 62.1, 83.7, 4.0),
-    "case":     (125.1, 103.0, 102.2, 51.7, 4.0),
-    "features": (142.8, 93.8, 194.1, 55.7, 4.0),
-    "learning": (178.4, 121.6, 266.1, 89.7, 4.0),
+    "story":    (83.6, 109.3, 62.1, 93.0, 4.0),
+    "case":     (107.6, 111.1, 102.2, 61.0, 4.0),
+    "features": (123.6, 102.8, 194.1, 65.0, 4.0),
+    "learning": (155.6, 127.9, 266.1, 99.0, 4.0),
 }
 RAILS = ((-1.0, .5), (0.0, 1.0), (1.0, .5))   # (offset as fraction of half-width, depth: 1 = near/big/bright)
 WMAX = 11.0                             # half-width at the belly (u)

@@ -1,0 +1,116 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>html,body{margin:0;background:#fff;overflow:hidden}canvas,iframe{display:block;border:0}#o{position:absolute;left:0;top:380px;pointer-events:none}</style></head>
+<body><canvas id="c" width="560" height="760" style="width:280px;height:380px"></canvas><iframe id="f" src="/" style="width:280px;height:380px"></iframe><canvas id="o" width="560" height="760" style="width:280px;height:380px"></canvas>
+<script>
+// Pre-space state. The floor is the landing mockup, not layered scene SVGs: slots are DOM shapes.
+// g:1 = ground (may sit under other slots). img = take the picture's own pixels, not its box.
+// need.w = least width (css px) to look good alone. HS/BS = heading/body px at the 280-wide floor (live u-scale, not a restyle).
+// Touch = pairs the page builds as one move (streams leave the hand and arrive on the chips). They may overlap; everything else is a gap.
+const CH=[
+ {n:'Diamond',g:1,c:[186,148,62],sel:'.dm img',img:'lum'},
+ {n:'Strip',g:1,c:[48,42,34],sel:'.strip'},
+ {n:'Hand',c:[214,206,192],sel:'.hand',img:'alpha'},
+ {n:'Streams',c:[168,140,72],sel:'.streams'},
+ {n:'Movie',need:{w:200},c:[70,78,96],sel:'.movie'},
+ {n:'Intro',c:[232,163,61],sel:'.intro .hi,.intro h1',rect:0},
+ {n:'Skills',c:[168,159,146],sel:'.skills',rect:1},
+ {n:'Contact',need:{w:52},c:[230,184,79],sel:'.contact'},
+ {n:'Live',need:{w:32},c:[223,140,48],sel:'.cta'},
+ {n:'Features',c:[196,122,74],sel:'.btn:nth-child(1)'},
+ {n:'Case studies',c:[90,132,176],sel:'.btn:nth-child(2)'},
+ {n:'Learning',c:[96,156,120],sel:'.btn:nth-child(3)'},
+ {n:'Story',c:[176,96,112],sel:'.btn:nth-child(4)'}];
+const TOUCH=new Set(['Hand|Streams','Streams|Features','Streams|Case studies','Streams|Learning','Streams|Story','Intro|Skills']);
+const S=2,W=280,H=380,PW=W*S,PH=H*S,N=PW*PH;
+const HS=16,BS=10,GAP=12;
+const boxOf=el=>{const r=el.getBoundingClientRect();return[r.left,r.top,r.right,r.bottom]};
+function paint(m,x0,y0,x1,y1){
+ x0=Math.max(0,x0);y0=Math.max(0,y0);x1=Math.min(PW,x1);y1=Math.min(PH,y1);
+ for(let y=y0|0;y<y1;y++)for(let x=x0|0;x<x1;x++)m[y*PW+x]=1;
+}
+function rectMask(els){const m=new Uint8Array(N);
+ for(const el of els){const[l,t,r,b]=boxOf(el);paint(m,l*S,t*S,r*S,b*S)}return m}
+function inkMask(els){const lines=[];
+ for(const el of els){const w=el.ownerDocument.createTreeWalker(el,4);let n;
+  while(n=w.nextNode()){if(!n.nodeValue.trim())continue;const g=el.ownerDocument.createRange();g.selectNodeContents(n);
+   for(const q of g.getClientRects()){let L=lines.find(z=>Math.abs(z.t-q.top)<3);
+    if(!L)lines.push(L={t:q.top,b:q.bottom,l:q.left,r:q.right});
+    L.t=Math.min(L.t,q.top);L.b=Math.max(L.b,q.bottom);L.l=Math.min(L.l,q.left);L.r=Math.max(L.r,q.right)}}}
+ const m=new Uint8Array(N);for(const L of lines)paint(m,L.l*S,L.t*S,L.r*S,L.b*S);return m}
+function layoutMask(el){const stage=el.ownerDocument.querySelector('.stage'),st=stage.getBoundingClientRect();
+ let x=0,y=0,n=el;while(n&&n!==stage){x+=n.offsetLeft;y+=n.offsetTop;n=n.offsetParent}
+ const m=new Uint8Array(N);paint(m,(st.left+x)*S,(st.top+y)*S,(st.left+x+el.offsetWidth)*S,(st.top+y+el.offsetHeight)*S);return m}
+function closeMask(m,rad){const d=new Uint8Array(N);
+ for(let y=0;y<PH;y++)for(let x=0;x<PW;x++){if(!m[y*PW+x])continue;
+  for(let dy=-rad;dy<=rad;dy++)for(let dx=-rad;dx<=rad;dx++){const xx=x+dx,yy=y+dy;if(xx>=0&&yy>=0&&xx<PW&&yy<PH)d[yy*PW+xx]=1}}
+ const e=new Uint8Array(N);
+ for(let y=rad;y<PH-rad;y++)for(let x=rad;x<PW-rad;x++){let ok=1;
+  for(let dy=-rad;dy<=rad&&ok;dy++)for(let dx=-rad;dx<=rad;dx++)if(!d[(y+dy)*PW+x+dx])ok=0;
+  if(ok)e[y*PW+x]=1}
+ return e}
+function glyphMask(svg){const m=new Uint8Array(N);
+ for(const t of svg.querySelectorAll('text')){const[l,t0,r,b]=boxOf(t);paint(m,(l-1)*S,(t0-1)*S,(r+1)*S,(b+1)*S)}return m}
+function imageMask(img,mode){const[l,t,r,b]=boxOf(img),c=document.createElement('canvas');c.width=PW;c.height=PH;
+ const x=c.getContext('2d');x.drawImage(img,l*S,t*S,(r-l)*S,(b-t)*S);
+ const a=x.getImageData(0,0,PW,PH).data,m=new Uint8Array(N);
+ for(let i=0;i<N;i++){const p=i*4,R=a[p],G=a[p+1],B=a[p+2],A=a[p+3];
+  if(mode==='alpha'?A>40:A>40&&R+G+B>90)m[i]=1}
+ return m}
+f.onload=()=>setTimeout(async()=>{
+ const d=f.contentDocument;
+ await d.fonts.ready;
+ for(const im of d.images)if(!im.complete)await new Promise(r=>{im.onload=im.onerror=r});
+ const own=new Int8Array(N).fill(-1);
+ for(const h of CH){
+  const els=[...d.querySelectorAll(h.sel)];
+  if(!els.length){h.m=new Uint8Array(N);continue}
+  if(h.img)h.m=closeMask(imageMask(els[0],h.img),h.n==='Diamond'?8:1);
+  else if(h.n==='Streams')h.m=closeMask(glyphMask(els[0]),3);
+  else if(h.rect!==undefined)h.m=inkMask(els);
+  else if(h.sel.startsWith('.btn')||h.n==='Contact'||h.n==='Live')h.m=layoutMask(els[0]);
+  else h.m=rectMask(els);
+  const k=CH.indexOf(h);for(let i=0;i<N;i++)if(h.m[i])own[i]=k;
+ }
+ const dt=m=>{const q=new Float32Array(N);for(let i=0;i<N;i++)q[i]=m[i]?0:1e9;
+  for(let y=0;y<PH;y++)for(let x=0;x<PW;x++){const i=y*PW+x;let v=q[i];if(x)v=Math.min(v,q[i-1]+1);if(y){v=Math.min(v,q[i-PW]+1);if(x)v=Math.min(v,q[i-PW-1]+1.414);if(x<PW-1)v=Math.min(v,q[i-PW+1]+1.414)}q[i]=v}
+  for(let y=PH-1;y>=0;y--)for(let x=PW-1;x>=0;x--){const i=y*PW+x;let v=q[i];if(x<PW-1)v=Math.min(v,q[i+1]+1);if(y<PH-1){v=Math.min(v,q[i+PW]+1);if(x<PW-1)v=Math.min(v,q[i+PW+1]+1.414);if(x)v=Math.min(v,q[i+PW-1]+1.414)}q[i]=v}
+  return q};
+ const iss=[],dts=CH.map(h=>dt(h.m));
+ for(let a=0;a<CH.length;a++)for(let b=a+1;b<CH.length;b++){
+  const A=CH[a],B=CH[b];if(A.g&&B.g)continue;if((A.g||B.g)&&A.rect===undefined&&B.rect===undefined)continue;
+  const pair=A.n+'|'+B.n;if(TOUCH.has(pair)||TOUCH.has(B.n+'|'+A.n))continue;
+  let ov=0,ox=0,oy=0,mn=1e9,mx=0,my=0;
+  for(let i=0;i<N;i++)if(B.m[i]){const dd=dts[a][i];if(dd===0){ov++;ox+=i%PW;oy+=(i/PW)|0}if(dd<mn){mn=dd;mx=i%PW;my=(i/PW)|0}}
+  if(ov>20)iss.push({t:A.n+' x '+B.n+' overlap',x:ox/ov/S,y:oy/ov/S});
+  else if(mn/S<GAP-0.5)iss.push({t:A.n+' x '+B.n+' gap '+(mn/S).toFixed(0)+'px',x:mx/S,y:my/S});
+ }
+ for(const h of CH)if(h.need){let l=PW,rr=0,any=0;for(let i=0;i<N;i++)if(h.m[i]){any=1;const x=i%PW;if(x<l)l=x;if(x>rr)rr=x}
+  if(any&&(rr-l)/S<h.need.w)iss.push({t:h.n+' too small '+Math.round((rr-l)/S)+'px < '+h.need.w+'px',x:(l+rr)/2/S,y:300})}
+ const h1=d.querySelector('.intro h1'),sk=d.querySelector('.skills');
+ const px=el=>el?parseFloat(getComputedStyle(el).fontSize):0;
+ const taste='Intro '+px(h1).toFixed(1)+'px'+(px(h1)<16?' < 16':'')+' · Skills '+px(sk).toFixed(1)+'px'+(px(sk)<12?' < 12':'');
+ const cnt=CH.map(()=>0);for(let i=0;i<N;i++)if(own[i]>=0)cnt[own[i]]++;
+ const edge=new Uint8Array(N);for(let y=0;y<PH-1;y++)for(let x=0;x<PW-1;x++){const i=y*PW+x;if(own[i]!==own[i+1]||own[i]!==own[i+PW])edge[i]=1}
+ const ctx=c.getContext('2d'),im=ctx.createImageData(PW,PH),oi=o.getContext('2d').createImageData(PW,PH);
+ for(let i=0;i<N;i++){let r=255,g=255,b=255;if(own[i]>=0)[r,g,b]=CH[own[i]].c;
+  if(edge[i]&&own[i]>=0){r=g=b=34;oi.data.set([255,0,255,255],i*4)}im.data.set([r,g,b,255],i*4)}
+ ctx.putImageData(im,0,0);o.getContext('2d').putImageData(oi,0,0);
+ ctx.setTransform(S,0,0,S,0,0);ctx.font='600 9px sans-serif';ctx.textBaseline='middle';ctx.lineJoin='round';
+ const halo=(t,x,y,al)=>{ctx.textAlign=al;ctx.lineWidth=3;ctx.strokeStyle='#fff';ctx.strokeText(t,x,y);ctx.fillStyle='#111';ctx.fillText(t,x,y)};
+ const out=CH.map((h,k)=>{let best=0,bx=0,by=0;
+  for(let y=4;y<PH-4;y++){let run=0;for(let x=0;x<PW;x++){if(own[y*PW+x]===k){run++;if(run>best){best=run;bx=x-run/2;by=y}}else run=0}}
+  return{h,py:by/S,px:Math.min(W-16,Math.max(16,bx/S)),share:cnt[k]/N*100}});
+ for(const e of out){if(!e.share)continue;e.t=e.share.toFixed(1)+'%';e.tw=ctx.measureText(e.t).width;halo(e.t,e.px,e.py,'center')}
+ const sorted=[...out].filter(e=>e.share).sort((a,b)=>a.py-b.py);const gapL=12;let last=-99;
+ for(const e of sorted){e.ly=Math.max(e.py,last+gapL);last=e.ly}
+ const overflow=last-(H-8);if(overflow>0)for(const e of sorted)e.ly-=overflow;
+ if(sorted.length&&sorted[0].ly<8){const push=8-sorted[0].ly;for(const e of sorted)e.ly+=push}
+ for(const e of sorted){ctx.strokeStyle='#222';ctx.lineWidth=1;const x0=Math.min(e.px+e.tw/2+3,150),xe=Math.max(x0+8,176);ctx.beginPath();ctx.moveTo(x0,e.py);ctx.lineTo(xe,e.py);ctx.lineTo(xe+8,e.ly);ctx.lineTo(W-1,e.ly);ctx.stroke();halo(e.h.n,W-3,e.ly,'right')}
+ ctx.textAlign='left';ctx.font='700 8px sans-serif';
+ iss.forEach((e,i)=>{ctx.strokeStyle='#e00';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(e.x,e.y,7,0,7);ctx.stroke();ctx.fillStyle='#e00';ctx.fillText(String(i+1),e.x+8,e.y-6);halo((i+1)+' '+e.t,4,168+i*11,'left')});
+ if(!iss.length){ctx.fillStyle='#0a0';halo('0 cramped',4,168,'left')}
+ ctx.fillStyle='#333';ctx.font='700 8px sans-serif';halo(taste,4,H-8,'left');
+ document.title=(iss.length?iss.length+' cramped | ':'0 cramped | ')+taste+' | '+out.filter(e=>e.share).map(e=>e.h.n+' '+e.t).join('|');
+},400);
+</script></body></html>
