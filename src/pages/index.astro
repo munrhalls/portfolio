@@ -157,9 +157,9 @@ import '@fontsource/geist-mono/600.css';
   .ctl svg{width:calc(9*var(--u));height:calc(9*var(--u));stroke:var(--muted);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
   .bar{position:absolute;left:0;right:0;bottom:calc(15*var(--u));height:calc(2.5*var(--u));background:var(--line2)}
   .bar i{display:block;height:100%;width:0;background:var(--text)}
-  .pl{position:absolute;left:50%;top:calc((100% - 17.5*var(--u))/2);width:calc(66*var(--u));height:calc(66*var(--u));transform:translate(-50%,-50%);padding:0;border:0;background:none;cursor:pointer}
+  .pl{position:absolute;left:50%;top:calc((100% - 17.5*var(--u))/2);width:calc((var(--M) - 17.5)*.5*var(--u));height:calc((var(--M) - 17.5)*.5*var(--u));transform:translate(-50%,-50%);padding:0;border:0;background:none;cursor:pointer}
   .pl svg{display:block;width:100%;height:100%}
-  .pl .t{fill:var(--sink)}
+  .pl .t{fill:var(--sink);stroke:var(--sink);stroke-width:8;stroke-linejoin:round}
   .tg{padding:0;border:0;background:none;cursor:pointer;display:flex;margin-right:calc(5*var(--u))}
   .time{margin-right:auto}
   .movie.on .pl,.movie.on .tg .p,.movie:not(.on) .tg .a{display:none}
@@ -234,7 +234,7 @@ import '@fontsource/geist-mono/600.css';
     <!-- 5 Movie -->
     <div class="movie" role="group" aria-label="Showcase video of sanglogium.com">
       <video muted loop playsinline preload="metadata" src="/movie.webm"></video>
-      <button class="pl" aria-label="Play"><svg viewBox="0 0 480 481" aria-hidden="true"><path fill="#f6e3d5" d="M215.2 1A243.2 243.2 0 0 0 12.4 319a242 242 0 0 0 56.4 91 242 242 0 0 0 274.1 48c1.9-2 1.9-2-13.1-2.9-23.8-.9-47.3-5.6-69.5-14q-10.3-5.7-2.8-3.8c17.8 3.7 26.3 4.7 45 4.7 32 1.9 72.3-3.8 83.6-10.3 7.5-4.7 41.3-37.6 39.4-38.5q-1-1.9-13.1 3.7a288 288 0 0 1-274.2-26.2c-8.4-6.6-17.8-14.1-15-14.1l33.8 16.9c6.6 2.8 25.4 8.4 35.7 10.3 15 2.8 62 2.8 78.9 0q45-7.5 92-30 50.3-22.7 102.3-41.3c5.7-2 4.7 0 12.2-32.9q2-7.5 1.9-38.5c0-28.1-1-33.7-2.8-45A238 238 0 0 0 365.5 35.7 245 245 0 0 0 215.2 1m32 51.6 21.5 3.8Q291 62.6 311 74.2h-2.8L296 71.4c-15-2.8-40.4-2.8-57.3 1a142.5 142.5 0 0 0-113.8 143.2 143.6 143.6 0 0 0 172 137.3q28.2-5.6-10.3 11.3a164.4 164.4 0 0 1-196.2-71.3A160.4 160.4 0 0 1 247 51.7m31 37.5a119 119 0 0 1 69.5 31A117 117 0 0 1 372 259q-2.8 6.6-2.8 2.8l1-9.4a107 107 0 0 0-51.7-108.9 105.2 105.2 0 0 0-154 119.2l1 3.8-2.9-3.8c-3.7-3.7-9.3-19.7-12.2-31.9a177 177 0 0 1 1-54.4c2.8-9.4 11.2-28.2 17.8-36.6 8.5-14.1 25.4-29.1 40.4-37.6a178 178 0 0 1 35.7-12.2l12.2-1.8q8.4-1 20.6.9"/><path class="t" d="M215 160V270L305 215Z"/></svg></button>
+      <button class="pl" aria-label="Play"><svg viewBox="0 0 480 481" aria-hidden="true"><path fill="#f6e3d5" d="M215.2 1A243.2 243.2 0 0 0 12.4 319a242 242 0 0 0 56.4 91 242 242 0 0 0 274.1 48c1.9-2 1.9-2-13.1-2.9-23.8-.9-47.3-5.6-69.5-14q-10.3-5.7-2.8-3.8c17.8 3.7 26.3 4.7 45 4.7 32 1.9 72.3-3.8 83.6-10.3 7.5-4.7 41.3-37.6 39.4-38.5q-1-1.9-13.1 3.7a288 288 0 0 1-274.2-26.2c-8.4-6.6-17.8-14.1-15-14.1l33.8 16.9c6.6 2.8 25.4 8.4 35.7 10.3 15 2.8 62 2.8 78.9 0q45-7.5 92-30 50.3-22.7 102.3-41.3c5.7-2 4.7 0 12.2-32.9q2-7.5 1.9-38.5c0-28.1-1-33.7-2.8-45A238 238 0 0 0 365.5 35.7 245 245 0 0 0 215.2 1m32 51.6 21.5 3.8Q291 62.6 311 74.2h-2.8L296 71.4c-15-2.8-40.4-2.8-57.3 1a142.5 142.5 0 0 0-113.8 143.2 143.6 143.6 0 0 0 172 137.3q28.2-5.6-10.3 11.3a164.4 164.4 0 0 1-196.2-71.3A160.4 160.4 0 0 1 247 51.7m31 37.5a119 119 0 0 1 69.5 31A117 117 0 0 1 372 259q-2.8 6.6-2.8 2.8l1-9.4a107 107 0 0 0-51.7-108.9 105.2 105.2 0 0 0-154 119.2l1 3.8-2.9-3.8c-3.7-3.7-9.3-19.7-12.2-31.9a177 177 0 0 1 1-54.4c2.8-9.4 11.2-28.2 17.8-36.6 8.5-14.1 25.4-29.1 40.4-37.6a178 178 0 0 1 35.7-12.2l12.2-1.8q8.4-1 20.6.9"/><path class="t" d="M226 178V290L348 234Z"/></svg></button>
       <div class="bar"><i></i></div>
       <div class="ctl">
         <button class="tg" aria-label="Play/Pause"><svg viewBox="0 0 12 12" aria-hidden="true"><path class="a" d="M4 2.5V9.5M8 2.5V9.5"/><path class="p" d="M3.5 2.5L9.5 6L3.5 9.5Z"/></svg></button>
