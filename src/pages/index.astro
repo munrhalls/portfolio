@@ -159,6 +159,8 @@ import '@fontsource/geist-mono/600.css';
   .bar i{display:block;height:100%;width:0;background:var(--text)}
   .pl{position:absolute;left:50%;top:calc((100% - 17.5*var(--u))/2);width:calc((var(--M) - 17.5)*.5*var(--u));height:calc((var(--M) - 17.5)*.5*var(--u));transform:translate(-50%,-50%);padding:0;border:0;background:none;cursor:pointer}
   .pl svg{display:block;width:100%;height:100%}
+  .movie video{transition:filter .25s}
+  .movie:not(.on) video{filter:brightness(.45)} /* paused: ~4.4:1 vs the cream glyph (WCAG graphics need 3:1) */
   .pl .t{fill:var(--sink);stroke:var(--sink);stroke-width:8;stroke-linejoin:round}
   .tg{padding:0;border:0;background:none;cursor:pointer;display:flex;margin-right:calc(5*var(--u))}
   .time{margin-right:auto}
